@@ -1,7 +1,7 @@
 # WCC — notes de reprise
 
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
-Dernière mise à jour : 6 octobre 2026 (4 commits locaux, rien de poussé ; aucun travail en cours).
+Dernière mise à jour : 6 octobre 2026 (5 commits locaux, rien de poussé ; espace carrosserie livré).
 
 ## Le projet en bref
 
@@ -54,13 +54,17 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 | 31 assureurs (nom, logo, `featured` = défile sur le portail) | `src/data/partners.json` + `src/assets/partners/*.webp` (script `tools/fetch_partners.py`) |
 | 16 marques de véhicules (icônes) | `src/data/brands.json` (généré : `npm run brands`) |
 | Avis Google | `src/data/reviews.json` (`capturedAt`, `items[]`) |
+| Espace carrosserie : 6 prestations (texte complet de chaque page), textes de l'accueil (étapes, avantages, FAQ) et de la page Assurances | `src/data/services-carrosserie.json` (types dans `src/lib/carrosserie.ts`) ; pages générées par `src/pages/carrosserie/prestations/[slug].astro` |
 | Couleurs, polices | `src/styles/tokens.css`, `src/styles/global.css` |
 | Gabarits | `src/layouts/Base.astro` (SEO, noindex, JSON-LD), `SpaceLayout.astro` (en-tête d'espace), `PageStub.astro` (pages provisoires) |
-| Composants | `PortalHero`, `SpaceHeader` (grand menu), `LogoMarquee`, `ReviewsCarousel`, `ServiceCard`, `AccessBlock`, `SiteFooter`, `CallBar`, `Icons` |
-| Formulaire en étapes | `src/scripts/quote-form.ts` (générique), `src/styles/form.css`, page `src/pages/mecanique/contact/` |
+| Composants | `PortalHero`, `SpaceHeader` (grand menu des deux espaces), `LogoMarquee`, `ReviewsCarousel`, `ServiceCard` (mécanique), `ProblemCard` (carrosserie), `StepsList`, `FaqList`, `CtaBand`, `VehicleZones` (schéma 9 zones + liste), `AccessBlock`, `SiteFooter`, `CallBar`, `Icons` |
+| Formulaires en étapes | `src/scripts/quote-form.ts` (générique : règles `data-require`, préremplissage `?prestation=` / `?intervention=`), `src/styles/form.css`, pages `mecanique/contact/` et `carrosserie/contact/` |
+| Formulaire carrosserie : zones, photos | `src/scripts/zone-picker.ts` (schéma ↔ cases à cocher), `src/scripts/photo-upload.ts` (réduction ~1600 px dans le navigateur, 6 photos max : garder cohérent avec `max_files` / `max_file_mb` de `api/config.php`) |
 | Point de réception | `api/submit.php`, `api/config.example.php` (`config.php` et `storage/` ne sont jamais versionnés ni copiés) |
 
-Conventions : `?prestation=<slug>` présélectionne une prestation du formulaire ; classe `.reveal` / `.is-in` pour les apparitions
+Conventions : `?prestation=<slug>` présélectionne une prestation du formulaire mécanique, `?intervention=<valeur>` (accident, peinture,
+debosselage, grele, vitrage, remise-en-etat, autre) une intervention du formulaire carrosserie ; `--wrap` (tokens.css) = conteneur
+dont le contenu s'aligne sur les blocs « marge seule » ; classe `.reveal` / `.is-in` pour les apparitions
 au défilement (désactivées si mouvement réduit) ; `hidden` + CSS pour les menus ; styles Astro « scoped » (utiliser `:global`
 pour les `<img>` produits par `<Image>`).
 
@@ -71,6 +75,7 @@ npm run dev     # site : http://127.0.0.1:4321 (proxy /api -> 8081)
 npm run php     # PHP local : http://127.0.0.1:8081 (racine du dépôt, config tools/php-dev.ini)
 npm run build   # astro build + copie sûre de api/ dans dist/api (tools/copy_api.mjs)
 npm run check   # astro check (TypeScript 6 requis : TS 7 non pris en charge)
+npm run links   # après un build : vérifie les liens internes de dist/ (tools/check_links.py)
 ```
 
 PHP 8.3 installé par winget : `C:\Users\flo\AppData\Local\Microsoft\WinGet\Packages\PHP.PHP.8.3_Microsoft.Winget.Source_8wekyb3d8bbwe\php.exe`
@@ -87,18 +92,24 @@ Fait et vérifié :
 - `api/submit.php` testé en local (PHP 8.3) : validation, champ piège, délai minimal, limite par IP (6/h), injection d'en-têtes
   neutralisée, accusé de réception, photos carrosserie (type réel vérifié, espace privé, pièce jointe), sujets
   « WCC — Mécanique|Carrosserie — Demande client — Marque Modèle ». Test de bout en bout navigateur → PHP → .eml réussi.
-- `astro check` : 0 erreur ; build : 12 pages.
+- **Espace carrosserie** (`/carrosserie/…`) : accueil (entrée par le problème : 6 cartes, partenaires assurance, déroulement, avantages
+  confirmés, marques, FAQ), `/prestations/` + 6 pages (accident, peinture-rayures, debosselage, reparation-grele, vitrage-pare-brise,
+  remise-en-etat), `/assurances/` (31 logos, déroulement d'un dossier, documents à préparer, FAQ), formulaire en 3 étapes avec schéma
+  des 9 zones (vue de dessus) + liste équivalente + « Je ne sais pas » (exclusif), photos multiples réduites dans le navigateur,
+  page « merci », grand menu des interventions. Testé en navigateur : validations, zones, photos (483 Ko → 125 Ko), envoi de bout
+  en bout vers PHP (e-mail au garage avec 3 pièces jointes + accusé, photos dans l'espace privé). Aucun prix d'appel en carrosserie.
+- `astro check` : 0 erreur ; build : 20 pages ; 1022 liens internes valides.
 
 Pas encore fait (ordre conseillé) :
-1. **25 fiches mécanique** à rédiger (priorité : révision-vidange, distribution, embrayage, climatisation, amortisseurs,
+1. **25 fiches mécanique** à rédiger (prochain chantier conseillé) (priorité : révision-vidange, distribution, embrayage, climatisation, amortisseurs,
    diagnostic-electronique, pneumatiques), puis les autres. Respecter les réserves du catalogue : climatisation (type et quantité
    de gaz, ≈250 g, suppléments), forfait électrique (89 € hors Tesla chez AD ≠ refus des Tesla), aucun précontrôle gratuit promis,
    diagnostics sans réparations consécutives.
-2. **Espace carrosserie** : accueil (entrée par le problème : accident, rayure, peinture…), 6 pages de prestations (accident,
-   peinture et rayures, débosselage, grêle, vitrage, remise en état), page Assurances (31 logos + déroulement du dossier),
-   formulaire avec **sélecteur de 9 zones** en SVG vue de dessus + liste équivalente + « Je ne sais pas », photos multiples
-   redimensionnées côté navigateur (~1600 px). `SpaceHeader` gère déjà `space="carrosserie"` ; `submit.php` gère déjà
-   `type=carrosserie` (champs : intervention, zones[], marque, modele, roulant, assurance, sinistre, pret, commentaire, photos[]).
+2. ~~Espace carrosserie~~ **fait** (voir ci-dessus). Reste à valider avec WCC : tous les textes (brouillons), en particulier « le choix du
+   réparateur vous appartient », « selon votre contrat une franchise peut rester à votre charge », « véhicule de prêt possible selon
+   disponibilités », « bris de glace : garantie dédiée », méthodes de débosselage/grêle (sans repeinture selon l'état de la peinture),
+   et la liste des 31 assureurs présentés comme « partenaires » (liste issue de la fiche Acoat : à confirmer qu'elle correspond à WCC).
+   Photos provisoires réutilisées (grêle = cabine de peinture, débosselage = polissage) : à remplacer par de vraies photos.
 3. Pages `/acces-horaires/`, `/mentions-legales/`, `/confidentialite/` (identité juridique, SIRET, responsable de publication,
    durée de conservation : informations à obtenir ; ne pas les inventer).
 4. SEO : sitemap (variable `SITE_URL`), JSON-LD par page, image Open Graph, vérification des titres/descriptions uniques.
@@ -123,6 +134,11 @@ demandes et photos, domaine.
   captures prennent parfois du retard dans le volet navigateur).
 - Si le volet navigateur est masqué, la page est mesurée avec une largeur nulle (`innerWidth` = 0) : les mesures JS (ex. « Lire la
   suite ») sont alors fausses ; rouvrir le volet et recharger avant de conclure à un bug.
+- Captures fiables : le volet navigateur est souvent masqué (captures périmées/expirées). Alternative : Chrome headless
+  (`chrome.exe --headless=new --force-prefers-reduced-motion --window-size=1440,6000 --screenshot=… <url>` : page entière, animations
+  d'apparition désactivées, largeur minimale ≈ 500 px) ; pour tester une interaction, piloter Chrome par le protocole DevTools
+  (WebSocket intégré à Node). Sous Git Bash, préfixer par `MSYS_NO_PATHCONV=1` tout argument commençant par `/` passé à un programme
+  Windows (sinon `/carrosserie/` devient `C:/Program Files/Git/carrosserie/`).
 - Les gros blocs de texte avec guillemets passent mal dans le shell : écrire les fichiers avec l'outil d'écriture.
 - `public/` est copié entièrement dans `dist/` : n'y mettre aucun secret ni donnée de test (c'est pourquoi `api/` est à la racine).
 - Les fichiers du dossier miroir ChatGPT (`C:\Users\flo\.codex\.chatgpt-projects\…`) sont en lecture seule et ne servent plus.

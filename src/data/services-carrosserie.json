@@ -1,0 +1,381 @@
+{
+  "_note": "BROUILLON À FAIRE VALIDER PAR WCC. Textes rédigés pour le site (aucun prix, aucun délai, aucune garantie, aucun prêt gratuit annoncé). « intervention » = valeur du formulaire (api/submit.php). « image » = fichier de src/assets/illustration/.",
+  "services": [
+    {
+      "slug": "reparation-accident",
+      "intervention": "accident",
+      "name": "Réparation après accident",
+      "problem": "Mon véhicule a subi un choc",
+      "short": "Pare-chocs, ailes, portières, capot : nous évaluons les dégâts et vous proposons la réparation adaptée.",
+      "image": "carrosserie-accident-aile.jpg",
+      "imageAlt": "Illustration : aile de véhicule endommagée",
+      "seoTitle": "Réparation carrosserie après accident à Bischheim | WCC",
+      "seoDescription": "Votre véhicule a subi un choc ? Évaluation des dégâts, devis et accompagnement dans vos démarches d’assurance à Bischheim, toutes marques.",
+      "lead": "Un accrochage, une collision, un choc sur un parking : nous évaluons les dégâts, vous expliquons ce qu’il faut réparer et vous accompagnons dans vos démarches d’assurance.",
+      "need": [
+        "Après un choc, les dégâts visibles ne disent pas tout. Un pare-chocs enfoncé peut cacher des fixations cassées, un capteur déréglé ou une pièce voisine fragilisée. L’examen du véhicule permet de savoir ce qui doit être réparé, remplacé ou simplement remis en peinture.",
+        "La réparation vise à redonner au véhicule son aspect et sa fonction : pièces remises en forme ou remplacées, teinte reprise, finition contrôlée. Nous intervenons sur les véhicules de toutes marques.",
+        "Si l’accident est pris en charge par votre assurance, nous vous accompagnons dans vos démarches."
+      ],
+      "cases": [
+        "Un accrochage ou une collision, même légère, avec un autre véhicule.",
+        "Un choc contre un obstacle : poteau, mur, borne, bordure.",
+        "Un pare-chocs, une aile ou une portière enfoncés, fissurés ou arrachés.",
+        "Un phare, un rétroviseur ou un élément de carrosserie cassé.",
+        "Une portière, un capot ou un coffre qui ferme mal depuis le choc.",
+        "Un véhicule qui ne roule plus normalement : indiquez-le dans votre demande."
+      ],
+      "steps": [
+        { "title": "Vous décrivez le dommage", "text": "Avec le formulaire : type d’intervention, zones touchées, photos si vous le pouvez. Vous pouvez aussi nous appeler." },
+        { "title": "Nous évaluons les dégâts", "text": "L’atelier examine votre demande et, si besoin, le véhicule, pour préciser les réparations nécessaires." },
+        { "title": "Vous recevez un devis adapté", "text": "Le devis détaille l’intervention. Si l’assurance est concernée, il sert de base à votre dossier." },
+        { "title": "Nous organisons la réparation", "text": "Une fois les points convenus, et l’accord de votre assureur si votre dossier le prévoit, nous planifions la prise en charge du véhicule." }
+      ],
+      "insurance": [
+        "Si l’accident est couvert par votre contrat, déclarez le sinistre à votre assureur dans les délais prévus par celui-ci. Le choix du garage qui répare votre véhicule vous appartient.",
+        "Selon votre contrat, une franchise peut rester à votre charge."
+      ],
+      "priceFactors": [
+        "L’étendue des dégâts : une pièce à redresser, à remplacer, ou plusieurs éléments touchés.",
+        "Les pièces à remplacer et leur disponibilité.",
+        "La peinture : teinte du véhicule, nombre d’éléments à peindre, finition.",
+        "Les éléments associés : capteurs, optiques, garnitures à déposer puis remettre en place.",
+        "Le temps de travail nécessaire."
+      ],
+      "vehicleInfo": [
+        "La marque, le modèle et, si possible, l’année de votre véhicule.",
+        "Des photos du dommage : une vue d’ensemble et des gros plans, de jour si possible.",
+        "Si l’assurance est concernée : le nom de l’assureur et, si vous les avez, le numéro de sinistre ou le constat amiable.",
+        "L’état du véhicule : roule-t-il normalement ?"
+      ],
+      "faq": [
+        { "q": "Dois-je passer par mon assurance ?", "a": "Pas obligatoirement. Si vous souhaitez que l’assurance prenne en charge la réparation, vous devez déclarer le sinistre selon les conditions de votre contrat. Vous pouvez aussi demander un devis pour une réparation à votre charge." },
+        { "q": "Puis-je choisir mon garage ?", "a": "Oui. Le choix du réparateur vous appartient, même si votre assureur vous propose un garage." },
+        { "q": "Un véhicule de prêt est-il possible ?", "a": "Selon les disponibilités et votre situation, un véhicule de prêt peut être possible. Précisez votre besoin dans la demande : nous vous indiquerons ce qui peut être proposé." },
+        { "q": "Quels documents préparer ?", "a": "La carte grise, votre attestation d’assurance, le constat amiable s’il y en a un et, le cas échéant, la référence du sinistre." },
+        { "q": "Combien coûte la réparation ?", "a": "Cela dépend de l’étendue des dégâts, des pièces et de la peinture. Nous n’affichons pas de prix d’appel en carrosserie : chaque dommage est différent. Le devis est établi à partir de votre demande." },
+        { "q": "Mon véhicule ne peut plus rouler. Que faire ?", "a": "Indiquez-le dans votre demande ou appelez-nous : nous verrons ensemble comment organiser la suite." }
+      ],
+      "related": ["peinture-rayures", "vitrage-pare-brise", "remise-en-etat"]
+    },
+    {
+      "slug": "peinture-rayures",
+      "intervention": "peinture",
+      "name": "Peinture et rayures",
+      "problem": "Ma carrosserie est rayée ou abîmée",
+      "short": "Rayures, éclats, vernis terni ou écaillé : nous remettons la carrosserie en état, avec une teinte adaptée à votre véhicule.",
+      "image": "carrosserie-peinture-pistolet.jpg",
+      "imageAlt": "Illustration : application de peinture au pistolet sur une carrosserie",
+      "seoTitle": "Peinture et réparation de rayures de carrosserie à Bischheim | WCC",
+      "seoDescription": "Rayures, éclats, peinture ternie ou écaillée : réparation et peinture de carrosserie à Bischheim, toutes marques. Devis sur demande, avec ou sans assurance.",
+      "lead": "Une rayure sur la portière, des éclats sur le capot, un vernis qui ternit : selon la profondeur du dommage, la réparation va du simple polissage à la remise en peinture de l’élément.",
+      "need": [
+        "Toutes les rayures ne se traitent pas de la même façon. Une marque superficielle, qui n’atteint que le vernis, peut parfois être atténuée par un polissage. Une rayure plus profonde, qui atteint la peinture ou la tôle, demande une reprise de peinture.",
+        "La teinte est le point délicat : la couleur, l’usure et l’aspect de la peinture (unie, métallisée, nacrée…) sont pris en compte pour que la zone réparée s’harmonise avec le reste du véhicule.",
+        "Peinture ternie, vernis écaillé, traces de corrosion naissantes : mieux vaut les faire examiner tôt, avant qu’elles ne s’étendent."
+      ],
+      "cases": [
+        "Une rayure sur une portière, une aile, un pare-chocs ou le capot.",
+        "Des éclats de peinture (gravillons, portière voisine, parking).",
+        "Un vernis qui s’écaille, jaunit ou devient mat.",
+        "Un pare-chocs éraflé par un frottement.",
+        "Une peinture qui cloque ou des taches de rouille naissantes.",
+        "Un élément remplacé qui doit être peint."
+      ],
+      "steps": [
+        { "title": "Vous décrivez le dommage", "text": "Indiquez l’emplacement, la profondeur approximative et joignez des photos, de jour si possible." },
+        { "title": "Nous évaluons le traitement adapté", "text": "Polissage, retouche ou remise en peinture de l’élément : le choix dépend de l’état de la peinture." },
+        { "title": "Vous recevez un devis", "text": "Il précise les éléments concernés et la nature du travail." },
+        { "title": "Nous réalisons la remise en état", "text": "Préparation du support, application de la peinture dans la teinte du véhicule, puis finition." }
+      ],
+      "insurance": [
+        "Selon l’origine du dommage (accrochage, vandalisme…) et votre contrat, la réparation peut être prise en charge par votre assurance ou rester à votre charge. En cas de doute, renseignez-vous auprès de votre assureur avant l’intervention."
+      ],
+      "priceFactors": [
+        "La taille de la zone et le nombre d’éléments à traiter.",
+        "La profondeur du dommage : polissage, retouche ou remise en peinture complète de l’élément.",
+        "La teinte du véhicule et son type de peinture (unie, métallisée, nacrée…).",
+        "L’état de l’élément voisin, qui peut nécessiter d’harmoniser la teinte.",
+        "Les opérations de préparation : démontage, ponçage, apprêt."
+      ],
+      "vehicleInfo": [
+        "La marque, le modèle et l’année de votre véhicule.",
+        "Des photos : une vue d’ensemble de l’élément et un gros plan sur le dommage, en lumière naturelle.",
+        "La couleur du véhicule ; le code teinte (plaque constructeur) si vous le trouvez, ce n’est pas indispensable.",
+        "L’origine du dommage, si vous la connaissez : rayure récente, éclats progressifs, usure du vernis."
+      ],
+      "faq": [
+        { "q": "Une rayure peut-elle partir au polissage ?", "a": "Parfois, si elle n’a atteint que le vernis. Un test simple : si l’ongle n’accroche pas dans la rayure, elle est souvent superficielle. Seul l’examen du véhicule permet de le confirmer." },
+        { "q": "Faut-il repeindre tout l’élément ?", "a": "En général, on traite l’élément concerné (portière, aile, pare-chocs) pour obtenir une surface homogène, plutôt que la seule rayure. Le devis précise ce qui est nécessaire." },
+        { "q": "La peinture sera-t-elle de la même couleur ?", "a": "La teinte est choisie en fonction de votre véhicule (couleur, vieillissement, type de peinture) pour que la zone réparée s’harmonise avec le reste. Les photos et les informations de votre demande nous aident." },
+        { "q": "Mon assurance peut-elle prendre en charge la réparation ?", "a": "Cela dépend de l’origine du dommage et de votre contrat. Renseignez-vous auprès de votre assureur ; nous pouvons vous accompagner dans vos démarches." },
+        { "q": "Comment demander un devis ?", "a": "Avec le formulaire en ligne (intervention « Peinture et rayures », puis la zone concernée) ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation." }
+      ],
+      "related": ["debosselage", "reparation-accident", "remise-en-etat"]
+    },
+    {
+      "slug": "debosselage",
+      "intervention": "debosselage",
+      "name": "Débosselage",
+      "problem": "Ma voiture a une bosse",
+      "short": "Bosse de parking, coup de portière, léger choc : nous étudions la meilleure façon de redonner sa forme à la tôle.",
+      "image": "carrosserie-polissage-orange.jpg",
+      "imageAlt": "Illustration : carrosserie orange en cours de polissage",
+      "seoTitle": "Débosselage de carrosserie à Bischheim | WCC",
+      "seoDescription": "Bosse de parking, coup de portière, léger choc : débosselage de carrosserie à Bischheim, toutes marques. Devis adapté à votre véhicule, avec ou sans assurance.",
+      "lead": "Une bosse sur une portière, une aile ou le toit ne se traite pas toujours de la même façon. Nous examinons la tôle et la peinture pour choisir la réparation adaptée.",
+      "need": [
+        "Quand la peinture n’est pas abîmée, certaines bosses peuvent être corrigées en redonnant sa forme à la tôle, sans reprise de peinture. Quand la peinture est fissurée ou écaillée, ou que la tôle est trop déformée, une remise en forme suivie d’une peinture est nécessaire.",
+        "La taille et la profondeur de la bosse, son emplacement et l’accessibilité de la zone comptent aussi dans le choix de la méthode.",
+        "Le devis précise la méthode retenue et ce qu’elle implique."
+      ],
+      "cases": [
+        "Une bosse de parking ou un coup de portière sur une aile, une portière ou le toit.",
+        "Un petit impact après un léger choc, sans dégât important sur la peinture.",
+        "Une bosse sur un panneau dont la peinture est intacte.",
+        "Plusieurs petites bosses sur le même élément.",
+        "Une bosse avec peinture fissurée ou écaillée : le traitement est alors à définir ensemble."
+      ],
+      "steps": [
+        { "title": "Vous décrivez la bosse", "text": "Emplacement, taille approximative et photos sous plusieurs angles aident à évaluer le dommage." },
+        { "title": "Nous étudions la réparation", "text": "État de la tôle et de la peinture, accessibilité de la zone : nous retenons la méthode adaptée." },
+        { "title": "Vous recevez un devis", "text": "Il indique l’intervention prévue, avec ou sans reprise de peinture." },
+        { "title": "Nous réalisons la réparation", "text": "La tôle est remise en forme, puis la finition est contrôlée." }
+      ],
+      "insurance": [
+        "Selon l’origine du dommage et votre contrat, la réparation peut être prise en charge par votre assurance ou rester à votre charge. Une bosse de parking dont l’auteur est inconnu n’est pas toujours couverte : renseignez-vous auprès de votre assureur."
+      ],
+      "priceFactors": [
+        "La taille, la profondeur et le nombre de bosses.",
+        "L’emplacement : zone accessible ou non, bord de panneau, pièce renforcée.",
+        "L’état de la peinture : intacte, fissurée ou écaillée.",
+        "Le démontage éventuel d’une garniture ou d’un élément voisin pour accéder à la zone.",
+        "Une remise en peinture de l’élément, si elle est nécessaire."
+      ],
+      "vehicleInfo": [
+        "La marque, le modèle et l’année de votre véhicule.",
+        "Des photos de la bosse sous plusieurs angles, en lumière naturelle, avec une vue d’ensemble de l’élément.",
+        "L’emplacement précis : portière, aile, toit, capot…",
+        "La date et l’origine du dommage, si vous les connaissez."
+      ],
+      "faq": [
+        { "q": "Une bosse peut-elle être réparée sans repeindre ?", "a": "Dans certains cas, si la peinture n’est pas abîmée et selon la forme et l’emplacement de la bosse. Seul l’examen permet de le dire ; le devis précise la méthode." },
+        { "q": "Quelle différence avec une réparation après accident ?", "a": "Le débosselage concerne des bosses localisées. Après un choc plus important, plusieurs éléments peuvent être touchés : la réparation après accident est alors plus adaptée." },
+        { "q": "Combien coûte un débosselage ?", "a": "Le prix dépend de la taille, du nombre de bosses, de leur emplacement et de l’état de la peinture. Nous n’affichons pas de prix d’appel : le devis est établi à partir de votre demande." },
+        { "q": "Dois-je joindre des photos ?", "a": "Ce n’est pas obligatoire, mais elles permettent de vous répondre plus précisément." },
+        { "q": "Mon assurance peut-elle prendre en charge la réparation ?", "a": "Cela dépend de l’origine du dommage et de votre contrat. Nous pouvons vous accompagner dans vos démarches." }
+      ],
+      "related": ["reparation-grele", "peinture-rayures", "reparation-accident"]
+    },
+    {
+      "slug": "reparation-grele",
+      "intervention": "grele",
+      "name": "Réparation après grêle",
+      "problem": "Ma voiture a été touchée par la grêle",
+      "short": "Capot, toit, ailes couverts d’impacts : nous évaluons l’ensemble des dégâts et la réparation adaptée à votre dossier.",
+      "image": "carrosserie-peinture-cabine.jpg",
+      "imageAlt": "Illustration : véhicule en cabine de peinture",
+      "seoTitle": "Réparation de carrosserie après grêle à Bischheim | WCC",
+      "seoDescription": "Voiture touchée par la grêle ? Évaluation des impacts, devis et accompagnement dans vos démarches d’assurance à Bischheim, toutes marques.",
+      "lead": "Après un orage de grêle, les impacts se comptent souvent par dizaines sur le capot, le toit et les ailes. Nous évaluons l’ensemble des dégâts et vous accompagnons dans votre dossier.",
+      "need": [
+        "Un épisode de grêle laisse de nombreux petits impacts sur les surfaces horizontales : capot, toit, coffre, parfois les ailes et le vitrage. Leur nombre, leur profondeur et l’état de la peinture déterminent la réparation.",
+        "Selon la profondeur des impacts et l’état de la peinture, la réparation passe par la remise en forme de la tôle, par la remise en peinture d’éléments ou par le remplacement de pièces. Ces méthodes peuvent être combinées sur un même véhicule.",
+        "Selon votre contrat, ces dégâts peuvent être couverts par une garantie dédiée aux événements climatiques ou par une garantie « tous risques »."
+      ],
+      "cases": [
+        "Des impacts en creux sur le capot, le toit ou le coffre après un orage.",
+        "Des éclats ou des fissures dans la peinture à l’endroit des impacts.",
+        "Un pare-brise, une lunette arrière ou un toit vitré fissuré ou impacté.",
+        "Des optiques ou des rétroviseurs endommagés.",
+        "Un véhicule touché à plusieurs endroits : la liste complète des dégâts est à établir avant le devis."
+      ],
+      "steps": [
+        { "title": "Vous décrivez les dégâts", "text": "Indiquez les zones touchées et joignez des photos du capot, du toit et des côtés." },
+        { "title": "Nous évaluons l’ensemble des impacts", "text": "Nombre, profondeur et état de la peinture sont examinés pour définir la réparation." },
+        { "title": "Vous recevez un devis adapté", "text": "Il détaille les interventions prévues et peut servir à votre dossier d’assurance." },
+        { "title": "Nous organisons la réparation", "text": "Une fois les points convenus, et l’accord de votre assureur si votre dossier le prévoit, nous planifions l’intervention." }
+      ],
+      "insurance": [
+        "Si vous souhaitez une prise en charge, déclarez le sinistre à votre assureur dans les délais prévus par votre contrat. Conservez vos photos et notez la date de l’orage.",
+        "Selon votre contrat, une franchise peut rester à votre charge."
+      ],
+      "priceFactors": [
+        "Le nombre et la profondeur des impacts.",
+        "Les éléments touchés : capot, toit, coffre, ailes, portières…",
+        "L’état de la peinture au niveau des impacts.",
+        "Le remplacement éventuel de pièces ou de vitrages.",
+        "Le temps de travail nécessaire."
+      ],
+      "vehicleInfo": [
+        "La marque, le modèle et l’année de votre véhicule.",
+        "Des photos du capot, du toit, du coffre et des côtés, de jour si possible.",
+        "La date de l’orage de grêle.",
+        "Les vitrages ou optiques touchés, s’il y en a.",
+        "Le nom de votre assureur si vous déclarez le sinistre."
+      ],
+      "faq": [
+        { "q": "Dois-je déclarer le sinistre avant de vous contacter ?", "a": "Si vous souhaitez une prise en charge par l’assurance, déclarez-le selon les conditions de votre contrat. Vous pouvez nous contacter dès maintenant pour préparer votre dossier." },
+        { "q": "Tous les impacts de grêle peuvent-ils être réparés ?", "a": "Cela dépend de leur profondeur, de leur emplacement et de l’état de la peinture. Certains éléments peuvent nécessiter une remise en peinture ou un remplacement. Le devis précise ce qui est prévu." },
+        { "q": "Combien de temps dure la réparation ?", "a": "La durée dépend du nombre d’impacts et des éléments à traiter. Nous vous la précisons après examen de votre demande." },
+        { "q": "Mon pare-brise est touché : intervenez-vous aussi sur le vitrage ?", "a": "Oui, nous intervenons sur le vitrage : indiquez-le dans votre demande, en précisant les vitrages concernés." },
+        { "q": "Un véhicule de prêt est-il possible ?", "a": "Selon les disponibilités et votre situation, cela peut être possible. Précisez votre besoin dans la demande." }
+      ],
+      "related": ["debosselage", "vitrage-pare-brise", "peinture-rayures"]
+    },
+    {
+      "slug": "vitrage-pare-brise",
+      "intervention": "vitrage",
+      "name": "Vitrage et pare-brise",
+      "problem": "Mon pare-brise ou une vitre est abîmé",
+      "short": "Impact, fissure, vitre brisée : nous étudions la réparation ou le remplacement du vitrage selon son état.",
+      "image": "carrosserie-vitrage-fissure.jpg",
+      "imageAlt": "Illustration : pare-brise fissuré",
+      "seoTitle": "Pare-brise et vitrage automobile à Bischheim : réparation et remplacement | WCC",
+      "seoDescription": "Impact ou fissure sur le pare-brise, vitre brisée : réparation ou remplacement du vitrage à Bischheim, toutes marques. Devis adapté, accompagnement assurance.",
+      "lead": "Un impact de gravillon, une fissure qui s’allonge, une vitre brisée : un vitrage abîmé est à traiter sans attendre. Nous étudions s’il peut être réparé ou s’il doit être remplacé.",
+      "need": [
+        "Un petit impact sur le pare-brise peut parfois être réparé, selon sa taille, son emplacement et son état. Au-delà, ou si une fissure s’étend, le remplacement du vitrage est nécessaire.",
+        "Le pare-brise participe à la sécurité du véhicule : un vitrage endommagé peut gêner la visibilité et se fragiliser davantage avec le temps.",
+        "Certains véhicules portent une caméra, un capteur de pluie ou de luminosité, un chauffage de pare-brise… Signalez-le dans votre demande : ces équipements peuvent influencer l’intervention."
+      ],
+      "cases": [
+        "Un impact (« étoile ») ou un éclat sur le pare-brise.",
+        "Une fissure qui s’allonge.",
+        "Une vitre latérale ou la lunette arrière brisée.",
+        "Un vitrage endommagé après un accident, une tentative d’effraction ou la grêle.",
+        "Un impact dans votre champ de vision qui gêne la conduite."
+      ],
+      "steps": [
+        { "title": "Vous décrivez le vitrage touché", "text": "Pare-brise, vitre latérale ou lunette arrière, taille de l’impact, photos : précisez-le dans le formulaire." },
+        { "title": "Nous évaluons la solution", "text": "Réparation de l’impact ou remplacement du vitrage, selon son état." },
+        { "title": "Vous recevez un devis adapté", "text": "Il tient compte du vitrage, du modèle de véhicule et des équipements associés." },
+        { "title": "Nous intervenons", "text": "Une fois l’intervention convenue, nous organisons la prise en charge du véhicule." }
+      ],
+      "insurance": [
+        "Le bris de glace relève souvent d’une garantie dédiée de votre contrat, avec ses propres conditions (franchise éventuelle, plafonds, réparation ou remplacement). Vérifiez votre contrat ou interrogez votre assureur avant l’intervention."
+      ],
+      "priceFactors": [
+        "Le vitrage concerné : pare-brise, vitre latérale, lunette arrière, toit vitré.",
+        "Réparation d’un impact ou remplacement du vitrage.",
+        "Le modèle du véhicule et la disponibilité du vitrage.",
+        "Les équipements associés : caméra, capteurs, antenne, chauffage…",
+        "Les fournitures nécessaires : joints, colle…"
+      ],
+      "vehicleInfo": [
+        "La marque, le modèle et l’année de votre véhicule.",
+        "Le vitrage touché et une photo de l’impact ou de la fissure (de près, et en vue d’ensemble).",
+        "Les équipements du pare-brise : caméra, capteur de pluie, chauffage, bande teintée…",
+        "La taille approximative de l’impact et sa position, notamment dans le champ de vision du conducteur.",
+        "Le nom de l’assureur si vous passez par votre garantie bris de glace."
+      ],
+      "faq": [
+        { "q": "Peut-on réparer un impact plutôt que remplacer le pare-brise ?", "a": "Parfois, selon la taille, l’emplacement et l’état de l’impact. L’examen permet de trancher ; le devis précise la solution retenue." },
+        { "q": "Puis-je continuer à rouler avec un pare-brise fissuré ?", "a": "Une fissure peut s’étendre et gêner la visibilité. Si elle gêne votre vue ou s’allonge, faites-la examiner rapidement et évitez de rouler en attendant." },
+        { "q": "Mon assurance prend-elle en charge le vitrage ?", "a": "Elle le peut si votre contrat comprend une garantie bris de glace, dont les conditions varient. Renseignez-vous auprès de votre assureur ; nous pouvons vous accompagner dans vos démarches." },
+        { "q": "Mon véhicule a une caméra derrière le pare-brise : cela change-t-il quelque chose ?", "a": "Cela peut influencer l’intervention. Signalez-le dans votre demande, avec le modèle du véhicule : nous vous répondrons pour votre cas." },
+        { "q": "Combien coûte un remplacement de vitrage ?", "a": "Le prix dépend du vitrage, du modèle de véhicule et de ses équipements. Nous n’affichons pas de prix d’appel : le devis est établi à partir de votre demande." }
+      ],
+      "related": ["reparation-accident", "reparation-grele", "remise-en-etat"]
+    },
+    {
+      "slug": "remise-en-etat",
+      "intervention": "remise-en-etat",
+      "name": "Remise en état avant restitution ou vente",
+      "problem": "Je rends ou je vends mon véhicule",
+      "short": "Rayures, petites bosses, optiques ternies : nous remettons le véhicule en état avant une restitution de leasing ou une vente.",
+      "image": "carrosserie-optique-polissage.jpg",
+      "imageAlt": "Illustration : polissage d’un phare",
+      "seoTitle": "Remise en état carrosserie avant restitution ou vente à Bischheim | WCC",
+      "seoDescription": "Restitution de leasing ou vente : retouches de peinture, polissage, débosselage, rénovation d’optiques à Bischheim. Devis sur demande, toutes marques.",
+      "lead": "Avant de rendre un véhicule en leasing ou de le mettre en vente, quelques défauts d’aspect peuvent peser sur le résultat. Nous les repérons avec vous et chiffrons leur remise en état.",
+      "need": [
+        "En fin de contrat de location ou de crédit-bail, le véhicule est examiné au regard de l’usure normale prévue par le contrat : les rayures, bosses ou éclats au-delà de ce seuil peuvent être facturés. Les faire examiner avant la restitution permet de savoir ce qui est à reprendre et d’en connaître le coût à l’avance.",
+        "Pour une vente, l’aspect du véhicule compte aussi : une carrosserie nette, des optiques claires et une peinture régulière donnent une meilleure impression.",
+        "Selon l’état du véhicule, la remise en état peut associer plusieurs interventions : polissage, retouches de peinture, débosselage, rénovation des optiques. Le devis précise ce qui est prévu."
+      ],
+      "cases": [
+        "Une restitution de véhicule en leasing (LOA, LLD) ou en location longue durée.",
+        "Un véhicule à vendre dont la carrosserie présente de petits défauts.",
+        "Des rayures, éclats ou petites bosses accumulés avec l’usage.",
+        "Des optiques ternies ou jaunies.",
+        "Une peinture terne qui a perdu son éclat.",
+        "Un rapport de restitution ou d’expertise qui mentionne des points à reprendre."
+      ],
+      "steps": [
+        { "title": "Vous décrivez le véhicule et votre objectif", "text": "Restitution ou vente, défauts constatés, photos ; mentionnez le rapport de restitution s’il existe." },
+        { "title": "Nous repérons ce qui est à reprendre", "text": "Rayures, bosses, optiques, peinture : nous faisons le point sur ce qui mérite une intervention." },
+        { "title": "Vous recevez un devis", "text": "Il liste les interventions et leur coût, pour que vous décidiez de ce que vous faites réaliser." },
+        { "title": "Nous réalisons la remise en état", "text": "Les interventions convenues sont réalisées, puis la finition est contrôlée." }
+      ],
+      "priceFactors": [
+        "Le nombre de défauts et leur gravité.",
+        "Les interventions nécessaires : polissage, retouche, débosselage, remise en peinture, rénovation d’optiques.",
+        "La teinte et le type de peinture.",
+        "Le niveau de finition attendu et les exigences du contrat de restitution, s’il y en a un.",
+        "Le temps de travail nécessaire."
+      ],
+      "vehicleInfo": [
+        "La marque, le modèle, l’année et le kilométrage de votre véhicule.",
+        "Votre objectif : restitution (avec la date prévue) ou vente.",
+        "Des photos des défauts, avec une vue d’ensemble de chaque côté du véhicule.",
+        "Le rapport ou le barème de restitution, si vous en avez un."
+      ],
+      "faq": [
+        { "q": "Quels défauts peut-on reprendre avant une restitution ?", "a": "Rayures, éclats, petites bosses, optiques ternies, peinture terne : tout dépend de leur gravité. Le devis indique ce qui peut être repris." },
+        { "q": "La remise en état garantit-elle l’acceptation du véhicule à la restitution ?", "a": "Non : l’acceptation dépend du loueur et des conditions de votre contrat. La remise en état vise à reprendre les défauts d’aspect avant l’examen du véhicule." },
+        { "q": "Dois-je faire réparer avant de vendre ?", "a": "Cela dépend de la valeur du véhicule et de l’importance des défauts. Nous pouvons chiffrer la remise en état pour vous aider à décider." },
+        { "q": "Peut-on ne traiter que certains défauts ?", "a": "Oui : à partir du devis, vous choisissez les interventions que vous souhaitez faire réaliser." },
+        { "q": "Combien coûte une remise en état ?", "a": "Cela dépend du nombre de défauts et des interventions nécessaires. Nous n’affichons pas de prix d’appel : le devis est établi à partir de votre demande." }
+      ],
+      "related": ["peinture-rayures", "debosselage", "reparation-accident"]
+    }
+  ],
+
+  "home": {
+    "steps": [
+      { "title": "Vous décrivez le dommage", "text": "Type d’intervention, zones touchées, photos si vous le pouvez : le formulaire se remplit en quelques minutes." },
+      { "title": "L’atelier vous répond", "text": "Nous échangeons avec vous pour comprendre la situation et préciser l’intervention." },
+      { "title": "Vous recevez un devis adapté", "text": "Il détaille la réparation et sert de base à votre dossier si l’assurance est concernée." },
+      { "title": "Nous organisons la prise en charge", "text": "Une fois l’intervention précisée, nous convenons ensemble de la suite." }
+    ],
+    "advantages": [
+      { "title": "Accompagnement assurance", "text": "Nous vous aidons dans vos démarches avec votre assureur." },
+      { "title": "Véhicule de prêt possible", "text": "Selon les disponibilités et votre situation : précisez votre besoin dans votre demande." },
+      { "title": "Toutes marques", "text": "Nous intervenons sur les véhicules de toutes marques, avec un devis adapté au vôtre." },
+      { "title": "Une équipe à l’écoute", "text": "Une prise en charge réactive, par une équipe qui prend le temps d’expliquer." }
+    ],
+    "faq": [
+      { "q": "Dois-je passer par mon assurance ?", "a": "Pas obligatoirement. Si vous souhaitez que l’assurance prenne en charge la réparation, vous devez déclarer le sinistre selon les conditions de votre contrat. Vous pouvez aussi demander un devis pour une réparation à votre charge." },
+      { "q": "Puis-je choisir mon garage ?", "a": "Oui. Le choix du réparateur vous appartient, même si votre assureur vous propose un garage." },
+      { "q": "Un véhicule de prêt est-il possible ?", "a": "Selon les disponibilités et votre situation, cela peut être possible. Précisez votre besoin dans votre demande : nous vous indiquerons ce qui peut être proposé." },
+      { "q": "Combien coûte une réparation de carrosserie ?", "a": "Cela dépend du dommage : étendue, pièces, peinture. Nous n’affichons pas de prix d’appel en carrosserie, car chaque dommage est différent. Le devis est établi à partir de votre demande." },
+      { "q": "Dois-je joindre des photos à ma demande ?", "a": "Ce n’est pas obligatoire, mais elles permettent de mieux comprendre le dommage et de vous répondre plus précisément." },
+      { "q": "Mon véhicule ne peut plus rouler. Que faire ?", "a": "Indiquez-le dans votre demande ou appelez-nous : nous verrons ensemble comment organiser la suite." }
+    ]
+  },
+
+  "assurances": {
+    "lead": "Un sinistre est déjà assez compliqué. Nous vous accompagnons dans vos démarches avec votre assureur, de la description du dommage au suivi de votre dossier.",
+    "steps": [
+      { "title": "Vous déclarez le sinistre", "text": "Auprès de votre assureur, dans les délais prévus par votre contrat. Conservez vos photos, le constat amiable et les références de votre dossier." },
+      { "title": "Vous nous contactez", "text": "Avec le formulaire en ligne ou par téléphone : type de dommage, zones touchées, photos, nom de votre assureur." },
+      { "title": "Nous établissons le devis", "text": "Il détaille les réparations et sert de base aux échanges avec votre assureur. Si une expertise est demandée, elle suit le déroulement prévu par votre contrat." },
+      { "title": "Les réparations sont validées", "text": "Une fois l’accord obtenu lorsqu’il est nécessaire, nous convenons ensemble de l’organisation de l’intervention." },
+      { "title": "Nous réparons et restituons le véhicule", "text": "Le véhicule vous est restitué une fois l’intervention terminée. Selon votre contrat, une franchise peut rester à votre charge." }
+    ],
+    "toPrepare": [
+      "Votre attestation d’assurance et la carte grise du véhicule.",
+      "Le constat amiable, s’il y en a un.",
+      "La référence de votre dossier de sinistre, si vous l’avez déjà déclaré.",
+      "Des photos du dommage : vue d’ensemble et gros plans."
+    ],
+    "faq": [
+      { "q": "Puis-je choisir mon garage ?", "a": "Oui. Le choix du réparateur vous appartient, même si votre assureur vous propose un garage." },
+      { "q": "Que couvre mon assurance ?", "a": "Cela dépend de votre contrat (garanties, franchise, conditions). Votre assureur est le seul à pouvoir vous le confirmer ; nous pouvons vous aider à préparer votre dossier." },
+      { "q": "Mon assureur ne figure pas dans la liste.", "a": "Contactez-nous pour en parler : indiquez son nom dans votre demande de devis." },
+      { "q": "Un véhicule de prêt est-il possible ?", "a": "Selon les disponibilités et votre situation, cela peut être possible. Précisez votre besoin dans votre demande." },
+      { "q": "Dois-je avancer des frais ?", "a": "Les conditions de règlement dépendent de votre contrat et de votre dossier : n’hésitez pas à nous poser la question avec votre demande." }
+    ]
+  }
+}

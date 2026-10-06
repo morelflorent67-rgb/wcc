@@ -5,11 +5,11 @@ Photos d'illustration provisoires, à remplacer par de vraies photos de WCC. Ne 
 
 | Fichier | Auteur | Source | Usage prévu |
 | --- | --- | --- | --- |
-| `carrosserie-polissage-orange.jpg` | David Glessner | [Unsplash](https://unsplash.com/photos/c-ebQX7w9FI) | Accueil carrosserie, portail |
+| `carrosserie-polissage-orange.jpg` | David Glessner | [Unsplash](https://unsplash.com/photos/c-ebQX7w9FI) | Accueil carrosserie, portail, page Débosselage |
 | `carrosserie-accident-aile.jpg` | Usman Malik | [Unsplash](https://unsplash.com/photos/kE__1vnDxg4) | Réparation après accident |
 | `carrosserie-peinture-pistolet.jpg` | Dylan Calluy | [Unsplash](https://unsplash.com/photos/WfCKPOVPKLo) | Peinture et rayures |
-| `carrosserie-peinture-cabine.jpg` | Dylan Calluy | [Unsplash](https://unsplash.com/photos/yX0D2Iihluc) | Peinture, accueil carrosserie |
-| `carrosserie-optique-polissage.jpg` | Vladyslav Lytvyshchenko | [Unsplash](https://unsplash.com/photos/9-muyFk7RC4) | Remise en état, rénovation d'optiques |
+| `carrosserie-peinture-cabine.jpg` | Dylan Calluy | [Unsplash](https://unsplash.com/photos/yX0D2Iihluc) | Réparation après grêle (provisoire : photo de grêle à trouver) |
+| `carrosserie-optique-polissage.jpg` | Vladyslav Lytvyshchenko | [Unsplash](https://unsplash.com/photos/9-muyFk7RC4) | Remise en état avant restitution ou vente |
 | `carrosserie-vitrage-fissure.jpg` | Will Creswick | [Unsplash](https://unsplash.com/photos/YH1KID3mTpY) | Vitrage et pare-brise |
 | `carrosserie-vitrage-pose.jpg` | UK CAR GLASS | [Unsplash](https://unsplash.com/photos/NZ7fg_IVAzo) | Vitrage et pare-brise |
 | `atelier-vehicules.jpg` | Winston Chen | [Unsplash](https://unsplash.com/photos/VdXnpwrp1qc) | Atelier, accès |

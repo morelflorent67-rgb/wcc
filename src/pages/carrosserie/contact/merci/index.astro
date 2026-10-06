@@ -1,0 +1,17 @@
+---
+import SpaceLayout from '../../../../layouts/SpaceLayout.astro';
+import '../../../../styles/form.css';
+import site from '../../../../data/site.json';
+---
+<SpaceLayout space="carrosserie" title="Demande envoyée — WCC" description="Votre demande de devis a été transmise à l’atelier." noindex>
+  <div class="qf-page" data-accent="orange">
+    <div class="qf-wrap">
+      <div class="result">
+        <h2>Demande envoyée.</h2>
+        <p>Merci : votre demande a bien été transmise à l’atelier. Nous l’examinons et revenons vers vous. Un accusé de réception vous est envoyé par e-mail.</p>
+        <p>Cet envoi ne constitue pas une réservation. Une question ? Appelez-nous au <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+        <p><a href="/carrosserie/">← Retour à l’espace carrosserie</a></p>
+      </div>
+    </div>
+  </div>
+</SpaceLayout>

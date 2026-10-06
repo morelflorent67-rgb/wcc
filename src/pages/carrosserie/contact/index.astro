@@ -1,4 +1,208 @@
 ---
-import PageStub from "../../../layouts/PageStub.astro";
+import SpaceLayout from '../../../layouts/SpaceLayout.astro';
+import VehicleZones from '../../../components/VehicleZones.astro';
+import '../../../styles/form.css';
+import site from '../../../data/site.json';
+import brands from '../../../data/brands.json';
+import { carroServices } from '../../../lib/carrosserie';
+
+// Valeurs de « intervention » : celles acceptées par api/submit.php (voir services-carrosserie.json)
+const interventions = [...carroServices.map((s) => ({ value: s.intervention, label: s.name })), { value: 'autre', label: 'Autre / je ne sais pas' }];
+const triQuestions = [
+  { name: 'roulant', label: 'Le véhicule roule-t-il ?' },
+  { name: 'assurance', label: 'L’assurance est-elle concernée ?' },
+  { name: 'sinistre', label: 'Le sinistre est-il déjà déclaré ?' },
+  { name: 'pret', label: 'Souhaitez-vous un véhicule de prêt ?' },
+];
+const tri = [{ v: 'oui', l: 'Oui' }, { v: 'non', l: 'Non' }, { v: 'nsp', l: 'Ne sait pas' }];
+
+const recap = [
+  { label: 'Intervention', fields: ['intervention'] },
+  { label: 'Zones concernées', fields: ['zones[]'] },
+  { label: 'Véhicule', fields: ['marque', 'modele', 'immatriculation'], join: ' · ' },
+  { label: 'Photos', fields: ['photos[]'] },
+  { label: 'Véhicule roulant', fields: ['roulant'] },
+  { label: 'Assurance concernée', fields: ['assurance'] },
+  { label: 'Sinistre déclaré', fields: ['sinistre'] },
+  { label: 'Véhicule de prêt souhaité', fields: ['pret'] },
+  { label: 'Commentaire', fields: ['commentaire'] },
+];
+const rules = [
+  { fields: ['intervention'], msg: 'Choisissez le type d’intervention.' },
+  { fields: ['zones[]'], msg: 'Indiquez au moins une zone, ou « Je ne sais pas ».' },
+];
 ---
-<PageStub title="Demander un devis carrosserie" section="Espace carrosserie" />
+<SpaceLayout
+  space="carrosserie"
+  title="Demander un devis carrosserie — Bischheim | WCC"
+  description="Demandez un devis de carrosserie : type d’intervention, zones touchées, photos et coordonnées. Votre demande est transmise à l’atelier."
+  current="/carrosserie/contact/"
+>
+  <div class="qf-page" data-accent="orange" data-form-scope>
+    <div class="qf-wrap">
+      <header class="qf-head">
+        <p class="label">Espace carrosserie</p>
+        <h1>Demander<br />un devis.</h1>
+        <p>Trois étapes rapides. Votre demande est transmise à l’atelier : ce n’est pas une réservation.</p>
+      </header>
+
+      <form
+        id="quote-form" class="qf" method="post" action="/api/submit.php" enctype="multipart/form-data" novalidate data-quote-form data-type="carrosserie"
+        data-recap={JSON.stringify(recap)} aria-label="Demande de devis carrosserie"
+      >
+        <input type="hidden" name="type" value="carrosserie" />
+        <input type="hidden" name="ts" value="" />
+        <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+
+        <ol class="progress" data-progress aria-label="Étapes">
+          <li>Dommage</li>
+          <li>Véhicule</li>
+          <li>Coordonnées</li>
+        </ol>
+
+        <fieldset data-step="1" data-require={JSON.stringify(rules)}>
+          <legend tabindex="-1">Votre dommage</legend>
+          <p class="sub">Quel type d’intervention vous faut-il, et où se trouve le dommage ?</p>
+
+          <div class="qgroup" role="group" aria-labelledby="interv-l">
+            <p class="gt" id="interv-l">Type d’intervention</p>
+            <div class="chips">
+              {interventions.map((it) => (
+                <label class="chip">
+                  <input type="radio" name="intervention" value={it.value} data-label={it.label} required />
+                  <span>{it.label}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+
+          <div class="qgroup">
+            <VehicleZones />
+          </div>
+          <p class="err" data-step-error hidden role="alert"></p>
+        </fieldset>
+
+        <fieldset data-step="2">
+          <legend tabindex="-1">Votre véhicule</legend>
+          <p class="sub">Ces informations nous permettent de vous répondre précisément. Les photos ne sont pas obligatoires.</p>
+          <div class="grid2">
+            <div class="field">
+              <label for="marque">Marque</label>
+              <input id="marque" name="marque" type="text" list="marques" required autocomplete="off" maxlength="60" placeholder="Renault, Peugeot…" />
+              <datalist id="marques">{brands.map((b) => <option value={b.name} />)}</datalist>
+            </div>
+            <div class="field">
+              <label for="modele">Modèle</label>
+              <input id="modele" name="modele" type="text" required autocomplete="off" maxlength="80" placeholder="Clio, 308…" />
+            </div>
+            <div class="field full">
+              <label for="immatriculation">Immatriculation <small>(facultatif)</small></label>
+              <input id="immatriculation" name="immatriculation" type="text" autocomplete="off" maxlength="15" placeholder="AB-123-CD" />
+            </div>
+          </div>
+
+          <div class="photos" data-photos data-max="6">
+            <label class="photos-l" for="photos">Photos du dommage <small>(facultatif, 6 maximum)</small></label>
+            <input id="photos" type="file" name="photos[]" accept="image/*" multiple />
+            <label class="drop" for="photos">
+              <svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" /></svg>
+              Ajouter des photos
+            </label>
+            <ul class="thumbs" data-thumbs aria-label="Photos ajoutées"></ul>
+            <p class="photo-status" data-photo-status aria-live="polite"></p>
+            <p class="err" data-photo-error hidden role="alert"></p>
+            <p class="hint">Une vue d’ensemble et un ou deux gros plans, de jour si possible. Les photos sont réduites automatiquement avant l’envoi et ne sont pas conservées si vous quittez la page.</p>
+          </div>
+
+          <div class="q-row">
+            {triQuestions.map((q) => (
+              <div role="group" aria-labelledby={`q-${q.name}`}>
+                <span class="group-l" id={`q-${q.name}`}>{q.label} <small>(facultatif)</small></span>
+                <div class="radios">
+                  {tri.map((t) => (
+                    <label class="chip"><input type="radio" name={q.name} value={t.v} data-label={t.l} /><span>{t.l}</span></label>
+                  ))}
+                </div>
+                {q.name === 'pret' && <p class="hint tight">Selon les disponibilités : l’indiquer ne garantit pas le prêt.</p>}
+              </div>
+            ))}
+          </div>
+
+          <div class="field full" style="margin-top:26px">
+            <label for="commentaire">Commentaire <small>(facultatif)</small></label>
+            <textarea id="commentaire" name="commentaire" rows="4" maxlength="2000" placeholder="Que s’est-il passé ? Depuis quand ? Autre précision utile…"></textarea>
+          </div>
+          <p class="err" data-step-error hidden role="alert"></p>
+        </fieldset>
+
+        <fieldset data-step="3">
+          <legend tabindex="-1">Vos coordonnées</legend>
+          <p class="sub">Pour vous répondre. Nous n’utilisons ces informations que pour traiter votre demande.</p>
+          <div class="grid2">
+            <div class="field">
+              <label for="nom">Nom et prénom</label>
+              <input id="nom" name="nom" type="text" required autocomplete="name" maxlength="100" />
+            </div>
+            <div class="field">
+              <label for="telephone">Téléphone</label>
+              <input id="telephone" name="telephone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="25" pattern="[0-9 +().\-]{8,25}" />
+            </div>
+            <div class="field full">
+              <label for="email">Adresse e-mail</label>
+              <input id="email" name="email" type="email" required autocomplete="email" maxlength="150" />
+            </div>
+            <div class="field full">
+              <span class="group-l">Je préfère être recontacté(e) <small>(facultatif)</small></span>
+              <div class="radios">
+                <label class="chip"><input type="radio" name="contact_pref" value="telephone" /><span>Par téléphone</span></label>
+                <label class="chip"><input type="radio" name="contact_pref" value="email" /><span>Par e-mail</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="recap" aria-live="polite">
+            <h3>Récapitulatif</h3>
+            <dl data-recap-out></dl>
+            <p>Il n’y a pas de prix d’appel en carrosserie : le devis est établi à partir de votre demande. L’envoi de ce formulaire n’est pas une réservation.</p>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="consent" value="1" required />
+            <span>J’accepte que World Car Carrosserie utilise ces informations, et les photos jointes, pour répondre à ma demande. <a href="/confidentialite/">En savoir plus sur l’utilisation de mes données</a>.</span>
+          </label>
+          <p class="err" data-step-error hidden role="alert"></p>
+        </fieldset>
+
+        <div class="qf-nav">
+          <button type="button" data-prev hidden>← Précédent</button>
+          <button type="button" data-next>Continuer <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+          <button type="submit" data-submit>Envoyer ma demande <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+        </div>
+      </form>
+
+      <div class="result" data-success tabindex="-1" hidden>
+        <h2>Demande envoyée.</h2>
+        <p>Merci : votre demande a bien été transmise à l’atelier. Nous l’examinons et revenons vers vous. Un accusé de réception vous est envoyé par e-mail.</p>
+        <p>Cet envoi ne constitue pas une réservation. Une question ? Appelez-nous au <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+        <p><a href="/carrosserie/">← Retour à l’espace carrosserie</a></p>
+      </div>
+      <div class="result bad" data-error tabindex="-1" role="alert" hidden>
+        <h2>L’envoi a échoué.</h2>
+        <p data-error-msg>Un problème est survenu. Vos informations sont conservées (hors photos) : vous pouvez réessayer, ou nous appeler directement.</p>
+        <p>Téléphone : <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a></p>
+      </div>
+    </div>
+  </div>
+</SpaceLayout>
+
+<script>
+  // Ordre important : le formulaire restaure d'abord la saisie conservée, puis le schéma et les photos s'y alignent
+  import '../../../scripts/quote-form';
+  import '../../../scripts/zone-picker';
+  import '../../../scripts/photo-upload';
+  // Envoi sans JavaScript : le serveur redirige ici avec ?erreur=1 en cas de problème
+  if (new URLSearchParams(location.search).has('erreur')) {
+    const bad = document.querySelector<HTMLElement>('[data-error]');
+    if (bad) bad.hidden = false;
+  }
+</script>

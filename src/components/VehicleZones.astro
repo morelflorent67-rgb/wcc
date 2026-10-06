@@ -1,0 +1,131 @@
+---
+/**
+ * Sélecteur des 9 zones du véhicule (carrosserie).
+ * - La liste de cases à cocher est la commande de référence (clavier, lecteur d'écran, sans JavaScript).
+ * - Le schéma SVG (vue de dessus, avant en haut) n'est qu'un raccourci tactile/visuel : il coche les mêmes cases
+ *   (script src/scripts/zone-picker.ts) et n'apparaît que si JavaScript est actif.
+ * Les valeurs (`avant-gauche`, …) sont celles acceptées par api/submit.php.
+ */
+const zones = [
+  { id: 'avant-gauche', label: 'Avant gauche', lines: ['AVANT', 'GAUCHE'], x: 67, y: 98 },
+  { id: 'avant-centre', label: 'Avant centre', lines: ['AVANT', 'CENTRE'], x: 150, y: 98 },
+  { id: 'avant-droite', label: 'Avant droite', lines: ['AVANT', 'DROITE'], x: 233, y: 98 },
+  { id: 'cote-gauche', label: 'Côté gauche', lines: ['CÔTÉ', 'GAUCHE'], x: 67, y: 272 },
+  { id: 'toit', label: 'Toit', lines: ['TOIT'], x: 150, y: 288 },
+  { id: 'cote-droit', label: 'Côté droit', lines: ['CÔTÉ', 'DROIT'], x: 233, y: 272 },
+  { id: 'arriere-gauche', label: 'Arrière gauche', lines: ['ARRIÈRE', 'GAUCHE'], x: 67, y: 446 },
+  { id: 'arriere-centre', label: 'Arrière centre', lines: ['ARRIÈRE', 'CENTRE'], x: 150, y: 446 },
+  { id: 'arriere-droite', label: 'Arrière droite', lines: ['ARRIÈRE', 'DROITE'], x: 233, y: 446 },
+] as const;
+
+// Découpage : 3 colonnes (x : 28–105 / 105–195 / 195–272) et 3 lignes (y : 10–170 / 170–370 / 370–528)
+const cells: Record<string, { x: number; y: number; w: number; h: number }> = {
+  'avant-gauche': { x: 0, y: 0, w: 105, h: 170 },
+  'avant-centre': { x: 105, y: 0, w: 90, h: 170 },
+  'avant-droite': { x: 195, y: 0, w: 105, h: 170 },
+  'cote-gauche': { x: 0, y: 170, w: 105, h: 200 },
+  toit: { x: 105, y: 170, w: 90, h: 200 },
+  'cote-droit': { x: 195, y: 170, w: 105, h: 200 },
+  'arriere-gauche': { x: 0, y: 370, w: 105, h: 170 },
+  'arriere-centre': { x: 105, y: 370, w: 90, h: 170 },
+  'arriere-droite': { x: 195, y: 370, w: 105, h: 170 },
+};
+
+const body = 'M88 20C118 10 182 10 212 20C246 32 266 70 268 120L270 200L272 340L268 430C266 482 250 510 216 520C184 528 116 528 84 520C50 510 34 482 32 430L28 340L30 200L32 120C34 70 54 32 88 20Z';
+---
+<div class="zones" data-zones>
+  <figure class="fig">
+    <svg viewBox="0 0 300 540" aria-hidden="true" focusable="false">
+      <defs><clipPath id="car-clip"><path d={body} /></clipPath></defs>
+
+      <g class="wheels">
+        <rect x="10" y="92" width="26" height="64" rx="8" />
+        <rect x="264" y="92" width="26" height="64" rx="8" />
+        <rect x="10" y="392" width="26" height="64" rx="8" />
+        <rect x="264" y="392" width="26" height="64" rx="8" />
+      </g>
+      <path class="mirror" d="M31 190q-22-3-26 9 4 10 26 8z" />
+      <path class="mirror" d="M269 190q22-3 26 9-4 10-26 8z" />
+      <path class="body" d={body} />
+
+      <g clip-path="url(#car-clip)">
+        {zones.map((z) => (
+          <rect class="zone" data-zone={z.id} x={cells[z.id].x} y={cells[z.id].y} width={cells[z.id].w} height={cells[z.id].h} />
+        ))}
+        <path class="sep" d="M105 0V540M195 0V540M0 170H300M0 370H300" />
+      </g>
+
+      <g class="deco">
+        <path d="M98 222 108 178Q150 168 192 178L202 222Q150 214 98 222Z" />
+        <rect x="112" y="234" width="76" height="98" rx="14" />
+        <path d="M102 340Q150 332 198 340L190 364Q150 356 110 364Z" />
+        <path d="M52 56Q58 36 90 32L94 50Q70 50 52 56Z" />
+        <path d="M248 56Q242 36 210 32L206 50Q230 50 248 56Z" />
+        <path d="M52 492Q58 510 90 514L94 496Q70 496 52 492Z" />
+        <path d="M248 492Q242 510 210 514L206 496Q230 496 248 492Z" />
+      </g>
+
+      {zones.map((z) => (
+        <text class="zt" x={z.x} y={z.y} text-anchor="middle">
+          {z.lines.map((ln, i) => <tspan x={z.x} dy={i === 0 ? 0 : 15}>{ln}</tspan>)}
+        </text>
+      ))}
+    </svg>
+    <figcaption>Vue de dessus, avant en haut. Touchez une zone pour la sélectionner.</figcaption>
+  </figure>
+
+  <div class="list" role="group" aria-labelledby="zones-l">
+    <p class="gt" id="zones-l">Zones concernées <small>(plusieurs choix possibles)</small></p>
+    <div class="grid3">
+      {zones.map((z) => (
+        <label class="chip">
+          <input type="checkbox" name="zones[]" value={z.id} data-label={z.label} />
+          <span>{z.label}</span>
+        </label>
+      ))}
+    </div>
+    <label class="chip unknown">
+      <input type="checkbox" name="zones[]" value="inconnu" data-label="Je ne sais pas" />
+      <span>Je ne sais pas</span>
+    </label>
+  </div>
+</div>
+
+<style>
+  .zones { display: grid; gap: 26px 44px; align-items: start; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .zones { grid-template-columns: minmax(220px, 290px) 1fr; } }
+
+  /* Le schéma n'est utile qu'avec JavaScript : sans lui, la liste suffit */
+  .fig { display: none; margin: 0; justify-self: center; width: min(100%, 290px); }
+  :global(.js) .fig { display: block; }
+  .fig svg { display: block; width: 100%; height: auto; overflow: visible; }
+  figcaption { margin-top: 10px; font-size: 0.85rem; color: var(--mute); text-align: center; }
+
+  .wheels rect { fill: #2c3038; }
+  .mirror { fill: #fff; stroke: var(--ink); stroke-width: 2.5; stroke-linejoin: round; }
+  .body { fill: #fff; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+  .deco path, .deco rect { fill: #e9edf2; stroke: var(--ink-soft); stroke-width: 1.8; stroke-linejoin: round; pointer-events: none; }
+  .deco rect { fill: #f4f1ec; }
+  .sep { fill: none; stroke: var(--mute); stroke-width: 1.4; stroke-dasharray: 4 6; opacity: 0.55; pointer-events: none; }
+  .zone { fill: rgb(255 91 15 / 0); cursor: pointer; transition: fill 0.2s; }
+  .zone:hover, .zone.is-hot { fill: rgb(255 91 15 / 0.2); }
+  .zone.is-on { fill: rgb(255 91 15 / 0.58); }
+  .zt { font: 800 13px/1 var(--f-display); letter-spacing: 0.06em; fill: var(--ink-soft); pointer-events: none; }
+
+  .list .gt { margin: 0 0 12px; font: 700 0.9rem/1 var(--f-display); letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); }
+  .list .gt small { font-weight: 500; letter-spacing: 0.08em; text-transform: none; font-family: var(--f-body); }
+  .grid3 { display: grid; gap: 10px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .chip { position: relative; display: block; }
+  .chip input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+  .chip span {
+    display: flex; align-items: center; justify-content: center; min-height: 52px; padding: 8px 10px; text-align: center;
+    border: 1.5px solid var(--ink); border-radius: 14px; background: #fff; font: 600 0.95rem/1.15 var(--f-body);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .chip input:hover + span { background: var(--paper); }
+  .chip input:checked + span { background: var(--orange); border-color: var(--orange); color: #111; }
+  .chip input:focus-visible + span { outline: 3px solid var(--orange-deep); outline-offset: 3px; }
+  .unknown { margin-top: 12px; max-width: 320px; }
+  .unknown span { border-style: dashed; }
+  @media (max-width: 520px) { .chip span { font-size: 0.88rem; min-height: 56px; padding: 6px; } }
+</style>

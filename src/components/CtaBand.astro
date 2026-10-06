@@ -1,0 +1,23 @@
+---
+/** Bandeau d'appel à l'action en fin de page (dégradé de l'espace). */
+interface Props { title: string; href: string; label?: string; accent?: 'orange' | 'blue'; }
+const { title, href, label = 'Demander un devis', accent = 'orange' } = Astro.props;
+---
+<section class:list={['band', accent]}>
+  <div class="band-in">
+    <h2>{title}</h2>
+    <a class="pill" href={href}>{label} <i><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></i></a>
+  </div>
+</section>
+
+<style>
+  .band { --acc: var(--orange); color: #fff; padding: clamp(40px, 6vw, 70px) var(--pad); background-image: linear-gradient(100deg, #c43400, #ff5b0f 60%, #ff8a10); }
+  .band.blue { --acc: var(--blue); background-image: linear-gradient(100deg, #1238f5, #4910bc); }
+  .band-in { max-width: var(--max); margin-inline: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 22px; }
+  h2 { margin: 0; font: 800 clamp(2.4rem, 6vw, 4.6rem) / 0.9 var(--f-display); text-transform: uppercase; }
+  .pill { display: inline-flex; align-items: center; gap: 14px; background: #fff; color: var(--ink); border-radius: 999px; padding: 8px 8px 8px 26px; font: 700 1rem var(--f-body); text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .pill i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--acc); color: #111; font-style: normal; transition: transform 0.3s; }
+  .blue .pill i { color: #fff; }
+  .pill:hover { background: var(--ink); color: #fff; }
+  .pill:hover i { transform: rotate(45deg); }
+</style>

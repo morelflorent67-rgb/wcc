@@ -8,6 +8,7 @@ import { Image } from 'astro:assets';
 import site from '../data/site.json';
 import logoMark from '../assets/brand/logo-wcc-mark.webp';
 import { families, byFamily, formatPrice, serviceHref } from '../lib/mecanique';
+import { carroServices, carroHref } from '../lib/carrosserie';
 
 interface Props { space: 'mecanique' | 'carrosserie'; current?: string; }
 const { space, current = '' } = Astro.props;
@@ -37,13 +38,23 @@ const confs: Record<'mecanique' | 'carrosserie', SpaceConf> = {
     quote: '/carrosserie/contact/',
     nav: [
       { label: 'Accueil carrosserie', href: '/carrosserie/' },
-      { label: 'Prestations', href: '/carrosserie/prestations/' },
+      { label: 'Prestations', href: '/carrosserie/prestations/', mega: true },
       { label: 'Assurances', href: '/carrosserie/assurances/' },
       { label: 'Accès', href: '/acces-horaires/' },
     ],
   },
 };
 const conf = confs[space];
+
+// Contenu du grand menu : familles du catalogue (mécanique) ou interventions (carrosserie, une seule colonne)
+interface MegaGroup { id: string; name: string; items: { href: string; name: string; note?: string }[]; }
+const priceNote = (p: number | null) => (p === null ? 'Sur devis' : `dès ${formatPrice(p)}`);
+const groups: MegaGroup[] = space === 'mecanique'
+  ? families.map((f) => ({ id: f.id, name: f.name, items: byFamily(f.id).map((s) => ({ href: serviceHref(s.slug), name: s.name, note: priceNote(s.priceFrom) })) }))
+  : [{ id: 'interventions', name: 'Interventions', items: carroServices.map((s) => ({ href: carroHref(s.slug), name: s.name })) }];
+const megaNote = space === 'mecanique'
+  ? 'Prix d’appel « à partir de » : tarif selon véhicule et intervention, devis personnalisé.'
+  : 'Chaque dommage est différent : le devis est établi à partir de votre demande.';
 ---
 <header class="hdr" data-header data-accent={conf.accent}>
   <div class="util">
@@ -86,31 +97,29 @@ const conf = confs[space];
       </button>
     </div>
 
-    {space === 'mecanique' && (
-      <div class="mega" id="mega" data-mega hidden>
-        <div class="wrap mega-in">
-          {families.map((f) => (
-            <section class="col" aria-labelledby={`mf-${f.id}`}>
-              <h2 id={`mf-${f.id}`}>{f.name}</h2>
-              <ul>
-                {byFamily(f.id).map((s) => (
-                  <li>
-                    <a href={serviceHref(s.slug)}>
-                      <span>{s.name}</span>
-                      <small>{s.priceFrom === null ? 'Sur devis' : `dès ${formatPrice(s.priceFrom)}`}</small>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
-        <div class="wrap mega-foot">
-          <a href="/mecanique/prestations/">Voir toutes les prestations <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
-          <span>Prix d’appel « à partir de » : tarif selon véhicule et intervention, devis personnalisé.</span>
-        </div>
+    <div class="mega" id="mega" data-mega hidden>
+      <div class:list={['wrap', 'mega-in', { one: groups.length === 1 }]}>
+        {groups.map((g) => (
+          <section class="col" aria-labelledby={`mf-${g.id}`}>
+            <h2 id={`mf-${g.id}`}>{g.name}</h2>
+            <ul>
+              {g.items.map((it) => (
+                <li>
+                  <a href={it.href}>
+                    <span>{it.name}</span>
+                    {it.note && <small>{it.note}</small>}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
       </div>
-    )}
+      <div class="wrap mega-foot">
+        <a href={conf.nav.find((n) => n.mega)?.href}>Voir toutes les prestations <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        <span>{megaNote}</span>
+      </div>
+    </div>
   </div>
 
   <div class="msheet" id="m-menu" data-msheet hidden>
@@ -120,12 +129,12 @@ const conf = confs[space];
           {it.mega ? (
             <div class="m-acc">
               <p class="m-title">{it.label}</p>
-              {families.map((f) => (
+              {groups.map((g) => (
                 <details>
-                  <summary>{f.name}</summary>
+                  <summary>{g.name}</summary>
                   <ul>
-                    {byFamily(f.id).map((s) => (
-                      <li><a href={serviceHref(s.slug)}><span>{s.name}</span><small>{s.priceFrom === null ? 'Sur devis' : `dès ${formatPrice(s.priceFrom)}`}</small></a></li>
+                    {g.items.map((item) => (
+                      <li><a href={item.href}><span>{item.name}</span>{item.note && <small>{item.note}</small>}</a></li>
                     ))}
                   </ul>
                 </details>
@@ -190,7 +199,7 @@ const conf = confs[space];
 <style>
   .hdr { --acc: var(--blue); position: sticky; top: -38px; z-index: 70; background: #fff; }
   .hdr[data-accent='orange'] { --acc: var(--orange); }
-  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+  .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--pad); }
 
   .util { height: 38px; background: var(--night); color: #c9cdd4; font: 500 0.85rem/38px var(--f-body); }
   .util .wrap { display: flex; justify-content: space-between; gap: 18px; }
@@ -233,6 +242,8 @@ const conf = confs[space];
   /* Grand menu */
   .mega { position: absolute; left: 0; right: 0; top: 100%; z-index: 5; background: #fff; border-top: 1px solid var(--line); box-shadow: 0 40px 60px -30px rgba(17, 19, 23, 0.4); padding: 30px 0 0; }
   .mega-in { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; padding-bottom: 26px; }
+  .mega-in.one { grid-template-columns: 1fr; }
+  .mega-in.one ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2px 28px; }
   .col h2 { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 2px solid var(--acc); font: 800 1.05rem/1.1 var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; }
   .col ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
   .col a { display: flex; justify-content: space-between; gap: 10px; padding: 7px 8px; margin-inline: -8px; border-radius: 8px; text-decoration: none; font-size: 0.94rem; line-height: 1.25; }

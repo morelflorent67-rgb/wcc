@@ -1,0 +1,23 @@
+---
+/** Étapes numérotées (déroulement d'une prise en charge). */
+interface Props { steps: { title: string; text: string }[]; accent?: 'orange' | 'blue'; }
+const { steps, accent = 'orange' } = Astro.props;
+---
+<ol class:list={['steps', accent]}>
+  {steps.map((st, i) => (
+    <li class="reveal" style={`--d:${i * 0.07}s`}>
+      <span class="n">{String(i + 1).padStart(2, '0')}</span>
+      <h3>{st.title}</h3>
+      <p>{st.text}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .steps { --acc: var(--orange); --acc-text: var(--orange-deep); display: grid; gap: 26px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); }
+  .steps.blue { --acc: var(--blue); --acc-text: var(--blue); }
+  .steps li { padding-top: 22px; border-top: 3px solid var(--acc); }
+  .n { display: block; margin-bottom: 8px; font: 800 3rem/1 var(--f-display); color: var(--acc-text); }
+  h3 { margin: 0 0 8px; font: 800 1.4rem/1.05 var(--f-display); text-transform: uppercase; }
+  p { margin: 0; color: var(--mute); }
+</style>

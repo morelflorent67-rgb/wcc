@@ -25,5 +25,7 @@
   /* Mise en page */
   --pad: clamp(18px, 3.4vw, 56px);
   --max: 1360px;
+  /* Conteneur avec marges latérales comprises : le contenu s'aligne sur les blocs « marge seule » (accès, bandeau, pied de page) */
+  --wrap: calc(var(--max) + 2 * var(--pad));
   --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
 }

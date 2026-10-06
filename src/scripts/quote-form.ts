@@ -83,6 +83,11 @@ function initQuoteForm(form: HTMLFormElement) {
     }
     current = 0;
   }
+  // Et pour un groupe de boutons radio : ?intervention=accident coche l'option correspondante
+  for (const [key, val] of params) {
+    const radio = form.querySelector<HTMLInputElement>(`input[type="radio"][name="${CSS.escape(key)}"][value="${CSS.escape(val)}"]`);
+    if (radio) { radio.checked = true; current = 0; }
+  }
 
   // ───── Affichage des étapes ─────
   const stepError = (fs: HTMLElement, msg?: string) => {
@@ -117,12 +122,15 @@ function initQuoteForm(form: HTMLFormElement) {
   const validateStep = (i: number): boolean => {
     const fs = steps[i];
     stepError(fs);
+    // Règles « au moins un choix » : data-require='[{"fields":["zones[]"],"msg":"…"}]' ou, pour une seule règle, data-require-any
+    const rules: { fields: string[]; msg: string }[] = fs.dataset.require ? JSON.parse(fs.dataset.require) : [];
     const any = fs.dataset.requireAny?.split(',').map((s) => s.trim()).filter(Boolean);
-    if (any?.length) {
-      const filled = any.some((name) => named(name).some((f) => (f instanceof HTMLInputElement && (f.type === 'checkbox' || f.type === 'radio') ? f.checked : f.value.trim() !== '')));
+    if (any?.length) rules.push({ fields: any, msg: fs.dataset.requireMsg ?? 'Merci de faire au moins un choix.' });
+    for (const rule of rules) {
+      const filled = rule.fields.some((name) => named(name).some((f) => (f instanceof HTMLInputElement && (f.type === 'checkbox' || f.type === 'radio') ? f.checked : f.value.trim() !== '')));
       if (!filled) {
-        stepError(fs, fs.dataset.requireMsg ?? 'Merci de faire au moins un choix.');
-        (named(any[0])[0] as HTMLElement | undefined)?.focus();
+        stepError(fs, rule.msg);
+        (named(rule.fields[0])[0] as HTMLElement | undefined)?.focus();
         return false;
       }
     }
@@ -138,6 +146,10 @@ function initQuoteForm(form: HTMLFormElement) {
     const group = named(name);
     if (!group.length) return '';
     const first = group[0];
+    if (first instanceof HTMLInputElement && first.type === 'file') {
+      const n = first.files?.length ?? 0;
+      return n ? `${n} photo${n > 1 ? 's' : ''}` : '';
+    }
     if (first instanceof HTMLInputElement && (first.type === 'checkbox' || first.type === 'radio')) {
       return group
         .filter((f): f is HTMLInputElement => f instanceof HTMLInputElement && f.checked)

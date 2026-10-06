@@ -1,4 +1,108 @@
 ---
-import PageStub from "../../../layouts/PageStub.astro";
+import type { ImageMetadata } from 'astro';
+import SpaceLayout from '../../../layouts/SpaceLayout.astro';
+import StepsList from '../../../components/StepsList.astro';
+import FaqList from '../../../components/FaqList.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import AccessBlock from '../../../components/AccessBlock.astro';
+import partners from '../../../data/partners.json';
+import { carroAssurances } from '../../../lib/carrosserie';
+
+// Logos : fichiers de src/assets/partners (liste et noms : src/data/partners.json)
+const files = import.meta.glob<{ default: ImageMetadata }>('../../../assets/partners/*.webp', { eager: true });
+const logos = partners.map((p) => {
+  const img = files[`../../../assets/partners/${p.file}`].default;
+  return { name: p.name, src: img.src, width: img.width, height: img.height };
+});
 ---
-<PageStub title="Assurances" section="Espace carrosserie" />
+<SpaceLayout
+  space="carrosserie"
+  title="Assurances et réparation de carrosserie à Bischheim | WCC"
+  description="Votre véhicule est accidenté ? Accompagnement dans vos démarches d’assurance, partenaires assurance et déroulement d’un dossier de réparation à Bischheim."
+>
+  <section class="head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Fil d’Ariane"><a href="/carrosserie/">Carrosserie</a> <span aria-hidden="true">›</span> <span>Assurances</span></nav>
+      <h1>Votre assurance,<br />notre accompagnement.</h1>
+      <p>{carroAssurances.lead}</p>
+      <a class="pill" href="/carrosserie/contact/">Demander un devis <i><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></i></a>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="deroule">
+    <div class="wrap">
+      <p class="label muted reveal">Déroulement</p>
+      <h2 id="deroule" class="sec-t reveal">De la déclaration<br />à la restitution.</h2>
+      <StepsList steps={carroAssurances.steps} accent="orange" />
+      <p class="small reveal">Le déroulement exact dépend de votre contrat, de votre assureur et de l’importance du dommage.</p>
+    </div>
+  </section>
+
+  <section class="block alt" aria-labelledby="partenaires">
+    <div class="wrap">
+      <p class="label muted reveal">Partenaires</p>
+      <h2 id="partenaires" class="sec-t reveal">Nos partenaires assurance.</h2>
+      <ul class="logos">
+        {logos.map((l) => (
+          <li class="reveal">
+            <img src={l.src} width={l.width} height={l.height} alt={l.name} loading="lazy" decoding="async" />
+            <span>{l.name}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="small reveal">Votre assureur n’apparaît pas dans la liste ? Contactez-nous pour en parler, en indiquant son nom dans votre demande de devis.</p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="prep">
+    <div class="wrap two">
+      <h2 id="prep" class="sec-t reveal">À préparer pour votre dossier</h2>
+      <ul class="list reveal">
+        {carroAssurances.toPrepare.map((t) => <li>{t}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="block alt" aria-labelledby="faq">
+    <div class="wrap two">
+      <h2 id="faq" class="sec-t reveal">Questions fréquentes</h2>
+      <div class="reveal"><FaqList items={carroAssurances.faq} accent="orange" /></div>
+    </div>
+  </section>
+
+  <CtaBand title="Un sinistre à faire réparer ?" href="/carrosserie/contact/" />
+  <AccessBlock quote="carrosserie" />
+</SpaceLayout>
+
+<style>
+  .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--pad); }
+  .label { margin: 0; }
+  .muted { color: var(--mute); }
+  .head { padding: clamp(36px, 5vw, 70px) 0 clamp(40px, 6vw, 70px); background: #fff; border-bottom: 1px solid var(--line); }
+  .crumbs { font-size: 0.9rem; color: var(--mute); margin-bottom: 18px; }
+  .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .crumbs span[aria-hidden] { margin: 0 8px; }
+  h1 { margin: 0 0 18px; font: 800 clamp(3rem, 8.5vw, 7.4rem) / 0.86 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; }
+  .head p { margin: 0 0 28px; max-width: 54ch; font-size: 1.15rem; color: var(--ink-soft); }
+  .pill { display: inline-flex; align-items: center; gap: 14px; background: var(--orange); color: #111; border-radius: 999px; padding: 8px 8px 8px 26px; font: 700 1rem var(--f-body); text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .pill i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: #fff; color: var(--ink); font-style: normal; transition: transform 0.3s; }
+  .pill:hover { background: var(--ink); color: #fff; }
+  .pill:hover i { transform: rotate(45deg); }
+
+  .block { padding: clamp(50px, 7vw, 100px) 0; }
+  .block.alt { background: #fff; border-block: 1px solid var(--line); }
+  .sec-t { margin: 12px 0 34px; font: 800 clamp(2.2rem, 5vw, 4rem) / 0.92 var(--f-display); text-transform: uppercase; }
+  .two { display: grid; gap: 22px 60px; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .two { grid-template-columns: 340px 1fr; } }
+  .two .sec-t { margin: 0; font-size: clamp(2rem, 3.6vw, 3rem); }
+  .small { margin: 26px 0 0; font-size: 0.95rem; color: var(--mute); max-width: 62ch; }
+
+  .logos { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); }
+  .logos li { display: grid; grid-template-rows: 86px auto; justify-items: center; align-items: center; gap: 8px; padding: 18px 12px 14px; background: #fff; border: 1px solid var(--line); border-radius: 14px; }
+  .logos img { max-width: 130px; max-height: 70px; width: auto; height: auto; object-fit: contain; }
+  .logos span { font-size: 0.85rem; text-align: center; color: var(--mute); line-height: 1.25; }
+
+  .list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .list li { position: relative; padding-left: 30px; font-size: 1.1rem; line-height: 1.5; color: var(--ink-soft); max-width: 62ch; }
+  .list li::before { content: ''; position: absolute; left: 0; top: 0.55em; width: 14px; height: 4px; background: var(--orange); transform: skewX(-30deg); }
+</style>

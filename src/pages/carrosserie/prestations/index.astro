@@ -1,0 +1,48 @@
+---
+import SpaceLayout from '../../../layouts/SpaceLayout.astro';
+import ProblemCard from '../../../components/ProblemCard.astro';
+import CtaBand from '../../../components/CtaBand.astro';
+import AccessBlock from '../../../components/AccessBlock.astro';
+import { carroServices } from '../../../lib/carrosserie';
+---
+<SpaceLayout
+  space="carrosserie"
+  title="Prestations de carrosserie à Bischheim — Réparation, peinture, vitrage | WCC"
+  description="Réparation après accident, peinture et rayures, débosselage, grêle, vitrage et pare-brise, remise en état avant restitution ou vente. Carrosserie à Bischheim, toutes marques."
+>
+  <section class="head">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Fil d’Ariane"><a href="/carrosserie/">Carrosserie</a> <span aria-hidden="true">›</span> <span>Prestations</span></nav>
+      <h1>Toutes nos<br />prestations carrosserie.</h1>
+      <p>Réparation, peinture, vitrage : choisissez la situation qui ressemble à la vôtre. Chaque dommage est différent, le devis est établi à partir de votre demande.</p>
+    </div>
+  </section>
+
+  <section class="list" aria-label="Prestations de carrosserie">
+    <div class="wrap">
+      <ul class="grid">
+        {carroServices.map((s, i) => (
+          <li class="reveal" style={`--d:${(i % 3) * 0.07}s`}><ProblemCard service={s} index={i} /></li>
+        ))}
+      </ul>
+      <p class="note">Vous ne trouvez pas votre situation ? <a href="/carrosserie/contact/?intervention=autre">Décrivez-nous votre besoin</a>.</p>
+    </div>
+  </section>
+
+  <CtaBand title="Un dommage à faire évaluer ?" href="/carrosserie/contact/" />
+  <AccessBlock quote="carrosserie" />
+</SpaceLayout>
+
+<style>
+  .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: var(--pad); }
+  .head { padding: clamp(36px, 5vw, 70px) 0 clamp(36px, 5vw, 60px); background: #fff; border-bottom: 1px solid var(--line); }
+  .crumbs { font-size: 0.9rem; color: var(--mute); margin-bottom: 18px; }
+  .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .crumbs span[aria-hidden] { margin: 0 8px; }
+  h1 { margin: 0 0 18px; font: 800 clamp(3rem, 8.5vw, 7.4rem) / 0.86 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; }
+  .head p { margin: 0; max-width: 54ch; font-size: 1.12rem; color: var(--ink-soft); }
+  .list { padding: clamp(46px, 7vw, 90px) 0; }
+  .grid { display: grid; gap: 20px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); }
+  .note { margin: 28px 0 0; color: var(--mute); }
+  .note a { color: var(--ink); font-weight: 600; }
+</style>

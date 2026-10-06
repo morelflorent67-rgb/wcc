@@ -10,6 +10,7 @@
     "preview": "astro preview --host 127.0.0.1 --port 4321",
     "check": "astro check",
     "brands": "node tools/build_brands.mjs",
+    "links": "python tools/check_links.py",
     "php": "php -c tools/php-dev.ini -S 127.0.0.1:8081 -t ."
   },
   "dependencies": {
