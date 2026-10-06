@@ -52,6 +52,26 @@ sous le même nom (`axa.webp`, `allianz.webp`…) ; pour en ajouter, complétez 
 Les photos actuelles sont des illustrations libres de droits (Unsplash), voir
 `src/assets/illustration/CREDITS.md`. Ne pas les présenter comme les locaux ou les réalisations de WCC.
 
+## Formulaires de devis
+
+Le formulaire mécanique (`/mecanique/contact/`) est en 3 étapes ; `?prestation=freinage` présélectionne
+une prestation (c'est ce que font les boutons « Demander un devis »). Sans JavaScript, il reste un
+formulaire HTML classique.
+
+Les demandes sont traitées par `public/api/submit.php` (PHP 8.1 ou plus, hébergement mutualisé OVH
+compatible) :
+
+1. copier `public/api/config.example.php` en `public/api/config.php` et renseigner l'expéditeur,
+   le secret et passer `env` à `prod` (ce fichier n'est jamais versionné ni écrasé au déploiement) ;
+2. en développement (`env` = `dev`), les messages sont écrits dans `public/api/storage/outbox/*.eml`
+   au lieu d'être envoyés ;
+3. test local : `php -S 127.0.0.1:8081 -t public` dans un terminal, puis `npm run dev` dans un autre
+   (les appels à `/api` sont redirigés vers PHP).
+
+Protection contre les envois abusifs : champ piège, délai minimal, limite par adresse IP (hachée).
+L'envoi réel dépend de l'hébergeur (service d'e-mail à choisir) : à valider par un test de réception
+dans la boîte du garage avant la mise en ligne.
+
 ## Mise en ligne
 
 Pas encore configurée. Variables au moment du build (voir `.env.example`) :
@@ -64,7 +84,9 @@ Pas encore configurée. Variables au moment du build (voir `.env.example`) :
 ## État d'avancement
 
 - [x] Portail (hero plein cadre, logos partenaires et marques, avis défilants, accès)
-- [ ] Espace Mécanique : accueil, catalogue, fiches prestations, formulaire
+- [x] Espace Mécanique : accueil, grand menu, catalogue, fiche Freinage, formulaire (interface)
+- [ ] Mécanique : 25 fiches prestations à rédiger (une page n'existe que si `src/data/mecanique-fiches/<slug>.json` existe)
+- [ ] Formulaire : test du point de réception PHP et de l'envoi réel
 - [ ] Espace Carrosserie : accueil, prestations, assurances, formulaire avec zones du véhicule
 - [ ] Pages d'information (accès, mentions légales, confidentialité) : pages provisoires
 - [ ] Formulaires côté serveur, déploiement, documentation d'hébergement

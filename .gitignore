@@ -6,8 +6,9 @@ dist/
 !.env.example
 
 # PHP / formulaires : jamais de secrets ni de données clients dans le dépôt
-api/config.php
-api/storage/
+public/api/config.php
+public/api/storage/*
+!public/api/storage/.htaccess
 *.eml
 
 # Divers

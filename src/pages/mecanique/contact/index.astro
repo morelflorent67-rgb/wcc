@@ -1,4 +1,180 @@
 ---
-import PageStub from "../../../layouts/PageStub.astro";
+import SpaceLayout from '../../../layouts/SpaceLayout.astro';
+import '../../../styles/form.css';
+import site from '../../../data/site.json';
+import brands from '../../../data/brands.json';
+import { families, byFamily, formatPrice } from '../../../lib/mecanique';
+
+const year = new Date().getFullYear();
+const recap = [
+  { label: 'Prestations', fields: ['prestations[]'], join: ', ' },
+  { label: 'Votre problème', fields: ['probleme'] },
+  { label: 'Véhicule', fields: ['marque', 'modele', 'annee', 'motorisation', 'kilometrage', 'immatriculation'], join: ' · ', units: { kilometrage: ' km' } },
+  { label: 'Précisions', fields: ['symptomes'] },
+];
+const motorisations = ['Essence', 'Diesel', 'Hybride', 'Hybride rechargeable', 'Électrique', 'GPL / GNV', 'Autre'];
 ---
-<PageStub title="Demander un devis mécanique" section="Espace mécanique" />
+<SpaceLayout
+  space="mecanique"
+  title="Demander un devis mécanique — Garage multimarque à Bischheim | WCC"
+  description="Demandez un devis pour l’entretien ou la réparation de votre véhicule : choisissez vos prestations, décrivez votre véhicule et votre besoin. Votre demande est transmise à l’atelier."
+  current="/mecanique/contact/"
+>
+  <div class="qf-page" data-accent="blue" data-form-scope>
+    <div class="qf-wrap">
+      <header class="qf-head">
+        <p class="label">Espace mécanique</p>
+        <h1>Demander<br />un devis.</h1>
+        <p>Trois étapes rapides. Votre demande est transmise à l’atelier : ce n’est pas une réservation.</p>
+      </header>
+
+      <form
+        id="quote-form" class="qf" method="post" action="/api/submit.php" novalidate data-quote-form data-type="mecanique"
+        data-recap={JSON.stringify(recap)} aria-label="Demande de devis mécanique"
+      >
+        <input type="hidden" name="type" value="mecanique" />
+        <input type="hidden" name="ts" value="" />
+        <div class="hp" aria-hidden="true"><label>Ne pas remplir <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+
+        <ol class="progress" data-progress aria-label="Étapes">
+          <li>Besoin</li>
+          <li>Véhicule</li>
+          <li>Coordonnées</li>
+        </ol>
+
+        <fieldset data-step="1" data-require-any="prestations[],probleme" data-require-msg="Choisissez au moins une prestation ou décrivez votre problème.">
+          <legend tabindex="-1">Votre besoin</legend>
+          <p class="sub">Cochez une ou plusieurs prestations, ou décrivez simplement votre problème. <span class="count" data-count></span></p>
+
+          {families.map((f) => (
+            <div>
+              <p class="gt">{f.name}</p>
+              <div class="chips">
+                {byFamily(f.id).map((s) => (
+                  <label class="chip">
+                    <input type="checkbox" name="prestations[]" value={s.slug} data-label={s.name} />
+                    <input type="hidden" name={`prestations_labels[${s.slug}]`} value={s.name} />
+                    <span>{s.name}<small>{s.priceFrom === null ? 'sur devis' : `dès ${formatPrice(s.priceFrom)}`}</small></span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ))}
+
+          <p class="or">ou</p>
+          <div class="field">
+            <label for="probleme">Décrire mon problème</label>
+            <textarea id="probleme" name="probleme" rows="4" maxlength="2000" placeholder="Que constatez-vous ? Bruit, voyant, panne, entretien à prévoir…"></textarea>
+          </div>
+          <p class="hint">Les prix « à partir de » sont des prix d’appel, pas un devis définitif : le devis est adapté à votre véhicule.</p>
+          <p class="err" data-step-error hidden role="alert"></p>
+        </fieldset>
+
+        <fieldset data-step="2">
+          <legend tabindex="-1">Votre véhicule</legend>
+          <p class="sub">Ces informations nous permettent de vous répondre précisément.</p>
+          <div class="grid2">
+            <div class="field">
+              <label for="marque">Marque</label>
+              <input id="marque" name="marque" type="text" list="marques" required autocomplete="off" maxlength="60" placeholder="Renault, Peugeot…" />
+              <datalist id="marques">{brands.map((b) => <option value={b.name} />)}</datalist>
+            </div>
+            <div class="field">
+              <label for="modele">Modèle</label>
+              <input id="modele" name="modele" type="text" required autocomplete="off" maxlength="80" placeholder="Clio, 308…" />
+            </div>
+            <div class="field">
+              <label for="annee">Année <small>(facultatif)</small></label>
+              <input id="annee" name="annee" type="number" inputmode="numeric" min="1950" max={year + 1} placeholder={String(year - 6)} />
+            </div>
+            <div class="field">
+              <label for="motorisation">Motorisation <small>(facultatif)</small></label>
+              <select id="motorisation" name="motorisation">
+                <option value="">Je ne sais pas</option>
+                {motorisations.map((m) => <option value={m}>{m}</option>)}
+              </select>
+            </div>
+            <div class="field">
+              <label for="kilometrage">Kilométrage <small>(facultatif)</small></label>
+              <input id="kilometrage" name="kilometrage" type="number" inputmode="numeric" min="0" max="999999" placeholder="85000" />
+            </div>
+            <div class="field">
+              <label for="immatriculation">Immatriculation <small>(facultatif)</small></label>
+              <input id="immatriculation" name="immatriculation" type="text" autocomplete="off" maxlength="15" placeholder="AB-123-CD" />
+            </div>
+            <div class="field full">
+              <label for="symptomes">Symptômes ou précisions <small>(facultatif)</small></label>
+              <textarea id="symptomes" name="symptomes" rows="4" maxlength="2000" placeholder="Depuis quand ? Dans quelles conditions ? Intervention récente ?"></textarea>
+            </div>
+          </div>
+          <p class="err" data-step-error hidden role="alert"></p>
+        </fieldset>
+
+        <fieldset data-step="3">
+          <legend tabindex="-1">Vos coordonnées</legend>
+          <p class="sub">Pour vous répondre. Nous n’utilisons ces informations que pour traiter votre demande.</p>
+          <div class="grid2">
+            <div class="field">
+              <label for="nom">Nom et prénom</label>
+              <input id="nom" name="nom" type="text" required autocomplete="name" maxlength="100" />
+            </div>
+            <div class="field">
+              <label for="telephone">Téléphone</label>
+              <input id="telephone" name="telephone" type="tel" required autocomplete="tel" inputmode="tel" maxlength="25" pattern="[0-9 +().\-]{8,25}" />
+            </div>
+            <div class="field full">
+              <label for="email">Adresse e-mail</label>
+              <input id="email" name="email" type="email" required autocomplete="email" maxlength="150" />
+            </div>
+            <div class="field full">
+              <span class="group-l">Je préfère être recontacté(e) <small>(facultatif)</small></span>
+              <div class="radios">
+                <label class="chip"><input type="radio" name="contact_pref" value="telephone" /><span>Par téléphone</span></label>
+                <label class="chip"><input type="radio" name="contact_pref" value="email" /><span>Par e-mail</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="recap" aria-live="polite">
+            <h3>Récapitulatif</h3>
+            <dl data-recap-out></dl>
+            <p>Les prix affichés sont des prix d’appel : votre devis est adapté à votre véhicule. L’envoi de ce formulaire n’est pas une réservation.</p>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="consent" value="1" required />
+            <span>J’accepte que World Car Carrosserie utilise ces informations pour répondre à ma demande. <a href="/confidentialite/">En savoir plus sur l’utilisation de mes données</a>.</span>
+          </label>
+          <p class="err" data-step-error hidden role="alert"></p>
+        </fieldset>
+
+        <div class="qf-nav">
+          <button type="button" data-prev hidden>← Précédent</button>
+          <button type="button" data-next>Continuer <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+          <button type="submit" data-submit>Envoyer ma demande <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+        </div>
+      </form>
+
+      <div class="result" data-success tabindex="-1" hidden>
+        <h2>Demande envoyée.</h2>
+        <p>Merci : votre demande a bien été transmise à l’atelier. Nous l’examinons et revenons vers vous. Un accusé de réception vous est envoyé par e-mail.</p>
+        <p>Cet envoi ne constitue pas une réservation. Une question ? Appelez-nous au <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+        <p><a href="/mecanique/">← Retour à l’espace mécanique</a></p>
+      </div>
+      <div class="result bad" data-error tabindex="-1" role="alert" hidden>
+        <h2>L’envoi a échoué.</h2>
+        <p data-error-msg>Un problème est survenu. Vos informations sont conservées : vous pouvez réessayer, ou nous appeler directement.</p>
+        <p>Téléphone : <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a></p>
+      </div>
+    </div>
+  </div>
+</SpaceLayout>
+
+<script>
+  import '../../../scripts/quote-form';
+  // Envoi sans JavaScript : le serveur redirige ici avec ?erreur=1 en cas de problème
+  if (new URLSearchParams(location.search).has('erreur')) {
+    const bad = document.querySelector<HTMLElement>('[data-error]');
+    if (bad) bad.hidden = false;
+  }
+</script>

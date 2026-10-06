@@ -1,0 +1,5 @@
+# Interdit l'accès direct aux fichiers de configuration et de stockage (Apache 2.4)
+<FilesMatch "^(config(\.example)?\.php|\.htaccess)$">
+  Require all denied
+</FilesMatch>
+Options -Indexes
