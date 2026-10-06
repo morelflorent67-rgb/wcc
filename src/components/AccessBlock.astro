@@ -1,0 +1,49 @@
+---
+import site from '../data/site.json';
+
+interface Props { quote?: 'both' | 'mecanique' | 'carrosserie'; id?: string; }
+const { quote = 'both', id } = Astro.props;
+---
+<section class="access" id={id} aria-labelledby="acces-t">
+  <p class="label reveal">Accès &amp; horaires</p>
+  <h2 id="acces-t" class="sr-only">Nous trouver à {site.address.city}</h2>
+  <div class="agrid">
+    <a class="big-tel reveal" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
+    <div class="reveal">
+      <h3>Adresse</h3>
+      <address>{site.name}<br />{site.address.street}<br />{site.address.postalCode} {site.address.city}</address>
+    </div>
+    <div class="reveal" style="--d:.08s">
+      <h3>Horaires</h3>
+      <p>{site.hours.label}<br />{site.hours.slots.join(' et ')}</p>
+    </div>
+  </div>
+  <div class="acts">
+    {quote !== 'mecanique' && <a class="o" href="/carrosserie/contact/">Demander un devis carrosserie <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>}
+    {quote !== 'carrosserie' && <a class="b" href="/mecanique/contact/">Demander un devis mécanique <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>}
+    <a href={site.directionsUrl} rel="noopener">Itinéraire <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+  </div>
+</section>
+
+<style>
+  .access { background: var(--night); color: #fff; padding: clamp(54px, 8vw, 110px) var(--pad); }
+  .label { color: #9aa0ab; margin: 0; }
+  .agrid { max-width: var(--max); margin: 26px auto 0; display: grid; gap: 36px 56px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+  h3 { margin: 0 0 10px; font: 700 0.86rem var(--f-display); letter-spacing: 0.2em; text-transform: uppercase; color: #9aa0ab; }
+  .agrid p, address { margin: 0; font: 500 1.3rem/1.4 var(--f-body); font-style: normal; color: #e9ebef; }
+  .big-tel {
+    grid-column: 1 / -1; display: inline-block; justify-self: start;
+    font: 800 clamp(2.9rem, 7.6vw, 6.6rem) / 0.9 var(--f-display); letter-spacing: 0.005em; text-decoration: none;
+    background: var(--grad-on-dark); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  }
+  .acts { max-width: var(--max); margin: 40px auto 0; display: flex; flex-wrap: wrap; gap: 12px; }
+  .acts a {
+    display: inline-flex; align-items: center; gap: 12px; padding: 14px 24px; border-radius: 999px;
+    font: 700 0.98rem var(--f-body); text-decoration: none; border: 1.5px solid #3a3e47; color: #fff;
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .acts a:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .acts a.o { background: var(--orange); color: #111; border-color: var(--orange); }
+  .acts a.b { background: var(--blue); border-color: var(--blue); }
+  .acts a:hover .ic { transform: translate(2px, -2px); }
+</style>

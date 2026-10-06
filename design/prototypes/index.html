@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WCC — Prototypes du portail</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{--ink:#14161a;--mute:#5b606a;--paper:#f6f4f0;--line:#ddd8cf;--grad:linear-gradient(100deg,#ff8a10,#ff4d0f 20%,#c72b47 40%,#6a1aaa 55%,#3b0dc9 72%,#0441fd 90%,#00a0ff)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 "Inter",system-ui,sans-serif;padding:clamp(20px,5vw,64px)}
+main{max-width:1100px;margin:auto}
+h1{font:800 clamp(1.8rem,4vw,2.8rem)/1.05 "Archivo",sans-serif;font-stretch:112%;letter-spacing:-.03em;margin:0 0 8px}
+.sub{color:var(--mute);margin:0 0 30px;max-width:62ch}
+.bar{height:4px;width:80px;background:var(--grad);margin-bottom:22px;transform:skewX(-30deg)}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+a.card{display:block;text-decoration:none;background:#fff;border:1px solid var(--line);padding:26px;transition:transform .25s,box-shadow .25s,border-color .25s}
+a.card:hover,a.card:focus-visible{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(0,0,0,.4);border-color:var(--ink)}
+.k{font:700 .72rem "Inter";letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+h2{margin:6px 0 10px;font:800 1.5rem/1.1 "Archivo",sans-serif;font-stretch:110%;letter-spacing:-.02em}
+p{margin:0 0 12px;color:var(--mute);font-size:.95rem}
+ul{margin:0;padding-left:18px;font-size:.9rem;color:var(--mute)}
+.go{margin-top:16px;font-weight:700}
+.note{margin-top:34px;font-size:.88rem;color:var(--mute);border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<main>
+  <div class="bar"></div>
+  <h1>Portail WCC — trois directions</h1>
+  <p class="sub">Même contenu, même palette, trois partis pris visuels. Parcourez chaque page en entier (survol des panneaux, défilement) et regardez aussi la version mobile.</p>
+  <div class="grid">
+    <a class="card" href="a.html">
+      <span class="k">Proposition A</span>
+      <h2>Dégradé &amp; obliques</h2>
+      <p>Reprend l’énergie du logo : découpes en biais, dégradé orange → bleu comme fil conducteur, titres larges et sportifs.</p>
+      <ul><li>Panneaux séparés par un filet dégradé</li><li>Boutons et étiquettes biseautés</li><li>Bloc « accès » sombre en diagonale</li></ul>
+      <div class="go">Ouvrir A →</div>
+    </a>
+    <a class="card" href="b.html">
+      <span class="k">Proposition B</span>
+      <h2>Atelier lumineux</h2>
+      <p>Évolution sobre de la planche d’origine : éditorial, très typographique, cartes arrondies, filets fins.</p>
+      <ul><li>Titre sur deux tons</li><li>Cartes « photo + légende »</li><li>Murs de partenaires et de marques</li></ul>
+      <div class="go">Ouvrir B →</div>
+    </a>
+    <a class="card" href="c.html">
+      <span class="k">Proposition C</span>
+      <h2>Plein cadre</h2>
+      <p>Immersif : deux photos plein écran, titres géants, bandeaux défilants de partenaires et de marques.</p>
+      <ul><li>Le panneau survolé s’élargit</li><li>Numéro de téléphone en dégradé</li><li>Reste de la page clair</li></ul>
+      <div class="go">Ouvrir C →</div>
+    </a>
+  </div>
+  <p class="note">Photos d’illustration provisoires (Unsplash), voir <code>public/images/illustration/CREDITS.md</code>. Noms de partenaires et de marques en texte simple : les vrais logos seront intégrés plus tard. Aucun avis ni note n’est inventé.</p>
+</main>
+</body>
+</html>

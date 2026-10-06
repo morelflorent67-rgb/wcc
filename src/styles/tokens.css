@@ -1,0 +1,29 @@
+/* Charte WCC — couleurs mesurées sur le logo, typographie du prototype C (validé). */
+:root {
+  /* Fonds et textes */
+  --paper: #f6f4f0;
+  --white: #fff;
+  --ink: #111317;
+  --ink-soft: #2c3038;
+  --mute: #5b606a;
+  --line: #e0dbd2;
+  --night: #0f1114;
+
+  /* Accents : carrosserie = orange, mécanique = bleu (issus du logo) */
+  --orange: #ff5b0f;
+  --orange-deep: #c43400;
+  --blue: #1238f5;
+  --violet: #4910bc;
+  --grad: linear-gradient(100deg, #ff8a10 0%, #ff4d0f 20%, #c72b47 40%, #6a1aaa 55%, #3b0dc9 72%, #0441fd 90%, #00a0ff 100%);
+  /* Variante éclaircie du dégradé du logo, pour les textes sur fond sombre (contraste) */
+  --grad-on-dark: linear-gradient(100deg, #ff9a2a 0%, #ff6a3a 22%, #ff4f8a 44%, #b57bff 62%, #6f93ff 80%, #3cb8ff 100%);
+
+  /* Typographie */
+  --f-display: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --f-body: 'Barlow', system-ui, sans-serif;
+
+  /* Mise en page */
+  --pad: clamp(18px, 3.4vw, 56px);
+  --max: 1360px;
+  --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}

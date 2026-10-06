@@ -1,0 +1,85 @@
+---
+import type { ImageMetadata } from 'astro';
+import Base from '../layouts/Base.astro';
+import PortalHero from '../components/PortalHero.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import type { LogoItem } from '../components/LogoMarquee.astro';
+import ReviewsCarousel from '../components/ReviewsCarousel.astro';
+import AccessBlock from '../components/AccessBlock.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import site from '../data/site.json';
+import partners from '../data/partners.json';
+import brands from '../data/brands.json';
+
+// Logos des partenaires assurance : fichiers de src/assets/partners (liste : src/data/partners.json)
+const partnerFiles = import.meta.glob<{ default: ImageMetadata }>('../assets/partners/*.webp', { eager: true });
+const insurers: LogoItem[] = partners
+  .filter((p) => p.featured)
+  .map((p) => {
+    const img = partnerFiles[`../assets/partners/${p.file}`].default;
+    return { name: p.name, src: img.src, width: img.width, height: img.height };
+  });
+
+// Marques de véhicules prises en charge (src/data/brands.json)
+const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path } }));
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['AutoBodyShop', 'AutoRepair'],
+  name: site.name,
+  alternateName: site.shortName,
+  telephone: site.phone.tel,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.city,
+    addressCountry: site.address.country,
+  },
+  openingHoursSpecification: site.hours.schema.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.days,
+    opens: h.opens,
+    closes: h.closes,
+  })),
+  ...(Astro.site ? { url: Astro.site.href } : {}),
+};
+---
+<Base
+  title="World Car Carrosserie — Carrosserie et mécanique à Bischheim"
+  description="Garage à Bischheim : carrosserie, peinture et accompagnement assurance, entretien et réparation mécanique multimarque. Demande de devis en ligne ou au 03 69 48 44 85."
+  jsonLd={jsonLd}
+>
+  <main id="contenu">
+    <PortalHero />
+
+    <section class="ticker" aria-label="Partenaires assurance et marques prises en charge">
+      <LogoMarquee
+        label="Partenaires assurance"
+        items={insurers}
+        accent="orange"
+        moreHref="/carrosserie/assurances/"
+        moreLabel="Voir tous nos partenaires"
+        duration={52}
+      />
+      <LogoMarquee
+        label="Toutes marques"
+        items={makes}
+        accent="blue"
+        reverse
+        moreHref="/mecanique/"
+        moreLabel="Voir les prestations"
+        duration={46}
+      />
+    </section>
+
+    <ReviewsCarousel />
+    <AccessBlock />
+  </main>
+  <SiteFooter />
+</Base>
+
+<style>
+  .ticker { background: #fff; border-bottom: 1px solid var(--line); }
+  .ticker :global(.trow:first-child) { border-top: 0; }
+</style>

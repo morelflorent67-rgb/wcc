@@ -1,0 +1,26 @@
+{
+  "name": "wcc-site",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Site vitrine World Car Carrosserie (WCC) — Bischheim",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1 --port 4321",
+    "check": "astro check",
+    "brands": "node tools/build_brands.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/barlow": "^5.3.0",
+    "@fontsource/barlow-condensed": "^5.3.0",
+    "astro": "^7.3.6",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "simple-icons": "^16.34.0",
+    "typescript": "^6.0.3"
+  }
+}

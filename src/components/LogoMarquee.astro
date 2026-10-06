@@ -1,0 +1,115 @@
+---
+/**
+ * Bandeau défilant de logos (partenaires assurance, marques de véhicules).
+ * Pause au survol et au clavier ; défilement remplacé par une liste fixe si l'utilisateur
+ * demande une réduction des animations.
+ */
+export interface LogoItem {
+  name: string;
+  /** Logo bitmap (partenaires) */
+  src?: string;
+  width?: number;
+  height?: number;
+  /** Icône vectorielle monochrome (marques de véhicules) */
+  svg?: { viewBox: string; path: string };
+}
+
+interface Props {
+  label: string;
+  items: LogoItem[];
+  accent?: 'orange' | 'blue';
+  reverse?: boolean;
+  moreHref?: string;
+  moreLabel?: string;
+  /** Durée d'un tour complet, en secondes */
+  duration?: number;
+}
+
+const { label, items, accent = 'orange', reverse = false, moreHref, moreLabel, duration = 60 } = Astro.props;
+---
+<div class:list={['trow', accent]}>
+  <div class="lab">
+    <span class="lab-t">{label}</span>
+    {moreHref && (
+      <a class="lab-more" href={moreHref}>
+        {moreLabel}
+        <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg>
+      </a>
+    )}
+  </div>
+  <div class="track">
+    <div class="mq" style={`--dur:${duration}s`} data-reverse={reverse ? '' : undefined}>
+      {[false, true].map((dup) => (
+        <ul aria-label={dup ? undefined : label} aria-hidden={dup ? 'true' : undefined}>
+          {items.map((it) => (
+            <li>
+              {it.svg ? (
+                <svg viewBox={it.svg.viewBox} role={dup ? undefined : 'img'} aria-label={dup ? undefined : it.name}>
+                  <path d={it.svg.path} />
+                </svg>
+              ) : (
+                <img src={it.src} alt={dup ? '' : it.name} width={it.width} height={it.height} loading="lazy" decoding="async" />
+              )}
+            </li>
+          ))}
+        </ul>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .trow { --acc: var(--orange); display: flex; align-items: stretch; border-top: 1px solid var(--line); }
+  .trow.blue { --acc: var(--blue); }
+  .lab {
+    flex: none; display: flex; flex-direction: column; justify-content: center; gap: 8px;
+    min-width: 270px; padding: 20px var(--pad); border-right: 1px solid var(--line);
+  }
+  .lab-t {
+    display: flex; align-items: center; gap: 12px;
+    font: 700 0.86rem/1.1 var(--f-display); letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .lab-t::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--acc); flex: none; }
+  .lab-more {
+    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; padding-left: 24px;
+    font: 600 0.88rem var(--f-body); color: var(--mute); text-decoration: underline; text-underline-offset: 3px;
+  }
+  .lab-more:hover { color: var(--ink); }
+  .lab-more:hover .ic { transform: translate(2px, -2px); }
+
+  .track {
+    flex: 1; min-width: 0; overflow: hidden; display: flex; align-items: center;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  }
+  .mq { display: flex; width: max-content; animation: marq var(--dur, 60s) linear infinite; will-change: transform; }
+  .mq[data-reverse] { animation-direction: reverse; }
+  .track:hover .mq, .track:focus-within .mq { animation-play-state: paused; }
+  .mq ul { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
+  .mq li { display: flex; align-items: center; padding: 14px 0; }
+  .mq li::after {
+    content: ''; width: 7px; height: 7px; margin: 0 40px; flex: none; background: var(--acc); transform: rotate(45deg);
+  }
+  .mq li img {
+    max-height: 54px; max-width: 150px; width: auto; height: auto; object-fit: contain;
+    mix-blend-mode: multiply; filter: grayscale(1) contrast(1.05); opacity: 0.82;
+    transition: filter 0.3s, opacity 0.3s;
+  }
+  .mq li img:hover { filter: none; opacity: 1; }
+  .mq li svg { height: 44px; width: auto; max-width: 96px; fill: var(--ink-soft); opacity: 0.82; transition: fill 0.3s, opacity 0.3s; }
+  .mq li svg:hover { fill: var(--ink); opacity: 1; }
+  @keyframes marq { to { transform: translateX(-50%); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mq { animation: none; width: auto; flex-wrap: wrap; }
+    .mq ul[aria-hidden] { display: none; }
+    .mq ul { flex-wrap: wrap; row-gap: 6px; }
+    .track { -webkit-mask-image: none; mask-image: none; padding: 10px 0; }
+    .mq li::after { margin: 0 22px; }
+  }
+  @media (max-width: 760px) {
+    .trow { flex-direction: column; }
+    .lab { flex-direction: row; align-items: center; justify-content: space-between; min-width: 0; border-right: 0; padding: 16px var(--pad) 0; }
+    .lab-more { padding-left: 0; }
+  }
+</style>

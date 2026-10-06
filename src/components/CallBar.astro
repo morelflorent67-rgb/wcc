@@ -1,0 +1,24 @@
+---
+import site from '../data/site.json';
+---
+<div class="callbar">
+  <a href={`tel:${site.phone.tel}`}>
+    <svg class="ic" aria-hidden="true"><use href="#i-phone" /></svg>
+    Appeler le {site.phone.display}
+  </a>
+</div>
+
+<style>
+  .callbar { display: none; }
+  @media (max-width: 860px) {
+    .callbar {
+      position: fixed; z-index: 60; left: 0; right: 0; bottom: 0; display: flex;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(15, 17, 20, 0.96);
+    }
+    .callbar a {
+      flex: 1; display: flex; justify-content: center; align-items: center; gap: 10px; padding: 14px;
+      border-radius: 999px; background: var(--orange); color: #111; font: 700 1rem var(--f-body); text-decoration: none;
+    }
+  }
+</style>

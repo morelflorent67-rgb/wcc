@@ -1,0 +1,7 @@
+# Phase de préparation : aucune indexation.
+# À la mise en ligne, remplacer par :
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://VOTRE-DOMAINE/sitemap-index.xml
+User-agent: *
+Disallow: /

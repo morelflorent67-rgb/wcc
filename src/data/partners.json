@@ -1,0 +1,250 @@
+[
+  {
+    "name": "Arval",
+    "slug": "arval",
+    "file": "arval.webp",
+    "width": 234,
+    "height": 68,
+    "featured": true
+  },
+  {
+    "name": "Pacifica",
+    "slug": "pacifica",
+    "file": "pacifica.webp",
+    "width": 203,
+    "height": 38,
+    "featured": true
+  },
+  {
+    "name": "AXA",
+    "slug": "axa",
+    "file": "axa.webp",
+    "width": 163,
+    "height": 159,
+    "featured": true
+  },
+  {
+    "name": "Allianz",
+    "slug": "allianz",
+    "file": "allianz.webp",
+    "width": 234,
+    "height": 69,
+    "featured": true
+  },
+  {
+    "name": "MACSF",
+    "slug": "macsf",
+    "file": "macsf.webp",
+    "width": 225,
+    "height": 68,
+    "featured": true
+  },
+  {
+    "name": "AREAS Assurances",
+    "slug": "areas",
+    "file": "areas.webp",
+    "width": 159,
+    "height": 148,
+    "featured": true
+  },
+  {
+    "name": "Generali",
+    "slug": "generali",
+    "file": "generali.webp",
+    "width": 125,
+    "height": 147,
+    "featured": true
+  },
+  {
+    "name": "Direct Assurance",
+    "slug": "direct-assurance",
+    "file": "direct-assurance.webp",
+    "width": 162,
+    "height": 159,
+    "featured": true
+  },
+  {
+    "name": "Caisse d’Epargne",
+    "slug": "caisse-d-epargne",
+    "file": "caisse-d-epargne.webp",
+    "width": 162,
+    "height": 149,
+    "featured": true
+  },
+  {
+    "name": "ALD Automotive",
+    "slug": "ald-automotive",
+    "file": "ald-automotive.webp",
+    "width": 234,
+    "height": 68,
+    "featured": false
+  },
+  {
+    "name": "Gras Savoye",
+    "slug": "gras-savoye",
+    "file": "gras-savoye.webp",
+    "width": 197,
+    "height": 133,
+    "featured": false
+  },
+  {
+    "name": "Calypso",
+    "slug": "calypso",
+    "file": "calypso.webp",
+    "width": 234,
+    "height": 87,
+    "featured": false
+  },
+  {
+    "name": "Abeille Assurances",
+    "slug": "abeille",
+    "file": "abeille.webp",
+    "width": 75,
+    "height": 29,
+    "featured": false
+  },
+  {
+    "name": "Parcours",
+    "slug": "parcours",
+    "file": "parcours.webp",
+    "width": 223,
+    "height": 49,
+    "featured": false
+  },
+  {
+    "name": "Mutuelle de Poitiers Assurances",
+    "slug": "mutuelle-de-poitiers",
+    "file": "mutuelle-de-poitiers.webp",
+    "width": 154,
+    "height": 154,
+    "featured": true
+  },
+  {
+    "name": "Elexia",
+    "slug": "elexia",
+    "file": "elexia.webp",
+    "width": 222,
+    "height": 72,
+    "featured": false
+  },
+  {
+    "name": "AllSecur",
+    "slug": "allsecur",
+    "file": "allsecur.webp",
+    "width": 234,
+    "height": 125,
+    "featured": false
+  },
+  {
+    "name": "Marsh",
+    "slug": "marsh",
+    "file": "marsh.webp",
+    "width": 234,
+    "height": 49,
+    "featured": false
+  },
+  {
+    "name": "Eurofil",
+    "slug": "eurofil",
+    "file": "eurofil.webp",
+    "width": 73,
+    "height": 54,
+    "featured": false
+  },
+  {
+    "name": "Swiss Life",
+    "slug": "swisslife",
+    "file": "swisslife.webp",
+    "width": 189,
+    "height": 137,
+    "featured": true
+  },
+  {
+    "name": "Suravenir",
+    "slug": "suravenir",
+    "file": "suravenir.webp",
+    "width": 234,
+    "height": 67,
+    "featured": false
+  },
+  {
+    "name": "LeasePlan",
+    "slug": "leaseplan",
+    "file": "leaseplan.webp",
+    "width": 193,
+    "height": 77,
+    "featured": false
+  },
+  {
+    "name": "MFA Assurances",
+    "slug": "mfa",
+    "file": "mfa.webp",
+    "width": 234,
+    "height": 146,
+    "featured": false
+  },
+  {
+    "name": "Verspieren",
+    "slug": "verspieren",
+    "file": "verspieren.webp",
+    "width": 229,
+    "height": 70,
+    "featured": false
+  },
+  {
+    "name": "Sogessur",
+    "slug": "sogessur",
+    "file": "sogessur.webp",
+    "width": 212,
+    "height": 46,
+    "featured": false
+  },
+  {
+    "name": "Monceau Assurances",
+    "slug": "monceau",
+    "file": "monceau.webp",
+    "width": 175,
+    "height": 145,
+    "featured": false
+  },
+  {
+    "name": "Thélem assurances",
+    "slug": "thelem",
+    "file": "thelem.webp",
+    "width": 219,
+    "height": 82,
+    "featured": false
+  },
+  {
+    "name": "Verlingue",
+    "slug": "verlingue",
+    "file": "verlingue.webp",
+    "width": 231,
+    "height": 62,
+    "featured": false
+  },
+  {
+    "name": "Assu 2000",
+    "slug": "assu-2000",
+    "file": "assu-2000.webp",
+    "width": 159,
+    "height": 158,
+    "featured": false
+  },
+  {
+    "name": "Maxance",
+    "slug": "maxance",
+    "file": "maxance.webp",
+    "width": 202,
+    "height": 70,
+    "featured": false
+  },
+  {
+    "name": "Natixis",
+    "slug": "natixis",
+    "file": "natixis.webp",
+    "width": 234,
+    "height": 67,
+    "featured": true
+  }
+]

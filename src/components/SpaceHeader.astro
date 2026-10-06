@@ -1,0 +1,271 @@
+---
+/**
+ * En-tête des espaces Mécanique et Carrosserie : bandeau « Tous nos services », logo + nom de l'activité,
+ * navigation (grand menu déroulant des prestations pour la mécanique), bouton de devis.
+ * Clavier : Entrée/Espace ouvre le menu, Échap le ferme. Mobile : tiroir avec accordéons.
+ */
+import { Image } from 'astro:assets';
+import site from '../data/site.json';
+import logoMark from '../assets/brand/logo-wcc-mark.webp';
+import { families, byFamily, formatPrice, serviceHref } from '../lib/mecanique';
+
+interface Props { space: 'mecanique' | 'carrosserie'; current?: string; }
+const { space, current = '' } = Astro.props;
+
+interface NavItem { label: string; href: string; mega?: boolean; }
+interface SpaceConf { label: string; home: string; accent: 'blue' | 'orange'; other: { label: string; href: string }; quote: string; nav: NavItem[]; }
+
+const confs: Record<'mecanique' | 'carrosserie', SpaceConf> = {
+  mecanique: {
+    label: 'Mécanique',
+    home: '/mecanique/',
+    accent: 'blue',
+    other: { label: 'Carrosserie', href: '/carrosserie/' },
+    quote: '/mecanique/contact/',
+    nav: [
+      { label: 'Accueil mécanique', href: '/mecanique/' },
+      { label: 'Prestations', href: '/mecanique/prestations/', mega: true },
+      { label: 'Multimarque', href: '/mecanique/#multimarque' },
+      { label: 'Accès', href: '/acces-horaires/' },
+    ],
+  },
+  carrosserie: {
+    label: 'Carrosserie',
+    home: '/carrosserie/',
+    accent: 'orange',
+    other: { label: 'Mécanique', href: '/mecanique/' },
+    quote: '/carrosserie/contact/',
+    nav: [
+      { label: 'Accueil carrosserie', href: '/carrosserie/' },
+      { label: 'Prestations', href: '/carrosserie/prestations/' },
+      { label: 'Assurances', href: '/carrosserie/assurances/' },
+      { label: 'Accès', href: '/acces-horaires/' },
+    ],
+  },
+};
+const conf = confs[space];
+---
+<header class="hdr" data-header data-accent={conf.accent}>
+  <div class="util">
+    <div class="wrap">
+      <a href="/">← Tous nos services</a>
+      <span class="util-r">
+        <a href={conf.other.href}>Passer à la {conf.other.label.toLowerCase()} →</a>
+        <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
+      </span>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="wrap bar-in">
+      <a class="brand" href={conf.home} aria-label={`World Car Carrosserie — accueil ${conf.label.toLowerCase()}`}>
+        <Image src={logoMark} alt="WCC" width={120} height={35} densities={[1, 2]} loading="eager" />
+        <span class="sp">{conf.label}</span>
+      </a>
+
+      <nav class="nav" aria-label={`Navigation ${conf.label.toLowerCase()}`}>
+        <ul>
+          {conf.nav.map((it) => (
+            <li>
+              {it.mega ? (
+                <button type="button" class="nav-link" data-mega-btn aria-expanded="false" aria-controls="mega" aria-current={current.startsWith(it.href) ? 'page' : undefined}>
+                  {it.label}
+                  <svg class="ic chev" aria-hidden="true" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></svg>
+                </button>
+              ) : (
+                <a class="nav-link" href={it.href} aria-current={current === it.href ? 'page' : undefined}>{it.label}</a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <a class="cta" href={conf.quote}>Demander un devis <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+      <button type="button" class="burger" data-burger aria-expanded="false" aria-controls="m-menu" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    {space === 'mecanique' && (
+      <div class="mega" id="mega" data-mega hidden>
+        <div class="wrap mega-in">
+          {families.map((f) => (
+            <section class="col" aria-labelledby={`mf-${f.id}`}>
+              <h2 id={`mf-${f.id}`}>{f.name}</h2>
+              <ul>
+                {byFamily(f.id).map((s) => (
+                  <li>
+                    <a href={serviceHref(s.slug)}>
+                      <span>{s.name}</span>
+                      <small>{s.priceFrom === null ? 'Sur devis' : `dès ${formatPrice(s.priceFrom)}`}</small>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+        <div class="wrap mega-foot">
+          <a href="/mecanique/prestations/">Voir toutes les prestations <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+          <span>Prix d’appel « à partir de » : tarif selon véhicule et intervention, devis personnalisé.</span>
+        </div>
+      </div>
+    )}
+  </div>
+
+  <div class="msheet" id="m-menu" data-msheet hidden>
+    <ul class="m-list">
+      {conf.nav.map((it) => (
+        <li>
+          {it.mega ? (
+            <div class="m-acc">
+              <p class="m-title">{it.label}</p>
+              {families.map((f) => (
+                <details>
+                  <summary>{f.name}</summary>
+                  <ul>
+                    {byFamily(f.id).map((s) => (
+                      <li><a href={serviceHref(s.slug)}><span>{s.name}</span><small>{s.priceFrom === null ? 'Sur devis' : `dès ${formatPrice(s.priceFrom)}`}</small></a></li>
+                    ))}
+                  </ul>
+                </details>
+              ))}
+              <a class="m-all" href={it.href}>Voir toutes les prestations →</a>
+            </div>
+          ) : (
+            <a class="m-link" href={it.href}>{it.label}</a>
+          )}
+        </li>
+      ))}
+      <li><a class="m-link sub" href={conf.other.href}>Passer à la {conf.other.label.toLowerCase()}</a></li>
+      <li><a class="m-link sub" href="/">← Tous nos services</a></li>
+    </ul>
+    <a class="m-cta" href={conf.quote}>Demander un devis <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+  </div>
+</header>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-header]');
+  if (root) {
+    const btn = root.querySelector<HTMLButtonElement>('[data-mega-btn]');
+    const mega = root.querySelector<HTMLElement>('[data-mega]');
+    const burger = root.querySelector<HTMLButtonElement>('[data-burger]')!;
+    const sheet = root.querySelector<HTMLElement>('[data-msheet]')!;
+    let timer: number | undefined;
+
+    const setMega = (open: boolean) => {
+      if (!btn || !mega) return;
+      mega.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+    };
+    const setSheet = (open: boolean) => {
+      sheet.hidden = !open;
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    if (btn && mega) {
+      btn.addEventListener('click', () => setMega(!!mega.hidden));
+      const hoverable = matchMedia('(hover: hover) and (min-width: 961px)');
+      btn.parentElement!.addEventListener('mouseenter', () => { if (hoverable.matches) { window.clearTimeout(timer); setMega(true); } });
+      root.addEventListener('mouseleave', () => { if (hoverable.matches) timer = window.setTimeout(() => setMega(false), 180); });
+      mega.addEventListener('mouseenter', () => window.clearTimeout(timer));
+      document.addEventListener('click', (e) => { if (!root.contains(e.target as Node)) setMega(false); });
+      root.addEventListener('focusout', (e) => {
+        const to = (e as FocusEvent).relatedTarget as Node | null;
+        if (to && !root.contains(to)) setMega(false);
+      });
+    }
+    burger.addEventListener('click', () => setSheet(!!sheet.hidden));
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (mega && !mega.hidden) { setMega(false); btn?.focus(); }
+      if (!sheet.hidden) { setSheet(false); burger.focus(); }
+    });
+    matchMedia('(min-width: 961px)').addEventListener('change', (m) => { if (m.matches) setSheet(false); });
+  }
+</script>
+
+<style>
+  .hdr { --acc: var(--blue); position: sticky; top: -38px; z-index: 70; background: #fff; }
+  .hdr[data-accent='orange'] { --acc: var(--orange); }
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+
+  .util { height: 38px; background: var(--night); color: #c9cdd4; font: 500 0.85rem/38px var(--f-body); }
+  .util .wrap { display: flex; justify-content: space-between; gap: 18px; }
+  .util a { text-decoration: none; }
+  .util a:hover { color: #fff; }
+  .util-r { display: flex; gap: 26px; }
+
+  .bar { position: relative; background: #fff; border-bottom: 1px solid var(--line); }
+  .bar::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--acc); }
+  .bar-in { display: flex; align-items: center; gap: 28px; height: 76px; }
+  .brand { display: flex; align-items: center; gap: 14px; text-decoration: none; flex: none; }
+  .brand :global(img) { height: 36px; width: auto; }
+  .sp { padding-left: 14px; border-left: 2px solid var(--line); font: 800 1.25rem/1 var(--f-display); letter-spacing: 0.16em; text-transform: uppercase; }
+
+  .nav { margin-left: auto; }
+  .nav ul { display: flex; gap: 6px; margin: 0; padding: 0; list-style: none; }
+  .nav-link {
+    position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 10px 14px; background: none; border: 0; cursor: pointer;
+    font: 700 1.05rem/1 var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); text-decoration: none;
+  }
+  .nav-link::after { content: ''; position: absolute; left: 14px; right: 14px; bottom: 2px; height: 3px; background: var(--acc); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
+  .nav-link:hover::after, .nav-link[aria-current='page']::after, .nav-link[aria-expanded='true']::after { transform: scaleX(1); }
+  .chev { width: 14px; height: 14px; stroke-width: 3; }
+  .nav-link[aria-expanded='true'] .chev { transform: rotate(180deg); }
+
+  .cta {
+    flex: none; display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 999px; text-decoration: none;
+    background: var(--acc); color: #fff; font: 700 0.98rem var(--f-body); transition: filter 0.25s;
+  }
+  .hdr[data-accent='orange'] .cta { color: #111; }
+  .cta:hover { filter: brightness(1.1); }
+  .cta:hover .ic { transform: translate(2px, -2px); }
+
+  .burger { display: none; width: 46px; height: 46px; padding: 0; border: 1.5px solid var(--ink); border-radius: 50%; background: #fff; cursor: pointer; place-content: center; gap: 5px; }
+  .burger span { display: block; width: 18px; height: 2px; background: var(--ink); margin-inline: auto; transition: transform 0.25s, opacity 0.25s; }
+  .burger[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .burger[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+  .burger[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* Grand menu */
+  .mega { position: absolute; left: 0; right: 0; top: 100%; z-index: 5; background: #fff; border-top: 1px solid var(--line); box-shadow: 0 40px 60px -30px rgba(17, 19, 23, 0.4); padding: 30px 0 0; }
+  .mega-in { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; padding-bottom: 26px; }
+  .col h2 { margin: 0 0 12px; padding-bottom: 10px; border-bottom: 2px solid var(--acc); font: 800 1.05rem/1.1 var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; }
+  .col ul { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+  .col a { display: flex; justify-content: space-between; gap: 10px; padding: 7px 8px; margin-inline: -8px; border-radius: 8px; text-decoration: none; font-size: 0.94rem; line-height: 1.25; }
+  .col a:hover { background: var(--paper); }
+  .col small { flex: none; color: var(--mute); font-size: 0.78rem; white-space: nowrap; }
+  .mega-foot { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 16px; border-top: 1px solid var(--line); font-size: 0.86rem; color: var(--mute); }
+  .mega-foot a { display: inline-flex; align-items: center; gap: 8px; font: 700 0.98rem var(--f-body); color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--acc); }
+  .mega-foot a:hover .ic { transform: translate(2px, -2px); }
+
+  /* Tiroir mobile */
+  .msheet { position: fixed; z-index: 80; inset: 76px 0 0 0; overflow-y: auto; background: #fff; padding: 8px var(--pad) 120px; }
+  .m-list { margin: 0; padding: 0; list-style: none; }
+  .m-link { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); text-decoration: none; font: 700 1.3rem/1 var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; }
+  .m-link.sub { font-size: 1.05rem; color: var(--mute); }
+  .m-title { margin: 0; padding: 18px 0 10px; font: 700 1.3rem/1 var(--f-display); letter-spacing: 0.1em; text-transform: uppercase; }
+  .m-acc details { border-top: 1px solid var(--line); }
+  .m-acc summary { cursor: pointer; padding: 15px 0; font-weight: 600; list-style: none; display: flex; justify-content: space-between; }
+  .m-acc summary::after { content: '+'; font-size: 1.4rem; line-height: 1; color: var(--acc); }
+  .m-acc details[open] summary::after { content: '–'; }
+  .m-acc details ul { margin: 0 0 12px; padding: 0; list-style: none; }
+  .m-acc details a { display: flex; justify-content: space-between; gap: 10px; padding: 10px 0 10px 10px; text-decoration: none; }
+  .m-acc small { color: var(--mute); }
+  .m-all { display: block; padding: 14px 0 20px; font-weight: 700; border-top: 1px solid var(--line); }
+  .m-cta { position: fixed; left: var(--pad); right: var(--pad); bottom: calc(18px + env(safe-area-inset-bottom)); z-index: 81; display: flex; justify-content: center; align-items: center; gap: 10px; padding: 16px; border-radius: 999px; background: var(--acc); color: #fff; font: 700 1.02rem var(--f-body); text-decoration: none; }
+  .hdr[data-accent='orange'] .m-cta { color: #111; }
+
+  @media (max-width: 960px) {
+    .hdr { top: 0; }
+    .util, .nav, .cta { display: none; }
+    .burger { display: grid; margin-left: auto; }
+    .bar-in { height: 70px; }
+    .msheet { inset: 70px 0 0 0; }
+  }
+  @media (min-width: 961px) { .msheet { display: none; } }
+  @media (max-width: 1180px) and (min-width: 961px) { .mega-in { grid-template-columns: repeat(3, minmax(0, 1fr)); } .sp { display: none; } }
+</style>

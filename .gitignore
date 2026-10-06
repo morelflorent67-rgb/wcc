@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+
+# PHP / formulaires : jamais de secrets ni de données clients dans le dépôt
+api/config.php
+api/storage/
+*.eml
+
+# Divers
+.DS_Store
+Thumbs.db
+__pycache__/

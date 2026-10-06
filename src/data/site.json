@@ -1,0 +1,20 @@
+{
+  "name": "World Car Carrosserie",
+  "shortName": "WCC",
+  "address": {
+    "street": "5a avenue de l’Énergie",
+    "postalCode": "67800",
+    "city": "Bischheim",
+    "country": "FR"
+  },
+  "phone": { "display": "03 69 48 44 85", "tel": "+33369484485" },
+  "hours": {
+    "label": "Du lundi au vendredi",
+    "slots": ["9 h – 12 h", "14 h – 18 h"],
+    "schema": [
+      { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "12:00" },
+      { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "14:00", "closes": "18:00" }
+    ]
+  },
+  "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=5a+avenue+de+l%27%C3%89nergie+67800+Bischheim"
+}

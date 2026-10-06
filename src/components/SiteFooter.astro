@@ -1,0 +1,21 @@
+---
+import site from '../data/site.json';
+const year = new Date().getFullYear();
+---
+<footer>
+  <div>
+    <span>© {year} {site.name}</span>
+    <span class="links">
+      <a href="/mentions-legales/">Mentions légales</a>
+      <a href="/confidentialite/">Confidentialité</a>
+    </span>
+  </div>
+</footer>
+
+<style>
+  footer { background: var(--night); color: #8d939e; font-size: 0.85rem; padding: 0 var(--pad) 28px; }
+  div { max-width: var(--max); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between; border-top: 1px solid #23262c; padding-top: 22px; }
+  a { text-decoration: none; margin-right: 18px; }
+  a:hover { color: #fff; }
+  .links a:last-child { margin-right: 0; }
+</style>

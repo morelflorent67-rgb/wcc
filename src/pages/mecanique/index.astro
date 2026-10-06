@@ -1,0 +1,212 @@
+---
+import { Image } from 'astro:assets';
+import SpaceLayout from '../../layouts/SpaceLayout.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import LogoMarquee from '../../components/LogoMarquee.astro';
+import type { LogoItem } from '../../components/LogoMarquee.astro';
+import AccessBlock from '../../components/AccessBlock.astro';
+import hero from '../../assets/illustration/mecanique-moteur-capot.jpg';
+import brands from '../../data/brands.json';
+import { families, byFamily, featuredServices, formatPrice, serviceHref } from '../../lib/mecanique';
+
+const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path } }));
+
+const steps = [
+  { t: 'Vous décrivez votre besoin', d: 'Choisissez une prestation ou décrivez votre problème, avec les informations sur votre véhicule.' },
+  { t: 'L’atelier vous répond', d: 'Nous échangeons avec vous pour comprendre la situation et préciser l’intervention.' },
+  { t: 'Vous recevez un devis adapté', d: 'Le prix d’appel affiché est un point de départ : le devis tient compte de votre véhicule.' },
+  { t: 'Nous organisons la prise en charge', d: 'Une fois l’intervention précisée, nous convenons ensemble de la suite.' },
+];
+---
+<SpaceLayout
+  space="mecanique"
+  title="Garage mécanique multimarque à Bischheim — Entretien et réparation | WCC"
+  description="Révision, freinage, distribution, climatisation, diagnostic… Entretien et réparation multimarque à Bischheim. Prix d’appel affichés, devis adapté à votre véhicule."
+>
+  <section class="hero">
+    <Image src={hero} alt="" widths={[640, 1000, 1400, 1920]} sizes="100vw" format="webp" quality={72} loading="eager" fetchpriority="high" />
+    <div class="hero-in">
+      <p class="label">Garage multimarque à Bischheim</p>
+      <h1>Votre voiture.<br />Entre de bonnes mains.</h1>
+      <p class="sub">L’entretien et la réparation, adaptés à votre véhicule.</p>
+      <div class="actions">
+        <a class="pill" href="#selecteur">Trouver ma prestation <i><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></i></a>
+        <a class="ghost" href="/mecanique/contact/">Demander un devis</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="finder-wrap" id="selecteur" aria-labelledby="finder-t">
+    <form class="finder" data-finder>
+      <label id="finder-t" for="finder-select">De quoi votre véhicule a-t-il besoin ?</label>
+      <div class="finder-row">
+        <select id="finder-select" required>
+          <option value="" selected disabled>Choisir une prestation</option>
+          {families.map((f) => (
+            <optgroup label={f.name}>
+              {byFamily(f.id).map((s) => (
+                <option value={s.slug} data-href={serviceHref(s.slug)}>{s.name}{s.priceFrom !== null ? ` — dès ${formatPrice(s.priceFrom)}` : ' — sur devis'}</option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
+        <button type="submit">Voir la prestation <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+      </div>
+      <noscript><p class="ns">Vous pouvez aussi parcourir <a href="/mecanique/prestations/">toutes les prestations</a>.</p></noscript>
+    </form>
+  </section>
+
+  <section class="section" aria-labelledby="essentiel">
+    <div class="wrap">
+      <p class="label muted reveal">Prix d’appel</p>
+      <h2 id="essentiel" class="big reveal">L’essentiel,<br />au juste prix.</h2>
+      <ul class="grid">
+        {featuredServices.map((s, i) => (
+          <li class="reveal" style={`--d:${(i % 3) * 0.08}s`}><ServiceCard service={s} showFamily /></li>
+        ))}
+      </ul>
+      <p class="note reveal">Tarif selon véhicule et intervention. Devis personnalisé.</p>
+    </div>
+  </section>
+
+  <section class="section alt" aria-labelledby="catalogue">
+    <div class="wrap">
+      <p class="label muted reveal">Catalogue</p>
+      <h2 id="catalogue" class="big reveal">Toutes nos<br />prestations.</h2>
+      <div class="fams">
+        {families.map((f) => (
+          <div class="fam reveal">
+            <div class="fam-h">
+              <h3>{f.name}</h3>
+              <p>{f.blurb}</p>
+            </div>
+            <ul>
+              {byFamily(f.id).map((s) => (
+                <li>
+                  <a href={serviceHref(s.slug)}>
+                    <span>{s.name}</span>
+                    <small>{s.priceFrom === null ? 'Sur devis' : `dès ${formatPrice(s.priceFrom)}`}</small>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+      <a class="all reveal" href="/mecanique/prestations/">Voir le catalogue complet <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+    </div>
+  </section>
+
+  <section class="multi" id="multimarque" aria-labelledby="multi-t">
+    <div class="wrap multi-in">
+      <div class="reveal">
+        <p class="label muted">Multimarque</p>
+        <h2 id="multi-t" class="big">Toutes marques,<br />une même attention.</h2>
+      </div>
+      <p class="reveal" style="--d:.1s">Entretien et réparation de votre véhicule, quelle que soit sa marque. Votre devis tient compte du modèle, de la motorisation et de l’état de la voiture.</p>
+    </div>
+    <div class="ticker"><LogoMarquee label="Marques prises en charge" items={makes} accent="blue" duration={46} /></div>
+  </section>
+
+  <section class="section" aria-labelledby="deroule">
+    <div class="wrap">
+      <p class="label muted reveal">Déroulement</p>
+      <h2 id="deroule" class="big reveal">Simple,<br />étape par étape.</h2>
+      <ol class="steps">
+        {steps.map((st, i) => (
+          <li class="reveal" style={`--d:${i * 0.08}s`}>
+            <span class="n">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{st.t}</h3>
+            <p>{st.d}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="cta-row reveal">
+        <a class="pill" href="/mecanique/contact/">Demander un devis <i><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></i></a>
+      </div>
+    </div>
+  </section>
+
+  <AccessBlock quote="mecanique" />
+</SpaceLayout>
+
+<script>
+  // Sélecteur : mène à la fiche de la prestation (ou au devis prérempli si la fiche n'existe pas encore)
+  const form = document.querySelector<HTMLFormElement>('[data-finder]');
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const sel = form.querySelector<HTMLSelectElement>('select')!;
+    const href = sel.selectedOptions[0]?.dataset.href;
+    if (href) window.location.href = href;
+    else sel.focus();
+  });
+</script>
+
+<style>
+  .wrap { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+  .label { margin: 0; }
+  .muted { color: var(--mute); }
+  .big { margin: 14px 0 40px; font: 800 clamp(2.8rem, 7vw, 6rem) / 0.88 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; }
+
+  /* Hero */
+  .hero { position: relative; display: flex; align-items: flex-end; min-height: min(78svh, 760px); color: #fff; overflow: hidden; isolation: isolate; background: #000; }
+  .hero :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 45%; z-index: -3; }
+  .hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(to top, rgba(8, 20, 120, 0.92) 0%, rgba(18, 40, 190, 0.5) 38%, rgba(0, 0, 0, 0.12) 75%), linear-gradient(to bottom, rgba(0, 0, 0, 0.35), transparent 30%); }
+  .hero-in { width: 100%; max-width: var(--max); margin: 0 auto; padding: 120px var(--pad) clamp(70px, 9vw, 110px); }
+  .hero .label { opacity: 0.95; }
+  .hero h1 { margin: 14px 0 18px; font: 800 clamp(3.2rem, 8vw, 8.4rem) / 0.84 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.25); }
+  .sub { margin: 0 0 30px; font: 500 clamp(1.1rem, 1.8vw, 1.45rem) / 1.35 var(--f-body); max-width: 34ch; }
+  .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 14px; background: #fff; color: var(--ink); border-radius: 999px; padding: 8px 8px 8px 26px; font: 700 1rem var(--f-body); text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .pill i { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--blue); color: #fff; font-style: normal; transition: transform 0.3s; }
+  .pill:hover { background: var(--blue); color: #fff; }
+  .pill:hover i { background: #fff; color: var(--ink); transform: rotate(45deg); }
+  .ghost { display: inline-flex; align-items: center; padding: 15px 26px; border-radius: 999px; border: 1.5px solid rgba(255, 255, 255, 0.85); color: #fff; font: 700 1rem var(--f-body); text-decoration: none; -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); background: rgba(0, 0, 0, 0.15); transition: background 0.25s, color 0.25s; }
+  .ghost:hover { background: #fff; color: var(--ink); }
+
+  /* Sélecteur */
+  .finder-wrap { position: relative; z-index: 2; margin-top: -48px; padding-inline: var(--pad); }
+  .finder { max-width: 1000px; margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 22px; padding: 22px 26px 26px; box-shadow: 0 30px 60px -34px rgba(17, 19, 23, 0.5); }
+  .finder label { display: block; margin-bottom: 12px; font: 800 clamp(1.3rem, 2.4vw, 1.8rem) / 1.1 var(--f-display); text-transform: uppercase; letter-spacing: 0.02em; }
+  .finder-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .finder select { flex: 1 1 300px; min-width: 0; height: 56px; padding: 0 18px; border: 1.5px solid var(--ink); border-radius: 14px; background: #fff; font: 500 1.02rem var(--f-body); color: var(--ink); }
+  .finder button { flex: none; height: 56px; display: inline-flex; align-items: center; gap: 10px; padding: 0 28px; border: 0; border-radius: 14px; background: var(--blue); color: #fff; font: 700 1rem var(--f-body); cursor: pointer; transition: filter 0.25s; }
+  .finder button:hover { filter: brightness(1.12); }
+  .ns { margin: 12px 0 0; font-size: 0.92rem; }
+
+  /* Sections */
+  .section { padding: clamp(60px, 9vw, 120px) 0; }
+  .section.alt { background: #fff; border-block: 1px solid var(--line); }
+  .grid { display: grid; gap: 20px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); }
+  .note { margin: 26px 0 0; color: var(--mute); font-size: 0.95rem; }
+
+  .fams { display: grid; gap: 0; border-top: 2px solid var(--ink); }
+  .fam { display: grid; gap: 18px 40px; padding: 26px 0; border-bottom: 1px solid var(--line); grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .fam { grid-template-columns: 320px 1fr; } }
+  .fam-h h3 { margin: 0 0 6px; font: 800 1.7rem/1 var(--f-display); text-transform: uppercase; }
+  .fam-h p { margin: 0; color: var(--mute); font-size: 0.95rem; max-width: 30ch; }
+  .fam ul { display: grid; gap: 4px 28px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+  .fam li a { display: flex; justify-content: space-between; gap: 14px; padding: 9px 12px; margin-inline: -12px; border-radius: 10px; text-decoration: none; transition: background 0.2s; }
+  .fam li a:hover { background: var(--paper); }
+  .fam li small { color: var(--mute); white-space: nowrap; }
+  .all { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; font: 700 1.05rem var(--f-body); text-decoration: none; border-bottom: 2px solid var(--blue); padding-bottom: 3px; }
+  .all:hover .ic { transform: translate(2px, -2px); }
+
+  .multi { padding-top: clamp(60px, 9vw, 120px); }
+  .multi-in { display: grid; gap: 20px 60px; align-items: end; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .multi-in { grid-template-columns: 1.3fr 1fr; } }
+  .multi-in p { margin: 0 0 40px; font-size: 1.15rem; color: var(--ink-soft); max-width: 44ch; }
+  .multi-in .big { margin-bottom: 30px; }
+  .ticker { background: #fff; border-block: 1px solid var(--line); }
+  .ticker :global(.trow) { border-top: 0; }
+
+  .steps { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); counter-reset: s; }
+  .steps li { padding: 24px 0 0; border-top: 3px solid var(--blue); }
+  .n { display: block; font: 800 3.2rem/1 var(--f-display); color: var(--blue); margin-bottom: 8px; }
+  .steps h3 { margin: 0 0 8px; font: 800 1.45rem/1.05 var(--f-display); text-transform: uppercase; }
+  .steps p { margin: 0; color: var(--mute); }
+  .cta-row { margin-top: 44px; }
+  .cta-row .pill { background: var(--blue); color: #fff; }
+  .cta-row .pill i { background: #fff; color: var(--ink); }
+  .cta-row .pill:hover { background: var(--ink); }
+</style>

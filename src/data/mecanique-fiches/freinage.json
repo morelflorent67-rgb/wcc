@@ -1,0 +1,48 @@
+{
+  "seoTitle": "Freinage à Bischheim : plaquettes et disques de frein, toutes marques | WCC",
+  "seoDescription": "Contrôle et remplacement des plaquettes et des disques de frein à Bischheim, sur de nombreuses marques. Prix d’appel à partir de 61,20 €, devis adapté à votre véhicule.",
+  "lead": "Un freinage fiable est la première condition pour rouler en sécurité. Nous contrôlons et remplaçons les plaquettes et les disques de votre véhicule, quelle que soit sa marque.",
+  "image": "mecanique-freinage-disque.jpg",
+  "imageAlt": "Illustration : disque de frein monté sur un véhicule",
+  "need": [
+    "Les plaquettes et les disques s’usent à chaque freinage. Leur état dépend de votre façon de conduire, de vos trajets (ville, route, relief), du poids du véhicule et de la qualité des pièces.",
+    "Un contrôle régulier permet de remplacer les pièces au bon moment, avant que l’usure n’abîme d’autres éléments du système de freinage ou n’allonge vos distances d’arrêt.",
+    "Nous examinons le système avant de vous proposer un devis adapté : plaquettes seules, plaquettes et disques, ou intervention plus complète si l’état du véhicule le demande."
+  ],
+  "signs": [
+    "Un grincement ou un bruit de frottement métallique quand vous freinez.",
+    "Des vibrations dans la pédale de frein ou dans le volant au freinage.",
+    "Une pédale plus molle, plus longue ou moins progressive qu’avant.",
+    "Une voiture qui tire d’un côté lors d’un freinage.",
+    "Un voyant de frein ou d’usure des plaquettes allumé au tableau de bord.",
+    "Une distance d’arrêt qui vous semble plus longue qu’auparavant."
+  ],
+  "steps": [
+    { "title": "Vous décrivez votre besoin", "text": "Indiquez votre véhicule et ce que vous constatez (bruit, vibrations, voyant…) avec le formulaire ou par téléphone." },
+    { "title": "Nous examinons le système", "text": "L’état des plaquettes, des disques et des éléments associés est contrôlé pour établir ce qui doit réellement être remplacé." },
+    { "title": "Vous recevez un devis adapté", "text": "Le devis tient compte de votre véhicule, des pièces nécessaires et du travail à réaliser." },
+    { "title": "Nous intervenons", "text": "Une fois le devis accepté, nous remplaçons les pièces convenues et vérifions le bon fonctionnement du freinage." }
+  ],
+  "priceFactors": [
+    "Le véhicule : marque, modèle, motorisation et poids.",
+    "Les pièces à remplacer : plaquettes seules ou plaquettes et disques, à l’avant et/ou à l’arrière.",
+    "La gamme des pièces retenues.",
+    "L’état des éléments associés (étriers, flexibles, liquide de frein), qui peut justifier des interventions supplémentaires.",
+    "Les fournitures nécessaires à l’intervention."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "L’immatriculation, si vous souhaitez nous la communiquer (facultatif).",
+    "Ce que vous constatez : bruit, vibrations, pédale molle, voyant allumé…",
+    "Le kilométrage et, si vous la connaissez, la date du dernier contrôle des freins."
+  ],
+  "faq": [
+    { "q": "Faut-il changer les disques en même temps que les plaquettes ?", "a": "Pas systématiquement. Cela dépend de l’état des disques (épaisseur, rayures, voile), vérifié lors du contrôle. Le devis vous indique ce qui est réellement nécessaire." },
+    { "q": "À quelle fréquence faut-il faire contrôler ses freins ?", "a": "Elle varie selon le véhicule et l’usage ; le carnet d’entretien du constructeur donne les préconisations. Dès qu’un symptôme apparaît (bruit, vibration, pédale molle), mieux vaut faire contrôler sans attendre." },
+    { "q": "Le prix affiché est-il définitif ?", "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et des pièces à remplacer ; il vous est communiqué dans le devis." },
+    { "q": "Mes freins font du bruit : puis-je continuer à rouler ?", "a": "Un bruit au freinage peut signaler une usure avancée. Si vous avez un doute sur la sécurité de votre véhicule, faites-le contrôler rapidement et évitez les longs trajets en attendant." },
+    { "q": "Intervenez-vous sur toutes les marques ?", "a": "Nous entretenons et réparons de nombreuses marques. Indiquez la vôtre dans la demande de devis : nous vous répondrons pour votre véhicule." },
+    { "q": "Comment demander un devis ?", "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation." }
+  ],
+  "related": ["purge-liquide-frein", "amortisseurs", "geometrie-parallelisme"]
+}
