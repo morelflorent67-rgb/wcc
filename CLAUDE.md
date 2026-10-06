@@ -1,7 +1,7 @@
 # WCC — notes de reprise
 
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
-Dernière mise à jour : 6 octobre 2026.
+Dernière mise à jour : 6 octobre 2026 (4 commits locaux, rien de poussé ; aucun travail en cours).
 
 ## Le projet en bref
 
@@ -31,7 +31,7 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 
 - Français correct, accents compris. Textes écrits pour WCC, jamais copiés d'AD ni d'Acoat.
 - **Rien d'inventé ni de non confirmé** : pas de délai chiffré, pas de prêt gratuit systématique, pas de franchise offerte,
-  pas de garantie, pas de note globale ni d'étoiles non fournies, pas de statistiques Acoat (effectif, surface…).
+  pas de garantie, pas de note globale ni d'étoiles non confirmées, pas de statistiques Acoat (effectif, surface…).
   Véhicule de prêt : « possible » seulement. Aucune affiliation AD ni constructeur ; marques = « marques prises en charge ».
 - Prix : « À partir de X € » = **prix d'appel**, jamais un devis ; TTC / pièces / main-d'œuvre non précisés (à clarifier avec WCC).
 - Les formulaires ne promettent ni rendez-vous ni délai de réponse.
@@ -41,7 +41,8 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 - Logos assureurs = fichiers **provisoires** de la fiche Acoat (31, 250×188 px) ; marques = icônes simple-icons (CC0) +
   étoile Mercedes redessinée. Remplacer par les fichiers officiels dès que possible.
 - Avis Google : 10 avis réels fournis par l'utilisateur (texte verbatim, auteurs abrégés « Prénom N. », durées traduites,
-  relevés le 6 octobre 2026), sans note ni étoiles. Jamais d'avis inventé.
+  relevés le 6 octobre 2026). **5 étoiles sur chacun** (confirmé par l'utilisateur : les étoiles n'avaient pas pu être
+  copiées). Aucune note globale ni `aggregateRating` : seulement les étoiles par avis. Jamais d'avis inventé.
 
 ## Où est quoi
 
@@ -120,6 +121,8 @@ demandes et photos, domaine.
   déplacer des dossiers). Ne pas modifier un fichier pendant une capture d'écran : le rechargement à chaud réinitialise la page.
 - Pour contrôler visuellement les blocs `.reveal`, injecter une feuille de style qui force `opacity:1;transform:none` (les
   captures prennent parfois du retard dans le volet navigateur).
+- Si le volet navigateur est masqué, la page est mesurée avec une largeur nulle (`innerWidth` = 0) : les mesures JS (ex. « Lire la
+  suite ») sont alors fausses ; rouvrir le volet et recharger avant de conclure à un bug.
 - Les gros blocs de texte avec guillemets passent mal dans le shell : écrire les fichiers avec l'outil d'écriture.
 - `public/` est copié entièrement dans `dist/` : n'y mettre aucun secret ni donnée de test (c'est pourquoi `api/` est à la racine).
 - Les fichiers du dossier miroir ChatGPT (`C:\Users\flo\.codex\.chatgpt-projects\…`) sont en lecture seule et ne servent plus.

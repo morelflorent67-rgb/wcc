@@ -208,6 +208,7 @@ const initial = (s: string) => s.trim().charAt(0).toUpperCase();
     // Avis longs : bouton « Lire la suite » affiché seulement si le texte est tronqué
     const cards = () => [...track.children] as HTMLElement[];
     const measure = () => {
+      if (!rail.clientWidth) return; // bloc non affiché (onglet masqué) : mesure impossible
       for (const c of cards()) {
         const t = c.querySelector<HTMLElement>('.rtext');
         const b = c.querySelector<HTMLButtonElement>('.more');
@@ -228,8 +229,12 @@ const initial = (s: string) => s.trim().charAt(0).toUpperCase();
       }
       holdFor(open ? 20000 : 2000);
     });
+    // La mesure dépend de la police : on la refait à chaque étape du chargement
     measure();
     document.fonts?.ready.then(measure);
+    document.fonts?.addEventListener('loadingdone', measure);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) measure(); });
+    window.addEventListener('load', () => { measure(); window.setTimeout(measure, 600); });
     let rt: number | undefined;
     window.addEventListener('resize', () => { window.clearTimeout(rt); rt = window.setTimeout(measure, 150); });
 
