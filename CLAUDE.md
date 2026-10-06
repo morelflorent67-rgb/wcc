@@ -100,6 +100,16 @@ Fait et vérifié :
   en bout vers PHP (e-mail au garage avec 3 pièces jointes + accusé, photos dans l'espace privé). Aucun prix d'appel en carrosserie.
 - `astro check` : 0 erreur ; build : 20 pages ; 1022 liens internes valides.
 
+**En attente de décision de l'utilisateur (priorité avant les 25 fiches)** : il veut (1) un menu « Prestations » en **rail de cartes photo à
+défilement horizontal** (comme le carrousel du site AD qu'il a montré en capture), pour la mécanique ET la carrosserie, et (2) des cartes
+de prestations au design **vraiment unique** (mes cartes blanches actuelles, `ServiceCard` / `ProblemCard`, « font trop Claude Code »).
+Prototype interactif : `design/prototypes/cartes.html` (serveur `wcc-prototypes`, http://localhost:4173/design/prototypes/cartes.html ;
+paramètres `?v=a|b|c&s=mecanique|carrosserie&menu=1`) avec 3 directions : **A Affiche** (photo plein cadre, chiffres en filaire, tag de prix
+en biais, détail au survol), **B Étiquette** (fiche d'atelier, ombre franche, photo en bichromie, pastille de prix), **C Panneau** (grande
+photo + panneau en biais aux couleurs de l'espace). Une fois la direction choisie : remplacer le grand menu de `SpaceHeader` par le rail,
+refaire `ServiceCard` / `ProblemCard`, et prévoir **une photo par prestation** (26 mécanique : il manque ~20 photos libres de droits ;
+téléchargement à faire approuver avant).
+
 Pas encore fait (ordre conseillé) :
 1. **25 fiches mécanique** à rédiger (prochain chantier conseillé) (priorité : révision-vidange, distribution, embrayage, climatisation, amortisseurs,
    diagnostic-electronique, pneumatiques), puis les autres. Respecter les réserves du catalogue : climatisation (type et quantité
