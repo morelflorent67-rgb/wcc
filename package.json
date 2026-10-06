@@ -6,10 +6,11 @@
   "description": "Site vitrine World Car Carrosserie (WCC) — Bischheim",
   "scripts": {
     "dev": "astro dev --host 127.0.0.1 --port 4321",
-    "build": "astro build",
+    "build": "astro build && node tools/copy_api.mjs",
     "preview": "astro preview --host 127.0.0.1 --port 4321",
     "check": "astro check",
-    "brands": "node tools/build_brands.mjs"
+    "brands": "node tools/build_brands.mjs",
+    "php": "php -c tools/php-dev.ini -S 127.0.0.1:8081 -t ."
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.4",

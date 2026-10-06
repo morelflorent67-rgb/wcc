@@ -13,6 +13,6 @@ export default defineConfig({
   build: { format: 'directory' },
   integrations: site ? [sitemap()] : [],
   devToolbar: { enabled: false },
-  // En développement, les appels à /api sont envoyés au serveur PHP local (php -S 127.0.0.1:8081 -t public)
+  // En développement, les appels à /api sont envoyés au serveur PHP local (npm run php)
   vite: { server: { proxy: { '/api': 'http://127.0.0.1:8081' } } },
 });

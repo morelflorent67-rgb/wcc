@@ -58,15 +58,17 @@ Le formulaire mécanique (`/mecanique/contact/`) est en 3 étapes ; `?prestation
 une prestation (c'est ce que font les boutons « Demander un devis »). Sans JavaScript, il reste un
 formulaire HTML classique.
 
-Les demandes sont traitées par `public/api/submit.php` (PHP 8.1 ou plus, hébergement mutualisé OVH
+Les demandes sont traitées par `api/submit.php` (PHP 8.1 ou plus, hébergement mutualisé OVH
 compatible) :
 
-1. copier `public/api/config.example.php` en `public/api/config.php` et renseigner l'expéditeur,
+1. copier `api/config.example.php` en `api/config.php` et renseigner l'expéditeur,
    le secret et passer `env` à `prod` (ce fichier n'est jamais versionné ni écrasé au déploiement) ;
-2. en développement (`env` = `dev`), les messages sont écrits dans `public/api/storage/outbox/*.eml`
+2. en développement (`env` = `dev`), les messages sont écrits dans `api/storage/outbox/*.eml`
    au lieu d'être envoyés ;
-3. test local : `php -S 127.0.0.1:8081 -t public` dans un terminal, puis `npm run dev` dans un autre
-   (les appels à `/api` sont redirigés vers PHP).
+3. test local : `npm run php` dans un terminal, puis `npm run dev` dans un autre (les appels à `/api`
+   sont redirigés vers PHP ; PHP 8.1+ requis, voir `tools/php-dev.ini`) ;
+4. `npm run build` ne copie dans `dist/api/` que `submit.php`, `config.example.php` et les `.htaccess` :
+   `config.php` et `storage/` n'en font jamais partie.
 
 Protection contre les envois abusifs : champ piège, délai minimal, limite par adresse IP (hachée).
 L'envoi réel dépend de l'hébergeur (service d'e-mail à choisir) : à valider par un test de réception
