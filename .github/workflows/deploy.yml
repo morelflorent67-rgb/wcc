@@ -1,0 +1,65 @@
+# Déploiement manuel vers l'hébergement (FTPS). Rien ne part tant qu'on ne le lance pas à la main
+# (onglet « Actions » du dépôt > « Déployer le site » > « Run workflow »).
+#
+# Aucun secret n'est configuré pour l'instant : le workflow ne peut donc rien publier.
+# À la mise en ligne, créer dans Settings > Secrets and variables > Actions :
+#   FTP_SERVER   (ex. ftp.cluster0XX.hosting.ovh.net)
+#   FTP_USERNAME
+#   FTP_PASSWORD
+# Voir docs/DEPLOIEMENT.md.
+name: Déployer le site
+
+on:
+  workflow_dispatch:
+    inputs:
+      site_url:
+        description: "Adresse publique du site (ex. https://www.mon-domaine.fr)"
+        required: true
+      indexable:
+        description: "Autoriser l'indexation par les moteurs de recherche"
+        type: boolean
+        default: false
+      dry_run:
+        description: "Essai à blanc : liste ce qui serait envoyé, sans rien envoyer"
+        type: boolean
+        default: true
+      server_dir:
+        description: "Dossier distant (OVH : www/)"
+        default: "www/"
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - name: Construire le site
+        run: npm run build
+        env:
+          SITE_URL: ${{ inputs.site_url }}
+          PUBLIC_INDEXABLE: ${{ inputs.indexable && 'true' || 'false' }}
+      - name: Envoyer par FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ inputs.server_dir }}
+          dry-run: ${{ inputs.dry_run }}
+          # config.php et storage/ ne sont jamais dans dist/ ; on les protège aussi côté serveur
+          exclude: |
+            **/.git*
+            **/.git*/**
+            api/config.php
+            api/storage/**
+            !api/storage/.htaccess

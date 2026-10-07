@@ -1,0 +1,36 @@
+# Règles Apache pour l'hébergement mutualisé (OVH) — à placer dans le dossier public du site (www).
+# Prérequis : mod_rewrite, mod_headers, mod_expires (activés par défaut chez OVH).
+
+# Page d'erreur du site
+ErrorDocument 404 /404.html
+
+# Dossiers sans fichier d'index : pas de liste de fichiers
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Passage en HTTPS (suppose qu'un certificat est actif sur le domaine : à vérifier avant d'activer)
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  # Fichiers du dossier /_astro/ (noms hachés par le build, donc uniques) : cache d'un an
+  <If "%{REQUEST_URI} =~ m#^/_astro/#">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </If>
+  # Pages et fichiers à nom fixe : toujours revalider ; images fixes (favicon, og.png) : un jour
+  <FilesMatch "\.(html|xml|txt|json)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|webp|ico)$">
+    <If "%{REQUEST_URI} !~ m#^/_astro/#">
+      Header set Cache-Control "public, max-age=86400"
+    </If>
+  </FilesMatch>
+</IfModule>

@@ -74,21 +74,17 @@ Protection contre les envois abusifs : champ piège, délai minimal, limite par 
 L'envoi réel dépend de l'hébergeur (service d'e-mail à choisir) : à valider par un test de réception
 dans la boîte du garage avant la mise en ligne.
 
-## Mise en ligne
+## Mise en ligne et contenu
 
-Pas encore configurée. Variables au moment du build (voir `.env.example`) :
-
-- `SITE_URL` : adresse publique, pour les balises canoniques et le plan du site ;
-- `PUBLIC_INDEXABLE=true` : autorise l'indexation. Sans elle, toutes les pages portent `noindex`.
-
-À la mise en ligne, remplacer aussi `public/robots.txt` (voir son contenu).
+- Modifier un prix, un texte, une photo, un avis : `docs/CONTENU.md`.
+- Publier (OVH, formulaires, GitHub Actions manuel, contrôles, retour arrière) : `docs/DEPLOIEMENT.md`.
+- Variables au moment du build (voir `.env.example`) : `SITE_URL` (adresse publique) et `PUBLIC_INDEXABLE=true` (autorise l'indexation ; sans elle, tout est en `noindex` et `robots.txt` interdit tout).
+- Contrôles qualité automatisés : `tools/qa/README.md`.
 
 ## État d'avancement
 
-- [x] Portail (hero plein cadre, logos partenaires et marques, avis défilants, accès)
-- [x] Espace Mécanique : accueil, grand menu, catalogue, fiche Freinage, formulaire (interface)
-- [ ] Mécanique : 25 fiches prestations à rédiger (une page n'existe que si `src/data/mecanique-fiches/<slug>.json` existe)
-- [ ] Formulaire : test du point de réception PHP et de l'envoi réel
-- [ ] Espace Carrosserie : accueil, prestations, assurances, formulaire avec zones du véhicule
-- [ ] Pages d'information (accès, mentions légales, confidentialité) : pages provisoires
-- [ ] Formulaires côté serveur, déploiement, documentation d'hébergement
+- [x] Portail, espace Mécanique (26 prestations et fiches, catalogue, formulaire), espace Carrosserie (6 interventions, assurances, formulaire avec zones et photos)
+- [x] Point de réception PHP testé en local (envoi réel à valider sur l'hébergement)
+- [x] Pages Accès, Mentions légales, Confidentialité (identité légale à compléter : `src/data/legal.json`), page 404
+- [x] SEO de base, contrôles d'accessibilité, documentation de mise en ligne, workflow de déploiement manuel
+- [ ] À obtenir : hébergeur, domaine, identité légale, vraies photos, logos officiels, conditions de l'offre « 90 points de contrôle », validation des textes par WCC
