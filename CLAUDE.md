@@ -156,7 +156,7 @@ Pas encore fait (ordre conseillé) :
    secret configuré ; action FTP-Deploy v4.3.5). Reste : choix de l'hébergeur, test de réception réel (avec/sans photos), premier déploiement.
 7. Fin de projet : repasser le dépôt en privé, puis **un seul push**.
 
-À obtenir auprès de l'utilisateur / du client : hébergeur confirmé, vraies photos de l'atelier, logos officiels (assureurs,
+**Liste complète et numérotée des questions à poser : `docs/QUESTIONS-WCC.md`** (à tenir à jour). Résumé — à obtenir auprès de l'utilisateur / du client : hébergeur confirmé, vraies photos de l'atelier, logos officiels (assureurs,
 éventuellement marques), identité légale, service d'envoi d'e-mails, conditions des prix d'appel, durée de conservation des
 demandes et photos, domaine.
 

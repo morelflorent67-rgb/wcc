@@ -19,8 +19,8 @@ const tri = [{ v: 'oui', l: 'Oui' }, { v: 'non', l: 'Non' }, { v: 'nsp', l: 'Ne 
 const recap = [
   { label: 'Intervention', fields: ['intervention'] },
   { label: 'Zones concernées', fields: ['zones[]'] },
-  { label: 'Véhicule', fields: ['marque', 'modele', 'immatriculation'], join: ' · ' },
   { label: 'Photos', fields: ['photos[]'] },
+  { label: 'Véhicule', fields: ['marque', 'modele', 'immatriculation'], join: ' · ' },
   { label: 'Véhicule roulant', fields: ['roulant'] },
   { label: 'Assurance concernée', fields: ['assurance'] },
   { label: 'Sinistre déclaré', fields: ['sinistre'] },
@@ -62,7 +62,7 @@ const rules = [
 
         <fieldset data-step="1" data-require={JSON.stringify(rules)}>
           <legend tabindex="-1">Votre dommage</legend>
-          <p class="sub">Quel type d’intervention vous faut-il, et où se trouve le dommage ?</p>
+          <p class="sub">Quel type d’intervention vous faut-il, où se trouve le dommage ? Vous pouvez ajouter des photos : elles ne sont pas obligatoires.</p>
 
           <div class="qgroup" role="group" aria-labelledby="interv-l">
             <p class="gt" id="interv-l">Type d’intervention</p>
@@ -79,12 +79,25 @@ const rules = [
           <div class="qgroup">
             <VehicleZones />
           </div>
+
+          <div class="photos" data-photos data-max="6">
+            <label class="photos-l" for="photos">Photos du dommage <small>(facultatif, 6 maximum)</small></label>
+            <input id="photos" type="file" name="photos[]" accept="image/*" multiple />
+            <label class="drop" for="photos">
+              <svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" /></svg>
+              Ajouter des photos
+            </label>
+            <ul class="thumbs" data-thumbs aria-label="Photos ajoutées"></ul>
+            <p class="photo-status" data-photo-status aria-live="polite"></p>
+            <p class="err" data-photo-error hidden role="alert"></p>
+            <p class="hint">Une vue d’ensemble et un ou deux gros plans, de jour si possible. Les photos sont réduites automatiquement avant l’envoi et ne sont pas conservées si vous quittez la page.</p>
+          </div>
           <p class="err" data-step-error hidden role="alert"></p>
         </fieldset>
 
         <fieldset data-step="2">
           <legend tabindex="-1">Votre véhicule</legend>
-          <p class="sub">Ces informations nous permettent de vous répondre précisément. Les photos ne sont pas obligatoires.</p>
+          <p class="sub">Ces informations nous permettent de vous répondre précisément.</p>
           <div class="grid2">
             <div class="field">
               <label for="marque">Marque</label>
@@ -99,19 +112,6 @@ const rules = [
               <label for="immatriculation">Immatriculation <small>(facultatif)</small></label>
               <input id="immatriculation" name="immatriculation" type="text" autocomplete="off" maxlength="15" placeholder="AB-123-CD" />
             </div>
-          </div>
-
-          <div class="photos" data-photos data-max="6">
-            <label class="photos-l" for="photos">Photos du dommage <small>(facultatif, 6 maximum)</small></label>
-            <input id="photos" type="file" name="photos[]" accept="image/*" multiple />
-            <label class="drop" for="photos">
-              <svg class="ic" aria-hidden="true" viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4zM12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" /></svg>
-              Ajouter des photos
-            </label>
-            <ul class="thumbs" data-thumbs aria-label="Photos ajoutées"></ul>
-            <p class="photo-status" data-photo-status aria-live="polite"></p>
-            <p class="err" data-photo-error hidden role="alert"></p>
-            <p class="hint">Une vue d’ensemble et un ou deux gros plans, de jour si possible. Les photos sont réduites automatiquement avant l’envoi et ne sont pas conservées si vous quittez la page.</p>
           </div>
 
           <div class="q-row">
