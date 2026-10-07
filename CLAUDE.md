@@ -108,7 +108,7 @@ Fait et vérifié :
   en bout vers PHP (e-mail au garage avec 3 pièces jointes + accusé, photos dans l'espace privé). Aucun prix d'appel en carrosserie.
 - `astro check` : 0 erreur ; build : 20 pages ; 1022 liens internes valides.
 
-**Fait le 7 octobre 2026** : direction A appliquée aux deux espaces (menu rail, accueils, catalogue, fiches « liées »), bande flash info
+**Fait le 7 octobre 2026** : accueil mécanique = rail de TOUTES les prestations (onglets de famille) + liste « Par famille » allégée ; catalogue `/mecanique/prestations/` refait en index éditorial avec recherche ; direction A appliquée aux deux espaces (menu rail, accueils, catalogue, fiches « liées »), bande flash info
 et macaron mécanique. `ServiceCard` et `ProblemCard` supprimés.
 
 **En suspens (à traiter avant la suite)** :
@@ -118,8 +118,10 @@ et macaron mécanique. `ServiceCard` et `ProblemCard` supprimés.
    prix remisé, pourcentage). `promo.enabled: false` ou une `endDate` (AAAA-MM-JJ, affichée « valable jusqu'au… ») pilotent l'offre.
    Rappel client : un prix barré doit être le tarif réellement pratiqué (règle du prix de référence), garder des preuves (devis/factures).
    La mention « Flash info » a été retirée (c'était un exemple de style) : bande = « −20 % sur les prix affichés · 90 points de contrôle offerts… ».
-2. **Une photo par prestation** : seulement 14 photos pour 26 prestations (plusieurs cartes identiques côte à côte). Il faut ~20 photos libres
-   de droits supplémentaires : proposer la liste (source, licence, poids) et attendre l'accord avant tout téléchargement.
+2. ~~Une photo par prestation~~ **faite le 7 octobre 2026** : 21 photos Unsplash ajoutées (`mecanique-<slug>.jpg`, 1200 px, via
+   `design/illustrations.json` + `tools/fetch_illustrations.py`, crédits dans `src/assets/illustration/CREDITS.md`), champ `image` de chaque
+   prestation. Choix à l'œil sur miniatures ; quelques-unes sont des illustrations approximatives (ex. diagnostic sécurité, filtre d'habitacle,
+   purge du liquide de frein) à remplacer par de vraies photos de l'atelier. La recherche Unsplash par script est refusée (401) : passer par le navigateur.
 
 Pas encore fait (ordre conseillé) :
 1. **25 fiches mécanique** à rédiger (prochain chantier conseillé) (priorité : révision-vidange, distribution, embrayage, climatisation, amortisseurs,

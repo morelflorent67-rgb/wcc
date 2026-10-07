@@ -8,8 +8,15 @@ import type { LogoItem } from '../../components/LogoMarquee.astro';
 import AccessBlock from '../../components/AccessBlock.astro';
 import hero from '../../assets/illustration/mecanique-moteur-capot.jpg';
 import brands from '../../data/brands.json';
-import { families, byFamily, priceNote, promoNote, serviceHref } from '../../lib/mecanique';
-import { mecaItems } from '../../lib/cards';
+import { families, byFamily, formatPrice, priceNote, promoNote, serviceHref, pricingOf } from '../../lib/mecanique';
+import { mecaItems, mecaTabs } from '../../lib/cards';
+
+// Résumé par famille : nombre de prestations et prix d'appel le plus bas
+const famRows = families.map((f, i) => {
+  const list = byFamily(f.id);
+  const prices = list.map((s) => pricingOf(s.priceFrom)?.current).filter((p): p is number => typeof p === 'number');
+  return { ...f, n: String(i + 1).padStart(2, '0'), count: list.length, from: prices.length ? Math.min(...prices) : null };
+});
 
 const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path } }));
 
@@ -61,9 +68,9 @@ const steps = [
 
   <section class="section" aria-labelledby="essentiel">
     <div class="wrap">
-      <p class="label muted reveal">Prix d’appel</p>
-      <h2 id="essentiel" class="big reveal">L’essentiel,<br />au juste prix.</h2>
-      <div class="reveal"><PhotoRail items={mecaItems.filter((s) => s.featured)} accent="blue" label="Prestations les plus demandées" /></div>
+      <p class="label muted reveal">Prestations</p>
+      <h2 id="essentiel" class="big reveal">Nos prestations,<br />au juste prix.</h2>
+      <div class="reveal"><PhotoRail items={mecaItems} tabs={mecaTabs} accent="blue" label="Prestations de mécanique" /></div>
       <p class="note reveal">Tarif selon véhicule et intervention. Devis personnalisé. {promoNote}</p>
     </div>
   </section>
@@ -71,27 +78,19 @@ const steps = [
   <section class="section alt" aria-labelledby="catalogue">
     <div class="wrap">
       <p class="label muted reveal">Catalogue</p>
-      <h2 id="catalogue" class="big reveal">Toutes nos<br />prestations.</h2>
-      <div class="fams">
-        {families.map((f) => (
-          <div class="fam reveal">
-            <div class="fam-h">
-              <h3>{f.name}</h3>
-              <p>{f.blurb}</p>
-            </div>
-            <ul>
-              {byFamily(f.id).map((s) => (
-                <li>
-                  <a href={serviceHref(s.slug)}>
-                    <span>{s.name}</span>
-                    <small>{priceNote(s)}</small>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <h2 id="catalogue" class="big reveal">Par famille.</h2>
+      <ol class="famlist">
+        {famRows.map((f) => (
+          <li class="reveal">
+            <a href={`/mecanique/prestations/#${f.id}`}>
+              <span class="fn" aria-hidden="true">{f.n}</span>
+              <span class="ft"><b>{f.name}</b><small>{f.blurb}</small></span>
+              <span class="fc">{f.count} prestations{f.from !== null && <> · dès {formatPrice(f.from)}</>}</span>
+              <span class="fa" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><use href="#i-arrow" /></svg></span>
+            </a>
+          </li>
         ))}
-      </div>
+      </ol>
       <a class="all reveal" href="/mecanique/prestations/">Voir le catalogue complet <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
     </div>
   </section>
@@ -180,15 +179,23 @@ const steps = [
   .section.alt { background: #fff; border-block: 1px solid var(--line); }
   .note { margin: 26px 0 0; color: var(--mute); font-size: 0.95rem; }
 
-  .fams { display: grid; gap: 0; border-top: 2px solid var(--ink); }
-  .fam { display: grid; gap: 18px 40px; padding: 26px 0; border-bottom: 1px solid var(--line); grid-template-columns: 1fr; }
-  @media (min-width: 900px) { .fam { grid-template-columns: 320px 1fr; } }
-  .fam-h h3 { margin: 0 0 6px; font: 800 1.7rem/1 var(--f-display); text-transform: uppercase; }
-  .fam-h p { margin: 0; color: var(--mute); font-size: 0.95rem; max-width: 30ch; }
-  .fam ul { display: grid; gap: 4px 28px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
-  .fam li a { display: flex; justify-content: space-between; gap: 14px; padding: 9px 12px; margin-inline: -12px; border-radius: 10px; text-decoration: none; transition: background 0.2s; }
-  .fam li a:hover { background: var(--paper); }
-  .fam li small { color: var(--mute); white-space: nowrap; }
+  .famlist { margin: 0 0 8px; padding: 0; list-style: none; border-top: 2px solid var(--ink); }
+  .famlist li { border-bottom: 1px solid var(--line); }
+  .famlist a {
+    display: grid; align-items: center; gap: 4px 26px; padding: 26px 8px; text-decoration: none; transition: background 0.25s, padding 0.3s var(--ease);
+    grid-template-columns: auto 1fr auto; grid-template-areas: 'n t a' 'n c a';
+  }
+  .famlist a:hover, .famlist a:focus-visible { background: var(--paper); padding-inline: 22px; }
+  .fn { grid-area: n; min-width: 1.6em; font: 800 clamp(2.6rem, 5vw, 4rem) / 0.8 var(--f-display); color: transparent; -webkit-text-stroke: 1.5px var(--blue); }
+  .ft { grid-area: t; display: grid; gap: 4px; }
+  .ft b { font: 800 clamp(1.6rem, 3vw, 2.4rem) / 1 var(--f-display); text-transform: uppercase; }
+  .ft small { font-size: 1rem; color: var(--mute); }
+  .fc { grid-area: c; font-weight: 600; color: var(--ink-soft); }
+  .fa { grid-area: a; display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; border: 1.5px solid var(--ink); transition: background 0.25s, color 0.25s, border-color 0.25s; }
+  .famlist a:hover .fa, .famlist a:focus-visible .fa { background: var(--blue); border-color: var(--blue); color: #fff; }
+  @media (min-width: 900px) {
+    .famlist a { grid-template-columns: auto 1fr auto auto; grid-template-areas: 'n t c a'; }
+  }
   .all { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; font: 700 1.05rem var(--f-body); text-decoration: none; border-bottom: 2px solid var(--blue); padding-bottom: 3px; }
   .all:hover .ic { transform: translate(2px, -2px); }
 

@@ -25,7 +25,7 @@ def main() -> int:
             print("déjà présent :", p["file"])
             total += dest.stat().st_size
             continue
-        url = f"https://images.unsplash.com/{p['id']}?w={WIDTH}&q=80&auto=format&fit=max&fm=jpg"
+        url = f"https://images.unsplash.com/{p['id']}?w={p.get('w', WIDTH)}&q=78&auto=format&fit=max&fm=jpg"
         req = urllib.request.Request(url, headers={"User-Agent": "WCC-site-build/1.0"})
         with urllib.request.urlopen(req, timeout=60) as r:
             blob = r.read()
