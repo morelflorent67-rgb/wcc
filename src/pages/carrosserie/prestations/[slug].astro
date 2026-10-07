@@ -161,7 +161,7 @@ const jsonLd = {
   .top-in { display: grid; gap: 36px 56px; align-items: center; grid-template-columns: 1fr; }
   @media (min-width: 961px) { .top-in { grid-template-columns: 1.1fr 1fr; } }
   .crumbs { font-size: 0.9rem; color: var(--mute); margin-bottom: 26px; }
-  .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .crumbs a { display: inline-block; padding: 3px 0; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
   .crumbs span[aria-hidden] { margin: 0 8px; }
   h1 { margin: 0 0 18px; font: 800 clamp(3.2rem, 9vw, 7.6rem) / 0.84 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; overflow-wrap: anywhere; }
   .lead { margin: 0 0 28px; font-size: 1.2rem; line-height: 1.45; color: var(--ink-soft); max-width: 46ch; }
@@ -184,7 +184,7 @@ const jsonLd = {
   .two .sec-t { margin: 0; }
   .prose p { margin: 0 0 1.1em; font-size: 1.14rem; line-height: 1.6; color: var(--ink-soft); max-width: 62ch; }
   .prose p:last-child { margin-bottom: 0; }
-  .more { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font: 700 1rem var(--f-body); text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 2px; }
+  .more { display: inline-flex; align-items: center; gap: 8px; margin-top: 22px; font: 700 1rem var(--f-body); text-decoration: none; border-bottom: 2px solid var(--orange); padding: 4px 0 2px; }
   .more:hover .ic { transform: translate(2px, -2px); }
 
   .list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }

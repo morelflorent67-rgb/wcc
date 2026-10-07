@@ -147,7 +147,10 @@ Pas encore fait (ordre conseillé) :
    sitemap (sans pages « merci » ni légales) et `og:image` (`public/og.png`, source `design/og/og.html`) seulement si `SITE_URL` est défini au build ;
    `PUBLIC_INDEXABLE=true` pour autoriser l'indexation (sinon `noindex` partout) ; JSON-LD `AutoBodyShop/AutoRepair` sur le portail et `/acces-horaires/`.
    Reste à la mise en ligne : `public/robots.txt` (actuellement `Disallow: /`) à remplacer par `Allow: /` + lien du sitemap.
-5. Qualité : Lighthouse, axe, navigation clavier, réduction des animations, mobile, liens internes.
+5. Qualité — **premier passage fait le 7 octobre 2026** (scripts dans `tools/qa/`, voir son README) : 45 pages × 375/768/1280 px sans problème sur
+   débordement, `lang`, `h1`, ordre des titres, noms accessibles, `alt`, cibles ≥ 24 px, contraste (fond uni) ; clavier : tabulation, grand menu (Entrée/Échap/
+   retour du focus) OK ; pause ajoutée aux bandeaux de logos (WCAG 2.2.2). **Reste à faire** : contraste des textes posés sur photo (cartes, héros) à
+   contrôler à l'œil ; lecteur d'écran réel ; Lighthouse et axe-core (nécessitent un téléchargement : demander l'accord) ; test sur vrais téléphones.
 6. Déploiement : documentation `DEPLOIEMENT.md` (OVH : dossier `www`, espace privé hors webroot pour `storage_dir`, SMTP/mail(),
    secrets), guide `CONTENU.md`, workflow GitHub Actions → FTPS **manuel et sans secrets** tant que rien n'est validé. Test réel
    de réception dans la boîte du garage avec et sans photos : seulement une fois l'hébergement choisi.

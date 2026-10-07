@@ -80,7 +80,7 @@ const logos = partners.map((p) => {
   .muted { color: var(--mute); }
   .head { padding: clamp(36px, 5vw, 70px) 0 clamp(40px, 6vw, 70px); background: #fff; border-bottom: 1px solid var(--line); }
   .crumbs { font-size: 0.9rem; color: var(--mute); margin-bottom: 18px; }
-  .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .crumbs a { display: inline-block; padding: 3px 0; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
   .crumbs span[aria-hidden] { margin: 0 8px; }
   h1 { margin: 0 0 18px; font: 800 clamp(3rem, 8.5vw, 7.4rem) / 0.86 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; }
   .head p { margin: 0 0 28px; max-width: 54ch; font-size: 1.15rem; color: var(--ink-soft); }

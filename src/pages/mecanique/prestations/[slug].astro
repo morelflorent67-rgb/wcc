@@ -175,9 +175,9 @@ const jsonLd = {
   .top-in { display: grid; gap: 36px 56px; align-items: center; grid-template-columns: 1fr; }
   @media (min-width: 961px) { .top-in { grid-template-columns: 1.1fr 1fr; } }
   .crumbs { font-size: 0.9rem; color: var(--mute); margin-bottom: 26px; }
-  .crumbs a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .crumbs a { display: inline-block; padding: 3px 0; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
   .crumbs span[aria-hidden] { margin: 0 8px; }
-  h1 { margin: 0 0 18px; font: 800 clamp(3.6rem, 10vw, 8.6rem) / 0.82 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; }
+  h1 { margin: 0 0 18px; font: 800 clamp(3.1rem, 10vw, 8.6rem) / 0.82 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; overflow-wrap: break-word; }
   .lead { margin: 0 0 28px; font-size: 1.2rem; line-height: 1.45; color: var(--ink-soft); max-width: 46ch; }
   .price-box { display: grid; gap: 12px; justify-items: start; padding: 22px 24px; background: var(--paper); border-left: 6px solid var(--blue); border-radius: 0 16px 16px 0; max-width: 520px; }
   .price { margin: 0; display: grid; line-height: 1; }

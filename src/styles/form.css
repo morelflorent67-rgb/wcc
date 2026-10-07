@@ -58,7 +58,7 @@ legend:focus { outline: none; }
 .consent a { font-weight: 600; }
 
 .recap { margin: 26px 0 0; padding: 20px 22px; border-left: 6px solid var(--acc); background: var(--paper); border-radius: 0 16px 16px 0; }
-.recap h3 { margin: 0 0 12px; font: 800 1.3rem/1 var(--f-display); text-transform: uppercase; letter-spacing: 0.04em; }
+.recap h2 { margin: 0 0 12px; font: 800 1.3rem/1 var(--f-display); text-transform: uppercase; letter-spacing: 0.04em; }
 .recap dl { display: grid; gap: 10px; margin: 0; }
 .recap dt { font: 700 0.78rem/1 var(--f-display); letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); }
 .recap dd { margin: 3px 0 0; white-space: pre-line; }
@@ -87,7 +87,7 @@ legend:focus { outline: none; }
 .result { padding: clamp(28px, 5vw, 56px); border-radius: 26px; background: #fff; border: 1px solid var(--line); text-align: left; }
 .result[hidden] { display: none; }
 .result:focus { outline: none; }
-.result h2 { margin: 0 0 12px; font: 800 clamp(2.2rem, 6vw, 4rem) / 0.9 var(--f-display); text-transform: uppercase; }
+.result :is(h1, h2) { margin: 0 0 12px; font: 800 clamp(2.2rem, 6vw, 4rem) / 0.9 var(--f-display); text-transform: uppercase; }
 .result p { margin: 0 0 14px; max-width: 56ch; color: var(--ink-soft); }
 .result a { font-weight: 700; }
 .result.bad { border-color: #e7b3ad; background: #fff8f7; }

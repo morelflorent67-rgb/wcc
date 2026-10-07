@@ -38,6 +38,9 @@ const { label, items, accent = 'orange', reverse = false, moreHref, moreLabel, d
     )}
   </div>
   <div class="track">
+    <button type="button" class="mq-pause" aria-label={`Mettre en pause le défilement : ${label}`} aria-pressed="false" hidden>
+      <svg class="ic" aria-hidden="true"><use href="#i-pause" data-pause-icon /></svg>
+    </button>
     <div class="mq" style={`--dur:${duration}s`} data-reverse={reverse ? '' : undefined}>
       {[false, true].map((dup) => (
         <ul aria-label={dup ? undefined : label} aria-hidden={dup ? 'true' : undefined}>
@@ -63,7 +66,7 @@ const { label, items, accent = 'orange', reverse = false, moreHref, moreLabel, d
   .trow.blue { --acc: var(--blue); }
   .lab {
     flex: none; display: flex; flex-direction: column; justify-content: center; gap: 8px;
-    min-width: 270px; padding: 20px var(--pad); border-right: 1px solid var(--line);
+    min-width: 300px; padding: 20px var(--pad); border-right: 1px solid var(--line);
   }
   .lab-t {
     display: flex; align-items: center; gap: 12px;
@@ -71,20 +74,27 @@ const { label, items, accent = 'orange', reverse = false, moreHref, moreLabel, d
   }
   .lab-t::before { content: ''; width: 12px; height: 12px; border-radius: 50%; background: var(--acc); flex: none; }
   .lab-more {
-    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; padding-left: 24px;
+    display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; padding: 4px 0 4px 24px;
     font: 600 0.88rem var(--f-body); color: var(--mute); text-decoration: underline; text-underline-offset: 3px;
   }
   .lab-more:hover { color: var(--ink); }
   .lab-more:hover .ic { transform: translate(2px, -2px); }
 
   .track {
-    flex: 1; min-width: 0; overflow: hidden; display: flex; align-items: center;
+    flex: 1; min-width: 0; overflow: hidden; display: flex; align-items: center; position: relative;
     -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
     mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
   }
   .mq { display: flex; width: max-content; animation: marq var(--dur, 60s) linear infinite; will-change: transform; }
   .mq[data-reverse] { animation-direction: reverse; }
-  .track:hover .mq, .track:focus-within .mq { animation-play-state: paused; }
+  .track:hover .mq, .trow[data-paused] .mq { animation-play-state: paused; }
+  .mq-pause {
+    position: absolute; right: 8px; bottom: 6px; z-index: 2; width: 28px; height: 28px; padding: 0; display: grid; place-items: center;
+    border-radius: 50%; border: 1px solid var(--line); background: rgba(255, 255, 255, 0.92); color: var(--ink); cursor: pointer;
+  }
+  .mq-pause[hidden] { display: none; }
+  .mq-pause .ic { width: 14px; height: 14px; }
+  .mq-pause:hover { background: var(--ink); color: #fff; }
   .mq ul { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; }
   .mq li { display: flex; align-items: center; padding: 14px 0; }
   .mq li::after {
@@ -101,6 +111,7 @@ const { label, items, accent = 'orange', reverse = false, moreHref, moreLabel, d
   @keyframes marq { to { transform: translateX(-50%); } }
 
   @media (prefers-reduced-motion: reduce) {
+    .mq-pause { display: none; }
     .mq { animation: none; width: auto; flex-wrap: wrap; }
     .mq ul[aria-hidden] { display: none; }
     .mq ul { flex-wrap: wrap; row-gap: 6px; }
@@ -113,3 +124,20 @@ const { label, items, accent = 'orange', reverse = false, moreHref, moreLabel, d
     .lab-more { padding-left: 0; }
   }
 </style>
+
+<script>
+  // Bouton de pause (WCAG 2.2.2) : affiché seulement avec JavaScript et si le défilement est actif
+  document.querySelectorAll<HTMLElement>('.trow').forEach((row) => {
+    const btn = row.querySelector<HTMLButtonElement>('.mq-pause');
+    if (!btn) return;
+    btn.hidden = false;
+    const icon = btn.querySelector('use');
+    const label = btn.getAttribute('aria-label') ?? '';
+    btn.addEventListener('click', () => {
+      const paused = row.toggleAttribute('data-paused');
+      btn.setAttribute('aria-pressed', String(paused));
+      btn.setAttribute('aria-label', paused ? label.replace('Mettre en pause', 'Reprendre') : label);
+      icon?.setAttribute('href', paused ? '#i-play' : '#i-pause');
+    });
+  });
+</script>
