@@ -1,0 +1,70 @@
+---
+import Base from './Base.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { Image } from 'astro:assets';
+import logoMark from '../assets/brand/logo-wcc-mark.webp';
+import site from '../data/site.json';
+
+interface Props {
+  title: string;
+  description: string;
+  heading: string;
+  lead?: string;
+  jsonLd?: Record<string, unknown>;
+  /** Page à ne pas faire indexer (ex. pages légales incomplètes) */
+  noindex?: boolean;
+}
+const { title, description, heading, lead, jsonLd, noindex } = Astro.props;
+---
+<Base title={title} description={description} jsonLd={jsonLd} noindex={noindex}>
+  <header class="top">
+    <a class="brand" href="/" aria-label="World Car Carrosserie — accueil">
+      <Image src={logoMark} alt="WCC" width={120} height={35} densities={[1, 2]} loading="eager" />
+    </a>
+    <nav aria-label="Espaces">
+      <a href="/carrosserie/">Carrosserie</a>
+      <a href="/mecanique/">Mécanique</a>
+      <a class="tel" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
+    </nav>
+  </header>
+  <main id="contenu">
+    <div class="head">
+      <p class="label">Informations</p>
+      <h1>{heading}</h1>
+      {lead && <p class="lead">{lead}</p>}
+    </div>
+    <div class="body"><slot /></div>
+  </main>
+  <SiteFooter />
+</Base>
+
+<style>
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px var(--pad); background: var(--white); border-bottom: 1px solid var(--line); }
+  .brand { display: flex; }
+  .brand :global(img) { height: 36px; width: auto; }
+  nav { display: flex; align-items: center; gap: 6px 22px; flex-wrap: wrap; font: 600 0.95rem var(--f-body); }
+  nav a { text-decoration: none; padding: 8px 0; }
+  nav a:hover { text-decoration: underline; }
+  .tel { font-weight: 700; }
+  @media (max-width: 560px) { .tel { display: none; } }
+
+  main { background: var(--paper); padding: clamp(40px, 7vw, 96px) var(--pad) clamp(60px, 9vw, 120px); }
+  .head, .body { max-width: 880px; margin: 0 auto; }
+  .label { margin: 0 0 10px; font: 700 0.86rem var(--f-display); letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); }
+  h1 { margin: 0; font: 800 clamp(2.6rem, 7vw, 5rem) / 0.92 var(--f-display); text-transform: uppercase; }
+  .lead { margin: 18px 0 0; font-size: 1.15rem; line-height: 1.55; color: var(--ink-soft); max-width: 62ch; }
+  .body { margin-top: clamp(32px, 5vw, 56px); }
+
+  /* Mise en forme du texte courant des pages d'information */
+  .body :global(h2) { margin: 2.2em 0 0.5em; font: 800 clamp(1.5rem, 3vw, 2rem) / 1.05 var(--f-display); text-transform: uppercase; }
+  .body :global(h2:first-child) { margin-top: 0; }
+  .body :global(p), .body :global(li), .body :global(dd) { line-height: 1.65; color: var(--ink-soft); }
+  .body :global(p) { margin: 0 0 1em; max-width: 68ch; }
+  .body :global(ul) { margin: 0 0 1em; padding-left: 1.2em; max-width: 68ch; }
+  .body :global(a) { text-decoration: underline; text-underline-offset: 3px; }
+  .body :global(dl.id) { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 0; margin: 0 0 1em; border-top: 1px solid var(--line); }
+  .body :global(dl.id dt), .body :global(dl.id dd) { margin: 0; padding: 12px 0; border-bottom: 1px solid var(--line); }
+  .body :global(dl.id dt) { font-weight: 600; color: var(--ink); padding-right: 16px; }
+  .body :global(.todo) { background: #fff1b8; color: #5b4300; padding: 1px 8px; border-radius: 4px; font-style: italic; font-size: 0.92em; }
+  @media (max-width: 560px) { .body :global(dl.id) { grid-template-columns: 1fr; } .body :global(dl.id dt) { border-bottom: 0; padding-bottom: 0; } }
+</style>

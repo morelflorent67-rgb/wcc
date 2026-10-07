@@ -1,7 +1,7 @@
 # WCC — notes de reprise
 
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
-Dernière mise à jour : 7 octobre 2026 (rien de poussé ; 26 fiches mécanique rédigées, direction « A Affiche » appliquée, promo mécanique en place).
+Dernière mise à jour : 7 octobre 2026 (rien de poussé ; 26 fiches mécanique, direction « A Affiche », promo mécanique, pages Accès/Mentions/Confidentialité, SEO de base).
 
 ## Le projet en bref
 
@@ -81,7 +81,7 @@ pour les `<img>` produits par `<Image>`).
 ```bash
 npm run dev     # site : http://127.0.0.1:4321 (proxy /api -> 8081)
 npm run php     # PHP local : http://127.0.0.1:8081 (racine du dépôt, config tools/php-dev.ini)
-npm run build   # astro build + copie sûre de api/ dans dist/api (tools/copy_api.mjs)
+npm run build   # astro build (SITE_URL=https://… pour canonical/sitemap/og:image, PUBLIC_INDEXABLE=true pour indexer) + copie sûre de api/ dans dist/api (tools/copy_api.mjs)
 npm run check   # astro check (TypeScript 6 requis : TS 7 non pris en charge)
 npm run links   # après un build : vérifie les liens internes de dist/ (tools/check_links.py)
 ```
@@ -136,9 +136,17 @@ Pas encore fait (ordre conseillé) :
    disponibilités », « bris de glace : garantie dédiée », méthodes de débosselage/grêle (sans repeinture selon l'état de la peinture),
    et la liste des 31 assureurs présentés comme « partenaires » (liste issue de la fiche Acoat : à confirmer qu'elle correspond à WCC).
    Photos provisoires réutilisées (grêle = cabine de peinture, débosselage = polissage) : à remplacer par de vraies photos.
-3. Pages `/acces-horaires/`, `/mentions-legales/`, `/confidentialite/` (identité juridique, SIRET, responsable de publication,
-   durée de conservation : informations à obtenir ; ne pas les inventer).
-4. SEO : sitemap (variable `SITE_URL`), JSON-LD par page, image Open Graph, vérification des titres/descriptions uniques.
+3. ~~Pages `/acces-horaires/`, `/mentions-legales/`, `/confidentialite/`~~ **faites le 7 octobre 2026** (gabarit `src/layouts/InfoLayout.astro`).
+   Identité juridique dans `src/data/legal.json` : tous les champs valent `null` (marqués « à compléter » à l'écran, avertis au build) ; tant
+   qu'il en manque, les deux pages légales sont en `noindex` et hors sitemap. **À obtenir de WCC** : dénomination, forme, SIRET, RCS/RM, TVA,
+   directeur de publication, e-mail, hébergeur, médiateur de la consommation, durées de conservation (demandes, photos). Le texte de confidentialité décrit
+   le fonctionnement réel (aucun cookie ni service tiers, stockage de session du formulaire, IP hachée et supprimée après 1 h : `api/submit.php` purge
+   `storage/ratelimit`) : à relire si on ajoute une mesure d'audience ou un service externe. Le texte « Marques, logos et images » dit que les assureurs
+   cités sont ceux avec lesquels des dossiers « peuvent être traités » (liste Acoat à confirmer).
+4. SEO — **fait en base** : titres/descriptions uniques et de longueur correcte sur toutes les pages (contrôle : script d'audit sur `dist/`), canonical +
+   sitemap (sans pages « merci » ni légales) et `og:image` (`public/og.png`, source `design/og/og.html`) seulement si `SITE_URL` est défini au build ;
+   `PUBLIC_INDEXABLE=true` pour autoriser l'indexation (sinon `noindex` partout) ; JSON-LD `AutoBodyShop/AutoRepair` sur le portail et `/acces-horaires/`.
+   Reste à la mise en ligne : `public/robots.txt` (actuellement `Disallow: /`) à remplacer par `Allow: /` + lien du sitemap.
 5. Qualité : Lighthouse, axe, navigation clavier, réduction des animations, mobile, liens internes.
 6. Déploiement : documentation `DEPLOIEMENT.md` (OVH : dossier `www`, espace privé hors webroot pour `storage_dir`, SMTP/mail(),
    secrets), guide `CONTENU.md`, workflow GitHub Actions → FTPS **manuel et sans secrets** tant que rien n'est validé. Test réel

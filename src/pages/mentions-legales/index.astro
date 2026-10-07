@@ -1,4 +1,97 @@
 ---
-import PageStub from "../../layouts/PageStub.astro";
+import InfoLayout from '../../layouts/InfoLayout.astro';
+import site from '../../data/site.json';
+import legal from '../../data/legal.json';
+
+const { publisher: p, host: h, mediator: m } = legal;
+const missing = [
+  ...Object.entries(p).filter(([, v]) => !v).map(([k]) => `publisher.${k}`),
+  ...Object.entries(h).filter(([, v]) => !v).map(([k]) => `host.${k}`),
+  ...Object.entries(m).filter(([, v]) => !v).map(([k]) => `mediator.${k}`),
+];
+if (missing.length) {
+  console.warn(`[mentions légales] ${missing.length} champ(s) à compléter dans src/data/legal.json : ${missing.join(', ')}`);
+}
 ---
-<PageStub title="Mentions légales" section="Informations" />
+<InfoLayout
+  title="Mentions légales — World Car Carrosserie"
+  description="Mentions légales du site de World Car Carrosserie, garage de carrosserie et de mécanique multimarque à Bischheim."
+  heading="Mentions légales"
+  lead={`Dernière mise à jour : ${new Date(legal.updatedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}.`}
+  noindex={missing.length > 0}
+>
+  <h2>Éditeur du site</h2>
+  <dl class="id">
+    <dt>Nom commercial</dt><dd>{site.name}</dd>
+    <dt>Dénomination sociale</dt><dd>{p.legalName ?? <span class="todo">à compléter</span>}</dd>
+    <dt>Forme juridique</dt><dd>{p.legalForm ?? <span class="todo">à compléter</span>}</dd>
+    <dt>Capital social</dt><dd>{p.shareCapital ?? <span class="todo">à compléter (si applicable)</span>}</dd>
+    <dt>Adresse</dt><dd>{site.address.street}, {site.address.postalCode} {site.address.city}</dd>
+    <dt>Téléphone</dt><dd><a href={`tel:${site.phone.tel}`}>{site.phone.display}</a></dd>
+    <dt>E-mail</dt><dd>{p.email ? <a href={`mailto:${p.email}`}>{p.email}</a> : <span class="todo">à compléter</span>}</dd>
+    <dt>SIRET</dt><dd>{p.siret ?? <span class="todo">à compléter</span>}</dd>
+    <dt>RCS / répertoire des métiers</dt><dd>{p.rcs ?? <span class="todo">à compléter</span>}</dd>
+    <dt>N° de TVA intracommunautaire</dt><dd>{p.vatNumber ?? <span class="todo">à compléter</span>}</dd>
+    <dt>Directeur de la publication</dt><dd>{p.publicationDirector ?? <span class="todo">à compléter</span>}</dd>
+  </dl>
+
+  <h2>Hébergement</h2>
+  <dl class="id">
+    <dt>Hébergeur</dt><dd>{h.name ?? <span class="todo">à compléter</span>}</dd>
+    <dt>Adresse</dt><dd>{h.address ?? <span class="todo">à compléter</span>}</dd>
+    <dt>Téléphone</dt><dd>{h.phone ?? <span class="todo">à compléter</span>}</dd>
+  </dl>
+
+  <h2>Médiation de la consommation</h2>
+  <p>
+    Conformément au code de la consommation, tout consommateur peut recourir gratuitement à un médiateur en vue de la
+    résolution amiable d’un litige qui l’oppose à un professionnel.
+  </p>
+  <dl class="id">
+    <dt>Médiateur</dt><dd>{m.name ?? <span class="todo">à compléter</span>}</dd>
+    <dt>Adresse</dt><dd>{m.address ?? <span class="todo">à compléter</span>}</dd>
+    <dt>Site internet</dt><dd>{m.website ?? <span class="todo">à compléter</span>}</dd>
+  </dl>
+
+  <h2>Informations sur les prestations et les prix</h2>
+  <p>
+    Les prix « à partir de » affichés dans l’espace mécanique sont des prix d’appel : ils ne constituent ni un devis ni un
+    engagement. Le montant définitif dépend du véhicule et de l’intervention nécessaire ; il est communiqué dans un
+    devis, avant toute intervention. Une demande de devis envoyée depuis le site n’est pas une réservation.
+  </p>
+  <p>
+    Les descriptions des prestations ont une valeur d’information générale. Elles ne remplacent pas l’examen du
+    véhicule par nos équipes.
+  </p>
+
+  <h2>Marques, logos et images</h2>
+  <p>
+    Les noms de marques, de constructeurs et de compagnies d’assurance cités sur le site, ainsi que leurs logos, sont la
+    propriété de leurs titulaires. Leur présence indique les marques de véhicules prises en charge et les assureurs
+    avec lesquels des dossiers peuvent être traités ; elle n’implique aucune affiliation, aucun parrainage ni aucune
+    représentation officielle.
+  </p>
+  <p>
+    Certaines photographies du site sont des images d’illustration et ne représentent pas nécessairement les locaux ou
+    les réalisations de {site.name}.
+  </p>
+
+  <h2>Propriété intellectuelle</h2>
+  <p>
+    Les textes, la mise en page et les éléments graphiques propres à ce site sont protégés par le droit d’auteur. Toute
+    reproduction sans autorisation écrite préalable de {site.name} est interdite.
+  </p>
+
+  <h2>Données personnelles et cookies</h2>
+  <p>
+    Les informations sur le traitement des données saisies dans les formulaires sont détaillées dans la{' '}
+    <a href="/confidentialite/">politique de confidentialité</a>. Ce site ne dépose pas de cookie de suivi ni de
+    publicité.
+  </p>
+
+  <h2>Signaler une erreur</h2>
+  <p>
+    Une information vous semble inexacte ou obsolète ? Appelez-nous au{' '}
+    <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>, nous la corrigerons.
+  </p>
+</InfoLayout>

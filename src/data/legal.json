@@ -1,0 +1,32 @@
+{
+  "_note": "Identité juridique de l'éditeur : à compléter avec les informations RÉELLES de WCC (jamais d'invention). Tant qu'un champ vaut null, la page affiche « à compléter » et le build le signale. Renseigner aussi 'retention' une fois la durée décidée avec WCC. 'mediator' = médiateur de la consommation auquel le professionnel adhère (obligation légale pour les ventes aux consommateurs).",
+  "publisher": {
+    "legalName": null,
+    "legalForm": null,
+    "shareCapital": null,
+    "siret": null,
+    "rcs": null,
+    "vatNumber": null,
+    "publicationDirector": null,
+    "email": null
+  },
+  "host": {
+    "name": null,
+    "address": null,
+    "phone": null
+  },
+  "privacy": {
+    "retention": {
+      "requests": null,
+      "photos": null
+    },
+    "controllerContact": null
+  },
+  "design": "Site réalisé pour World Car Carrosserie.",
+  "updatedAt": "2026-10-07",
+  "mediator": {
+    "name": null,
+    "address": null,
+    "website": null
+  }
+}

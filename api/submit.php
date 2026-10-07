@@ -106,6 +106,12 @@ foreach (['ratelimit', 'outbox', 'uploads'] as $d) {
 $ipKey = hash('sha256', ($_SERVER['REMOTE_ADDR'] ?? '') . '|' . ($config['secret'] ?? 'wcc'));
 $rlFile = "$storage/ratelimit/$ipKey.json";
 $now = time();
+// Nettoyage : les empreintes de plus d'une heure n'ont plus d'utilité pour la limite par IP
+foreach ((array) glob("$storage/ratelimit/*.json") as $old) {
+    if (is_file($old) && filemtime($old) < $now - 3600) {
+        @unlink($old);
+    }
+}
 $hits = is_file($rlFile) ? (json_decode((string) file_get_contents($rlFile), true) ?: []) : [];
 $hits = array_values(array_filter($hits, static fn ($t) => is_int($t) && $t > $now - 3600));
 if (count($hits) >= (int) ($config['max_per_hour'] ?? 6)) {

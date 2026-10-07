@@ -1,4 +1,86 @@
 ---
-import PageStub from "../../layouts/PageStub.astro";
+import InfoLayout from '../../layouts/InfoLayout.astro';
+import site from '../../data/site.json';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': ['AutoBodyShop', 'AutoRepair'],
+  name: site.name,
+  alternateName: site.shortName,
+  telephone: site.phone.tel,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address.street,
+    postalCode: site.address.postalCode,
+    addressLocality: site.address.city,
+    addressCountry: site.address.country,
+  },
+  openingHoursSpecification: site.hours.schema.map((h) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: h.days,
+    opens: h.opens,
+    closes: h.closes,
+  })),
+};
 ---
-<PageStub title="Accès et horaires" section="Informations" />
+<InfoLayout
+  title="Accès et horaires — World Car Carrosserie à Bischheim"
+  description="World Car Carrosserie, 5a avenue de l’Énergie à Bischheim : adresse, téléphone, horaires d’ouverture et itinéraire. Carrosserie et mécanique multimarque."
+  heading="Accès et horaires"
+  lead="Carrosserie et mécanique multimarque, au même endroit à Bischheim."
+  jsonLd={jsonLd}
+>
+  <div class="cards">
+    <section aria-labelledby="adr">
+      <h2 id="adr">Adresse</h2>
+      <address>
+        {site.name}<br />
+        {site.address.street}<br />
+        {site.address.postalCode} {site.address.city}
+      </address>
+      <a class="btn" href={site.directionsUrl} rel="noopener">Itinéraire <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+    </section>
+
+    <section aria-labelledby="tel">
+      <h2 id="tel">Téléphone</h2>
+      <p><a class="tel" href={`tel:${site.phone.tel}`}>{site.phone.display}</a></p>
+      <p class="small">Pour une question sur une prestation ou une demande en cours.</p>
+    </section>
+
+    <section aria-labelledby="hor">
+      <h2 id="hor">Horaires</h2>
+      <p class="hours"><strong>{site.hours.label}</strong><br />{site.hours.slots.join(' et ')}</p>
+    </section>
+  </div>
+
+  <h2>Demander un devis</h2>
+  <p>
+    Pas besoin de vous déplacer pour une première estimation : décrivez votre besoin avec le formulaire de l’espace
+    concerné. Pour la carrosserie, des photos des dégâts nous aident à vous répondre.
+  </p>
+  <div class="acts">
+    <a class="o" href="/carrosserie/contact/">Devis carrosserie <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+    <a class="b" href="/mecanique/contact/">Devis mécanique <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+  </div>
+  <p class="small">Une demande de devis n’est pas une réservation.</p>
+</InfoLayout>
+
+<style>
+  .cards { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-bottom: clamp(36px, 5vw, 56px); }
+  .cards section { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .cards :global(h2) { margin: 0; font: 700 0.86rem var(--f-display); letter-spacing: 0.2em; text-transform: uppercase; color: var(--mute); }
+  address { font: 600 1.25rem/1.4 var(--f-body); font-style: normal; color: var(--ink); }
+  .cards p { margin: 0; }
+  .tel { font: 800 clamp(2rem, 4vw, 2.6rem) / 1 var(--f-display); text-decoration: none; color: var(--ink); }
+  .hours { font-size: 1.25rem; line-height: 1.45; color: var(--ink); }
+  .small { font-size: 0.92rem; color: var(--mute); }
+  .btn, .acts a {
+    display: inline-flex; align-items: center; gap: 12px; padding: 13px 22px; border-radius: 999px; border: 1.5px solid var(--ink);
+    font: 700 0.98rem var(--f-body); text-decoration: none; transition: background 0.25s, color 0.25s;
+  }
+  .btn:hover { background: var(--ink); color: #fff; }
+  .acts { display: flex; flex-wrap: wrap; gap: 12px; margin: 18px 0 14px; }
+  .acts a.o { background: var(--orange); border-color: var(--orange); color: #111; }
+  .acts a.b { background: var(--blue); border-color: var(--blue); color: #fff; }
+  .acts a:hover { filter: brightness(0.92); }
+</style>

@@ -11,7 +11,8 @@ export default defineConfig({
   site,
   trailingSlash: 'always',
   build: { format: 'directory' },
-  integrations: site ? [sitemap()] : [],
+  // Pages « merci » (noindex) et pages légales (indexation décidée page par page) absentes du plan de site
+  integrations: site ? [sitemap({ filter: (page) => !/\/(merci|mentions-legales|confidentialite)\/$/.test(page) })] : [],
   devToolbar: { enabled: false },
   // En développement, les appels à /api sont envoyés au serveur PHP local (npm run php)
   vite: { server: { proxy: { '/api': 'http://127.0.0.1:8081' } } },

@@ -1,4 +1,100 @@
 ---
-import PageStub from "../../layouts/PageStub.astro";
+import InfoLayout from '../../layouts/InfoLayout.astro';
+import site from '../../data/site.json';
+import legal from '../../data/legal.json';
+
+const { publisher: p, privacy: pv } = legal;
+const contact = (pv.controllerContact ?? p.email) as string | null;
+const missing = [
+  !p.legalName && 'publisher.legalName',
+  !contact && 'privacy.controllerContact',
+  !pv.retention.requests && 'privacy.retention.requests',
+  !pv.retention.photos && 'privacy.retention.photos',
+].filter(Boolean);
+if (missing.length) {
+  console.warn(`[confidentialité] à compléter dans src/data/legal.json : ${missing.join(', ')}`);
+}
 ---
-<PageStub title="Confidentialité" section="Informations" />
+<InfoLayout
+  title="Confidentialité et données personnelles — World Car Carrosserie"
+  description="Comment World Car Carrosserie utilise les informations et les photos envoyées avec une demande de devis, et comment exercer vos droits."
+  heading="Confidentialité"
+  lead="Ce que nous faisons des informations que vous nous envoyez, et comment exercer vos droits."
+  noindex={missing.length > 0}
+>
+  <h2>Qui est responsable de vos données ?</h2>
+  <p>
+    {p.legalName ?? <span class="todo">dénomination sociale à compléter</span>}
+    (« {site.name} »), {site.address.street}, {site.address.postalCode} {site.address.city}.
+    Contact pour toute question sur vos données :{' '}
+    {contact ? <a href={contact.includes('@') ? `mailto:${contact}` : undefined}>{contact}</a> : <span class="todo">adresse de contact à compléter</span>}{' '}
+    ou <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.
+  </p>
+
+  <h2>Quelles données collectons-nous ?</h2>
+  <p>Uniquement ce que vous saisissez dans les formulaires de demande de devis :</p>
+  <ul>
+    <li>vos coordonnées : nom, numéro de téléphone, adresse e-mail et votre préférence de contact ;</li>
+    <li>des informations sur le véhicule : marque, modèle, immatriculation, et, pour la mécanique, année, motorisation et kilométrage ;</li>
+    <li>la description de votre besoin : prestations choisies, symptômes, intervention de carrosserie, zones concernées, commentaire libre ;</li>
+    <li>pour la carrosserie, les photos que vous joignez (facultatives).</li>
+  </ul>
+  <p>
+    Merci de n’indiquer dans les commentaires ni information sensible, ni donnée sans rapport avec votre demande. Les
+    photos peuvent faire apparaître une plaque d’immatriculation ou des personnes : joignez de préférence des photos
+    centrées sur le véhicule.
+  </p>
+
+  <h2>Pourquoi, et sur quel fondement ?</h2>
+  <p>
+    Vos informations servent uniquement à répondre à votre demande de devis et à vous recontacter à ce sujet. Le
+    fondement est votre consentement, que vous donnez en cochant la case du formulaire, ainsi que l’exécution de
+    mesures précontractuelles prises à votre demande. Nous n’utilisons pas ces données pour de la prospection
+    commerciale, et nous ne les vendons pas.
+  </p>
+
+  <h2>Qui reçoit vos données ?</h2>
+  <p>
+    L’équipe de {site.name}, qui traite votre demande. Le site est hébergé et les messages sont acheminés par des
+    prestataires techniques qui n’ont pas vocation à les exploiter pour leur propre compte
+    (<a href="/mentions-legales/">hébergeur indiqué dans les mentions légales</a>).
+  </p>
+
+  <h2>Combien de temps les conservons-nous ?</h2>
+  <ul>
+    <li>
+      Demandes de devis (coordonnées, véhicule, description) :{' '}
+      {pv.retention.requests ?? <span class="todo">durée à compléter</span>}.
+    </li>
+    <li>
+      Photos jointes :{' '}
+      {pv.retention.photos ?? <span class="todo">durée à compléter</span>}.
+      Elles sont enregistrées dans un espace privé, non accessible depuis le site.
+    </li>
+    <li>
+      Limite anti-abus : pour éviter les envois en rafale, l’adresse IP du visiteur est transformée en empreinte
+      non réversible ; cette empreinte est supprimée au bout d’une heure.
+    </li>
+  </ul>
+
+  <h2>Cookies et suivi</h2>
+  <p>
+    Ce site ne dépose aucun cookie de mesure d’audience, de publicité ou de suivi, et n’appelle aucun service tiers pour
+    afficher ses polices ou ses pages. Pendant que vous remplissez un formulaire, votre saisie est conservée
+    temporairement dans la mémoire de votre navigateur (stockage de session) pour que vous ne la perdiez pas en
+    revenant en arrière. Elle n’est pas envoyée tant que vous ne validez pas, et elle disparaît à la fermeture de
+    l’onglet.
+  </p>
+
+  <h2>Vos droits</h2>
+  <p>
+    Vous pouvez demander l’accès à vos données, leur rectification ou leur effacement, limiter ou vous opposer à leur
+    traitement, retirer votre consentement à tout moment, et demander leur portabilité quand elle s’applique. Écrivez-nous{' '}
+    {contact ? <> à <strong>{contact}</strong></> : <span class="todo">(adresse de contact à compléter)</span>}{' '}
+    en précisant le nom et le téléphone utilisés dans votre demande ; nous pourrons vous demander de justifier de votre identité.
+  </p>
+  <p>
+    Si vous estimez que vos droits ne sont pas respectés, vous pouvez adresser une réclamation à la{' '}
+    <a href="https://www.cnil.fr/fr/plaintes" rel="noopener">CNIL</a> (Commission nationale de l’informatique et des libertés).
+  </p>
+</InfoLayout>
