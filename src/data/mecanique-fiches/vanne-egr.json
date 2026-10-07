@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Vanne EGR à Bischheim : nettoyage et remplacement | WCC",
+  "seoDescription": "Voyant moteur, perte de puissance, fumée : contrôle, nettoyage ou remplacement de la vanne EGR à Bischheim, toutes marques. Prix d’appel affiché, devis adapté.",
+  "lead": "Encrassée, la vanne EGR perturbe le moteur et peut allumer le voyant. Nous la contrôlons, la nettoyons ou la remplaçons selon son état.",
+  "image": "mecanique-vanne-egr.jpg",
+  "imageAlt": "Illustration : collecteur et organes d’un moteur en acier inoxydable",
+  "need": [
+    "La vanne EGR (recirculation des gaz d’échappement) renvoie une partie des gaz brûlés vers l’admission pour réduire certaines émissions polluantes. Elle est très répandue sur les moteurs diesel et se trouve aussi sur de nombreux moteurs essence.",
+    "Au fil des kilomètres, la suie et les dépôts l’encrassent : elle peut rester bloquée ouverte ou fermée, ce qui dégrade le fonctionnement du moteur et peut déclencher un voyant ou un mode dégradé.",
+    "Selon l’état de la vanne et du circuit associé, une intervention peut consister en un nettoyage, en un remplacement de la vanne ou de ses éléments (capteur, refroidisseur de gaz, conduits). Un diagnostic précède le devis."
+  ],
+  "signs": [
+    "Le voyant moteur ou un voyant de dépollution s’allume.",
+    "Le moteur manque de puissance ou passe en mode dégradé.",
+    "Le ralenti est instable ou le moteur cale.",
+    "Une fumée noire sort de l’échappement.",
+    "La consommation de carburant augmente.",
+    "Des à-coups apparaissent à l’accélération."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez les symptômes",
+      "text": "Voyant, perte de puissance, fumée, à-coups : précisez quand ils apparaissent."
+    },
+    {
+      "title": "Nous établissons le diagnostic",
+      "text": "Lecture des codes défaut et contrôle de la vanne et du circuit pour confirmer qu’elle est en cause."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il indique si un nettoyage suffit ou si un remplacement est nécessaire, avec les pièces prévues."
+    },
+    {
+      "title": "Nous intervenons",
+      "text": "La vanne est nettoyée ou remplacée, le circuit contrôlé, puis le fonctionnement est vérifié à l’essai."
+    }
+  ],
+  "priceFactors": [
+    "Le moteur : accessibilité de la vanne et temps de dépose.",
+    "Le choix entre nettoyage et remplacement de la vanne.",
+    "Les éléments associés à contrôler ou à remplacer : capteurs, refroidisseur de gaz, conduits, joints.",
+    "Le diagnostic préalable, qui peut être facturé séparément s’il n’est pas inclus.",
+    "Les opérations complémentaires nécessaires si l’admission est encrassée."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule (diesel ou essence).",
+    "Le kilométrage et le type de trajets : courts, ville, autoroute.",
+    "Les voyants allumés et le moment où les symptômes apparaissent.",
+    "Les interventions récentes sur le moteur ou l’échappement."
+  ],
+  "faq": [
+    {
+      "q": "Peut-on rouler avec une vanne EGR défectueuse ?",
+      "a": "Le véhicule peut parfois rouler, mais avec des performances dégradées, une pollution accrue et un risque d’aggraver l’encrassement. Mieux vaut faire contrôler rapidement."
+    },
+    {
+      "q": "Nettoyage ou remplacement : lequel choisir ?",
+      "a": "Si la vanne n’est pas endommagée, un nettoyage peut suffire. Si elle est bloquée, usée ou défaillante électriquement, le remplacement est préférable. Le diagnostic permet de trancher."
+    },
+    {
+      "q": "Le voyant moteur signifie-t-il toujours que la vanne EGR est en cause ?",
+      "a": "Non. Un voyant moteur a de nombreuses origines possibles. La lecture des codes défaut oriente le diagnostic, qui confirme ou non la vanne EGR."
+    },
+    {
+      "q": "Peut-on supprimer ou neutraliser la vanne EGR ?",
+      "a": "Non : ce dispositif de dépollution fait partie de l’homologation du véhicule. Nous le réparons ou le remplaçons."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : nettoyage ou remplacement, accessibilité, éléments associés. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "diagnostic-electronique",
+    "decalaminage",
+    "echappement"
+  ]
+}

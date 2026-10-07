@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Injecteurs à Bischheim : diagnostic et remplacement | WCC",
+  "seoDescription": "Démarrage difficile, ratés, fumée ou surconsommation : diagnostic et remplacement des injecteurs à Bischheim, toutes marques. Devis sur demande.",
+  "lead": "Un injecteur défaillant dérègle le moteur. Nous établissons un diagnostic avant de remplacer quoi que ce soit.",
+  "image": "mecanique-injecteur.jpg",
+  "imageAlt": "Illustration : rampe d’injection et connecteurs rouges sur un moteur",
+  "need": [
+    "Les injecteurs pulvérisent le carburant dans le moteur, au bon moment et en bonne quantité. S’ils s’encrassent, fuient ou ne s’ouvrent plus correctement, le moteur fonctionne mal : démarrage difficile, ratés, fumée, perte de puissance.",
+    "Les symptômes ressemblent à ceux d’autres pannes (bougies, capteurs, filtre à carburant). C’est pourquoi un diagnostic précède toute réparation : il évite de remplacer des pièces qui ne sont pas en cause.",
+    "Selon le moteur, on remplace un injecteur seul ou l’ensemble, et une programmation ou un codage de l’injecteur neuf peut être nécessaire. Le devis précise ce qui est prévu pour votre véhicule."
+  ],
+  "signs": [
+    "Le moteur démarre difficilement, notamment à chaud ou à froid.",
+    "Des ratés ou des à-coups se font sentir, avec un ralenti irrégulier.",
+    "Le moteur manque de puissance ou fume (noire, blanche ou bleue selon la panne).",
+    "La consommation de carburant augmente.",
+    "Le voyant moteur ou un voyant de dépollution s’allume.",
+    "Une odeur de carburant non brûlé se dégage de l’échappement."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez les symptômes",
+      "text": "Démarrage, ratés, fumée, voyant : précisez à quel moment ils apparaissent."
+    },
+    {
+      "title": "Nous établissons le diagnostic",
+      "text": "Lecture des codes défaut et tests pour déterminer si un ou plusieurs injecteurs sont en cause."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille les injecteurs à remplacer, les pièces associées et les opérations de programmation éventuelles."
+    },
+    {
+      "title": "Nous remplaçons les injecteurs",
+      "text": "Les injecteurs défaillants sont remplacés, le circuit est contrôlé et le fonctionnement est vérifié."
+    }
+  ],
+  "priceFactors": [
+    "Le moteur : accessibilité des injecteurs, type d’injection (essence, diesel, injection directe).",
+    "Le nombre d’injecteurs à remplacer.",
+    "Le type de pièce retenu : neuve, d’échange ou remise en état, selon la disponibilité.",
+    "La programmation ou le codage de l’injecteur, nécessaire sur certains moteurs.",
+    "Les pièces associées : joints, rondelles, filtre à carburant, et le diagnostic préalable."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le kilométrage et le type de carburant utilisé.",
+    "Les symptômes constatés et le moment où ils apparaissent.",
+    "Les interventions récentes : bougies, filtres, carburant, nettoyage."
+  ],
+  "faq": [
+    {
+      "q": "Comment savoir si l’injecteur est en cause ?",
+      "a": "Seul un diagnostic permet de le dire : les symptômes ressemblent à ceux d’autres pannes. Il comprend la lecture des codes défaut et des tests adaptés."
+    },
+    {
+      "q": "Faut-il remplacer tous les injecteurs ?",
+      "a": "Pas forcément. Selon le moteur et l’état des injecteurs, on peut en remplacer un seul. Le devis indique ce qui est nécessaire."
+    },
+    {
+      "q": "Un nettoyage peut-il suffire ?",
+      "a": "Dans certains cas d’encrassement léger, un nettoyage est envisageable. Il ne remplace pas un injecteur défaillant : le diagnostic oriente le choix."
+    },
+    {
+      "q": "Qu’appelle-t-on codage d’un injecteur ?",
+      "a": "Sur certains moteurs, chaque injecteur porte un code de calibration à enregistrer dans le calculateur après remplacement. Nous le précisons dans le devis si votre moteur est concerné."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : nombre d’injecteurs, moteur, type de pièce, programmation. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "diagnostic-electronique",
+    "bougies-allumage",
+    "decalaminage"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Entretien de véhicule électrique à Bischheim | WCC",
+  "seoDescription": "Entretien et contrôles adaptés aux véhicules électriques à Bischheim : freins, pneus, suspension, climatisation. Prix d’appel affiché, devis adapté.",
+  "lead": "Un véhicule électrique demande moins d’entretien qu’un thermique, mais pas aucun. Nous contrôlons les organes qui continuent de s’user, selon votre modèle.",
+  "image": "mecanique-entretien-vehicule-electrique.jpg",
+  "imageAlt": "Illustration : câble de recharge branché sur un véhicule électrique",
+  "need": [
+    "Un véhicule électrique n’a ni vidange moteur, ni courroie de distribution, ni embrayage. En revanche, les pneus, les freins, la suspension, les liquides, le circuit de refroidissement et la climatisation vieillissent comme sur n’importe quel véhicule, et souvent plus vite pour les pneus, à cause du poids et du couple.",
+    "L’entretien consiste donc à contrôler régulièrement ces éléments et à les remplacer au bon moment, selon le plan d’entretien du constructeur de votre modèle.",
+    "Chaque modèle a ses particularités : nous partons de votre véhicule pour préciser ce qui est contrôlé et ce qui peut être réalisé. Le périmètre du forfait est confirmé dans le devis."
+  ],
+  "signs": [
+    "L’échéance d’entretien du constructeur (en kilomètres ou en mois) est atteinte ou un voyant d’entretien est allumé.",
+    "Les pneus s’usent plus vite que prévu ou de façon irrégulière.",
+    "Vous remarquez un bruit au freinage ou une pédale différente (les freins s’encrassent quand ils servent peu).",
+    "La climatisation ou le chauffage de l’habitacle est moins efficace.",
+    "Un message ou un voyant apparaît au tableau de bord.",
+    "Vous avez acheté un véhicule électrique d’occasion et souhaitez en connaître l’état général."
+  ],
+  "steps": [
+    {
+      "title": "Vous nous indiquez votre modèle",
+      "text": "Marque, modèle, année et kilométrage permettent de retrouver le plan d’entretien correspondant."
+    },
+    {
+      "title": "Nous précisons le périmètre",
+      "text": "Nous définissons ce qui est contrôlé et remplacé pour votre véhicule, et ce qui relève d’un devis complémentaire."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille les contrôles, les fournitures et les opérations prévues."
+    },
+    {
+      "title": "Nous réalisons l’entretien",
+      "text": "Les contrôles et opérations convenus sont effectués, puis les résultats vous sont expliqués."
+    }
+  ],
+  "priceFactors": [
+    "Le modèle : plan d’entretien, accessibilité des organes, équipements particuliers.",
+    "Les pièces et liquides à remplacer selon l’échéance (liquide de frein, de refroidissement, filtre d’habitacle…).",
+    "L’état des freins et des pneus, qui peut justifier des interventions en plus du contrôle.",
+    "Le périmètre exact du forfait pour votre véhicule : certaines pièces ou consommables peuvent être en supplément.",
+    "Les opérations demandées en complément (climatisation, géométrie…)."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et le kilométrage de votre véhicule.",
+    "Le type de batterie et de motorisation si vous les connaissez.",
+    "L’historique d’entretien et le carnet, si vous les avez.",
+    "Ce que vous avez remarqué : bruit, voyant, usure de pneus, baisse de confort."
+  ],
+  "faq": [
+    {
+      "q": "Un véhicule électrique a-t-il vraiment besoin d’entretien ?",
+      "a": "Oui, même s’il est moindre. Pneus, freins, suspension, liquides, climatisation et filtre d’habitacle restent à surveiller, et le constructeur prévoit des échéances de contrôle."
+    },
+    {
+      "q": "Intervenez-vous sur toutes les marques de véhicules électriques ?",
+      "a": "Nous intervenons sur de nombreuses marques. Précisez votre modèle dans la demande : nous vous indiquerons ce qui peut être réalisé pour votre véhicule."
+    },
+    {
+      "q": "L’entretien comprend-il la batterie de traction ?",
+      "a": "Un entretien courant porte sur les organes cités plus haut. Un contrôle plus poussé de la batterie dépend du modèle et des outils nécessaires : le devis précise ce qui est réalisé."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : modèle, pièces et liquides à remplacer, éventuels suppléments. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "À quelle fréquence entretenir un véhicule électrique ?",
+      "a": "Le constructeur donne les échéances dans le carnet d’entretien, généralement en années et en kilomètres. Indiquez-nous votre modèle pour les retrouver."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "freinage",
+    "pneumatiques",
+    "climatisation"
+  ]
+}

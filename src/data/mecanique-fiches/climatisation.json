@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Climatisation auto à Bischheim : entretien et recharge | WCC",
+  "seoDescription": "Entretien du circuit de climatisation de votre véhicule à Bischheim : contrôle, recharge, recherche de fuite. Toutes marques. Prix d’appel affiché, devis adapté.",
+  "lead": "Une climatisation qui souffle tiède ou qui sent mauvais se contrôle. Nous entretenons le circuit pour retrouver une température agréable.",
+  "image": "mecanique-climatisation.jpg",
+  "imageAlt": "Illustration : aérateurs de climatisation d’un tableau de bord",
+  "need": [
+    "La climatisation refroidit et déshumidifie l’air grâce à un circuit fermé rempli de fluide frigorigène. Même sans panne, le circuit perd un peu de fluide avec les années, et l’efficacité baisse peu à peu.",
+    "Un entretien consiste à contrôler le fonctionnement et l’étanchéité du circuit, à vérifier la pression et à rétablir la charge en fluide, puis à traiter l’habitacle si besoin. Une perte rapide de fluide signale une fuite à rechercher.",
+    "Le type de fluide (R134a, R1234yf…) et la quantité varient selon le véhicule et son année. Le devis précise la quantité de fluide, la recherche de fuite éventuelle et les suppléments prévus : le prix d’appel ne correspond pas à une recharge complète de tous les véhicules."
+  ],
+  "signs": [
+    "L’air soufflé n’est plus assez frais ou met longtemps à refroidir.",
+    "Une odeur désagréable se dégage à l’ouverture des aérateurs.",
+    "De la buée persiste sur le pare-brise malgré la ventilation.",
+    "Un bruit de compresseur ou de ventilateur inhabituel se fait entendre.",
+    "La climatisation ne se déclenche plus ou s’arrête de façon intermittente.",
+    "Le circuit n’a pas été contrôlé depuis plusieurs années."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez ce que vous constatez",
+      "text": "Air tiède, odeur, bruit, buée : précisez depuis quand et dans quelles conditions."
+    },
+    {
+      "title": "Nous contrôlons le circuit",
+      "text": "Pression, étanchéité, compresseur et fonctionnement sont vérifiés, avec recherche de fuite si nécessaire."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise le fluide, sa quantité, les pièces éventuelles et les opérations prévues."
+    },
+    {
+      "title": "Nous intervenons",
+      "text": "Le circuit est remis en état et rechargé selon le devis, puis l’efficacité est contrôlée."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : type de fluide frigorigène exigé et quantité nécessaire.",
+    "La recherche de fuite, avec ou sans traceur, et sa réparation éventuelle.",
+    "Les pièces défaillantes : compresseur, condenseur, évaporateur, déshydrateur, flexibles.",
+    "Le filtre d’habitacle, souvent remplacé à l’occasion.",
+    "Les suppléments : huile du circuit, traitement antibactérien de l’habitacle."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Les symptômes : air tiède, odeur, bruit, buée, et depuis quand.",
+    "La date de la dernière intervention sur la climatisation, si vous la connaissez.",
+    "Le type de climatisation : manuelle ou automatique."
+  ],
+  "faq": [
+    {
+      "q": "À quelle fréquence entretenir la climatisation ?",
+      "a": "Un contrôle tous les deux à trois ans est souvent conseillé, ou dès que l’efficacité baisse. Votre carnet d’entretien peut indiquer une préconisation."
+    },
+    {
+      "q": "La recharge de gaz est-elle comprise dans le prix d’appel ?",
+      "a": "Le prix d’appel correspond à une intervention de base. Le type de fluide, sa quantité, la recherche de fuite et les éventuels suppléments sont précisés dans le devis : ils varient selon le véhicule."
+    },
+    {
+      "q": "Pourquoi ma climatisation sent-elle mauvais ?",
+      "a": "Les moisissures et bactéries se développent dans l’évaporateur et le filtre d’habitacle. Un nettoyage ou le remplacement du filtre, avec un traitement de l’habitacle, peut aider."
+    },
+    {
+      "q": "Faut-il rechercher une fuite ?",
+      "a": "Si le circuit perd rapidement son fluide, oui : une recharge simple ne suffirait pas. Un contrôle d’étanchéité permet de le savoir."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : fluide et quantité, fuite éventuelle, pièces défaillantes, suppléments. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "filtre-habitacle",
+    "entretien-vehicule-electrique",
+    "revision-vidange"
+  ]
+}

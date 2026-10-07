@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Décalaminage moteur à Bischheim, toutes marques | WCC",
+  "seoDescription": "Perte de puissance, fumée, surconsommation : décalaminage du moteur à Bischheim pour limiter l’encrassement, toutes marques. Devis sur demande.",
+  "lead": "Au fil des trajets, les dépôts de calamine encrassent le moteur. Nous le nettoyons pour limiter l’encrassement, après avoir vérifié que c’est bien la cause.",
+  "image": "mecanique-decalaminage.jpg",
+  "imageAlt": "Illustration : compartiment moteur d’une voiture",
+  "need": [
+    "La calamine est un dépôt de carbone qui se forme dans le moteur, l’admission et l’échappement. Elle s’accumule surtout avec les trajets courts et en ville, quand le moteur n’atteint pas sa pleine température, et sur certains moteurs à injection directe.",
+    "En s’accumulant, ces dépôts peuvent perturber la combustion et encrasser des organes comme la vanne EGR ou le filtre à particules : manque de puissance, fumée, surconsommation, régénérations plus fréquentes.",
+    "Plusieurs méthodes de décalaminage existent. Le devis précise celle que nous proposons pour votre moteur. Un décalaminage ne remplace pas une pièce usée : si un élément est défectueux, il faut le réparer."
+  ],
+  "signs": [
+    "Le moteur manque de puissance ou répond moins bien à l’accélération.",
+    "Une fumée noire sort de l’échappement.",
+    "La consommation de carburant augmente.",
+    "Le ralenti est irrégulier ou le moteur cale par moments.",
+    "Votre usage est surtout urbain, avec beaucoup de trajets courts.",
+    "Le voyant moteur ou celui du filtre à particules s’allume régulièrement."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez l’usage et les symptômes",
+      "text": "Type de trajets, motorisation, kilométrage, et ce que vous constatez."
+    },
+    {
+      "title": "Nous vérifions la cause",
+      "text": "Un contrôle permet de s’assurer que l’encrassement est bien en cause avant de décalaminer."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise la méthode de décalaminage proposée et les contrôles associés."
+    },
+    {
+      "title": "Nous réalisons le décalaminage",
+      "text": "L’opération est effectuée, puis le fonctionnement du moteur est contrôlé."
+    }
+  ],
+  "priceFactors": [
+    "Le moteur : essence, diesel, injection directe, accessibilité.",
+    "La méthode de décalaminage retenue.",
+    "L’état d’encrassement des organes associés (vanne EGR, admission, filtre à particules).",
+    "Les contrôles ou diagnostics préalables.",
+    "Les remplacements éventuels de pièces, si un élément est défectueux."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le kilométrage et votre type d’usage : ville, route, autoroute.",
+    "Les symptômes constatés : fumée, perte de puissance, voyants.",
+    "La date de la dernière révision et des interventions sur le moteur."
+  ],
+  "faq": [
+    {
+      "q": "À quoi sert un décalaminage ?",
+      "a": "À limiter l’encrassement du moteur et des organes d’admission et d’échappement. Il peut améliorer le fonctionnement quand l’encrassement est la cause d’un symptôme."
+    },
+    {
+      "q": "Est-ce efficace contre tous les problèmes de puissance ?",
+      "a": "Non. Si la perte de puissance a une autre origine (injecteur, capteur, turbo…), le décalaminage ne la résoudra pas. C’est pourquoi nous vérifions la cause avant."
+    },
+    {
+      "q": "Pour quels véhicules ?",
+      "a": "Principalement les moteurs diesel et les moteurs essence à injection directe, surtout s’ils font beaucoup de trajets courts. Indiquez votre motorisation dans la demande."
+    },
+    {
+      "q": "Comment limiter l’encrassement ?",
+      "a": "En roulant de temps en temps sur route à allure soutenue pour que le moteur monte bien en température, et en respectant l’entretien préconisé par le constructeur."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : méthode, moteur, état d’encrassement, contrôles associés. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "vanne-egr",
+    "revision-vidange",
+    "diagnostic-electronique"
+  ]
+}

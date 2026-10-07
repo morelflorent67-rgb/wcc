@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Géométrie et parallélisme à Bischheim | WCC",
+  "seoDescription": "Véhicule qui tire d’un côté, volant décentré, pneus usés de façon irrégulière : réglage de la géométrie et du parallélisme à Bischheim. Devis adapté.",
+  "lead": "Un train roulant bien réglé améliore la précision de la direction et préserve vos pneus. Nous mesurons, puis nous réglons.",
+  "image": "mecanique-geometrie-parallelisme.jpg",
+  "imageAlt": "Illustration : intervention sur la roue d’un véhicule",
+  "need": [
+    "La géométrie désigne l’orientation des roues par rapport au véhicule : parallélisme, carrossage, chasse. Quand elle est déréglée, le véhicule peut tirer d’un côté, le volant n’est plus droit et les pneus s’usent vite et de façon irrégulière.",
+    "Un coup de bordure, un nid-de-poule, un remplacement de pièces de suspension ou de direction, ou l’usure naturelle peuvent la dérégler.",
+    "L’intervention consiste à mesurer les angles du train roulant, puis à les ajuster dans les valeurs préconisées par le constructeur lorsque cela est possible. Si une pièce est usée, il peut être nécessaire de la remplacer avant de régler."
+  ],
+  "signs": [
+    "Le véhicule tire d’un côté sur route droite.",
+    "Le volant n’est pas droit quand vous roulez tout droit.",
+    "Les pneus s’usent plus d’un côté ou de façon irrégulière.",
+    "La direction paraît imprécise ou vague.",
+    "Vous avez heurté un trottoir ou un nid-de-poule.",
+    "Vous venez de changer des amortisseurs, des rotules ou des pneus."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez ce que vous constatez",
+      "text": "Véhicule qui tire, volant décentré, usure de pneus : précisez-le dans la demande."
+    },
+    {
+      "title": "Nous mesurons les angles",
+      "text": "Les valeurs de géométrie de votre véhicule sont relevées et comparées à celles du constructeur."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise le réglage prévu et signale les pièces usées éventuelles qui empêcheraient de régler correctement."
+    },
+    {
+      "title": "Nous réglons le train roulant",
+      "text": "Les angles sont ajustés quand c’est possible, puis le résultat est contrôlé."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : essieu avant seul ou avant et arrière, nombre d’angles réglables.",
+    "L’état des pièces de suspension et de direction : rotules, biellettes, silentblocs.",
+    "Les difficultés de réglage (vis grippées, pièces non réglables).",
+    "Les pièces à remplacer préalablement pour permettre un réglage correct.",
+    "Une intervention groupée avec un changement de pneus ou de pièces de suspension."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Ce que vous constatez : tire d’un côté, volant décentré, pneus usés.",
+    "Les événements récents : choc, remplacement de pièces, changement de pneus.",
+    "L’état des pneus : usure régulière ou non."
+  ],
+  "faq": [
+    {
+      "q": "À quelle fréquence faut-il faire la géométrie ?",
+      "a": "Il n’y a pas d’intervalle fixe : après un choc, un remplacement de pièces de suspension ou de direction, ou dès que vous remarquez un symptôme. Un contrôle lors du changement de pneus est conseillé."
+    },
+    {
+      "q": "Quelle différence entre géométrie et équilibrage ?",
+      "a": "L’équilibrage corrige les vibrations de la roue à haute vitesse ; la géométrie règle l’orientation des roues. Ce sont deux opérations distinctes."
+    },
+    {
+      "q": "Le réglage est-il toujours possible ?",
+      "a": "Pas toujours : si une pièce est usée ou si le véhicule n’a pas de réglage prévu, il faut parfois remplacer une pièce avant. Le devis le précise."
+    },
+    {
+      "q": "Pourquoi les pneus s’usent-ils mal quand la géométrie est déréglée ?",
+      "a": "Parce que les roues ne roulent pas parfaitement droit : le pneu frotte sur une partie de sa surface. L’usure s’accélère et devient irrégulière."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : essieux concernés, état des pièces, difficultés de réglage. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "pneumatiques",
+    "amortisseurs",
+    "rotules-direction"
+  ]
+}

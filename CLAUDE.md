@@ -1,7 +1,7 @@
 # WCC — notes de reprise
 
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
-Dernière mise à jour : 7 octobre 2026 (rien de poussé ; direction « A Affiche » appliquée, flash info mécanique en place).
+Dernière mise à jour : 7 octobre 2026 (rien de poussé ; 26 fiches mécanique rédigées, direction « A Affiche » appliquée, promo mécanique en place).
 
 ## Le projet en bref
 
@@ -41,7 +41,7 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
   Véhicule de prêt : « possible » seulement. Aucune affiliation AD ni constructeur ; marques = « marques prises en charge ».
 - Prix : « À partir de X € » = **prix d'appel** (tarif de base WCC, remise éventuelle en plus), jamais un devis ; TTC / pièces / main-d'œuvre non précisés (à clarifier avec WCC).
 - Les formulaires ne promettent ni rendez-vous ni délai de réponse.
-- Les 26 descriptions courtes et la fiche Freinage sont des **brouillons à faire valider** par WCC.
+- Les 26 descriptions courtes et les 26 fiches mécanique sont des **brouillons à faire valider** par WCC.
 - Photos actuelles = illustrations Unsplash provisoires (`src/assets/illustration/CREDITS.md`), à ne jamais présenter comme
   les locaux ou réalisations de WCC ; l'utilisateur les remplacera lui-même (même nom de fichier).
 - Logos assureurs = fichiers **provisoires** de la fiche Acoat (31, 250×188 px) ; marques = icônes simple-icons (CC0) +
@@ -124,10 +124,13 @@ et macaron mécanique. `ServiceCard` et `ProblemCard` supprimés.
    purge du liquide de frein) à remplacer par de vraies photos de l'atelier. La recherche Unsplash par script est refusée (401) : passer par le navigateur.
 
 Pas encore fait (ordre conseillé) :
-1. **25 fiches mécanique** à rédiger (prochain chantier conseillé) (priorité : révision-vidange, distribution, embrayage, climatisation, amortisseurs,
-   diagnostic-electronique, pneumatiques), puis les autres. Respecter les réserves du catalogue : climatisation (type et quantité
-   de gaz, ≈250 g, suppléments), forfait électrique (89 € hors Tesla chez AD ≠ refus des Tesla), aucun précontrôle gratuit promis,
-   diagnostics sans réparations consécutives.
+1. ~~Fiches mécanique~~ **faites le 7 octobre 2026** : les 26 prestations ont leur fiche (`src/data/mecanique-fiches/<slug>.json`, 45 pages au build).
+   Textes originaux, SANS prix (les prix viennent de `services-mecanique.json`), sans délai ni garantie. Réserves respectées : climatisation
+   (type et quantité de fluide, recherche de fuite et suppléments renvoyés au devis, « le prix d'appel ne correspond pas à une recharge
+   complète de tous les véhicules »), véhicule électrique (périmètre confirmé au devis, pas de refus d'une marque), précontrôle et diagnostics
+   (examens : réparations en devis séparé, ne remplace pas le contrôle technique, aucune gratuité). **À faire valider par WCC** : tous les textes,
+   surtout les contenus de prestation que WCC réalise réellement (méthodes de décalaminage et de nettoyage EGR, rénovation d'optiques, pièces
+   d'échange pour alternateur/injecteurs, contenu du diagnostic sécurité et de l'écodiagnostic).
 2. ~~Espace carrosserie~~ **fait** (voir ci-dessus). Reste à valider avec WCC : tous les textes (brouillons), en particulier « le choix du
    réparateur vous appartient », « selon votre contrat une franchise peut rester à votre charge », « véhicule de prêt possible selon
    disponibilités », « bris de glace : garantie dédiée », méthodes de débosselage/grêle (sans repeinture selon l'état de la peinture),

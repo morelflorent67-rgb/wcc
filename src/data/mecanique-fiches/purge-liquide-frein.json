@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Purge du liquide de frein à Bischheim, toutes marques | WCC",
+  "seoDescription": "Renouvellement du liquide de frein à Bischheim : un liquide vieilli réduit l’efficacité du freinage. Toutes marques. Prix d’appel affiché, devis adapté.",
+  "lead": "Le liquide de frein vieillit sans qu’on le voie. Nous le renouvelons pour que le freinage reste efficace.",
+  "image": "mecanique-purge-liquide-frein.jpg",
+  "imageAlt": "Illustration : disque de frein sur un véhicule",
+  "need": [
+    "Le liquide de frein transmet la force de votre pied aux freins. Il absorbe peu à peu l’humidité de l’air. En vieillissant, son point d’ébullition baisse : lors d’un freinage prolongé (descente, charge), il peut former des bulles de vapeur qui rendent la pédale molle.",
+    "L’humidité favorise aussi la corrosion à l’intérieur du circuit (étriers, maître-cylindre, ABS). Le renouveler régulièrement protège ces organes coûteux.",
+    "La purge consiste à remplacer le liquide ancien par du liquide neuf, au bon type (DOT 4, par exemple), en chassant l’air du circuit. Les constructeurs préconisent généralement un renouvellement tous les deux ans environ ; le carnet d’entretien fait foi."
+  ],
+  "signs": [
+    "L’échéance prévue dans le carnet d’entretien est atteinte.",
+    "La pédale de frein est plus molle ou s’enfonce davantage qu’avant.",
+    "Le liquide dans le réservoir est foncé ou trouble.",
+    "Vous avez changé les plaquettes, les disques ou un élément du circuit.",
+    "Vous n’avez pas d’historique de renouvellement pour votre véhicule.",
+    "Vous roulez souvent en descente, en charge ou en conduite sportive."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre véhicule",
+      "text": "Marque, modèle, année, kilométrage et date du dernier renouvellement si vous la connaissez."
+    },
+    {
+      "title": "Nous contrôlons le liquide",
+      "text": "L’état du liquide et le niveau sont vérifiés, avec le type exigé par le constructeur."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise le liquide à utiliser et l’opération prévue."
+    },
+    {
+      "title": "Nous purgeons le circuit",
+      "text": "Le liquide est remplacé roue par roue, l’air est chassé et la pédale est contrôlée."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : nombre de roues, présence d’un ABS, accessibilité des purgeurs.",
+    "La quantité et le type de liquide exigé par le constructeur.",
+    "L’état du circuit : un purgeur grippé ou une fuite peuvent nécessiter une intervention en plus.",
+    "L’intervention groupée avec un remplacement de plaquettes ou de disques.",
+    "Les fournitures associées."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et le kilométrage de votre véhicule.",
+    "La date du dernier renouvellement du liquide de frein.",
+    "La sensation à la pédale : normale, molle, longue.",
+    "Les interventions récentes sur les freins."
+  ],
+  "faq": [
+    {
+      "q": "À quelle fréquence renouveler le liquide de frein ?",
+      "a": "En général environ tous les deux ans, mais cela dépend du constructeur. Le carnet d’entretien de votre véhicule indique l’échéance."
+    },
+    {
+      "q": "Pourquoi le liquide de frein se dégrade-t-il ?",
+      "a": "Il absorbe l’humidité de l’air, ce qui abaisse son point d’ébullition et favorise la corrosion du circuit, même si le véhicule roule peu."
+    },
+    {
+      "q": "Puis-je mélanger deux types de liquide ?",
+      "a": "Il vaut mieux utiliser exactement celui que préconise le constructeur. Les types ne sont pas tous compatibles : demandez-nous en cas de doute."
+    },
+    {
+      "q": "Faut-il le faire en même temps que les plaquettes ?",
+      "a": "C’est une bonne occasion : le circuit est déjà ouvert à ce moment. Nous pouvons grouper les deux interventions."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : type de liquide, quantité, ABS, intervention groupée. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "freinage",
+    "revision-vidange",
+    "precontrole-technique"
+  ]
+}

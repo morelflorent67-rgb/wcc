@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Distribution à Bischheim : courroie ou chaîne, toutes marques | WCC",
+  "seoDescription": "Remplacement de la courroie ou de la chaîne de distribution et des éléments associés à Bischheim, toutes marques. Prix d’appel affiché, devis adapté.",
+  "lead": "La distribution synchronise le moteur. Quand elle lâche, les dégâts peuvent être lourds : nous la remplaçons au bon moment, avec les éléments associés.",
+  "image": "mecanique-distribution.jpg",
+  "imageAlt": "Illustration : courroie et poulies d’un moteur",
+  "need": [
+    "La distribution relie le vilebrequin aux arbres à cames pour que les soupapes s’ouvrent et se ferment au bon moment. Selon le moteur, elle utilise une courroie, qui s’use et doit être remplacée à intervalle fixé par le constructeur, ou une chaîne, plus durable mais qui peut aussi s’allonger ou faire du bruit.",
+    "Sur de nombreux moteurs, la rupture de la distribution provoque le contact entre pistons et soupapes et endommage gravement le moteur. Remplacer à temps coûte bien moins cher que réparer après casse.",
+    "L’intervention se fait presque toujours avec des éléments associés : galets, tendeur et, selon le moteur, pompe à eau. Le remplacement du kit complet est généralement préférable au remplacement de la seule courroie. Le devis précise ce qui est prévu pour votre véhicule."
+  ],
+  "signs": [
+    "L’échéance du constructeur est atteinte, en kilomètres ou en années (le premier des deux).",
+    "Un bruit de claquement, de sifflement ou de cliquetis vient de l’avant du moteur.",
+    "La courroie présente des fissures, un effilochage ou un côté glacé (si elle est visible).",
+    "Le moteur démarre difficilement ou fonctionne de manière irrégulière.",
+    "Un voyant moteur s’allume avec un défaut de calage.",
+    "Vous avez acheté un véhicule d’occasion sans preuve du dernier remplacement."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre véhicule",
+      "text": "Marque, modèle, motorisation, kilométrage, et la date du dernier remplacement si vous la connaissez."
+    },
+    {
+      "title": "Nous identifions le type de distribution",
+      "text": "Courroie ou chaîne, éléments associés, échéance du constructeur : nous définissons ce qui est à remplacer."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille le kit de distribution, la pompe à eau éventuelle et la main-d’œuvre."
+    },
+    {
+      "title": "Nous remplaçons et calons le moteur",
+      "text": "Le kit est remplacé, la distribution est recalée selon les repères du constructeur et le fonctionnement est vérifié."
+    }
+  ],
+  "priceFactors": [
+    "Le moteur : type de distribution (courroie ou chaîne), difficulté d’accès et temps de démontage.",
+    "Le kit : courroie, galets, tendeur, et pompe à eau si elle est entraînée par la distribution.",
+    "La courroie d’accessoires, souvent remplacée en même temps.",
+    "Le liquide de refroidissement, à renouveler lorsque la pompe à eau est changée.",
+    "L’état des éléments voisins (joints, capteurs) qui peut justifier des remplacements supplémentaires."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation exacte de votre véhicule.",
+    "Le kilométrage actuel.",
+    "La date et le kilométrage du dernier remplacement, avec la facture si vous l’avez.",
+    "Les symptômes éventuels : bruit, voyant, démarrage difficile."
+  ],
+  "faq": [
+    {
+      "q": "Quand faut-il changer la distribution ?",
+      "a": "Selon les préconisations de votre constructeur, en kilomètres et en années, au premier des deux. Le carnet d’entretien l’indique. Ne dépassez pas l’échéance : le risque de casse augmente."
+    },
+    {
+      "q": "Courroie ou chaîne : quelle différence ?",
+      "a": "La courroie est en caoutchouc renforcé et doit être remplacée à intervalle fixe. La chaîne, en métal, est conçue pour durer plus longtemps mais peut s’allonger ou faire du bruit ; elle se remplace si besoin, selon son état."
+    },
+    {
+      "q": "Faut-il changer la pompe à eau en même temps ?",
+      "a": "Si elle est entraînée par la courroie de distribution, il est généralement conseillé de la remplacer à ce moment, car l’accès est déjà ouvert. Le devis précise ce qui est recommandé pour votre moteur."
+    },
+    {
+      "q": "Que risque-t-on si la distribution casse ?",
+      "a": "Sur de nombreux moteurs, des dégâts importants (soupapes, pistons, culasse). Si vous entendez un bruit anormal à l’avant du moteur, arrêtez-vous et faites contrôler le véhicule."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : type de distribution, éléments associés, temps de démontage propre au moteur. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "purge-liquide-refroidissement",
+    "revision-vidange",
+    "embrayage"
+  ]
+}

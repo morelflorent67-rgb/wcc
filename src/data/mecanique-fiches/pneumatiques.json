@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Pneumatiques à Bischheim : montage et remplacement | WCC",
+  "seoDescription": "Remplacement et montage de pneus à Bischheim pour tous types de véhicules : conseil sur le choix, équilibrage et contrôle. Prix d’appel affiché, devis adapté.",
+  "lead": "Les pneus sont votre seul contact avec la route. Nous vous aidons à choisir les bons et nous les montons sur votre véhicule.",
+  "image": "mecanique-pneus-gants.jpg",
+  "imageAlt": "Illustration : main gantée sur un pneu de voiture",
+  "need": [
+    "L’état des pneus conditionne la tenue de route, la distance de freinage, la consommation et la sécurité par temps de pluie. Ils s’usent selon votre conduite, les kilomètres, la pression de gonflage et l’état du train roulant.",
+    "Le bon pneu dépend de votre véhicule (dimension, indices de charge et de vitesse), de votre usage et des saisons : été, hiver ou toutes saisons. Le choix entre plusieurs gammes se fait avec vous, selon votre budget et votre usage.",
+    "Le montage comprend le démontage de la roue, le changement du pneu, l’équilibrage et la remise en place. Selon l’état du véhicule, une vérification de la géométrie peut être recommandée."
+  ],
+  "signs": [
+    "Les témoins d’usure sont atteints : la profondeur des sculptures approche le minimum légal de 1,6 mm.",
+    "Un pneu présente une entaille, une hernie ou un flanc abîmé.",
+    "L’usure est irrégulière (plus marquée sur un bord, ou par plaques).",
+    "Le véhicule vibre à certaines vitesses ou tire d’un côté.",
+    "Les pneus ont vieilli : craquelures ou durcissement, même avec peu de kilomètres.",
+    "Vous changez de saison et souhaitez passer à des pneus adaptés (hiver, été ou toutes saisons)."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre besoin",
+      "text": "Dimension des pneus (inscrite sur le flanc), type de véhicule, usage et saison souhaitée."
+    },
+    {
+      "title": "Nous vous conseillons",
+      "text": "Nous proposons des pneus adaptés à votre véhicule et à votre budget, et nous contrôlons l’état des éléments associés."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille les pneus choisis, le montage et les prestations associées."
+    },
+    {
+      "title": "Nous montons et équilibrons",
+      "text": "Les pneus sont montés, équilibrés et les roues remises en place, puis la pression est ajustée."
+    }
+  ],
+  "priceFactors": [
+    "La dimension du pneu et les indices de charge et de vitesse.",
+    "La gamme et la marque choisies (économique, intermédiaire, premium) et le type (été, hiver, toutes saisons).",
+    "Le nombre de pneus remplacés (un seul, une paire, le train complet).",
+    "Les accessoires : valves, masses d’équilibrage, capteurs de pression (TPMS) à contrôler ou remplacer.",
+    "Les prestations associées : géométrie, équilibrage particulier, élimination des anciens pneus."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle et l’année de votre véhicule.",
+    "La dimension des pneus, inscrite sur le flanc (par exemple 205/55 R16 91V).",
+    "Votre usage : ville, route, autoroute, montagne, et la saison visée.",
+    "L’état actuel : usure, vibrations, pneu crevé ou abîmé."
+  ],
+  "faq": [
+    {
+      "q": "Quand faut-il changer ses pneus ?",
+      "a": "Lorsque les témoins d’usure sont atteints (1,6 mm de sculpture, c’est le minimum légal), ou plus tôt si un pneu est abîmé ou a vieilli. Un contrôle régulier de la profondeur des sculptures et de la pression est conseillé."
+    },
+    {
+      "q": "Faut-il changer les quatre pneus en même temps ?",
+      "a": "Pas toujours. On remplace au minimum les deux pneus d’un même essieu, avec des pneus de la même référence. Selon le véhicule (notamment en transmission intégrale), le constructeur peut préconiser de les changer tous."
+    },
+    {
+      "q": "Pneus hiver, été ou toutes saisons : lesquels choisir ?",
+      "a": "Cela dépend de votre usage et de votre région. Nous pouvons vous conseiller selon vos trajets et la saison : indiquez-les dans votre demande."
+    },
+    {
+      "q": "Faut-il faire une géométrie après un changement de pneus ?",
+      "a": "Ce n’est pas systématique, mais recommandé si l’usure de vos anciens pneus était irrégulière ou si le véhicule tire d’un côté : un train roulant mal réglé use vite les pneus neufs."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : dimension, gamme, nombre de pneus, accessoires. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "geometrie-parallelisme",
+    "amortisseurs",
+    "revision-vidange"
+  ]
+}

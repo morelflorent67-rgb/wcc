@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Amortisseurs à Bischheim : contrôle et remplacement | WCC",
+  "seoDescription": "Confort dégradé, véhicule qui rebondit ou tient mal la route : contrôle et remplacement des amortisseurs à Bischheim, toutes marques. Devis adapté.",
+  "lead": "Des amortisseurs fatigués dégradent le confort mais surtout la tenue de route et le freinage. Nous les contrôlons et les remplaçons si nécessaire.",
+  "image": "mecanique-amortisseurs.jpg",
+  "imageAlt": "Illustration : amortisseur chromé avec son ressort",
+  "need": [
+    "Les amortisseurs maintiennent les roues au contact du sol en absorbant les mouvements de la suspension. Ils s’usent progressivement, souvent sans que le conducteur s’en rende compte, car la dégradation est lente.",
+    "Des amortisseurs fatigués allongent les distances de freinage, augmentent le roulis dans les virages, usent les pneus de façon irrégulière et sollicitent les autres organes de la suspension.",
+    "On les remplace généralement par paires sur un même essieu, avec les éléments associés (coupelles, butées, soufflets, selon le véhicule). Le devis précise ce qui est prévu."
+  ],
+  "signs": [
+    "Le véhicule rebondit ou continue de balancer après une bosse ou un dos d’âne.",
+    "Le confort se dégrade et la voiture paraît plus instable sur route dégradée.",
+    "Le véhicule plonge à l’avant au freinage ou se cabre à l’accélération.",
+    "L’usure des pneus est irrégulière (par plaques).",
+    "Une fuite d’huile est visible sur le corps de l’amortisseur.",
+    "Un bruit de claquement ou de cognement vient de la suspension."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez ce que vous ressentez",
+      "text": "Rebond, bruit, instabilité, usure des pneus : précisez quand le symptôme apparaît."
+    },
+    {
+      "title": "Nous contrôlons la suspension",
+      "text": "Les amortisseurs et les éléments associés sont examinés pour établir ce qui doit être remplacé."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille les amortisseurs, les pièces associées et la main-d’œuvre pour votre essieu."
+    },
+    {
+      "title": "Nous remplaçons les amortisseurs",
+      "text": "Les pièces sont remplacées, le train roulant est contrôlé, et une géométrie est recommandée si besoin."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : type de suspension, accessibilité et temps de démontage.",
+    "L’essieu concerné (avant, arrière) et le nombre d’amortisseurs.",
+    "La gamme de pièces retenue.",
+    "Les éléments associés : coupelles, butées, soufflets, ressorts, biellettes.",
+    "La géométrie, souvent recommandée après remplacement."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le kilométrage et votre usage : ville, route, charge, remorque.",
+    "Les symptômes : rebond, bruit, instabilité, usure des pneus.",
+    "L’historique : dernier remplacement ou contrôle des amortisseurs."
+  ],
+  "faq": [
+    {
+      "q": "Quand faut-il changer les amortisseurs ?",
+      "a": "Selon l’état constaté : leur durée varie beaucoup avec l’usage et la qualité des routes. Un contrôle régulier est conseillé, surtout au-delà de plusieurs dizaines de milliers de kilomètres."
+    },
+    {
+      "q": "Faut-il les changer par paire ?",
+      "a": "Oui, en général par paire sur un même essieu, pour conserver un comportement équilibré du véhicule."
+    },
+    {
+      "q": "Puis-je continuer à rouler avec des amortisseurs fatigués ?",
+      "a": "Le véhicule roule, mais avec une tenue de route et un freinage dégradés. Les risques augmentent sur route mouillée ou en charge. Un contrôle est conseillé."
+    },
+    {
+      "q": "Une géométrie est-elle nécessaire ensuite ?",
+      "a": "Elle est souvent recommandée après un travail sur la suspension, pour préserver les pneus et la direction."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : essieu concerné, gamme de pièces, éléments associés, temps de démontage. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "geometrie-parallelisme",
+    "rotules-direction",
+    "pneumatiques"
+  ]
+}

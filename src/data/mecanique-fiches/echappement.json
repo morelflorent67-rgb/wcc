@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Échappement et silencieux à Bischheim : réparation | WCC",
+  "seoDescription": "Bruit anormal, odeur ou fuite : remplacement du silencieux arrière et réparation de la ligne d’échappement à Bischheim, toutes marques. Devis adapté.",
+  "lead": "Un échappement qui gronde ou qui fuit se remarque et peut poser problème au contrôle technique. Nous remplaçons le silencieux et réparons la ligne.",
+  "image": "mecanique-echappement.jpg",
+  "imageAlt": "Illustration : sorties d’échappement bleutées d’une voiture",
+  "need": [
+    "La ligne d’échappement évacue les gaz brûlés, réduit le bruit grâce au silencieux et traite une partie des polluants. Exposée à la chaleur, à l’humidité et au sel, elle se corrode, surtout à l’arrière, où l’eau condensée stagne.",
+    "Un silencieux percé ou une ligne qui fuit augmente le bruit, laisse entrer des gaz dans le véhicule et peut entraîner un refus au contrôle technique. Une fuite est aussi une affaire de sécurité : les gaz d’échappement sont toxiques.",
+    "Selon l’état, l’intervention va du remplacement du silencieux arrière à la réparation de la ligne (tube, collier, flexible, joint). Le devis précise ce qui est prévu."
+  ],
+  "signs": [
+    "Le bruit de l’échappement a augmenté ou change de tonalité.",
+    "Un cliquetis ou une vibration vient du dessous du véhicule.",
+    "Une odeur de gaz d’échappement se dégage ou pénètre dans l’habitacle.",
+    "L’échappement est visiblement rouillé, percé ou pend.",
+    "De la fumée sort ailleurs que par la sortie normale.",
+    "Le contrôle technique a signalé un échappement bruyant ou une fuite."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez le problème",
+      "text": "Bruit, odeur, vibration : précisez quand et d’où ils proviennent selon vous."
+    },
+    {
+      "title": "Nous examinons la ligne d’échappement",
+      "text": "Nous contrôlons le silencieux, les tubes, les fixations et les joints pour repérer la fuite ou l’usure."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille les pièces à remplacer et la main-d’œuvre."
+    },
+    {
+      "title": "Nous remplaçons ou réparons",
+      "text": "Les pièces sont remplacées, les fixations contrôlées, puis l’étanchéité est vérifiée."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : modèle, type de ligne, accessibilité sous le véhicule.",
+    "La ou les pièces à remplacer : silencieux arrière seul, silencieux intermédiaire, tubes, ligne complète.",
+    "Le type de pièce : d’origine ou adaptable.",
+    "Les accessoires : colliers, joints, supports, flexible.",
+    "La rouille, qui peut compliquer le démontage."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le bruit entendu : grondement, claquement, sifflement, et à quel régime.",
+    "Les éventuelles remarques du contrôle technique.",
+    "L’état visible de l’échappement si vous l’avez remarqué."
+  ],
+  "faq": [
+    {
+      "q": "Puis-je rouler avec un échappement percé ?",
+      "a": "C’est déconseillé : bruit, risque de fuite de gaz vers l’habitacle et refus au contrôle technique. Faites-le contrôler rapidement."
+    },
+    {
+      "q": "Faut-il changer toute la ligne ?",
+      "a": "Pas forcément. On remplace ce qui est défectueux : souvent le silencieux arrière, parfois davantage selon la corrosion. Le contrôle permet de le préciser."
+    },
+    {
+      "q": "Le catalyseur et le filtre à particules sont-ils concernés ?",
+      "a": "Ces éléments font partie de la ligne d’échappement et de la dépollution. Si votre problème les concerne, un diagnostic est nécessaire : c’est une intervention différente de celle du silencieux arrière."
+    },
+    {
+      "q": "Pièces d’origine ou adaptables ?",
+      "a": "Les deux existent. Nous vous proposons ce qui est adapté à votre véhicule et à votre budget, et nous le précisons dans le devis."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : pièces à remplacer, modèle, rouille, accessoires. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "precontrole-technique",
+    "vanne-egr",
+    "diagnostic-electronique"
+  ]
+}

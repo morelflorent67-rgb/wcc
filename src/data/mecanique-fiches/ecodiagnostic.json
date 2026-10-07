@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Écodiagnostic à Bischheim : bilan de votre véhicule | WCC",
+  "seoDescription": "Bilan de l’état de votre véhicule à Bischheim pour repérer les interventions utiles et mieux maîtriser consommation et émissions. Prix d’appel affiché.",
+  "lead": "Un écodiagnostic fait le point sur votre véhicule pour repérer ce qui mérite d’être traité, avec un regard sur la consommation et les émissions.",
+  "image": "mecanique-ecodiagnostic.jpg",
+  "imageAlt": "Illustration : sortie d’échappement avec de la vapeur",
+  "need": [
+    "La consommation de carburant et les émissions d’un véhicule dépendent de son état : moteur bien réglé, filtres propres, pneus correctement gonflés, liquides à niveau, dépollution en bon état. Un défaut sur l’un de ces points peut les dégrader sans que le conducteur s’en aperçoive.",
+    "L’écodiagnostic est un bilan de l’état du véhicule qui permet de repérer ces éléments et de hiérarchiser les interventions utiles. Le contenu précis du bilan vous est indiqué par l’atelier.",
+    "Il s’agit d’un diagnostic, pas d’une réparation : les interventions qui en ressortent font l’objet d’un devis, que vous êtes libre d’accepter ou non."
+  ],
+  "signs": [
+    "La consommation de carburant a augmenté sans raison apparente.",
+    "Le moteur est moins vif ou fume davantage qu’avant.",
+    "Le véhicule n’a pas été entretenu depuis longtemps.",
+    "Vous souhaitez limiter vos dépenses et vos émissions.",
+    "Vous avez acheté un véhicule d’occasion et voulez en connaître l’état.",
+    "Le voyant de dépollution ou de moteur s’est allumé ponctuellement."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre véhicule",
+      "text": "Marque, modèle, motorisation, kilométrage, et ce qui vous a incité à demander un bilan."
+    },
+    {
+      "title": "Nous réalisons le bilan",
+      "text": "L’atelier examine l’état du véhicule et des éléments qui influencent la consommation et les émissions."
+    },
+    {
+      "title": "Vous recevez un compte rendu",
+      "text": "Les points à surveiller ou à traiter vous sont expliqués, par ordre d’utilité."
+    },
+    {
+      "title": "Nous établissons un devis si besoin",
+      "text": "Pour les interventions que vous retenez, un devis détaillé vous est remis."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : motorisation, âge et équipements.",
+    "Le périmètre du bilan convenu avec l’atelier.",
+    "Les mesures ou contrôles complémentaires nécessaires.",
+    "Les interventions qui en découlent, facturées séparément.",
+    "Les pièces à remplacer si vous décidez de les traiter."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le kilométrage et votre type d’usage : ville, route, autoroute.",
+    "Votre consommation actuelle, si vous la connaissez.",
+    "Les interventions et entretiens récents."
+  ],
+  "faq": [
+    {
+      "q": "Que contient le bilan ?",
+      "a": "L’atelier vous indique le détail au moment de la demande. Il porte sur l’état du véhicule et sur les éléments qui influencent la consommation et les émissions."
+    },
+    {
+      "q": "L’écodiagnostic fait-il baisser la consommation ?",
+      "a": "Il ne la réduit pas lui-même : il repère ce qui peut la dégrader. L’effet dépend des interventions que vous décidez ensuite."
+    },
+    {
+      "q": "Les réparations sont-elles comprises ?",
+      "a": "Non. Le bilan est un diagnostic. Les interventions éventuelles font l’objet d’un devis séparé."
+    },
+    {
+      "q": "Quelle différence avec un diagnostic électronique ?",
+      "a": "Le diagnostic électronique lit les codes défaut enregistrés par les calculateurs. L’écodiagnostic est un bilan plus général de l’état du véhicule."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : véhicule, périmètre du bilan, contrôles complémentaires. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "diagnostic-electronique",
+    "revision-vidange",
+    "decalaminage"
+  ]
+}

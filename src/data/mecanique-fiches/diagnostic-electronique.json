@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Diagnostic électronique à Bischheim : voyant moteur, panne | WCC",
+  "seoDescription": "Voyant allumé, panne ou comportement anormal : diagnostic électronique par lecture des codes défaut à Bischheim, toutes marques. Prix d’appel affiché, devis adapté.",
+  "lead": "Un voyant allumé ne dit pas toujours d’où vient le problème. La lecture des codes défaut est le point de départ pour comprendre et décider.",
+  "image": "mecanique-diagnostic-tablette.jpg",
+  "imageAlt": "Illustration : outil de diagnostic électronique tenu en main",
+  "need": [
+    "Les véhicules modernes sont pilotés par des calculateurs qui surveillent en permanence moteur, boîte, freinage, dépollution et équipements. Quand une anomalie est détectée, ils enregistrent un code défaut et allument souvent un voyant.",
+    "Le diagnostic électronique consiste à lire ces codes avec un outil adapté à votre véhicule, à les interpréter et, si nécessaire, à contrôler les éléments en cause. Un code défaut oriente la recherche mais ne désigne pas toujours à lui seul la pièce à remplacer.",
+    "Le diagnostic est une prestation en soi : il établit l’origine probable du problème. Les réparations qui en découlent, si vous décidez de les faire, font l’objet d’un devis séparé."
+  ],
+  "signs": [
+    "Le voyant moteur, ABS, airbag, dépollution ou un autre témoin est allumé.",
+    "Le véhicule passe en mode dégradé ou manque de puissance.",
+    "Le moteur cale, broute ou démarre difficilement.",
+    "Un équipement électrique ou électronique ne fonctionne plus normalement.",
+    "Vous achetez un véhicule d’occasion et souhaitez connaître les défauts enregistrés.",
+    "Un message d’alerte apparaît sur l’afficheur du tableau de bord."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez ce que vous constatez",
+      "text": "Voyant, symptôme, moment d’apparition : plus la description est précise, plus le diagnostic est ciblé."
+    },
+    {
+      "title": "Nous lisons les codes défaut",
+      "text": "L’outil de diagnostic est relié au véhicule pour lire les défauts enregistrés par les calculateurs."
+    },
+    {
+      "title": "Nous interprétons et contrôlons",
+      "text": "Les codes sont analysés et, si besoin, les éléments concernés sont vérifiés pour confirmer l’origine du problème."
+    },
+    {
+      "title": "Vous recevez un compte rendu et un devis",
+      "text": "Le résultat vous est expliqué, avec un devis pour les réparations éventuelles."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : marque, modèle, année et calculateurs concernés.",
+    "La complexité du problème : défaut franc ou panne intermittente.",
+    "Les contrôles complémentaires nécessaires pour confirmer le diagnostic (mesures, essais).",
+    "Le temps de recherche si la panne n’est pas immédiatement identifiable.",
+    "Les réparations qui en découlent, facturées séparément."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Les voyants allumés et les messages affichés.",
+    "Le moment où le problème apparaît : à froid, à chaud, en roulant, au démarrage.",
+    "Les interventions récentes sur le véhicule."
+  ],
+  "faq": [
+    {
+      "q": "Le diagnostic comprend-il la réparation ?",
+      "a": "Non. Le diagnostic identifie l’origine du problème. Si une réparation est nécessaire, elle fait l’objet d’un devis séparé, que vous êtes libre d’accepter ou non."
+    },
+    {
+      "q": "Un code défaut indique-t-il toujours la pièce à changer ?",
+      "a": "Pas toujours. Il indique ce que le calculateur a détecté, mais la cause peut être ailleurs (câblage, capteur, autre organe). C’est pourquoi une analyse suit la lecture."
+    },
+    {
+      "q": "Peut-on rouler avec le voyant moteur allumé ?",
+      "a": "Cela dépend du voyant et de son comportement : fixe ou clignotant, avec ou sans perte de puissance. En cas de voyant clignotant ou de symptôme marqué, évitez de rouler et faites contrôler le véhicule."
+    },
+    {
+      "q": "Pour quels véhicules ?",
+      "a": "Nous intervenons sur de nombreuses marques. Indiquez la vôtre dans la demande pour que nous vous répondions pour votre véhicule."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : véhicule, complexité de la panne, contrôles complémentaires. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "diagnostic-securite",
+    "injecteur",
+    "vanne-egr"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Rotules de direction à Bischheim : contrôle et remplacement | WCC",
+  "seoDescription": "Jeu dans la direction, claquement ou volant flou : contrôle et remplacement des rotules de direction à Bischheim, toutes marques. Devis sur demande.",
+  "lead": "Les rotules assurent le lien entre le volant et les roues. Quand elles prennent du jeu, la direction devient imprécise : nous les contrôlons et les remplaçons.",
+  "image": "mecanique-rotules-direction.jpg",
+  "imageAlt": "Illustration : suspension avant d’un véhicule, roue démontée",
+  "need": [
+    "Les rotules sont des articulations qui permettent aux roues de tourner et de suivre les mouvements de la suspension. Protégées par un soufflet, elles s’usent avec les kilomètres, les chocs et la présence de saletés.",
+    "Une rotule qui prend du jeu provoque des claquements, une direction imprécise ou des vibrations. En cas de rupture, le contrôle de la roue peut être perdu : c’est un organe de sécurité.",
+    "Selon l’usure, on remplace une rotule de direction, une rotule de suspension ou plusieurs pièces associées (biellette, rotule de barre stabilisatrice). Le devis précise ce qui est nécessaire."
+  ],
+  "signs": [
+    "Un claquement ou un cognement se fait entendre en tournant ou sur les bosses.",
+    "La direction paraît floue, avec du jeu au volant.",
+    "Le véhicule vibre ou se met à flotter à certaines vitesses.",
+    "Les pneus s’usent de façon irrégulière.",
+    "Un soufflet de rotule est déchiré.",
+    "Le contrôle technique a relevé un jeu dans la direction."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez ce que vous constatez",
+      "text": "Claquement, jeu, direction floue : précisez le côté et quand le symptôme apparaît."
+    },
+    {
+      "title": "Nous contrôlons le train roulant",
+      "text": "Les rotules et les éléments de direction sont examinés pour repérer le jeu."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille les pièces à remplacer et la géométrie à prévoir."
+    },
+    {
+      "title": "Nous remplaçons les pièces",
+      "text": "Les rotules sont remplacées, le serrage est contrôlé, et une géométrie est réalisée si nécessaire."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : type de direction et de suspension, accessibilité.",
+    "Le nombre et le type de rotules concernées (direction, suspension, barre stabilisatrice).",
+    "Les pièces associées : biellettes, soufflets, silentblocs, selon leur état.",
+    "La rouille ou le grippage des fixations, qui peut allonger l’intervention.",
+    "La géométrie, à prévoir après remplacement."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le côté et le type de bruit ou de jeu.",
+    "Le kilométrage et l’état de la chaussée où le symptôme apparaît.",
+    "Les remarques éventuelles du contrôle technique."
+  ],
+  "faq": [
+    {
+      "q": "Peut-on rouler avec une rotule usée ?",
+      "a": "C’est risqué : la rotule participe à la tenue de la roue. Au moindre jeu ou claquement, faites-la contrôler rapidement."
+    },
+    {
+      "q": "Faut-il remplacer les rotules par paire ?",
+      "a": "Pas obligatoirement, mais l’usure est souvent similaire des deux côtés. Le contrôle indique si les deux sont à remplacer."
+    },
+    {
+      "q": "Pourquoi une géométrie après le remplacement ?",
+      "a": "Parce que le démontage modifie les réglages de direction. Le parallélisme doit être contrôlé pour préserver les pneus."
+    },
+    {
+      "q": "Quelle différence avec une biellette ou un silentbloc ?",
+      "a": "Ce sont d’autres pièces du train roulant qui s’usent de manière voisine. Le contrôle permet de repérer laquelle est en cause."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : nombre et type de rotules, pièces associées, géométrie. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "geometrie-parallelisme",
+    "amortisseurs",
+    "cardan"
+  ]
+}

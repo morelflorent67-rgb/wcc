@@ -1,0 +1,81 @@
+{
+  "seoTitle": "Précontrôle technique à Bischheim, toutes marques | WCC",
+  "seoDescription": "Précontrôle technique à Bischheim : vérification des points habituellement contrôlés avant le contrôle technique, toutes marques. Devis sur demande.",
+  "lead": "Avant de passer au contrôle technique, un examen préalable permet de repérer ce qui pourrait poser problème et de le traiter à votre rythme.",
+  "image": "mecanique-precontrole-technique.jpg",
+  "imageAlt": "Illustration : atelier de réparation avec véhicules sur ponts élévateurs",
+  "need": [
+    "Le contrôle technique officiel est réalisé par un centre agréé. Il peut aboutir à une contre-visite si des défaillances sont relevées. Un précontrôle consiste à examiner à l’avance les points habituellement vérifiés pour repérer d’éventuelles anomalies.",
+    "Il porte typiquement sur les éléments visibles et accessibles : freinage, direction et suspension, pneumatiques, éclairage et signalisation, état général du châssis, fuites, échappement. Le détail est précisé avec vous.",
+    "Un précontrôle ne remplace pas le contrôle technique officiel et ne garantit pas son résultat. Il vous permet de décider de ce qu’il est utile de réparer avant la visite."
+  ],
+  "signs": [
+    "Votre contrôle technique arrive à échéance.",
+    "Une contre-visite est à préparer après une visite précédente.",
+    "Vous voulez vendre votre véhicule et devez fournir un contrôle technique récent.",
+    "Vous avez remarqué un bruit, un jeu, une fuite ou un voyant qui pourrait être relevé.",
+    "Le véhicule n’a pas été entretenu depuis longtemps."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre véhicule",
+      "text": "Marque, modèle, année, kilométrage, date du dernier contrôle technique et éventuels points de la dernière visite."
+    },
+    {
+      "title": "Nous examinons les points de contrôle",
+      "text": "L’atelier vérifie les éléments habituellement contrôlés et note ce qui paraît à surveiller ou à réparer."
+    },
+    {
+      "title": "Vous recevez un compte rendu et un devis",
+      "text": "Les anomalies relevées vous sont expliquées, avec un devis pour celles que vous souhaitez traiter."
+    },
+    {
+      "title": "Nous intervenons si vous le souhaitez",
+      "text": "Vous choisissez ce qui est réparé avant de présenter le véhicule au contrôle technique."
+    }
+  ],
+  "priceFactors": [
+    "Le type de véhicule et son âge.",
+    "L’étendue des vérifications convenues : de l’examen visuel à des contrôles plus approfondis.",
+    "L’accessibilité de certains éléments, qui peut demander de lever le véhicule.",
+    "Les réparations éventuelles, qui ne sont pas incluses dans le précontrôle et font l’objet d’un devis.",
+    "Les pièces à remplacer si vous décidez de les traiter."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et le kilométrage de votre véhicule.",
+    "La date et le résultat de votre dernier contrôle technique, avec le procès-verbal si vous l’avez.",
+    "La date limite de votre prochain contrôle.",
+    "Ce que vous avez remarqué : bruit, voyant, fuite, jeu dans la direction."
+  ],
+  "faq": [
+    {
+      "q": "Un précontrôle remplace-t-il le contrôle technique ?",
+      "a": "Non. Le contrôle technique officiel est réalisé par un centre agréé. Le précontrôle sert à anticiper les défaillances possibles."
+    },
+    {
+      "q": "Garantit-il que je passerai le contrôle technique ?",
+      "a": "Non. Il réduit le risque de mauvaise surprise en repérant les anomalies visibles, mais le résultat du contrôle officiel reste celui du centre agréé."
+    },
+    {
+      "q": "Les réparations sont-elles comprises ?",
+      "a": "Non. Le précontrôle est un examen. Si des réparations sont nécessaires, elles vous sont proposées dans un devis séparé, que vous êtes libre d’accepter ou non."
+    },
+    {
+      "q": "Quand faire le précontrôle ?",
+      "a": "De préférence quelques semaines avant l’échéance du contrôle technique, pour avoir le temps de traiter d’éventuelles réparations."
+    },
+    {
+      "q": "Pour quels véhicules ?",
+      "a": "Nous intervenons sur de nombreuses marques. Indiquez votre véhicule dans la demande de devis."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "freinage",
+    "diagnostic-securite",
+    "echappement"
+  ]
+}

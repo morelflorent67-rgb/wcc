@@ -1,0 +1,78 @@
+{
+  "seoTitle": "Bougies et allumage à Bischheim : remplacement | WCC",
+  "seoDescription": "Ratés, démarrage difficile ou surconsommation : remplacement des bougies et contrôle du système d’allumage à Bischheim, toutes marques. Devis sur demande.",
+  "lead": "Des bougies usées ou une bobine défaillante rendent le moteur irrégulier. Nous contrôlons l’allumage et remplaçons ce qui est nécessaire.",
+  "image": "mecanique-bougies-allumage.jpg",
+  "imageAlt": "Illustration : bougies d’allumage",
+  "need": [
+    "Sur un moteur essence, les bougies produisent l’étincelle qui enflamme le mélange air-carburant. Elles s’usent avec le temps : l’écartement des électrodes augmente et l’étincelle devient moins efficace. Les bobines qui les alimentent peuvent aussi faiblir.",
+    "Un allumage défaillant provoque des ratés, un démarrage difficile, une perte de puissance et une consommation accrue. Il peut aussi endommager le catalyseur si les ratés persistent.",
+    "Sur un moteur diesel, ce sont les bougies de préchauffage qui facilitent le démarrage à froid : elles font l’objet d’un contrôle différent. Le devis précise ce qui est prévu pour votre motorisation."
+  ],
+  "signs": [
+    "Le moteur tousse, a des ratés ou des à-coups, surtout à froid.",
+    "Le démarrage est difficile ou plus long qu’avant.",
+    "La consommation de carburant augmente.",
+    "Le moteur manque de puissance ou le ralenti est instable.",
+    "Le voyant moteur clignote ou s’allume.",
+    "L’échéance de remplacement du constructeur est atteinte."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez les symptômes",
+      "text": "Ratés, démarrage difficile, voyant : précisez à quel moment ils apparaissent."
+    },
+    {
+      "title": "Nous contrôlons l’allumage",
+      "text": "Les bougies, les bobines et les connexions sont examinées, avec lecture des codes défaut si besoin."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise les bougies et, le cas échéant, les bobines à remplacer."
+    },
+    {
+      "title": "Nous remplaçons les pièces",
+      "text": "Les pièces sont remplacées, puis le fonctionnement du moteur est vérifié."
+    }
+  ],
+  "priceFactors": [
+    "Le moteur : nombre de cylindres, accessibilité des bougies.",
+    "Le type de bougies exigé par le constructeur.",
+    "Les bobines ou câbles à remplacer si leur état le justifie.",
+    "La dépose d’éléments pour accéder aux bougies (cache, collecteur d’admission).",
+    "Le diagnostic préalable si l’origine des ratés n’est pas évidente."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation (essence ou diesel) de votre véhicule.",
+    "Le kilométrage et la date du dernier remplacement des bougies.",
+    "Les symptômes constatés et leur fréquence.",
+    "Les interventions récentes sur le moteur."
+  ],
+  "faq": [
+    {
+      "q": "Tous les combien changer les bougies ?",
+      "a": "Cela dépend du moteur et du type de bougies : le carnet d’entretien du constructeur indique l’échéance, en kilomètres ou en années."
+    },
+    {
+      "q": "Faut-il remplacer toutes les bougies en même temps ?",
+      "a": "Oui, en général : elles s’usent au même rythme, et un jeu complet garantit un fonctionnement régulier."
+    },
+    {
+      "q": "Mon diesel a-t-il des bougies ?",
+      "a": "Il a des bougies de préchauffage, qui aident au démarrage à froid. Elles se contrôlent et se remplacent différemment des bougies d’allumage d’un moteur essence."
+    },
+    {
+      "q": "Les ratés viennent-ils forcément des bougies ?",
+      "a": "Pas toujours : bobine, injecteur, capteur ou autre peuvent aussi en être la cause. Un contrôle permet de le déterminer."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "diagnostic-electronique",
+    "injecteur",
+    "batterie-demarrage"
+  ]
+}

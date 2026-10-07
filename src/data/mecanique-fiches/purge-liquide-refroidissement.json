@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Purge du liquide de refroidissement à Bischheim | WCC",
+  "seoDescription": "Renouvellement et purge du liquide de refroidissement à Bischheim pour protéger votre moteur, toutes marques. Prix d’appel affiché, devis adapté.",
+  "lead": "Le liquide de refroidissement évacue la chaleur du moteur et protège le circuit. Nous le renouvelons et purgeons le circuit pour qu’il fonctionne correctement.",
+  "image": "mecanique-purge-liquide-refroidissement.jpg",
+  "imageAlt": "Illustration : vase d’expansion du liquide de refroidissement dans un compartiment moteur",
+  "need": [
+    "Le liquide de refroidissement circule dans le moteur et le radiateur pour maintenir la bonne température. Il contient aussi des additifs qui protègent le circuit de la corrosion et du gel. Ces additifs s’épuisent avec le temps : le liquide doit être renouvelé.",
+    "Après le remplacement, le circuit doit être purgé de l’air qu’il contient. Une purge incomplète laisse des poches d’air qui peuvent provoquer une surchauffe locale et un chauffage de l’habitacle capricieux.",
+    "Le type de liquide compte : il doit correspondre aux spécifications du constructeur. Les mélanger sans précaution peut dégrader sa protection."
+  ],
+  "signs": [
+    "Le voyant de température ou de niveau de liquide s’allume.",
+    "L’aiguille de température monte plus haut que d’habitude.",
+    "Le niveau du vase d’expansion baisse régulièrement.",
+    "Le chauffage de l’habitacle souffle froid alors que le moteur est chaud.",
+    "Le liquide est trouble, rouillé ou chargé de dépôts.",
+    "L’échéance prévue dans le carnet d’entretien est atteinte."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre véhicule",
+      "text": "Marque, modèle, motorisation, kilométrage, et ce que vous constatez (voyant, niveau qui baisse, chauffage défaillant)."
+    },
+    {
+      "title": "Nous contrôlons le circuit",
+      "text": "L’état du liquide et du circuit est examiné, notamment à la recherche d’une fuite."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise le liquide à utiliser et les opérations nécessaires."
+    },
+    {
+      "title": "Nous renouvelons et purgeons",
+      "text": "Le liquide est remplacé, le circuit est purgé de son air et le niveau est ajusté."
+    }
+  ],
+  "priceFactors": [
+    "La capacité du circuit, très variable d’un véhicule à l’autre, et donc la quantité de liquide.",
+    "Le type de liquide exigé par le constructeur.",
+    "L’accessibilité du circuit et la procédure de purge propre au moteur.",
+    "Les pièces à remplacer si le contrôle révèle une fuite ou une usure (durite, thermostat, bouchon…).",
+    "Les opérations complémentaires demandées en même temps."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le kilométrage et la date du dernier remplacement du liquide, si vous la connaissez.",
+    "La couleur du liquide dans le vase d’expansion, si vous l’avez remarquée.",
+    "Les signes constatés : voyant, surchauffe, niveau qui baisse, chauffage défaillant."
+  ],
+  "faq": [
+    {
+      "q": "Tous les combien faut-il renouveler le liquide de refroidissement ?",
+      "a": "Cela varie selon les constructeurs et le type de liquide. Le carnet d’entretien indique l’échéance, en années et en kilomètres."
+    },
+    {
+      "q": "Puis-je simplement compléter le niveau ?",
+      "a": "Pour un petit appoint ponctuel, oui, avec un liquide compatible. Mais un niveau qui baisse régulièrement signale une fuite à rechercher, et un liquide ancien doit être remplacé."
+    },
+    {
+      "q": "Peut-on mélanger deux types de liquide ?",
+      "a": "Il vaut mieux l’éviter : les liquides ne sont pas tous compatibles. Utilisez celui que préconise votre constructeur ; en cas de doute, demandez-nous."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : quantité de liquide, type exigé, pièces éventuelles à remplacer. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Mon moteur chauffe : que faire ?",
+      "a": "Arrêtez-vous dès que possible en lieu sûr et laissez le moteur refroidir avant d’ouvrir quoi que ce soit : le circuit est sous pression et brûlant. Faites ensuite contrôler le véhicule sans attendre."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "revision-vidange",
+    "climatisation",
+    "diagnostic-electronique"
+  ]
+}

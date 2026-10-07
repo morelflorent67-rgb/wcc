@@ -1,0 +1,78 @@
+{
+  "seoTitle": "Filtre d’habitacle à Bischheim : remplacement | WCC",
+  "seoDescription": "Buée, odeurs ou faible débit d’air : remplacement du filtre d’habitacle à Bischheim pour un air plus sain dans la voiture. Toutes marques. Devis sur demande.",
+  "lead": "Le filtre d’habitacle retient poussières et pollens avant qu’ils n’entrent dans la voiture. Il s’encrasse : nous le remplaçons.",
+  "image": "mecanique-filtre-habitacle.jpg",
+  "imageAlt": "Illustration : filtre à air de véhicule",
+  "need": [
+    "Le filtre d’habitacle (ou filtre à pollen) nettoie l’air qui entre dans l’habitacle par la ventilation et la climatisation. Il retient poussières, pollens et une partie des particules polluantes.",
+    "Avec le temps, il s’encrasse : le débit d’air diminue, la buée s’installe plus facilement, des odeurs apparaissent et la climatisation travaille davantage. Il se remplace à intervalles réguliers.",
+    "Selon le véhicule, le filtre est accessible derrière la boîte à gants, sous le capot ou sous le tableau de bord. Certains filtres sont à charbon actif, qui limite aussi les odeurs. Le devis précise la référence adaptée."
+  ],
+  "signs": [
+    "Le débit d’air de la ventilation est plus faible qu’avant.",
+    "Une odeur désagréable ou de moisi se dégage des aérateurs.",
+    "De la buée persiste sur le pare-brise.",
+    "Les allergies ou la gêne respiratoire augmentent dans la voiture.",
+    "L’échéance indiquée dans le carnet d’entretien est atteinte.",
+    "Le filtre n’a pas été remplacé depuis longtemps ou vous ne savez plus quand."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre véhicule",
+      "text": "Marque, modèle, année et ce que vous constatez (odeur, débit faible, buée)."
+    },
+    {
+      "title": "Nous identifions le filtre",
+      "text": "Nous retrouvons la référence adaptée à votre véhicule, avec ou sans charbon actif."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise la référence du filtre et l’intervention."
+    },
+    {
+      "title": "Nous remplaçons le filtre",
+      "text": "L’ancien filtre est déposé, le logement nettoyé et le nouveau filtre posé."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : accessibilité du filtre et temps de dépose.",
+    "Le type de filtre : standard, à charbon actif, ou autre technologie.",
+    "Le nombre de filtres, certains véhicules en ayant deux.",
+    "L’intervention groupée avec la révision ou l’entretien de la climatisation.",
+    "Un éventuel traitement de l’habitacle si des odeurs persistent."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle et l’année de votre véhicule.",
+    "Les symptômes constatés : odeur, débit d’air, buée.",
+    "La date du dernier remplacement si vous la connaissez.",
+    "La présence d’une climatisation automatique ou manuelle."
+  ],
+  "faq": [
+    {
+      "q": "À quelle fréquence remplacer le filtre d’habitacle ?",
+      "a": "Souvent une fois par an ou tous les 15 000 à 20 000 km, mais le carnet d’entretien du constructeur fait foi. Plus tôt si vous roulez en ville ou dans des zones poussiéreuses."
+    },
+    {
+      "q": "Quelle différence avec le filtre à air moteur ?",
+      "a": "Le filtre à air moteur nettoie l’air qui alimente le moteur. Le filtre d’habitacle nettoie l’air que vous respirez dans la voiture. Ce sont deux filtres distincts."
+    },
+    {
+      "q": "Le filtre à charbon actif vaut-il le coup ?",
+      "a": "Il retient en plus une partie des odeurs et des gaz. C’est un choix de confort, selon votre usage : nous pouvons vous conseiller."
+    },
+    {
+      "q": "Puis-je le changer moi-même ?",
+      "a": "Sur certains véhicules, c’est simple ; sur d’autres, l’accès est difficile. Nous pouvons le faire à l’occasion d’une révision."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "climatisation",
+    "revision-vidange",
+    "entretien-vehicule-electrique"
+  ]
+}

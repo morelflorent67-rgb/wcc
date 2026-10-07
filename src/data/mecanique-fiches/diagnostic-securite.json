@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Diagnostic sécurité à Bischheim : contrôle avant départ | WCC",
+  "seoDescription": "Contrôle des principaux points de sécurité de votre véhicule à Bischheim : freinage, pneus, éclairage, direction. Prix d’appel affiché, devis adapté.",
+  "lead": "Avant un long trajet ou après un doute, un contrôle des principaux points de sécurité vous aide à rouler l’esprit tranquille.",
+  "image": "mecanique-diagnostic-securite.jpg",
+  "imageAlt": "Illustration : mécanicien sous un véhicule dans un atelier",
+  "need": [
+    "Certains organes conditionnent directement votre sécurité : freins, pneus, direction, suspension, éclairage, essuie-glaces. Leur usure est progressive et passe souvent inaperçue au quotidien.",
+    "Le diagnostic sécurité est un contrôle de ces points principaux. Il permet de repérer ce qui est usé ou défaillant et de décider de ce qui doit être traité en priorité.",
+    "Il s’agit d’un examen, pas d’une réparation : les interventions éventuelles font l’objet d’un devis séparé. Le détail des points contrôlés vous est précisé par l’atelier."
+  ],
+  "signs": [
+    "Vous partez en vacances ou allez effectuer un long trajet.",
+    "Le véhicule n’a pas été contrôlé depuis longtemps.",
+    "Vous avez remarqué une distance de freinage plus longue ou un bruit inhabituel.",
+    "Le véhicule vibre, tire d’un côté ou manque de précision dans la direction.",
+    "Vous venez d’acheter un véhicule d’occasion.",
+    "Un tiers (contrôle technique, proche) vous a signalé un défaut visible."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre véhicule",
+      "text": "Marque, modèle, kilométrage et ce qui vous inquiète éventuellement."
+    },
+    {
+      "title": "Nous contrôlons les points de sécurité",
+      "text": "L’atelier examine les principaux éléments de sécurité du véhicule."
+    },
+    {
+      "title": "Vous recevez un compte rendu",
+      "text": "Les anomalies relevées vous sont expliquées, avec ce qui est urgent et ce qui peut attendre."
+    },
+    {
+      "title": "Nous établissons un devis si besoin",
+      "text": "Pour les réparations que vous souhaitez traiter, un devis détaillé vous est remis."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : type et accessibilité des éléments à contrôler.",
+    "Le périmètre du contrôle convenu avec l’atelier.",
+    "La nécessité de lever le véhicule ou de déposer des roues pour examiner certains éléments.",
+    "Les réparations qui en découlent, facturées séparément.",
+    "Les pièces à remplacer si vous décidez de les traiter."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et le kilométrage de votre véhicule.",
+    "Le motif : départ en voyage, achat, doute, échéance de contrôle technique.",
+    "Les symptômes éventuels : bruit, vibration, freinage différent.",
+    "Les interventions récentes sur les freins, les pneus ou la suspension."
+  ],
+  "faq": [
+    {
+      "q": "Que contrôle-t-on exactement ?",
+      "a": "Les principaux points de sécurité du véhicule, tels que le freinage, les pneumatiques, la direction et la suspension, l’éclairage. Le détail vous est précisé par l’atelier au moment de la demande."
+    },
+    {
+      "q": "Le diagnostic remplace-t-il le contrôle technique ?",
+      "a": "Non. Le contrôle technique est une obligation réglementaire réalisée par un centre agréé. Le diagnostic sécurité est un contrôle préventif proposé par l’atelier."
+    },
+    {
+      "q": "Les réparations sont-elles comprises ?",
+      "a": "Non. Le diagnostic est un examen. Les réparations éventuelles sont proposées dans un devis séparé."
+    },
+    {
+      "q": "Quand le faire ?",
+      "a": "Avant un long trajet, quand vous avez un doute ou que le véhicule n’a pas été examiné depuis longtemps."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : véhicule, périmètre du contrôle, éléments à lever ou déposer. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "precontrole-technique",
+    "freinage",
+    "pneumatiques"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Rénovation d’optiques de phares à Bischheim | WCC",
+  "seoDescription": "Phares ternis ou jaunis : rénovation d’optiques à Bischheim pour retrouver un éclairage plus net et un meilleur aspect. Prix d’appel affiché, devis adapté.",
+  "lead": "Des phares ternes éclairent moins bien et vieillissent l’aspect du véhicule. Nous rénovons les optiques pour retrouver un éclairage plus net.",
+  "image": "carrosserie-optique-polissage.jpg",
+  "imageAlt": "Illustration : polissage d’un phare de véhicule",
+  "need": [
+    "Les optiques de phares sont en plastique, protégé en surface par un vernis. Avec le soleil, les UV, les intempéries et les lavages, ce vernis se dégrade : le plastique jaunit, se ternit ou se micro-fissure.",
+    "Un phare terni diffuse mal la lumière et réduit la visibilité de nuit. Il dégrade aussi l’apparence du véhicule, ce qui compte pour une revente ou une restitution.",
+    "La rénovation consiste à poncer et polir la surface pour retirer la couche abîmée, puis à protéger l’optique selon le procédé retenu. Elle améliore l’aspect et la transparence ; elle ne répare pas un phare fissuré ou rempli d’humidité."
+  ],
+  "signs": [
+    "Les phares sont jaunis, ternes ou laiteux.",
+    "L’éclairage de nuit paraît plus faible qu’avant.",
+    "La surface est rayée ou piquée.",
+    "Le vernis s’écaille ou se décolle.",
+    "Vous préparez la vente ou la restitution du véhicule.",
+    "Le contrôle technique a signalé un éclairage insuffisant lié à l’état des optiques."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez l’état des phares",
+      "text": "Jaunissement, rayures, vernis écaillé : une photo aide à évaluer l’intervention."
+    },
+    {
+      "title": "Nous évaluons la rénovation possible",
+      "text": "Nous vérifions que la rénovation est adaptée, et sinon qu’un remplacement serait préférable."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise le nombre d’optiques et le procédé prévu."
+    },
+    {
+      "title": "Nous rénovons les optiques",
+      "text": "La surface est poncée et polie, puis protégée, et le résultat est contrôlé."
+    }
+  ],
+  "priceFactors": [
+    "Le nombre d’optiques à rénover : un phare ou la paire, éventuellement les feux arrière.",
+    "L’état de dégradation : léger ternissement ou vernis très abîmé.",
+    "Le procédé de finition et de protection retenu.",
+    "L’accessibilité du phare, qui peut demander de déposer des éléments.",
+    "Le remplacement du phare si la rénovation n’est pas possible."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle et l’année de votre véhicule.",
+    "Des photos des phares, de face et de côté, de jour si possible.",
+    "Les symptômes : jaunissement, rayures, buée à l’intérieur.",
+    "Votre objectif : amélioration de l’éclairage, préparation de vente ou de restitution."
+  ],
+  "faq": [
+    {
+      "q": "La rénovation améliore-t-elle l’éclairage ?",
+      "a": "Elle retire la couche qui ternit la lumière et peut améliorer la clarté du faisceau. Le résultat dépend de l’état de l’optique."
+    },
+    {
+      "q": "Quelle durée de tenue ?",
+      "a": "Elle dépend de l’exposition (soleil, lavages) et de la protection appliquée. L’atelier vous indique ce qu’il est raisonnable d’attendre pour votre véhicule."
+    },
+    {
+      "q": "Peut-on rénover un phare fissuré ou plein d’eau ?",
+      "a": "Non. La rénovation traite l’état de surface. Un phare fissuré ou rempli d’humidité doit être réparé ou remplacé."
+    },
+    {
+      "q": "Cela concerne-t-il aussi les feux arrière ?",
+      "a": "Possiblement, selon leur matière et leur état. Précisez-le dans votre demande."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : nombre d’optiques, état de dégradation, procédé de protection. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "precontrole-technique",
+    "diagnostic-securite",
+    "revision-vidange"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Révision et vidange à Bischheim : entretien toutes marques | WCC",
+  "seoDescription": "Révision périodique et vidange de votre véhicule à Bischheim : huile, filtres et points de contrôle, toutes marques. Prix d’appel affiché, devis adapté.",
+  "lead": "Une révision régulière préserve le moteur et évite les mauvaises surprises. Nous effectuons la vidange et l’entretien périodique de votre véhicule, quelle que soit sa marque.",
+  "image": "mecanique-vidange-huile.jpg",
+  "imageAlt": "Illustration : huile moteur versée lors d’une vidange",
+  "need": [
+    "L’huile moteur lubrifie, refroidit et nettoie les pièces en mouvement. Avec le temps et les kilomètres, elle s’use et se charge d’impuretés ; les filtres s’encrassent. Une révision à intervalles réguliers limite l’usure du moteur et son encrassement.",
+    "Le bon entretien dépend du véhicule : motorisation, usage (ville, trajets courts, longues distances), âge et préconisations du constructeur, indiquées dans le carnet d’entretien. Nous partons de ces éléments pour définir ce qui doit être fait.",
+    "Selon le véhicule, la révision peut comprendre le remplacement de l’huile et du filtre à huile, d’autres filtres (air, habitacle, carburant) et un contrôle des principaux points : niveaux, freins, pneus, éclairage. Le devis précise le contenu retenu."
+  ],
+  "signs": [
+    "Le voyant d’entretien ou de vidange s’allume au tableau de bord.",
+    "L’échéance indiquée dans votre carnet d’entretien (en kilomètres ou en mois) est atteinte.",
+    "Le niveau d’huile baisse régulièrement ou l’huile paraît très sombre et épaisse.",
+    "Le moteur est plus bruyant qu’avant ou sa consommation de carburant augmente.",
+    "Vous avez acheté un véhicule d’occasion dont l’historique d’entretien est incomplet.",
+    "Vous allez partir en vacances ou effectuer un long trajet."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez votre véhicule",
+      "text": "Indiquez la marque, le modèle, la motorisation et le kilométrage, ainsi que la date de la dernière révision si vous la connaissez."
+    },
+    {
+      "title": "Nous définissons l’entretien",
+      "text": "En fonction des préconisations du constructeur et de l’état du véhicule, nous précisons l’huile, les filtres et les contrôles à prévoir."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Le devis détaille les fournitures et les opérations prévues pour votre véhicule."
+    },
+    {
+      "title": "Nous réalisons la révision",
+      "text": "L’huile et les filtres convenus sont remplacés, les points de contrôle sont vérifiés et le résultat vous est expliqué."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : motorisation, capacité du carter et type d’huile exigé par le constructeur.",
+    "La quantité et la qualité de l’huile, qui varient d’un moteur à l’autre.",
+    "Les filtres à remplacer : huile, air, habitacle, carburant selon le plan d’entretien.",
+    "Les contrôles et opérations supplémentaires demandés ou recommandés (liquides, freins, courroie d’accessoires…).",
+    "Les fournitures annexes : joint de bouchon de vidange, additifs si le constructeur les prévoit."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le kilométrage actuel et la date de la dernière révision.",
+    "Le carnet d’entretien, si vous l’avez : il indique les échéances du constructeur.",
+    "Ce que vous avez remarqué : voyant allumé, consommation d’huile, bruit inhabituel."
+  ],
+  "faq": [
+    {
+      "q": "À quelle fréquence faut-il faire la révision ?",
+      "a": "Cela dépend du véhicule : le carnet d’entretien du constructeur indique l’intervalle en kilomètres et en durée, à respecter selon le premier atteint. Un usage intensif ou des trajets courts répétés peuvent justifier un entretien plus rapproché."
+    },
+    {
+      "q": "Quelle huile mettre dans mon moteur ?",
+      "a": "Celle qui correspond aux spécifications de votre constructeur (viscosité et norme). Nous la déterminons à partir de votre véhicule ; indiquez la motorisation dans votre demande."
+    },
+    {
+      "q": "La révision comprend-elle les filtres ?",
+      "a": "Le remplacement du filtre à huile accompagne normalement la vidange. Les autres filtres (air, habitacle, carburant) dépendent du plan d’entretien de votre véhicule ; le devis indique ce qui est inclus."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : quantité et type d’huile, filtres, opérations complémentaires. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Dois-je fournir le carnet d’entretien ?",
+      "a": "Ce n’est pas obligatoire, mais il aide à retrouver les échéances et à éviter de refaire ce qui l’a déjà été récemment."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "pneumatiques",
+    "filtre-habitacle",
+    "purge-liquide-refroidissement"
+  ]
+}

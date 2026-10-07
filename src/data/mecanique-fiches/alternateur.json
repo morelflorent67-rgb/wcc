@@ -1,0 +1,78 @@
+{
+  "seoTitle": "Alternateur à Bischheim : contrôle et remplacement | WCC",
+  "seoDescription": "Voyant de batterie, éclairage faible, batterie qui se décharge : contrôle de la charge et remplacement de l’alternateur à Bischheim. Devis sur demande.",
+  "lead": "L’alternateur recharge la batterie et alimente le véhicule moteur tournant. Nous contrôlons la charge et le remplaçons s’il est défaillant.",
+  "image": "mecanique-alternateur.jpg",
+  "imageAlt": "Illustration : compartiment moteur avec l’alternateur",
+  "need": [
+    "L’alternateur, entraîné par une courroie, produit l’électricité dont le véhicule a besoin une fois le moteur lancé, et recharge la batterie. S’il faiblit, la batterie se décharge peu à peu et le véhicule finit par tomber en panne.",
+    "Les symptômes ressemblent à ceux d’une batterie fatiguée : c’est pourquoi un test du circuit de charge précède le remplacement, pour éviter de changer la mauvaise pièce.",
+    "Selon le véhicule, on remplace l’alternateur complet ou certains de ses éléments (régulateur, roulement), et la courroie d’accessoires est contrôlée. Le devis précise ce qui est prévu."
+  ],
+  "signs": [
+    "Le voyant de batterie ou de charge s’allume en roulant.",
+    "Les phares et les équipements électriques faiblissent, notamment au ralenti.",
+    "La batterie se décharge ou doit être rechargée régulièrement.",
+    "Un sifflement ou un grincement vient de la courroie ou de l’alternateur.",
+    "Une odeur de brûlé ou de caoutchouc chaud se dégage du compartiment moteur.",
+    "Des dysfonctionnements électriques apparaissent par intermittence."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez les symptômes",
+      "text": "Voyant, éclairage faible, batterie déchargée, bruit : précisez quand ils apparaissent."
+    },
+    {
+      "title": "Nous testons la charge",
+      "text": "La tension de charge et l’état de la batterie sont mesurés pour déterminer si l’alternateur est en cause."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise l’alternateur à remplacer, la courroie et les pièces associées."
+    },
+    {
+      "title": "Nous remplaçons l’alternateur",
+      "text": "L’alternateur est remplacé, la courroie contrôlée ou changée, puis la charge est vérifiée."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : accessibilité de l’alternateur et temps de démontage.",
+    "Le type de pièce : alternateur neuf, d’échange ou remise en état.",
+    "La courroie d’accessoires et le tendeur, souvent remplacés en même temps.",
+    "La batterie, si le test la met aussi en cause.",
+    "Le test préalable du circuit de charge."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Les voyants allumés et le moment où ils apparaissent.",
+    "L’âge de la batterie, si vous le connaissez.",
+    "Le kilométrage et l’historique des courroies d’accessoires."
+  ],
+  "faq": [
+    {
+      "q": "Comment distinguer une panne d’alternateur d’une panne de batterie ?",
+      "a": "Par un test de la batterie et de la tension de charge. À l’œil nu, les symptômes se ressemblent."
+    },
+    {
+      "q": "Puis-je continuer à rouler avec le voyant de charge allumé ?",
+      "a": "Pas longtemps : le véhicule fonctionne sur la batterie, qui se vide, jusqu’à la panne. Faites-le contrôler rapidement."
+    },
+    {
+      "q": "Un alternateur d’échange est-il possible ?",
+      "a": "Selon les véhicules, oui. Nous vous indiquons dans le devis les options disponibles pour votre modèle."
+    },
+    {
+      "q": "Faut-il changer la courroie en même temps ?",
+      "a": "C’est souvent conseillé, car elle est déposée pour l’intervention et son état se contrôle à ce moment."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "batterie-demarrage",
+    "diagnostic-electronique",
+    "distribution"
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Batterie et démarrage à Bischheim : test et remplacement | WCC",
+  "seoDescription": "Démarrage difficile ou voyant de batterie : test de la batterie et du circuit de démarrage, remplacement si nécessaire, à Bischheim. Devis sur demande.",
+  "lead": "Un démarrage qui peine annonce souvent une batterie fatiguée. Nous la testons, avec le circuit de charge, et la remplaçons si c’est nécessaire.",
+  "image": "mecanique-batterie-demarrage.jpg",
+  "imageAlt": "Illustration : pinces de démarrage connectées à une batterie",
+  "need": [
+    "La batterie fournit l’énergie nécessaire au démarrage et alimente les équipements quand le moteur est arrêté. Elle perd de sa capacité avec les années, les trajets courts et le froid.",
+    "Une batterie faible n’est pas toujours seule en cause : l’alternateur qui la recharge ou le démarreur peuvent aussi être défaillants. Un test du circuit de charge et de démarrage permet de savoir ce qui doit être remplacé.",
+    "Sur de nombreux véhicules récents (notamment avec arrêt-démarrage automatique), la batterie neuve doit être d’un type précis et enregistrée auprès du véhicule. Le devis précise ce qui est prévu pour votre modèle."
+  ],
+  "signs": [
+    "Le démarreur tourne lentement ou le moteur démarre difficilement, surtout par temps froid.",
+    "Le voyant de batterie ou de charge s’allume.",
+    "Les phares faiblissent ou l’équipement électrique donne des signes de faiblesse.",
+    "Le véhicule est resté plusieurs jours à l’arrêt et ne redémarre plus.",
+    "La batterie a plus de quatre ou cinq ans, ou un boîtier présente un gonflement ou une fuite.",
+    "Le système arrêt-démarrage ne fonctionne plus comme avant."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez les symptômes",
+      "text": "Démarrage difficile, voyant, équipement qui faiblit : précisez à quel moment cela se produit."
+    },
+    {
+      "title": "Nous testons le circuit",
+      "text": "Batterie, alternateur et démarreur sont contrôlés pour déterminer l’origine du problème."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il précise la batterie à remplacer (type, capacité) et les opérations nécessaires."
+    },
+    {
+      "title": "Nous remplaçons la batterie si besoin",
+      "text": "La batterie est remplacée, enregistrée sur le véhicule lorsque c’est nécessaire, et le circuit est contrôlé."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : type et capacité de batterie exigés (classique, EFB, AGM selon l’arrêt-démarrage).",
+    "L’accessibilité de la batterie : sous le capot, sous un siège ou dans le coffre.",
+    "L’enregistrement de la batterie neuve auprès du véhicule, nécessaire sur certains modèles.",
+    "Les éléments associés à remplacer si le test les met en cause : cosses, câbles, alternateur, démarreur.",
+    "Le test, qui peut être séparé de l’intervention."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "L’âge approximatif de la batterie si vous le connaissez.",
+    "La présence d’un système d’arrêt-démarrage.",
+    "Les symptômes et le moment où ils apparaissent : par froid, après un arrêt prolongé."
+  ],
+  "faq": [
+    {
+      "q": "Comment savoir si c’est la batterie ?",
+      "a": "Un test de la batterie et du circuit de charge permet de le déterminer. Un démarrage difficile peut aussi venir de l’alternateur ou du démarreur."
+    },
+    {
+      "q": "Pourquoi enregistrer la batterie ?",
+      "a": "Sur certains véhicules, le calculateur adapte la charge à l’âge de la batterie. Après remplacement, elle doit lui être signalée pour que la charge soit correcte."
+    },
+    {
+      "q": "Quelle batterie choisir ?",
+      "a": "Celle qui correspond aux exigences de votre véhicule (capacité, technologie). Nous la déterminons à partir de votre modèle."
+    },
+    {
+      "q": "Ma batterie se décharge à l’arrêt : est-ce normal ?",
+      "a": "Non, si elle est en bon état. Une décharge en quelques jours peut venir d’une consommation parasite ou d’une batterie fatiguée : un contrôle permet d’en trouver la cause."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : type de batterie, accessibilité, enregistrement, éléments associés. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "alternateur",
+    "diagnostic-electronique",
+    "bougies-allumage"
+  ]
+}

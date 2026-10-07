@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Cardan à Bischheim : contrôle et remplacement | WCC",
+  "seoDescription": "Claquement dans les virages, soufflet déchiré, vibrations : contrôle et remplacement du cardan à Bischheim, toutes marques. Devis sur demande.",
+  "lead": "Un claquement dans les virages est le signe classique d’un cardan fatigué. Nous contrôlons la transmission et remplaçons ce qui doit l’être.",
+  "image": "mecanique-cardan.jpg",
+  "imageAlt": "Illustration : suspension et soufflets de cardan d’une voiture",
+  "need": [
+    "Les cardans transmettent la puissance du moteur aux roues motrices, tout en suivant les mouvements de la suspension et de la direction. Chacun est protégé par un soufflet en caoutchouc rempli de graisse.",
+    "Quand un soufflet se déchire, la graisse s’échappe et les impuretés pénètrent : le joint s’use vite et finit par claquer. Réparer rapidement un soufflet abîmé peut éviter de remplacer tout le cardan.",
+    "Selon l’état, l’intervention consiste à remplacer le soufflet, le joint ou le cardan complet. Le devis précise ce qui est nécessaire pour votre véhicule."
+  ],
+  "signs": [
+    "Un claquement se produit en tournant à faible vitesse, volant braqué.",
+    "Des vibrations se font sentir à l’accélération.",
+    "Un soufflet est déchiré ou fendu, avec de la graisse projetée autour.",
+    "Un bruit de roulement ou de grincement vient de la roue avant.",
+    "Le véhicule vibre à vitesse stabilisée.",
+    "Le contrôle technique a relevé un soufflet de cardan défectueux."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez ce que vous constatez",
+      "text": "Claquement, vibrations, soufflet abîmé : précisez le côté et quand le bruit apparaît."
+    },
+    {
+      "title": "Nous contrôlons la transmission",
+      "text": "Nous examinons les soufflets et les joints pour déterminer ce qui est usé."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille la pièce à remplacer (soufflet, joint ou cardan) et les éléments associés."
+    },
+    {
+      "title": "Nous remplaçons les pièces",
+      "text": "Les pièces sont remplacées, la graisse est renouvelée si nécessaire, puis le fonctionnement est contrôlé à l’essai."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : transmission avant, arrière ou intégrale, accessibilité.",
+    "Le nombre de cardans concernés (un côté ou les deux).",
+    "Le choix entre remplacement du soufflet, du joint ou du cardan complet.",
+    "Les pièces associées : écrou de transmission, rotules, roulement de roue si leur état le justifie.",
+    "La géométrie, parfois à contrôler après intervention."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le côté concerné (gauche ou droit) et le type de bruit.",
+    "Le kilométrage.",
+    "L’état visible des soufflets, si vous avez pu regarder."
+  ],
+  "faq": [
+    {
+      "q": "Puis-je rouler avec un cardan qui claque ?",
+      "a": "Pendant un court trajet, c’est souvent possible, mais le joint s’use vite et peut finir par casser, ce qui immobilise le véhicule. Mieux vaut le faire contrôler sans tarder."
+    },
+    {
+      "q": "Un soufflet déchiré suffit-il à changer le cardan ?",
+      "a": "Pas toujours. Si le soufflet est remplacé rapidement et que le joint n’est pas encore abîmé, on peut parfois se limiter au soufflet. Le contrôle permet de le dire."
+    },
+    {
+      "q": "Faut-il changer les deux cardans ?",
+      "a": "Pas obligatoirement. On remplace celui qui est défaillant ; l’autre est contrôlé et remplacé s’il est lui aussi abîmé."
+    },
+    {
+      "q": "Pourquoi une géométrie après l’intervention ?",
+      "a": "Le démontage de la suspension peut modifier certains réglages. Une vérification est parfois recommandée selon le véhicule."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : côté ou deux côtés, soufflet, joint ou cardan complet. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "rotules-direction",
+    "geometrie-parallelisme",
+    "amortisseurs"
+  ]
+}

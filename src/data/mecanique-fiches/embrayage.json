@@ -1,0 +1,82 @@
+{
+  "seoTitle": "Remplacement d’embrayage à Bischheim, toutes marques | WCC",
+  "seoDescription": "Embrayage qui patine, pédale dure ou bruyante : remplacement de l’embrayage à Bischheim, toutes marques. Prix d’appel affiché, devis adapté.",
+  "lead": "Une pédale qui patine, qui vibre ou qui devient dure annonce souvent un embrayage fatigué. Nous contrôlons et remplaçons les pièces nécessaires.",
+  "image": "mecanique-embrayage.jpg",
+  "imageAlt": "Illustration : pièces d’une boîte de vitesses et de son embrayage",
+  "need": [
+    "L’embrayage relie le moteur à la boîte de vitesses et permet de démarrer et de changer de rapport en douceur. Il s’use à chaque utilisation, surtout en conduite urbaine, avec remorque ou en côte.",
+    "Un embrayage usé se manifeste par un patinage : le régime moteur monte sans que la voiture accélère en proportion. Poursuivre ainsi peut endommager d’autres pièces et finit par immobiliser le véhicule.",
+    "Le remplacement concerne en général le kit : disque, mécanisme (plateau) et butée. Selon le véhicule, le volant moteur ou d’autres éléments doivent être contrôlés, voire remplacés. Le devis précise ce qui est prévu."
+  ],
+  "signs": [
+    "Le régime moteur monte sans que la voiture accélère : l’embrayage patine.",
+    "La pédale devient très dure, très molle ou remonte mal.",
+    "Un point dur ou des vibrations se font sentir quand vous embrayez.",
+    "Un bruit apparaît quand vous appuyez sur la pédale ou quand vous la relâchez.",
+    "Les vitesses passent difficilement, ou la première et la marche arrière craquent.",
+    "Une odeur de brûlé se dégage après un démarrage en côte ou une manœuvre."
+  ],
+  "steps": [
+    {
+      "title": "Vous décrivez ce que vous constatez",
+      "text": "Patinage, pédale dure, bruit, vibrations : précisez quand le symptôme apparaît."
+    },
+    {
+      "title": "Nous examinons le véhicule",
+      "text": "Nous vérifions l’embrayage et les éléments associés pour confirmer l’origine du problème."
+    },
+    {
+      "title": "Vous recevez un devis adapté",
+      "text": "Il détaille le kit d’embrayage et les pièces associées selon votre véhicule."
+    },
+    {
+      "title": "Nous remplaçons l’embrayage",
+      "text": "La boîte est déposée, le kit est remplacé, puis le fonctionnement est contrôlé à l’essai."
+    }
+  ],
+  "priceFactors": [
+    "Le véhicule : accès à la boîte de vitesses, temps de dépose et repose.",
+    "Le kit d’embrayage et son type (selon la boîte : manuelle, robotisée, double embrayage).",
+    "Le volant moteur, notamment « bimasse », à contrôler et parfois à remplacer.",
+    "La commande d’embrayage (câble, émetteur, récepteur hydraulique) si elle est défaillante.",
+    "Les fuites ou joints à remplacer au moment de l’ouverture (joint de vilebrequin, de boîte)."
+  ],
+  "vehicleInfo": [
+    "La marque, le modèle, l’année et la motorisation de votre véhicule.",
+    "Le type de boîte : manuelle, robotisée ou à double embrayage.",
+    "Le kilométrage et vos conditions d’usage : ville, remorque, côtes.",
+    "Les symptômes : patinage, pédale dure, bruit, vibrations, et quand ils apparaissent."
+  ],
+  "faq": [
+    {
+      "q": "Combien de temps dure un embrayage ?",
+      "a": "Très variable : la durée dépend de la conduite, des trajets et du véhicule. Un usage urbain, des départs en côte ou une remorque l’usent plus vite."
+    },
+    {
+      "q": "Puis-je rouler avec un embrayage qui patine ?",
+      "a": "C’est déconseillé : le patinage échauffe et abîme les pièces, et le véhicule peut finir par ne plus avancer. Mieux vaut le faire contrôler rapidement."
+    },
+    {
+      "q": "Faut-il changer le volant moteur ?",
+      "a": "Pas toujours. Sur certains véhicules (volant moteur bimasse notamment), il est contrôlé à l’ouverture et remplacé s’il est usé. Le devis précise ce qui est prévu."
+    },
+    {
+      "q": "Les boîtes robotisées ou à double embrayage sont-elles concernées ?",
+      "a": "Oui, elles ont aussi un embrayage qui s’use, mais la procédure est différente. Précisez le type de boîte dans votre demande."
+    },
+    {
+      "q": "Le prix affiché est-il définitif ?",
+      "a": "Non. Le tarif « à partir de » est un prix d’appel. Le montant final dépend de votre véhicule et de l’intervention nécessaire : accès à la boîte, kit, volant moteur, pièces associées. Il vous est communiqué dans le devis, avant toute intervention."
+    },
+    {
+      "q": "Comment demander un devis ?",
+      "a": "Avec le formulaire en ligne, rapide à remplir, ou par téléphone. Votre demande est transmise à l’atelier ; elle ne constitue pas une réservation."
+    }
+  ],
+  "related": [
+    "distribution",
+    "diagnostic-electronique",
+    "revision-vidange"
+  ]
+}
