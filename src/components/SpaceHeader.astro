@@ -10,6 +10,7 @@ import site from '../data/site.json';
 import logoMark from '../assets/brand/logo-wcc-mark.webp';
 import PhotoRail from './PhotoRail.astro';
 import { mecaItems, carroItems, mecaTabs } from '../lib/cards';
+import { promoNote } from '../lib/mecanique';
 
 interface Props { space: 'mecanique' | 'carrosserie'; current?: string; }
 const { space, current = '' } = Astro.props;
@@ -49,7 +50,7 @@ const conf = confs[space];
 const items = space === 'mecanique' ? mecaItems : carroItems;
 const allHref = conf.nav.find((n) => n.mega)!.href;
 const megaNote = space === 'mecanique'
-  ? 'Prix d’appel « à partir de » : tarif selon véhicule et intervention, devis personnalisé.'
+  ? `Prix d’appel « à partir de » : devis personnalisé selon votre véhicule. ${promoNote}`
   : 'Chaque dommage est différent : le devis est établi à partir de votre demande.';
 const prestActive = current.startsWith(allHref);
 ---

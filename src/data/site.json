@@ -44,9 +44,10 @@
   },
   "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=5a+avenue+de+l%27%C3%89nergie+67800+Bischheim",
   "promo": {
-    "_note": "Offre « flash info » de l'espace mécanique, voulue par le client (7 octobre 2026). enabled=false la retire partout. Conditions exactes (contenu des 90 points, durée, exclusions) à obtenir de WCC.",
+    "_note": "Offre de l'espace mécanique voulue par le client (7 octobre 2026) : remise sur le tarif de base + 90 points de contrôle offerts. enabled=false retire tout (remise, bande, macaron) et les prix reviennent au tarif de base. discountPercent = remise appliquée au tarif de base (le tarif barré est le tarif de base réellement pratiqué). endDate = date de fin « AAAA-MM-JJ » (facultative, affichée si renseignée). Conditions exactes des 90 points à obtenir de WCC.",
     "enabled": true,
-    "label": "Flash info",
+    "discountPercent": 20,
+    "endDate": null,
     "highlight": "90 points de contrôle offerts",
     "text": "pour chaque prestation effectuée chez nous",
     "sticker": {

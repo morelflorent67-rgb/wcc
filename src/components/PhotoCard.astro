@@ -6,7 +6,7 @@
  */
 import { Image } from 'astro:assets';
 import type { CardItem } from '../lib/cards';
-import { formatPrice } from '../lib/mecanique';
+import { formatPrice, percentLabel } from '../lib/mecanique';
 
 interface Props {
   item: CardItem;
@@ -28,7 +28,15 @@ const { item, index, accent, sizes = '(max-width: 700px) 82vw, 320px', eager = f
     </div>
     <div class="c-bot">
       {item.price === null && <span class="c-price"><b>Sur devis</b></span>}
-      {typeof item.price === 'number' && <span class="c-price"><small>à partir de</small><b>{formatPrice(item.price)}</b></span>}
+      {item.price && (
+        <span class="c-price">
+          <span class="pp">
+            <small>à partir de {item.price.percent > 0 && <s>{formatPrice(item.price.regular)}</s>}</small>
+            <b>{formatPrice(item.price.current)}</b>
+          </span>
+          {item.price.percent > 0 && <em>{percentLabel(item.price.percent)}</em>}
+        </span>
+      )}
       <h3 class="c-title"><a href={item.href}>{item.name}</a></h3>
       <div class="c-more">
         <div class="c-more-in">
@@ -71,12 +79,15 @@ const { item, index, accent, sizes = '(max-width: 700px) 82vw, 320px', eager = f
   .card:hover .c-fam, .card:focus-within .c-fam { opacity: 0; max-height: 0; margin-top: 0; }
 
   .c-price {
-    display: inline-flex; align-items: baseline; gap: 6px; margin-bottom: 3.5cqi; padding: 2cqi 5cqi 2cqi 4cqi;
+    display: inline-flex; align-items: center; gap: 3cqi; margin-bottom: 3.5cqi; padding: 2cqi 4cqi 2cqi 4cqi;
     background: var(--acc); color: var(--on-acc); transform: skewX(-12deg); transform-origin: left bottom;
   }
   .c-price > * { display: inline-block; transform: skewX(12deg); }
-  .c-price small { font: 600 max(0.7rem, 3.6cqi) / 1 var(--f-body); }
+  .c-price > .pp { display: grid; gap: 0.3em; line-height: 1; }
+  .c-price small { font: 600 max(0.7rem, 3.4cqi) / 1 var(--f-body); }
+  .c-price s { margin-left: 0.4em; font-size: 1.2em; font-weight: 700; opacity: 0.85; text-decoration-thickness: 2px; }
   .c-price b { font: 800 max(1.25rem, 8.6cqi) / 1 var(--f-display); letter-spacing: 0.01em; }
+  .c-price em { padding: 0.25em 0.45em; background: var(--ink); color: #fff; font: 800 max(0.9rem, 5cqi) / 1 var(--f-display); font-style: normal; letter-spacing: 0.04em; white-space: nowrap; }
 
   .c-title { margin: 0; font: 800 clamp(1.3rem, 12cqi, 3.4rem) / 0.88 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; overflow-wrap: anywhere; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25); }
   .c-title a { text-decoration: none; }

@@ -3,7 +3,7 @@ import SpaceLayout from '../../../layouts/SpaceLayout.astro';
 import '../../../styles/form.css';
 import site from '../../../data/site.json';
 import brands from '../../../data/brands.json';
-import { families, byFamily, formatPrice } from '../../../lib/mecanique';
+import { families, byFamily, priceNote } from '../../../lib/mecanique';
 
 const year = new Date().getFullYear();
 const recap = [
@@ -54,7 +54,7 @@ const motorisations = ['Essence', 'Diesel', 'Hybride', 'Hybride rechargeable', '
                   <label class="chip">
                     <input type="checkbox" name="prestations[]" value={s.slug} data-label={s.name} />
                     <input type="hidden" name={`prestations_labels[${s.slug}]`} value={s.name} />
-                    <span>{s.name}<small>{s.priceFrom === null ? 'sur devis' : `dès ${formatPrice(s.priceFrom)}`}</small></span>
+                    <span>{s.name}<small>{priceNote(s).toLowerCase()}</small></span>
                   </label>
                 ))}
               </div>

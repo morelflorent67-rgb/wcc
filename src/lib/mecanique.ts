@@ -1,4 +1,5 @@
 import raw from '../data/services-mecanique.json';
+import site from '../data/site.json';
 
 export interface Family { id: string; name: string; blurb: string; }
 export interface Service {
@@ -47,8 +48,41 @@ const eur = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR',
 /** « 92,90 € » ou null si sur devis. */
 export const formatPrice = (p: number | null) => (p === null ? null : eur.format(p).replace(/ | /g, ' '));
 
-/** Libellé court : « À partir de 92,90 € » ou « Sur devis ». */
-export const priceLabel = (s: Service) => (s.priceFrom === null ? 'Sur devis' : `À partir de ${formatPrice(s.priceFrom)}`);
+// ───── Prix et remise (site.json → promo) ─────
+const promo = site.promo;
+/** Remise en cours sur le tarif de base (0 si l'offre est désactivée). */
+export const promoPercent = promo?.enabled && promo.discountPercent > 0 ? promo.discountPercent : 0;
+
+export interface Pricing {
+  /** Tarif de base (« à partir de »), celui qui est barré quand une remise est en cours */
+  regular: number;
+  /** Prix à payer : tarif de base − remise (égal au tarif de base sans remise) */
+  current: number;
+  /** Pourcentage de remise (0 = aucune) */
+  percent: number;
+}
+export const pricingOf = (p: number | null): Pricing | null =>
+  p === null ? null : { regular: p, current: Math.round(p * (100 - promoPercent)) / 100, percent: promoPercent };
+
+/** Texte « −20 % » avec vraie espace insécable avant le signe pourcent. */
+export const percentLabel = (percent: number) => `−${percent} %`;
+
+const endDate = promo?.endDate as unknown as string | null;
+/** Mention des conditions de la remise, à placer sous les listes de prix (vide sans remise). */
+export const promoNote = promoPercent
+  ? `Remise de ${promoPercent} % sur le tarif de base${endDate ? `, valable jusqu’au ${new Date(endDate + 'T12:00:00').toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}` : ''}.`
+  : '';
+
+/** Libellé court de liste : « dès 111,48 € » ou « Sur devis » (prix remisé s'il y a une remise). */
+export const priceNote = (s: Service) => {
+  const pr = pricingOf(s.priceFrom);
+  return pr === null ? 'Sur devis' : `dès ${formatPrice(pr.current)}`;
+};
+/** Libellé court : « À partir de 111,48 € » ou « Sur devis ». */
+export const priceLabel = (s: Service) => {
+  const pr = pricingOf(s.priceFrom);
+  return pr === null ? 'Sur devis' : `À partir de ${formatPrice(pr.current)}`;
+};
 
 export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug);
 export const byFamily = (id: string) => services.filter((s) => s.family === id);

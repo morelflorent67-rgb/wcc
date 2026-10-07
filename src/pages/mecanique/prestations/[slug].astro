@@ -6,7 +6,7 @@ import SpaceLayout from '../../../layouts/SpaceLayout.astro';
 import PhotoCard from '../../../components/PhotoCard.astro';
 import AccessBlock from '../../../components/AccessBlock.astro';
 import site from '../../../data/site.json';
-import { details, serviceBySlug, families, formatPrice, quoteHref, type Service } from '../../../lib/mecanique';
+import { details, serviceBySlug, families, formatPrice, pricingOf, percentLabel, promoNote, quoteHref, type Service } from '../../../lib/mecanique';
 import { mecaItems } from '../../../lib/cards';
 
 export const getStaticPaths = (() => Object.keys(details).map((slug) => ({ params: { slug } }))) satisfies GetStaticPaths;
@@ -15,6 +15,7 @@ const { slug } = Astro.params;
 const service = serviceBySlug(slug!) as Service;
 const detail = details[slug!];
 const family = families.find((f) => f.id === service.family);
+const pr = pricingOf(service.priceFrom);
 const related = detail.related.map((r) => mecaItems.find((i) => i.key === r)).filter((i) => !!i) as typeof mecaItems;
 
 const photos = import.meta.glob<{ default: ImageMetadata }>('../../../assets/illustration/*.jpg', { eager: true });
@@ -54,10 +55,15 @@ const jsonLd = {
         <p class="lead">{detail.lead}</p>
 
         <div class="price-box">
-          {service.priceFrom === null
+          {pr === null
             ? <p class="price"><b class="devis">Sur devis</b></p>
-            : <p class="price"><small>À partir de</small><b>{formatPrice(service.priceFrom)}</b></p>}
-          <p class="price-note">Prix d’appel, selon véhicule et intervention. Votre devis est personnalisé.</p>
+            : (
+              <p class="price">
+                <small>À partir de {pr.percent > 0 && <s>{formatPrice(pr.regular)}</s>}</small>
+                <span class="now"><b>{formatPrice(pr.current)}</b>{pr.percent > 0 && <em>{percentLabel(pr.percent)}</em>}</span>
+              </p>
+            )}
+          <p class="price-note">Prix d’appel, selon véhicule et intervention. Votre devis est personnalisé. {promoNote}</p>
           <a class="pill" href={quoteHref(service.slug)}>Demander un devis {service.name.toLowerCase()} <i><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></i></a>
         </div>
       </div>
@@ -176,6 +182,9 @@ const jsonLd = {
   .price-box { display: grid; gap: 12px; justify-items: start; padding: 22px 24px; background: var(--paper); border-left: 6px solid var(--blue); border-radius: 0 16px 16px 0; max-width: 520px; }
   .price { margin: 0; display: grid; line-height: 1; }
   .price small { font-size: 0.9rem; color: var(--mute); margin-bottom: 4px; }
+  .price s { margin-left: 0.4em; text-decoration-thickness: 2px; }
+  .now { display: flex; align-items: center; gap: 14px; }
+  .price em { padding: 5px 10px; background: var(--ink); color: #fff; font: 800 1.4rem/1 var(--f-display); font-style: normal; letter-spacing: 0.04em; transform: skewX(-10deg); }
   .price b { font: 800 3.4rem/1 var(--f-display); }
   .price .devis { font-size: 2.4rem; }
   .price-note { margin: 0; font-size: 0.9rem; color: var(--mute); }

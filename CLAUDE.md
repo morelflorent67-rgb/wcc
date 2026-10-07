@@ -39,7 +39,7 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 - **Rien d'inventé ni de non confirmé** : pas de délai chiffré, pas de prêt gratuit systématique, pas de franchise offerte,
   pas de garantie, pas de note globale ni d'étoiles non confirmées, pas de statistiques Acoat (effectif, surface…).
   Véhicule de prêt : « possible » seulement. Aucune affiliation AD ni constructeur ; marques = « marques prises en charge ».
-- Prix : « À partir de X € » = **prix d'appel**, jamais un devis ; TTC / pièces / main-d'œuvre non précisés (à clarifier avec WCC).
+- Prix : « À partir de X € » = **prix d'appel** (tarif de base WCC, remise éventuelle en plus), jamais un devis ; TTC / pièces / main-d'œuvre non précisés (à clarifier avec WCC).
 - Les formulaires ne promettent ni rendez-vous ni délai de réponse.
 - Les 26 descriptions courtes et la fiche Freinage sont des **brouillons à faire valider** par WCC.
 - Photos actuelles = illustrations Unsplash provisoires (`src/assets/illustration/CREDITS.md`), à ne jamais présenter comme
@@ -112,11 +112,12 @@ Fait et vérifié :
 et macaron mécanique. `ServiceCard` et `ProblemCard` supprimés.
 
 **En suspens (à traiter avant la suite)** :
-1. **Tarifs mécanique demandés par le client** : « augmenter les tarifs de base de 50 %, barrer le prix, appliquer 20 % de remise ». NON appliqué :
-   le prix barré (base × 1,5) n'a jamais été pratiqué et le prix payé deviendrait base × 1,2 → fausse réduction (pratique commerciale trompeuse,
-   le prix de référence d'une remise doit être le plus bas prix réellement pratiqué dans les 30 jours précédents). Alternatives proposées à
-   l'utilisateur : (a) afficher directement le nouveau prix, sans barré ; (b) vraie promotion limitée dans le temps après une période de prix
-   normal réellement pratiqué. Attendre sa décision ; prévoir alors un champ dans les données (jamais de calcul caché).
+1. ~~Tarifs mécanique~~ **réglé le 7 octobre 2026** : le client a précisé que son vrai tarif de base est celui de la grille de référence +50 %
+   (les prix du catalogue de référence étaient donc 1,5× trop bas). `priceFrom` dans `services-mecanique.json` = tarif de base WCC (déjà ×1,5) ;
+   la remise (20 %) se règle dans `site.json` → `promo.discountPercent`, calculée par `src/lib/mecanique.ts` (`pricingOf` : tarif de base barré,
+   prix remisé, pourcentage). `promo.enabled: false` ou une `endDate` (AAAA-MM-JJ, affichée « valable jusqu'au… ») pilotent l'offre.
+   Rappel client : un prix barré doit être le tarif réellement pratiqué (règle du prix de référence), garder des preuves (devis/factures).
+   La mention « Flash info » a été retirée (c'était un exemple de style) : bande = « −20 % sur les prix affichés · 90 points de contrôle offerts… ».
 2. **Une photo par prestation** : seulement 14 photos pour 26 prestations (plusieurs cartes identiques côte à côte). Il faut ~20 photos libres
    de droits supplémentaires : proposer la liste (source, licence, poids) et attendre l'accord avant tout téléchargement.
 

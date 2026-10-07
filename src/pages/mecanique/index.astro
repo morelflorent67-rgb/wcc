@@ -8,7 +8,7 @@ import type { LogoItem } from '../../components/LogoMarquee.astro';
 import AccessBlock from '../../components/AccessBlock.astro';
 import hero from '../../assets/illustration/mecanique-moteur-capot.jpg';
 import brands from '../../data/brands.json';
-import { families, byFamily, formatPrice, serviceHref } from '../../lib/mecanique';
+import { families, byFamily, priceNote, promoNote, serviceHref } from '../../lib/mecanique';
 import { mecaItems } from '../../lib/cards';
 
 const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path } }));
@@ -48,7 +48,7 @@ const steps = [
           {families.map((f) => (
             <optgroup label={f.name}>
               {byFamily(f.id).map((s) => (
-                <option value={s.slug} data-href={serviceHref(s.slug)}>{s.name}{s.priceFrom !== null ? ` — dès ${formatPrice(s.priceFrom)}` : ' — sur devis'}</option>
+                <option value={s.slug} data-href={serviceHref(s.slug)}>{s.name} — {priceNote(s).toLowerCase()}</option>
               ))}
             </optgroup>
           ))}
@@ -64,7 +64,7 @@ const steps = [
       <p class="label muted reveal">Prix d’appel</p>
       <h2 id="essentiel" class="big reveal">L’essentiel,<br />au juste prix.</h2>
       <div class="reveal"><PhotoRail items={mecaItems.filter((s) => s.featured)} accent="blue" label="Prestations les plus demandées" /></div>
-      <p class="note reveal">Tarif selon véhicule et intervention. Devis personnalisé.</p>
+      <p class="note reveal">Tarif selon véhicule et intervention. Devis personnalisé. {promoNote}</p>
     </div>
   </section>
 
@@ -84,7 +84,7 @@ const steps = [
                 <li>
                   <a href={serviceHref(s.slug)}>
                     <span>{s.name}</span>
-                    <small>{s.priceFrom === null ? 'Sur devis' : `dès ${formatPrice(s.priceFrom)}`}</small>
+                    <small>{priceNote(s)}</small>
                   </a>
                 </li>
               ))}

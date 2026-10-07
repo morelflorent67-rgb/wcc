@@ -4,7 +4,7 @@
  */
 import type { ImageMetadata } from 'astro';
 import { photo } from './photos';
-import { families, services, serviceHref, quoteHref } from './mecanique';
+import { families, services, serviceHref, quoteHref, pricingOf, type Pricing } from './mecanique';
 import { carroServices, carroHref, carroQuoteHref } from './carrosserie';
 
 export interface CardItem {
@@ -15,8 +15,8 @@ export interface CardItem {
   /** Identifiant de famille pour les onglets du menu */
   family: string;
   short: string;
-  /** Prix d'appel en euros ; null = « Sur devis » ; undefined = aucun prix affiché (carrosserie) */
-  price?: number | null;
+  /** Prix (tarif de base, prix remisé, remise) ; null = « Sur devis » ; undefined = aucun prix affiché (carrosserie) */
+  price?: Pricing | null;
   href: string;
   quoteHref: string;
   image?: ImageMetadata;
@@ -31,7 +31,7 @@ export const mecaItems: CardItem[] = services.map((s) => ({
   label: familyName[s.family],
   family: s.family,
   short: s.short,
-  price: s.priceFrom,
+  price: pricingOf(s.priceFrom),
   href: serviceHref(s.slug),
   quoteHref: quoteHref(s.slug),
   image: photo(s.image),

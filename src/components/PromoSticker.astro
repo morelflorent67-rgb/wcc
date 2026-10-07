@@ -19,10 +19,9 @@ for (let i = 0; i < n * 2; i++) {
     <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
       <polygon class="star" points={pts.join(' ')} />
       <circle class="ring" cx="100" cy="100" r="76" />
-      <text class="l1" x="100" y="56" text-anchor="middle">{promo.label.toUpperCase()}</text>
-      <text class="big" x="100" y="124" text-anchor="middle">{promo.sticker.big}</text>
-      <text class="l2" x="100" y="145" text-anchor="middle">{promo.sticker.line1.toUpperCase()}</text>
-      <text class="l3" x="100" y="166" text-anchor="middle">{promo.sticker.line2.toUpperCase()}</text>
+      <text class="big" x="100" y="118" text-anchor="middle">{promo.sticker.big}</text>
+      <text class="l2" x="100" y="140" text-anchor="middle">{promo.sticker.line1.toUpperCase()}</text>
+      <text class="l3" x="100" y="162" text-anchor="middle">{promo.sticker.line2.toUpperCase()}</text>
     </svg>
   </div>
 )}
@@ -34,7 +33,7 @@ for (let i = 0; i < n * 2; i++) {
   .ring { fill: none; stroke: #111; stroke-width: 2.2; stroke-dasharray: 3 5; }
   text { fill: #111; font-family: var(--f-display); font-weight: 800; }
   .l1 { font-size: 15px; letter-spacing: 0.22em; }
-  .big { font-size: 76px; letter-spacing: 0.01em; }
+  .big { font-size: 86px; letter-spacing: 0.01em; }
   .l2 { font-size: 14px; letter-spacing: 0.03em; }
   .l3 { font-size: 20px; letter-spacing: 0.1em; }
   @media (prefers-reduced-motion: no-preference) {
