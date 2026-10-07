@@ -1,7 +1,7 @@
 # WCC — notes de reprise
 
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
-Dernière mise à jour : 6 octobre 2026 (5 commits locaux, rien de poussé ; espace carrosserie livré).
+Dernière mise à jour : 7 octobre 2026 (rien de poussé ; direction « A Affiche » appliquée, flash info mécanique en place).
 
 ## Le projet en bref
 
@@ -18,6 +18,12 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 
 - **Direction visuelle : prototype C « Plein cadre »** (`design/prototypes/c.html`, référence figée ; A et B écartés).
   Fonds clairs, Barlow / Barlow Condensed (titres en capitales), orange = carrosserie, bleu = mécanique, dégradé du logo.
+- **Cartes et menu : direction « A · Affiche » choisie par le client** (7 octobre 2026) pour les DEUX espaces : photo plein cadre, numéro en filaire,
+  tag de prix en biais, coin coupé, détail au survol. Le menu « Prestations » est un **rail de cartes photo à défilement horizontal**
+  (onglets de famille en mécanique), sur ordinateur et mobile. Prototypes B et C conservés dans `design/prototypes/cartes.html`.
+- **Offre « flash info » (mécanique)** voulue par le client : « 90 points de contrôle offerts pour chaque prestation effectuée chez nous ».
+  Bande sous l'en-tête de toutes les pages mécanique + macaron sur l'accueil mécanique ; texte dans `src/data/site.json` → `promo`
+  (`enabled: false` la retire). **Conditions à obtenir de WCC** (contenu des 90 points, durée, exclusions) avant mise en ligne.
 - **Un domaine, un portail, deux espaces autonomes** : `/`, `/carrosserie/…`, `/mecanique/…`, `/acces-horaires/`,
   pages légales. Pas de dépannage ni de location au lancement, aucun bouton inactif.
 - **Astro 7 statique** (HTML pur), CSS natif, JS minimal, polices auto-hébergées (@fontsource), pas d'espace d'administration.
@@ -57,7 +63,9 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 | Espace carrosserie : 6 prestations (texte complet de chaque page), textes de l'accueil (étapes, avantages, FAQ) et de la page Assurances | `src/data/services-carrosserie.json` (types dans `src/lib/carrosserie.ts`) ; pages générées par `src/pages/carrosserie/prestations/[slug].astro` |
 | Couleurs, polices | `src/styles/tokens.css`, `src/styles/global.css` |
 | Gabarits | `src/layouts/Base.astro` (SEO, noindex, JSON-LD), `SpaceLayout.astro` (en-tête d'espace), `PageStub.astro` (pages provisoires) |
-| Composants | `PortalHero`, `SpaceHeader` (grand menu des deux espaces), `LogoMarquee`, `ReviewsCarousel`, `ServiceCard` (mécanique), `ProblemCard` (carrosserie), `StepsList`, `FaqList`, `CtaBand`, `VehicleZones` (schéma 9 zones + liste), `AccessBlock`, `SiteFooter`, `CallBar`, `Icons` |
+| Composants | `PortalHero`, `SpaceHeader` (menu rail des deux espaces), `PhotoCard` (carte « Affiche », seule carte de prestation), `PhotoRail` (rail horizontal : menu et sections), `FlashInfo` (bande promo), `PromoSticker` (macaron), `LogoMarquee`, `ReviewsCarousel`, `StepsList`, `FaqList`, `CtaBand`, `VehicleZones` (schéma 9 zones + liste), `AccessBlock`, `SiteFooter`, `CallBar`, `Icons` |
+| Cartes : données et photos | `src/lib/cards.ts` (met les prestations des deux espaces en forme), `src/lib/photos.ts` ; photo d'une prestation = champ `image` dans `services-mecanique.json` / `services-carrosserie.json` (fichier de `src/assets/illustration/`) ; script du rail : `src/scripts/rail.ts` |
+| Offre flash info | `src/data/site.json` → `promo` |
 | Formulaires en étapes | `src/scripts/quote-form.ts` (générique : règles `data-require`, préremplissage `?prestation=` / `?intervention=`), `src/styles/form.css`, pages `mecanique/contact/` et `carrosserie/contact/` |
 | Formulaire carrosserie : zones, photos | `src/scripts/zone-picker.ts` (schéma ↔ cases à cocher), `src/scripts/photo-upload.ts` (réduction ~1600 px dans le navigateur, 6 photos max : garder cohérent avec `max_files` / `max_file_mb` de `api/config.php`) |
 | Point de réception | `api/submit.php`, `api/config.example.php` (`config.php` et `storage/` ne sont jamais versionnés ni copiés) |
@@ -100,15 +108,17 @@ Fait et vérifié :
   en bout vers PHP (e-mail au garage avec 3 pièces jointes + accusé, photos dans l'espace privé). Aucun prix d'appel en carrosserie.
 - `astro check` : 0 erreur ; build : 20 pages ; 1022 liens internes valides.
 
-**En attente de décision de l'utilisateur (priorité avant les 25 fiches)** : il veut (1) un menu « Prestations » en **rail de cartes photo à
-défilement horizontal** (comme le carrousel du site AD qu'il a montré en capture), pour la mécanique ET la carrosserie, et (2) des cartes
-de prestations au design **vraiment unique** (mes cartes blanches actuelles, `ServiceCard` / `ProblemCard`, « font trop Claude Code »).
-Prototype interactif : `design/prototypes/cartes.html` (serveur `wcc-prototypes`, http://localhost:4173/design/prototypes/cartes.html ;
-paramètres `?v=a|b|c&s=mecanique|carrosserie&menu=1`) avec 3 directions : **A Affiche** (photo plein cadre, chiffres en filaire, tag de prix
-en biais, détail au survol), **B Étiquette** (fiche d'atelier, ombre franche, photo en bichromie, pastille de prix), **C Panneau** (grande
-photo + panneau en biais aux couleurs de l'espace). Une fois la direction choisie : remplacer le grand menu de `SpaceHeader` par le rail,
-refaire `ServiceCard` / `ProblemCard`, et prévoir **une photo par prestation** (26 mécanique : il manque ~20 photos libres de droits ;
-téléchargement à faire approuver avant).
+**Fait le 7 octobre 2026** : direction A appliquée aux deux espaces (menu rail, accueils, catalogue, fiches « liées »), bande flash info
+et macaron mécanique. `ServiceCard` et `ProblemCard` supprimés.
+
+**En suspens (à traiter avant la suite)** :
+1. **Tarifs mécanique demandés par le client** : « augmenter les tarifs de base de 50 %, barrer le prix, appliquer 20 % de remise ». NON appliqué :
+   le prix barré (base × 1,5) n'a jamais été pratiqué et le prix payé deviendrait base × 1,2 → fausse réduction (pratique commerciale trompeuse,
+   le prix de référence d'une remise doit être le plus bas prix réellement pratiqué dans les 30 jours précédents). Alternatives proposées à
+   l'utilisateur : (a) afficher directement le nouveau prix, sans barré ; (b) vraie promotion limitée dans le temps après une période de prix
+   normal réellement pratiqué. Attendre sa décision ; prévoir alors un champ dans les données (jamais de calcul caché).
+2. **Une photo par prestation** : seulement 14 photos pour 26 prestations (plusieurs cartes identiques côte à côte). Il faut ~20 photos libres
+   de droits supplémentaires : proposer la liste (source, licence, poids) et attendre l'accord avant tout téléchargement.
 
 Pas encore fait (ordre conseillé) :
 1. **25 fiches mécanique** à rédiger (prochain chantier conseillé) (priorité : révision-vidange, distribution, embrayage, climatisation, amortisseurs,

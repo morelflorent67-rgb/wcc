@@ -1,0 +1,42 @@
+---
+/**
+ * « Flash info » : bande promotionnelle sous l'en-tête de l'espace mécanique.
+ * Le texte vient de site.json (promo) ; promo.enabled = false la retire de toutes les pages.
+ */
+import site from '../data/site.json';
+const promo = site.promo;
+---
+{promo?.enabled && (
+  <aside class="flash" aria-label="Information promotionnelle">
+    <div class="in">
+      <span class="tag"><i aria-hidden="true"></i><b>{promo.label}</b></span>
+      <p><strong>{promo.highlight}</strong> {promo.text}</p>
+    </div>
+  </aside>
+)}
+
+<style>
+  .flash { background: var(--night); color: #d6d9df; border-bottom: 1px solid #23262c; }
+  .in { max-width: var(--wrap); margin-inline: auto; padding: 9px var(--pad); display: flex; align-items: center; justify-content: center; gap: 18px; }
+  .tag {
+    flex: none; display: inline-flex; align-items: center; gap: 9px; padding: 6px 20px 6px 16px; background: var(--orange); color: #111;
+    transform: skewX(-12deg);
+  }
+  .tag > * { display: inline-block; transform: skewX(12deg); }
+  .tag i { width: 9px; height: 9px; border-radius: 50%; background: #111; }
+  .tag b { font: 800 1rem/1 var(--f-display); letter-spacing: 0.16em; text-transform: uppercase; }
+  p { margin: 0; font: 500 1rem/1.3 var(--f-body); }
+  strong { font: 800 1.2rem/1 var(--f-display); letter-spacing: 0.06em; text-transform: uppercase; color: #fff; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .tag i { animation: pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse { 50% { transform: scale(1.5); opacity: 0.45; } }
+  }
+  @media (max-width: 640px) {
+    .in { gap: 12px; padding-block: 8px; justify-content: flex-start; }
+    .tag { padding: 5px 14px 5px 12px; }
+    .tag b { font-size: 0.85rem; }
+    p { font-size: 0.9rem; }
+    strong { font-size: 1.05rem; }
+  }
+</style>

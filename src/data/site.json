@@ -7,14 +7,52 @@
     "city": "Bischheim",
     "country": "FR"
   },
-  "phone": { "display": "03 69 48 44 85", "tel": "+33369484485" },
+  "phone": {
+    "display": "03 69 48 44 85",
+    "tel": "+33369484485"
+  },
   "hours": {
     "label": "Du lundi au vendredi",
-    "slots": ["9 h – 12 h", "14 h – 18 h"],
+    "slots": [
+      "9 h – 12 h",
+      "14 h – 18 h"
+    ],
     "schema": [
-      { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "12:00" },
-      { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "14:00", "closes": "18:00" }
+      {
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "12:00"
+      },
+      {
+        "days": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "14:00",
+        "closes": "18:00"
+      }
     ]
   },
-  "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=5a+avenue+de+l%27%C3%89nergie+67800+Bischheim"
+  "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=5a+avenue+de+l%27%C3%89nergie+67800+Bischheim",
+  "promo": {
+    "_note": "Offre « flash info » de l'espace mécanique, voulue par le client (7 octobre 2026). enabled=false la retire partout. Conditions exactes (contenu des 90 points, durée, exclusions) à obtenir de WCC.",
+    "enabled": true,
+    "label": "Flash info",
+    "highlight": "90 points de contrôle offerts",
+    "text": "pour chaque prestation effectuée chez nous",
+    "sticker": {
+      "big": "90",
+      "line1": "points de contrôle",
+      "line2": "offerts"
+    }
+  }
 }

@@ -9,6 +9,8 @@ export interface Service {
   priceFrom: number | null;
   featured?: boolean;
   short: string;
+  /** Photo de la carte et du menu : fichier de src/assets/illustration/ */
+  image: string;
 }
 
 /** Contenu détaillé d'une fiche prestation (src/data/mecanique-fiches/<slug>.json). */

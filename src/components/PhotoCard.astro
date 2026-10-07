@@ -1,0 +1,110 @@
+---
+/**
+ * Carte de prestation « Affiche » : photo plein cadre, numéro en filaire, étiquette de prix en biais, coin coupé comme le logo.
+ * Le détail (description + bouton de devis) se déplie au survol et au focus clavier ; sur écran tactile il est toujours visible.
+ * Taille fluide : tout est exprimé en unités de conteneur (cqi), la même carte sert dans le menu et dans les pages.
+ */
+import { Image } from 'astro:assets';
+import type { CardItem } from '../lib/cards';
+import { formatPrice } from '../lib/mecanique';
+
+interface Props {
+  item: CardItem;
+  index: number;
+  accent: 'blue' | 'orange';
+  sizes?: string;
+  eager?: boolean;
+}
+const { item, index, accent, sizes = '(max-width: 700px) 82vw, 320px', eager = false } = Astro.props;
+---
+<article class="card" data-accent={accent}>
+  <div class="c-photo">
+    {item.image && <Image src={item.image} alt="" widths={[260, 400, 560]} sizes={sizes} format="webp" quality={68} loading={eager ? 'eager' : 'lazy'} decoding="async" />}
+  </div>
+  <div class="c-in">
+    <div class="c-top">
+      <span class="c-num" data-num aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+      <span class="c-fam">{item.label}</span>
+    </div>
+    <div class="c-bot">
+      {item.price === null && <span class="c-price"><b>Sur devis</b></span>}
+      {typeof item.price === 'number' && <span class="c-price"><small>à partir de</small><b>{formatPrice(item.price)}</b></span>}
+      <h3 class="c-title"><a href={item.href}>{item.name}</a></h3>
+      <div class="c-more">
+        <div class="c-more-in">
+          <p class="c-text">{item.short}</p>
+          <a class="c-cta" href={item.quoteHref}>Demander un devis <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    --acc: var(--blue); --on-acc: #fff; --acc-rgb: 18, 40, 190;
+    position: relative; container-type: inline-size; display: block; aspect-ratio: 3 / 4.3; overflow: hidden; isolation: isolate;
+    color: #fff; background: var(--night);
+    clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
+  }
+  .card[data-accent='orange'] { --acc: var(--orange); --on-acc: #111; --acc-rgb: 196, 52, 0; }
+
+  .c-photo { position: absolute; inset: 0; z-index: -2; }
+  .c-photo :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+  .card:hover .c-photo :global(img) { transform: scale(1.07); }
+  .card::after {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(to top, rgba(var(--acc-rgb), 0.95) 0%, rgba(var(--acc-rgb), 0.55) 34%, rgba(var(--acc-rgb), 0) 66%), linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent 30%);
+  }
+
+  .c-in { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: space-between; padding: 6.5cqi; }
+  .c-num {
+    display: block; font: 800 clamp(2.6rem, 24cqi, 6rem) / 0.8 var(--f-display); letter-spacing: 0.01em;
+    color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.9); transition: font-size 0.45s var(--ease);
+  }
+  .c-fam {
+    display: block; margin-top: 3cqi; max-width: 60%; max-height: 6em; overflow: hidden;
+    font: 700 max(0.66rem, 3.6cqi) / 1.25 var(--f-display); letter-spacing: 0.16em; text-transform: uppercase; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.3s, max-height 0.45s var(--ease);
+  }
+  .card:hover .c-num, .card:focus-within .c-num { font-size: clamp(1.8rem, 13cqi, 3.4rem); }
+  .card:hover .c-fam, .card:focus-within .c-fam { opacity: 0; max-height: 0; margin-top: 0; }
+
+  .c-price {
+    display: inline-flex; align-items: baseline; gap: 6px; margin-bottom: 3.5cqi; padding: 2cqi 5cqi 2cqi 4cqi;
+    background: var(--acc); color: var(--on-acc); transform: skewX(-12deg); transform-origin: left bottom;
+  }
+  .c-price > * { display: inline-block; transform: skewX(12deg); }
+  .c-price small { font: 600 max(0.7rem, 3.6cqi) / 1 var(--f-body); }
+  .c-price b { font: 800 max(1.25rem, 8.6cqi) / 1 var(--f-display); letter-spacing: 0.01em; }
+
+  .c-title { margin: 0; font: 800 clamp(1.3rem, 12cqi, 3.4rem) / 0.88 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; overflow-wrap: anywhere; text-shadow: 0 2px 24px rgba(0, 0, 0, 0.25); }
+  .c-title a { text-decoration: none; }
+  .c-title a::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+  .c-title a:focus-visible { outline: none; }
+  .card:has(.c-title a:focus-visible) { outline: 3px solid #fff; outline-offset: -6px; }
+
+  .c-more { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 0.5s var(--ease), opacity 0.35s; }
+  .c-more-in { overflow: hidden; }
+  .card:hover .c-more, .card:focus-within .c-more { grid-template-rows: 1fr; opacity: 1; }
+  .c-text {
+    margin: 3cqi 0 3.5cqi; font: 500 max(0.85rem, 4.3cqi) / 1.4 var(--f-body);
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .c-cta {
+    position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 10px; padding: 2.4cqi 4.5cqi;
+    background: #fff; color: var(--ink); border-radius: 999px; font: 700 0.9rem var(--f-body); text-decoration: none; transition: background 0.25s, color 0.25s;
+  }
+  .c-cta:hover { background: var(--ink); color: #fff; }
+  .c-cta:hover .ic { transform: translate(2px, -2px); }
+
+  @media (hover: none) {
+    .c-more { grid-template-rows: 1fr; opacity: 1; }
+    .c-num { font-size: clamp(1.8rem, 13cqi, 3.4rem); }
+    .c-fam { opacity: 0; max-height: 0; margin-top: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .c-photo :global(img), .c-num, .c-fam, .c-more { transition: none; }
+    .card:hover .c-photo :global(img) { transform: none; }
+  }
+</style>

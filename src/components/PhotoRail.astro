@@ -1,0 +1,81 @@
+---
+/**
+ * Rail de cartes photo à défilement horizontal (menu « Prestations » et sections de page).
+ * Flèches, barre de progression, glisser à la souris, balayage au doigt, onglets de famille optionnels :
+ * le comportement est dans src/scripts/rail.ts (la liste reste un simple <ul> défilable sans JavaScript).
+ */
+import PhotoCard from './PhotoCard.astro';
+import type { CardItem } from '../lib/cards';
+
+interface Props {
+  items: CardItem[];
+  accent: 'blue' | 'orange';
+  variant?: 'menu' | 'page';
+  /** Onglets de filtre par famille (menu mécanique) */
+  tabs?: { id: string; label: string }[];
+  /** Titre affiché à la place des onglets */
+  title?: string;
+  label: string;
+}
+const { items, accent, variant = 'page', tabs, title, label } = Astro.props;
+---
+<div class:list={['rail-root', variant]} data-rail-root data-accent={accent}>
+  <div class="bar">
+    {tabs && (
+      <div class="tabs" role="group" aria-label="Familles de prestations">
+        <button type="button" data-rail-tab="all" aria-pressed="true">Toutes</button>
+        {tabs.map((t) => <button type="button" data-rail-tab={t.id} aria-pressed="false">{t.label}</button>)}
+      </div>
+    )}
+    {!tabs && title && <p class="title">{title}</p>}
+    <div class="arrows">
+      <button type="button" data-rail-prev aria-label="Cartes précédentes" disabled><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-left" /></svg></button>
+      <button type="button" data-rail-next aria-label="Cartes suivantes"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-right" /></svg></button>
+    </div>
+  </div>
+  <ul class="rail" data-rail aria-label={label}>
+    {items.map((it, i) => (
+      <li data-family={it.family}><PhotoCard item={it} index={i} accent={accent} sizes={variant === 'menu' ? '(max-width: 700px) 78vw, 214px' : '(max-width: 700px) 82vw, 310px'} /></li>
+    ))}
+  </ul>
+  <div class="prog" aria-hidden="true"><i data-rail-prog></i></div>
+</div>
+
+<style>
+  .rail-root { --acc: var(--blue); --on-acc: #fff; }
+  .rail-root[data-accent='orange'] { --acc: var(--orange); --on-acc: #111; }
+  .rail-root.menu { --cw: min(214px, 78vw); }
+  .rail-root.page { --cw: min(310px, 82vw); }
+
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tabs button {
+    padding: 8px 16px; border: 1.5px solid var(--ink); border-radius: 999px; background: #fff; cursor: pointer;
+    font: 600 0.92rem var(--f-body); transition: background 0.2s, color 0.2s;
+  }
+  .tabs button:hover { background: var(--paper); }
+  .tabs button[aria-pressed='true'] { background: var(--ink); color: #fff; }
+  .title { margin: 0; font: 800 1.05rem/1.1 var(--f-display); letter-spacing: 0.12em; text-transform: uppercase; }
+  .arrows { display: flex; gap: 8px; margin-left: auto; }
+  .arrows button {
+    display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1.5px solid var(--ink); border-radius: 50%;
+    background: #fff; color: var(--ink); cursor: pointer; transition: background 0.2s, color 0.2s, opacity 0.2s;
+  }
+  .arrows button:hover:not(:disabled) { background: var(--acc); border-color: var(--acc); color: var(--on-acc); }
+  .arrows button:disabled { opacity: 0.3; cursor: default; }
+  .arrows .ic { width: 20px; height: 20px; }
+
+  .rail {
+    display: flex; gap: 16px; margin: 0 calc(-1 * var(--pad)); padding: 8px var(--pad) 20px; list-style: none;
+    overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: var(--pad); scrollbar-width: none; cursor: grab;
+    -webkit-overflow-scrolling: touch;
+  }
+  .rail::-webkit-scrollbar { display: none; }
+  .rail > li { flex: none; width: var(--cw); scroll-snap-align: start; }
+  .rail > li[hidden] { display: none; }
+  .rail.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+  .rail.is-dragging :global(a) { pointer-events: none; }
+
+  .prog { position: relative; height: 3px; margin-top: -2px; overflow: hidden; border-radius: 2px; background: var(--line); }
+  .prog i { position: absolute; top: 0; bottom: 0; left: 0; width: 30%; border-radius: 2px; background: var(--acc); }
+</style>

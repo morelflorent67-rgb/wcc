@@ -1,0 +1,44 @@
+---
+/**
+ * Macaron promotionnel en étoile (accueil mécanique). Texte : site.json → promo.sticker ; masqué si promo.enabled = false.
+ */
+import site from '../data/site.json';
+const promo = site.promo;
+
+// Contour en dents de scie : 22 pointes, rayons alternés
+const pts: string[] = [];
+const n = 22;
+for (let i = 0; i < n * 2; i++) {
+  const a = (Math.PI * i) / n - Math.PI / 2;
+  const r = i % 2 === 0 ? 98 : 88;
+  pts.push(`${(100 + r * Math.cos(a)).toFixed(1)},${(100 + r * Math.sin(a)).toFixed(1)}`);
+}
+---
+{promo?.enabled && (
+  <div class="sticker" role="img" aria-label={`${promo.sticker.big} ${promo.sticker.line1} ${promo.sticker.line2}`}>
+    <svg viewBox="0 0 200 200" aria-hidden="true" focusable="false">
+      <polygon class="star" points={pts.join(' ')} />
+      <circle class="ring" cx="100" cy="100" r="76" />
+      <text class="l1" x="100" y="56" text-anchor="middle">{promo.label.toUpperCase()}</text>
+      <text class="big" x="100" y="124" text-anchor="middle">{promo.sticker.big}</text>
+      <text class="l2" x="100" y="145" text-anchor="middle">{promo.sticker.line1.toUpperCase()}</text>
+      <text class="l3" x="100" y="166" text-anchor="middle">{promo.sticker.line2.toUpperCase()}</text>
+    </svg>
+  </div>
+)}
+
+<style>
+  .sticker { width: clamp(118px, 15vw, 190px); transform: rotate(-9deg); filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.4)); }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .star { fill: var(--orange); }
+  .ring { fill: none; stroke: #111; stroke-width: 2.2; stroke-dasharray: 3 5; }
+  text { fill: #111; font-family: var(--f-display); font-weight: 800; }
+  .l1 { font-size: 15px; letter-spacing: 0.22em; }
+  .big { font-size: 76px; letter-spacing: 0.01em; }
+  .l2 { font-size: 14px; letter-spacing: 0.03em; }
+  .l3 { font-size: 20px; letter-spacing: 0.1em; }
+  @media (prefers-reduced-motion: no-preference) {
+    .sticker { animation: wob 5s ease-in-out infinite; }
+    @keyframes wob { 50% { transform: rotate(-5deg) scale(1.04); } }
+  }
+</style>

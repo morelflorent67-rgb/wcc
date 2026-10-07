@@ -2,6 +2,7 @@
 import Base from './Base.astro';
 import SpaceHeader from '../components/SpaceHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import FlashInfo from '../components/FlashInfo.astro';
 
 interface Props {
   space: 'mecanique' | 'carrosserie';
@@ -16,6 +17,7 @@ const { space, title, description, current, jsonLd, noindex } = Astro.props;
 ---
 <Base title={title} description={description} jsonLd={jsonLd} noindex={noindex}>
   <SpaceHeader space={space} current={current ?? Astro.url.pathname} />
+  {space === 'mecanique' && <FlashInfo />}
   <main id="contenu"><slot /></main>
   <SiteFooter />
 </Base>
