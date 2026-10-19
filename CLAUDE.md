@@ -32,7 +32,8 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 - **GitHub** : premier push fait le 19 octobre 2026 sur `morelflorent67-rgb/wcc`, laissé **public** par choix explicite de l'utilisateur
   (il contient l'adresse Gmail du garage dans `docs/` et des logos tiers ; lui rappeler qu'il peut le passer en privé). Ne pas pousser
   sans accord explicite.
-- **Netlify** : l'utilisateur publie un aperçu sur Netlify, relié au dépôt GitHub (déploiement à chaque push sur `main`). `netlify.toml` :
+- **Netlify** : aperçu en ligne https://eclectic-bavarois-ab5706.netlify.app (projet `eclectic-bavarois-ab5706`, équipe
+  `morel-florent67`), relié au dépôt GitHub le 19 octobre 2026 : **chaque push sur `main` republie le site automatiquement**. `netlify.toml` :
   build `npx astro build` (sans copier `api/`), Node 24, en-têtes de sécurité. **Netlify n'exécute pas le PHP** : les formulaires
   n'y fonctionnent pas (message d'échec qui invite à appeler) ; le site y reste en `noindex` tant que `PUBLIC_INDEXABLE` n'est pas défini.
 
