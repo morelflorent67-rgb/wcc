@@ -86,8 +86,10 @@ de `reviews.json` (il n'est affiché que s'il y figure exactement).
 
 - Assureurs : `src/data/partners.json` (nom, fichier, `featured` = défile sur le portail) et fichiers de `src/assets/partners/`. Remplacer par les
   fichiers officiels en gardant le nom.
-- Marques de véhicules : `src/data/brands.json` est généré par `npm run brands` (icônes simple-icons, licence CC0), avec la couleur officielle de
-  chaque marque (`color`) ; `dark: true` = couleur claire posée sur une pastille sombre (Renault, Opel).
+- Marques de véhicules : `src/data/brands.json` est généré par `npm run brands` (`tools/build_brands.mjs`), dans les **vraies couleurs des
+  logos actuels** : tracés simple-icons (CC0) recolorés (`color`, `bg` = fond de la pastille, ex. jaune Opel), et fichiers officiels multicolores
+  pour BMW, Mercedes-Benz, Ford et Fiat (`tools/brand-sources/`, Wikimedia Commons, copiés dans `src/assets/brands/`). Pour changer une couleur
+  ou une source : modifier la liste `BRANDS` du script puis relancer `npm run brands`.
 
 ## Avis Google
 

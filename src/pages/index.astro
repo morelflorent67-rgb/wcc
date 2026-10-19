@@ -10,7 +10,7 @@ import Atouts from '../components/Atouts.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import site from '../data/site.json';
 import partners from '../data/partners.json';
-import brands from '../data/brands.json';
+import { makes } from '../lib/brands';
 
 // Logos des partenaires assurance : fichiers de src/assets/partners (liste : src/data/partners.json)
 const partnerFiles = import.meta.glob<{ default: ImageMetadata }>('../assets/partners/*.webp', { eager: true });
@@ -21,8 +21,6 @@ const insurers: LogoItem[] = partners
     return { name: p.name, src: img.src, width: img.width, height: img.height };
   });
 
-// Marques de véhicules prises en charge (src/data/brands.json)
-const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path, color: b.color, dark: b.dark } }));
 
 const jsonLd = {
   '@context': 'https://schema.org',

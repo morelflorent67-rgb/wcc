@@ -13,7 +13,7 @@ import Atouts from '../../components/Atouts.astro';
 import ServiceBento from '../../components/ServiceBento.astro';
 import { heroCarrosserie as hero } from '../../lib/hero';
 import partners from '../../data/partners.json';
-import brands from '../../data/brands.json';
+import { makes } from '../../lib/brands';
 import { carroHome } from '../../lib/carrosserie';
 import { carroItems } from '../../lib/cards';
 
@@ -24,7 +24,6 @@ const insurers: LogoItem[] = partners
     const img = partnerFiles[`../../assets/partners/${p.file}`].default;
     return { name: p.name, src: img.src, width: img.width, height: img.height };
   });
-const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path, color: b.color, dark: b.dark } }));
 ---
 <SpaceLayout
   space="carrosserie"

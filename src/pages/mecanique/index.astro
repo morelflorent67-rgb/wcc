@@ -4,12 +4,11 @@ import SpaceLayout from '../../layouts/SpaceLayout.astro';
 import PhotoRail from '../../components/PhotoRail.astro';
 import PromoSticker from '../../components/PromoSticker.astro';
 import LogoMarquee from '../../components/LogoMarquee.astro';
-import type { LogoItem } from '../../components/LogoMarquee.astro';
 import AccessBlock from '../../components/AccessBlock.astro';
 import StepsList from '../../components/StepsList.astro';
 import Atouts from '../../components/Atouts.astro';
 import { heroMecanique as hero } from '../../lib/hero';
-import brands from '../../data/brands.json';
+import { makes } from '../../lib/brands';
 import { families, byFamily, formatPrice, priceNote, promoNote, serviceHref, pricingOf } from '../../lib/mecanique';
 import { mecaItems, mecaTabs } from '../../lib/cards';
 
@@ -20,7 +19,6 @@ const famRows = families.map((f, i) => {
   return { ...f, n: String(i + 1).padStart(2, '0'), count: list.length, from: prices.length ? Math.min(...prices) : null };
 });
 
-const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path, color: b.color, dark: b.dark } }));
 
 const steps = [
   { icon: 'edit', title: 'Vous décrivez votre besoin', text: 'Choisissez une prestation ou décrivez votre problème, avec les informations sur votre véhicule.' },

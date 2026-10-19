@@ -50,8 +50,8 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 - Les 26 descriptions courtes et les 26 fiches mécanique sont des **brouillons à faire valider** par WCC.
 - Photos actuelles = illustrations Unsplash provisoires (`src/assets/illustration/CREDITS.md`), à ne jamais présenter comme
   les locaux ou réalisations de WCC ; l'utilisateur les remplacera lui-même (même nom de fichier).
-- Logos assureurs = fichiers **provisoires** de la fiche Acoat (31, 250×188 px) ; marques = icônes simple-icons (CC0) +
-  étoile Mercedes redessinée. Remplacer par les fichiers officiels dès que possible.
+- Logos assureurs = fichiers **provisoires** de la fiche Acoat (31, 250×188 px) ; marques = tracés simple-icons (CC0) dans la vraie
+  couleur du logo actuel + logos officiels Wikimedia Commons pour BMW, Mercedes, Ford, Fiat (téléchargement accepté le 19 octobre 2026).
 - Avis Google : 10 avis réels fournis par l'utilisateur (texte verbatim, auteurs abrégés « Prénom N. », durées traduites,
   relevés le 6 octobre 2026). **5 étoiles sur chacun** (confirmé par l'utilisateur : les étoiles n'avaient pas pu être
   copiées). Aucune note globale ni `aggregateRating` : seulement les étoiles par avis. Jamais d'avis inventé.
@@ -64,7 +64,7 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 | 26 prestations mécanique, 5 familles, prix d'appel, textes courts | `src/data/services-mecanique.json` |
 | Fiche détaillée d'une prestation (la page n'existe que si le fichier existe) | `src/data/mecanique-fiches/<slug>.json` (type `ServiceDetail` dans `src/lib/mecanique.ts`) |
 | 31 assureurs (nom, logo, `featured` = défile sur le portail) | `src/data/partners.json` + `src/assets/partners/*.webp` (script `tools/fetch_partners.py`) |
-| 16 marques de véhicules (icônes) | `src/data/brands.json` (généré : `npm run brands`) |
+| 16 marques de véhicules (vraies couleurs des logos ; BMW, Mercedes, Ford, Fiat = fichiers officiels) | `src/data/brands.json` (généré : `npm run brands`, liste dans `tools/build_brands.mjs`), `src/assets/brands/`, `src/lib/brands.ts` |
 | Avis Google | `src/data/reviews.json` (`capturedAt`, `items[]`) |
 | Espace carrosserie : 6 prestations (texte complet de chaque page), textes de l'accueil (étapes, avantages, FAQ) et de la page Assurances | `src/data/services-carrosserie.json` (types dans `src/lib/carrosserie.ts`) ; pages générées par `src/pages/carrosserie/prestations/[slug].astro` |
 | Deux images principales (portail + en-têtes des espaces) | déposer `carrosserie.*` / `mecanique.*` dans `src/assets/hero/` (README) ; sinon photo d'illustration (`src/lib/hero.ts`) |
