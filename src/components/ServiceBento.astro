@@ -1,0 +1,145 @@
+---
+/**
+ * Section « À votre service » de l'espace carrosserie : mosaïque de cartes photo (atouts) et un extrait d'avis.
+ * Données : src/data/services-carrosserie.json → home.advantages. L'extrait d'avis n'est affiché que s'il figure
+ * mot pour mot dans src/data/reviews.json (jamais de citation inventée).
+ */
+import { Image } from 'astro:assets';
+import { carroHome } from '../lib/carrosserie';
+import { photo } from '../lib/photos';
+import reviews from '../data/reviews.json';
+
+const items = carroHome.advantages.map((a, i) => {
+  const quoteOk = !!a.quote && reviews.items.some((r) => r.author === a.quote!.author && r.text.includes(a.quote!.text));
+  return { ...a, n: String(i + 1).padStart(2, '0'), img: a.image ? photo(a.image) : undefined, quote: quoteOk ? a.quote : undefined };
+});
+---
+<ul class="bento" data-bento>
+  {items.map((a, i) => (
+    <li class:list={['card', `c${i + 1}`, { photo: !!a.img, quote: !!a.quote, hl: a.highlight }, 'reveal']} style={`--d:${i * 0.08}s`}>
+      {a.img && (
+        <div class="img">
+          <Image src={a.img} alt={a.imageAlt ?? ''} widths={[480, 760, 1100]} sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 640px" format="webp" quality={70} />
+        </div>
+      )}
+      <span class="light" aria-hidden="true"></span>
+      <div class="top">
+        {a.icon
+          ? <span class="chip"><svg class="ic" aria-hidden="true"><use href={`#i-${a.icon}`} /></svg></span>
+          : a.img ? <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-car" /></svg></span> : <span class="chip"><svg class="ic" aria-hidden="true"><use href="#i-quote" /></svg></span>}
+        <span class="num" aria-hidden="true">{a.n}</span>
+      </div>
+      <div class="body">
+        {a.quote && (
+          <figure class="q">
+            <blockquote><p>« {a.quote.text} »</p></blockquote>
+            <figcaption>
+              <span class="stars" role="img" aria-label="5 sur 5">{Array.from({ length: 5 }, () => <svg class="ic" aria-hidden="true"><use href="#i-star" /></svg>)}</span>
+              {a.quote.author} · avis Google
+            </figcaption>
+          </figure>
+        )}
+        <h3>{a.title}</h3>
+        <p>{a.text}</p>
+      </div>
+      <span class="bar" aria-hidden="true"></span>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .bento { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; grid-template-columns: 1fr; }
+  @media (min-width: 700px) {
+    .bento { grid-template-columns: repeat(2, 1fr); }
+    .c1 { grid-column: 1 / -1; }
+  }
+  @media (min-width: 1100px) {
+    .bento { grid-template-columns: repeat(4, 1fr); grid-auto-rows: minmax(260px, auto); grid-template-areas: 'a a b b' 'a a c c' 'd d e e'; }
+    .c1 { grid-area: a; } .c2 { grid-area: b; } .c3 { grid-area: c; } .c4 { grid-area: d; } .c5 { grid-area: e; }
+  }
+
+  .card {
+    --mx: 50%; --my: 50%;
+    position: relative; isolation: isolate; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; gap: 40px;
+    min-height: 280px; padding: clamp(20px, 2.4vw, 30px); border-radius: 24px; color: #fff; background: var(--night);
+  }
+  .c1 { min-height: 360px; }
+  .img { position: absolute; inset: 0; z-index: -3; overflow: hidden; }
+  .img :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s var(--ease); }
+  .photo::before {
+    content: ''; position: absolute; inset: 0; z-index: -2;
+    background: linear-gradient(to top, rgba(10, 11, 14, 0.92) 0%, rgba(10, 11, 14, 0.55) 45%, rgba(10, 11, 14, 0.15) 100%);
+    transition: opacity 0.5s;
+  }
+  .photo::after {
+    content: ''; position: absolute; inset: 0; z-index: -2; opacity: 0; transition: opacity 0.5s;
+    background: linear-gradient(to top, rgba(196, 52, 0, 0.85) 0%, rgba(196, 52, 0, 0.25) 50%, transparent 85%);
+  }
+  .card:hover .img :global(img) { transform: scale(1.06); }
+  .card.photo:hover::after { opacity: 1; }
+  /* Lumière qui suit le pointeur */
+  .light {
+    position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity 0.4s;
+    background: radial-gradient(420px circle at var(--mx) var(--my), rgba(255, 255, 255, 0.16), transparent 60%);
+  }
+  .card:hover .light { opacity: 1; }
+
+  .top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .chip {
+    display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14); border: 1px solid rgba(255, 255, 255, 0.28);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); transition: transform 0.5s var(--ease), background 0.35s, color 0.35s;
+  }
+  .chip .ic { width: 24px; height: 24px; stroke-width: 1.9; }
+  .hl .chip { background: var(--orange); border-color: var(--orange); color: #111; }
+  .card:hover .chip { transform: rotate(-10deg) scale(1.08); }
+  .num { font: 800 clamp(2.4rem, 4vw, 3.6rem) / 0.8 var(--f-display); color: transparent; -webkit-text-stroke: 1.4px rgba(255, 255, 255, 0.75); }
+
+  .body { display: grid; gap: 8px; max-width: 46ch; }
+  h3 { margin: 0; font: 800 clamp(1.7rem, 2.6vw, 2.3rem) / 0.95 var(--f-display); text-transform: uppercase; letter-spacing: 0.005em; }
+  .c1 h3 { font-size: clamp(2.2rem, 4.2vw, 3.6rem); }
+  .body > p { margin: 0; color: rgba(255, 255, 255, 0.86); font-size: 1.04rem; }
+  .bar {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: var(--grad);
+    transform: scaleX(0); transform-origin: left; transition: transform 0.6s var(--ease);
+  }
+  .card:hover .bar { transform: scaleX(1); }
+
+  /* Carte avis */
+  .quote {
+    background:
+      radial-gradient(80% 90% at 100% 0%, rgba(73, 16, 188, 0.55), transparent 60%),
+      radial-gradient(70% 80% at 0% 100%, rgba(255, 91, 15, 0.4), transparent 60%),
+      #121318;
+  }
+  .q { margin: 0 0 18px; }
+  .q blockquote { margin: 0; }
+  .q p { margin: 0; font: 600 clamp(1.25rem, 2vw, 1.6rem) / 1.3 var(--f-body); letter-spacing: -0.005em; }
+  .q figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 12px; font-size: 0.92rem; color: #c9cdd4; }
+  .stars { display: inline-flex; gap: 2px; color: #f5b300; }
+  .stars .ic { width: 16px; height: 16px; fill: currentColor; stroke: none; }
+  .quote h3 { font-size: clamp(1.4rem, 2vw, 1.7rem); }
+
+  /* Apparition : l'image se dévoile de bas en haut */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .card.reveal .img { clip-path: inset(100% 0 0 0); transition: clip-path 1.1s cubic-bezier(0.7, 0, 0.2, 1) calc(var(--d) + 0.1s); }
+    :global(.js) .card.reveal .img :global(img) { transform: scale(1.25); }
+    :global(.js) .card.reveal.is-in .img { clip-path: inset(0 0 0 0); }
+    :global(.js) .card.reveal.is-in .img :global(img) { transform: none; transition: transform 1.6s var(--ease) calc(var(--d) + 0.1s); }
+    :global(.js) .card.reveal.is-in:hover .img :global(img) { transform: scale(1.06); transition-delay: 0s; }
+  }
+</style>
+
+<script>
+  // Lumière qui suit le pointeur sur les cartes
+  document.querySelectorAll<HTMLElement>('[data-bento]').forEach((grid) => {
+    if (!matchMedia('(hover: hover)').matches) return;
+    grid.addEventListener('pointermove', (e) => {
+      const card = (e.target as HTMLElement).closest<HTMLElement>('.card');
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', `${e.clientX - r.left}px`);
+      card.style.setProperty('--my', `${e.clientY - r.top}px`);
+    });
+  });
+</script>

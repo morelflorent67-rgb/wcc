@@ -40,3 +40,6 @@ Photos d'illustration provisoires, à remplacer par de vraies photos de WCC. Ne 
 | `mecanique-alternateur.jpg` | Manuel E Sankitts | [Unsplash](https://unsplash.com/photos/i2kOA2p0DTo) | Alternateur |
 | `mecanique-climatisation.jpg` | Olav Tvedt | [Unsplash](https://unsplash.com/photos/JJBxXvgnh5s) | Climatisation |
 | `mecanique-filtre-habitacle.jpg` | Luke Miller | [Unsplash](https://unsplash.com/photos/h1HnQ3I6aTU) | Filtre d’habitacle |
+| `carrosserie-pret-cles.jpg` | Mehmet Talha Onuk | [Unsplash](https://unsplash.com/photos/aboFF2GXb_0) | Carrosserie : véhicule de prêt (À votre service) |
+| `carrosserie-lavage-mousse.jpg` | Clarence Tioh | [Unsplash](https://unsplash.com/photos/kQdY2pR-ic8) | Carrosserie : véhicule rendu nettoyé (À votre service) |
+| `carrosserie-conseil-client.jpg` | Mehmet Talha Onuk | [Unsplash](https://unsplash.com/photos/6AbkEt7-lCA) | Carrosserie : agréé assurances, accompagnement (À votre service) |

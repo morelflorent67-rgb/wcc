@@ -31,9 +31,14 @@ const logos = partners.map((p) => {
 
   <section class="block" aria-labelledby="deroule">
     <div class="wrap">
-      <p class="label muted reveal">Déroulement</p>
-      <h2 id="deroule" class="sec-t reveal">De la déclaration<br />à la restitution.</h2>
-      <StepsList steps={carroAssurances.steps} accent="orange" />
+      <div class="reveal">
+        <StepsList steps={carroAssurances.steps} accent="orange" cta={{ href: '/carrosserie/contact/', label: 'Demander un devis' }}>
+          <Fragment slot="head">
+            <p class="label">Déroulement</p>
+            <h2 id="deroule" class="sec-t">De la déclaration<br />à la restitution.</h2>
+          </Fragment>
+        </StepsList>
+      </div>
       <p class="small reveal">Le déroulement exact dépend de votre contrat, de votre assureur et de l’importance du dommage.</p>
     </div>
   </section>

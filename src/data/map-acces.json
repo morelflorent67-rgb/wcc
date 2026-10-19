@@ -1,0 +1,299 @@
+{
+ "_note": "Généré par tools/build_map.py à partir des données © contributeurs OpenStreetMap (ODbL). Ne pas modifier à la main.",
+ "viewBox": "0 0 1400 1260",
+ "garage": {
+  "x": 812,
+  "y": 567,
+  "px": 58.0,
+  "py": 45.0
+ },
+ "metersPerUnit": 1,
+ "roads": [
+  {
+   "d": "M1005 831l-6-14-85-103-64-84-45-52-115-145-15-26-7-16",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Avenue de l'Énergie"
+  },
+  {
+   "d": "M760 519l139-113 8-13",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue de la Vapeur"
+  },
+  {
+   "d": "M320 874l440-355",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue de l'Électricité"
+  },
+  {
+   "d": "M1508 256l-129 32-8 4-482 389",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue de l'Atome"
+  },
+  {
+   "d": "M889 681l-204 165-13-1-123-155",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue de l'Uranium"
+  },
+  {
+   "d": "M655 402l35 31",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Avenue de l'Énergie"
+  },
+  {
+   "d": "M637 402l6 1 12-1 7-3 6-8 3-10-2-12-13-12-6-2-12 2-12 11-3 17 3 7 11 10",
+   "w": 13,
+   "cls": "secondary",
+   "name": null
+  },
+  {
+   "d": "M560 447l59-40 18-5",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M669 369l28-26 22-23-47 34-16 3",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M623 385l-6 12-126 106-33 34-80 65-36 23-59 48",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M719 320l617-501",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M644 356l-17-9-24-22 17 28 6 15",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M1105 507l75 95",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Impasse du Laser"
+  },
+  {
+   "d": "M603 325l-13-16 215-174",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M491 503l-120 96-29 26",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M1042 812l-29 15",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue du Stade"
+  },
+  {
+   "d": "M1017 831l10-3 15-16 376-324 32-18 31-8",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue du Stade"
+  },
+  {
+   "d": "M590 309l-34-40-7-2-116 100-28 27",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue de l'Innovation"
+  },
+  {
+   "d": "M1255 385l55 70 32-21",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Impasse de l'Induction"
+  },
+  {
+   "d": "M215 734l43-36 25-25-30 21-121 97-11 1-5 8 3 10 10 3 7-3 3-11 40-35 15-10 21-20",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M545 1117l-11-29-14-21-309-340",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue du Chêne"
+  },
+  {
+   "d": "M1337 859l-11 27",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue de la Loire"
+  },
+  {
+   "d": "M247-155l160 42 68 13 76 11 195 14 15 0 45-8 126-39",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue du Ried"
+  },
+  {
+   "d": "M1521 981l-25 10-103 25-33 12-38 19-121 85-77 69",
+   "w": 14,
+   "cls": "primary",
+   "name": "Rue des Trois Maires"
+  },
+  {
+   "d": "M1527 198l-19 58-11 66-2 58 4 53-4 5 4 24 15 50 21 48",
+   "w": 14,
+   "cls": "primary",
+   "name": "Rue des Trois Maires"
+  },
+  {
+   "d": "M1133 1210l76-70 41-33 57-40 27-17 62-26 86-21 44-15",
+   "w": 14,
+   "cls": "primary",
+   "name": "Rue des Trois Maires"
+  },
+  {
+   "d": "M1526 521l-15-47-8-37-4-4",
+   "w": 14,
+   "cls": "primary",
+   "name": "Rue des Trois Maires"
+  },
+  {
+   "d": "M1124 1201l-44 48-32 39-26 42-21 51",
+   "w": 14,
+   "cls": "primary",
+   "name": "Rue du Marais"
+  },
+  {
+   "d": "M1009 1385l22-47 19-31 40-52 43-45",
+   "w": 14,
+   "cls": "primary",
+   "name": "Rue du Marais"
+  },
+  {
+   "d": "M-57 949l150-118 7-3 22-16",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M116 804l-23 27",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M93 831l-11 3-124 92",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M1549 1056l-56 18-37 16-125 64-160 159-54 58-15 9-29 12",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue du Château d'Angleterre"
+  },
+  {
+   "d": "M1171 1313l108 99",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue du Col-Vert"
+  },
+  {
+   "d": "M-42 926l-24 20-37 41",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Route de La Wantzenau"
+  },
+  {
+   "d": "M-114 1011l23-22 32-37-10 6-29 28-5 1-16 15",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Route de la Wantzenau"
+  },
+  {
+   "d": "M1294 1401l102-31 18 15",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue du Martin-Pêcheur"
+  },
+  {
+   "d": "M-121 1023l7-12-5-9-4 7 9 2",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Rue de la République"
+  },
+  {
+   "d": "M-131-38l74 7 13 0 8-6 25-40 13-17 32-28",
+   "w": 8,
+   "cls": "unclassified",
+   "name": "Rue du Ried"
+  },
+  {
+   "d": "M-81 1161l-11-34-26-62-2-17",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Rue de la République"
+  },
+  {
+   "d": "M-75 1202l-7-31 1-10 5 9 3 23-4 92 1 39 9 37 0 23",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Rue de la République"
+  },
+  {
+   "d": "M-143 1157l62 4",
+   "w": 10,
+   "cls": "tertiary",
+   "name": "Rue de la Fontaine"
+  },
+  {
+   "d": "M-67 1361l1-15-9-81",
+   "w": 13,
+   "cls": "secondary",
+   "name": "Rue de la République"
+  }
+ ],
+ "street": "M668 391l7 16 15 26 115 145 45 52 64 84 85 103 6 14",
+ "tram": [
+  "M520 1382l-7-12 1-15 41-78 4-10 2-16-16-114-9-35-8-16-12-16-321-346-9-21-16-86 0 18 13 71 4 11 7 10 312 338 16 19 9 13 10 33 17 123-7 24-40 78-1 13 6 14",
+  "M170 617l-2-16 3-9 7-8 8-4 20 0 11 2 10 8 5 15",
+  "M815 1392l-54-26-25-5-162 23",
+  "M615 1381l107-17 20 0 25 8 55 26"
+ ],
+ "route": {
+  "d": "M178 661l-12 1-8 9 8 40 3 10 17 18 1 0 27-23 50-34 161-131 3 3 132-107 59-40 18-5 6 1 12-1 35 31 115 145 7-11",
+  "meters": 930,
+  "stop": "Hoenheim Gare",
+  "x": 178,
+  "y": 661
+ },
+ "labels": [
+  {
+   "text": "Route de la Wantzenau",
+   "x": 27.84,
+   "y": 47.03,
+   "angle": -38.5
+  },
+  {
+   "text": "Avenue de l'Énergie",
+   "x": 67.0,
+   "y": 58.99,
+   "angle": 51.1
+  }
+ ]
+}

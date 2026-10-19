@@ -1,7 +1,7 @@
 # WCC — notes de reprise
 
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
-Dernière mise à jour : 7 octobre 2026 (rien de poussé ; tout le site est construit : 26 fiches, carrosserie, pages d'information, SEO, QA, docs de mise en ligne ; reste les informations à obtenir et la mise en ligne).
+Dernière mise à jour : 19 octobre 2026 (rien de poussé ; retours visuels du client intégrés, voir « Retours client du 19 octobre » ; reste les informations à obtenir, les deux images principales à déposer et la mise en ligne).
 
 ## Le projet en bref
 
@@ -38,7 +38,9 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 - Français correct, accents compris. Textes écrits pour WCC, jamais copiés d'AD ni d'Acoat.
 - **Rien d'inventé ni de non confirmé** : pas de délai chiffré, pas de prêt gratuit systématique, pas de franchise offerte,
   pas de garantie, pas de note globale ni d'étoiles non confirmées, pas de statistiques Acoat (effectif, surface…).
-  Véhicule de prêt : « possible » seulement. Aucune affiliation AD ni constructeur ; marques = « marques prises en charge ».
+  **Atouts confirmés par le client (19 octobre 2026)**, en carrosserie **et** en mécanique : véhicule de prêt **systématique pendant la
+  réparation** (jamais « gratuit » : non confirmé), véhicule rendu nettoyé, « Agréé assurances » (sans nommer d'assureur). Aucune affiliation AD ni
+  constructeur ; marques = « marques prises en charge ».
 - Prix : « À partir de X € » = **prix d'appel** (tarif de base WCC, remise éventuelle en plus), jamais un devis ; TTC / pièces / main-d'œuvre non précisés (à clarifier avec WCC).
 - Les formulaires ne promettent ni rendez-vous ni délai de réponse.
 - Les 26 descriptions courtes et les 26 fiches mécanique sont des **brouillons à faire valider** par WCC.
@@ -61,9 +63,12 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 | 16 marques de véhicules (icônes) | `src/data/brands.json` (généré : `npm run brands`) |
 | Avis Google | `src/data/reviews.json` (`capturedAt`, `items[]`) |
 | Espace carrosserie : 6 prestations (texte complet de chaque page), textes de l'accueil (étapes, avantages, FAQ) et de la page Assurances | `src/data/services-carrosserie.json` (types dans `src/lib/carrosserie.ts`) ; pages générées par `src/pages/carrosserie/prestations/[slug].astro` |
+| Deux images principales (portail + en-têtes des espaces) | déposer `carrosserie.*` / `mecanique.*` dans `src/assets/hero/` (README) ; sinon photo d'illustration (`src/lib/hero.ts`) |
+| Atouts communs aux deux espaces (prêt, nettoyage, agréé assurances) | texte : `site.json` → `atouts` ; affichés par `Atouts` (bandeau sous l'en-tête carrosserie, panneau « Le service en plus » du portail et de l'accueil mécanique) et par `ServiceBento` (« À votre service » : `services-carrosserie.json` → `home.advantages`, entrées `atout` + photo, `quote` vérifiée mot pour mot) |
+| Plan d'accès animé | `tools/build_map.py` (données OpenStreetMap, extraits bruts non versionnés dans `design/map/`) → `src/assets/map/acces-fond.svg` + `src/data/map-acces.json` ; composant `AccessMap` |
 | Couleurs, polices | `src/styles/tokens.css`, `src/styles/global.css` |
 | Gabarits | `src/layouts/Base.astro` (SEO, noindex, JSON-LD), `SpaceLayout.astro` (en-tête d'espace), `PageStub.astro` (pages provisoires) |
-| Composants | `PortalHero`, `SpaceHeader` (menu rail des deux espaces), `PhotoCard` (carte « Affiche », seule carte de prestation), `PhotoRail` (rail horizontal : menu et sections), `FlashInfo` (bande promo), `PromoSticker` (macaron), `LogoMarquee`, `ReviewsCarousel`, `StepsList`, `FaqList`, `CtaBand`, `VehicleZones` (schéma 9 zones + liste), `AccessBlock`, `SiteFooter`, `CallBar`, `Icons` |
+| Composants | `PortalHero`, `SpaceHeader` (menu rail des deux espaces), `PhotoCard` (carte « Affiche », seule carte de prestation), `PhotoRail` (rail horizontal : menu et sections), `FlashInfo` (bande promo), `PromoSticker` (macaron), `LogoMarquee` (marques en couleur sur pastilles, assureurs en gris), `ReviewsCarousel` (pile de cartes, flèches de chaque côté, sans défilement automatique ni initiales, passage surligné `highlight`), `StepsList` (« route de nuit » : panneau sombre, voiture qui avance au défilement jusqu'au drapeau ; slot `head`, prop `cta`, `icon` par étape), `Atouts`, `ServiceBento`, `FaqList`, `CtaBand`, `VehicleZones` (schéma 9 zones + liste), `AccessBlock` (appel, semaine + ouvert/fermé en direct, carte), `AccessMap`, `SiteFooter`, `CallBar`, `Icons` |
 | Cartes : données et photos | `src/lib/cards.ts` (met les prestations des deux espaces en forme), `src/lib/photos.ts` ; photo d'une prestation = champ `image` dans `services-mecanique.json` / `services-carrosserie.json` (fichier de `src/assets/illustration/`) ; script du rail : `src/scripts/rail.ts` |
 | Offre flash info | `src/data/site.json` → `promo` |
 | Formulaires en étapes | `src/scripts/quote-form.ts` (générique : règles `data-require`, préremplissage `?prestation=` / `?intervention=`), `src/styles/form.css`, pages `mecanique/contact/` et `carrosserie/contact/` |
@@ -155,6 +160,18 @@ Pas encore fait (ordre conseillé) :
    `public/.htaccess` (404, HTTPS, en-têtes, cache : **non testé**, pas d'Apache en local), `.github/workflows/deploy.yml` (manuel, essai à blanc par défaut, aucun
    secret configuré ; action FTP-Deploy v4.3.5). Reste : choix de l'hébergeur, test de réception réel (avec/sans photos), premier déploiement.
 7. Fin de projet : repasser le dépôt en privé, puis **un seul push**.
+
+**Retours client du 19 octobre 2026 (faits)** : logo sans blanc dans le C du milieu (`tools/make_logo.py`, favicons inchangés car sur pastille
+blanche) ; bloc « Accès & horaires » refait (carte d'appel, semaine avec « Aujourd'hui » et état ouvert/fermé, copie de l'adresse, plan animé
+OpenStreetMap avec trajet à pied depuis le tram B « Hoenheim Gare », liens Google Maps et Waze, aussi sur `/acces-horaires/`) ; marques en couleur
+officielle (assureurs inchangés) ; carrosserie : bandeau des 3 atouts sous l'en-tête, « À votre service » en mosaïque photo (3 photos Unsplash
+ajoutées, accord donné) ; panneau « Le service en plus » sur le portail ; « Simple, étape par étape » = trajet interactif (aussi en mécanique,
+assurances, fiches carrosserie) ; avis : titre « Ils en parlent mieux que nous. », pile de cartes. Deuxième passe (même jour) : images
+principales générées par l'utilisateur déposées (`src/assets/hero/carrosserie.webp`, `mecanique.webp`, 1536 × 1024) ; étapes refaites en
+« route de nuit » (choix de l'utilisateur) ; avis : flèches de part et d'autre, plus d'initiales ni de minuteur (donc plus de défilement
+automatique). Troisième passe : voiture plus rapide (trajet complet pendant que le panneau est à l'écran) ; atouts déclarés pour les deux
+espaces, panneau du portail « Carrosserie et mécanique » (liens vers les deux), panneau bleu sur l'accueil mécanique. Piège rencontré : les noms d'animation CSS (`@keyframes`) sont **globaux** même dans les styles Astro « scoped » : préfixer
+par composant (`map-`, `acc-`, `atout-`, `rv-`, `st-`), sinon une animation en écrase une autre (le slogan du portail avait été déplacé).
 
 **Liste complète et numérotée des questions à poser : `docs/QUESTIONS-WCC.md`** (à tenir à jour). Résumé — à obtenir auprès de l'utilisateur / du client : hébergeur confirmé, vraies photos de l'atelier, logos officiels (assureurs,
 éventuellement marques), identité légale, service d'envoi d'e-mails, conditions des prix d'appel, durée de conservation des

@@ -42,7 +42,17 @@
       }
     ]
   },
+  "geo": { "lat": 48.6289689, "lon": 7.7671826 },
   "directionsUrl": "https://www.google.com/maps/dir/?api=1&destination=5a+avenue+de+l%27%C3%89nergie+67800+Bischheim",
+  "wazeUrl": "https://waze.com/ul?ll=48.6289689%2C7.7671826&navigate=yes",
+  "atouts": {
+    "_note": "Services proposés en carrosserie ET en mécanique (confirmé par le client, 19 octobre 2026). Véhicule de prêt : systématique pendant la réparation (jamais « gratuit » : non confirmé). icon = symbole de src/components/Icons.astro. Affichés : bandeau sous l'en-tête carrosserie, cartes « À votre service » (carrosserie), panneau « Le service en plus » (portail et accueil mécanique).",
+    "items": [
+      { "id": "pret", "icon": "key", "title": "Véhicule de prêt", "short": "Pendant toute la réparation", "text": "Vous restez mobile : nous vous prêtons un véhicule pendant la réparation du vôtre." },
+      { "id": "nettoyage", "icon": "sparkle", "title": "Véhicule rendu nettoyé", "short": "À chaque restitution", "text": "Votre véhicule vous est rendu nettoyé, prêt à reprendre la route." },
+      { "id": "assurance", "icon": "shield", "title": "Agréé assurances", "short": "Démarches facilitées", "text": "Nous vous accompagnons dans vos démarches avec votre assureur, de la déclaration au suivi du dossier." }
+    ]
+  },
   "promo": {
     "_note": "Offre de l'espace mécanique voulue par le client (7 octobre 2026) : remise sur le tarif de base + 90 points de contrôle offerts. enabled=false retire tout (remise, bande, macaron) et les prix reviennent au tarif de base. discountPercent = remise appliquée au tarif de base (le tarif barré est le tarif de base réellement pratiqué). endDate = date de fin « AAAA-MM-JJ » (facultative, affichée si renseignée). Conditions exactes des 90 points à obtenir de WCC.",
     "enabled": true,

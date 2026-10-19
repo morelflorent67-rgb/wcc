@@ -17,7 +17,16 @@ Les fichiers de données sont du JSON : respecter les guillemets `"`, les virgul
 ## Coordonnées et horaires
 
 `src/data/site.json` : adresse, téléphone (`display` pour l'affichage, `tel` pour le lien d'appel), horaires (`slots` pour le texte, `schema` pour
-Google : à garder cohérents), lien d'itinéraire.
+Google et pour le tableau de la semaine du bloc « Accès & horaires » : à garder cohérents), coordonnées GPS (`geo`), liens d'itinéraire
+Google Maps et Waze.
+
+Le bloc « Accès & horaires » affiche « Ouvert · jusqu'à… » / « Fermé · ouvre à… » d'après `schema`, à l'heure de Paris. Les jours fériés
+(calendrier d'Alsace-Moselle) n'affichent pas d'état : « ouverture à confirmer par téléphone ».
+
+**Plan d'accès** : dessiné à partir des données OpenStreetMap par `python tools/build_map.py` (produit `src/assets/map/acces-fond.svg` et
+`src/data/map-acces.json`). À relancer seulement si l'adresse change (modifier `LAT0`/`LON0` dans le script, puis
+`python tools/build_map.py --download`). Aucun service extérieur n'est appelé par les visiteurs ; la mention « © contributeurs OpenStreetMap »
+doit rester visible sur la carte.
 
 ## Prix et offre de l'espace mécanique
 
@@ -50,8 +59,22 @@ qui le prouvent. Les conditions de l'offre (contenu des 90 points, durée, exclu
 `src/data/services-carrosserie.json` : les 6 interventions (texte complet de chaque page), les étapes, avantages et questions de l'accueil, la page
 Assurances. Aucun prix en carrosserie.
 
+**Atouts communs aux deux espaces** (véhicule de prêt, véhicule rendu nettoyé, agréé assurances) : `src/data/site.json` → `atouts` (titre,
+accroche courte, texte, icône). Ils s'affichent dans le bandeau sous l'en-tête carrosserie, dans le panneau « Le service en plus » du portail et
+de l'accueil mécanique, et dans les cartes photo « À votre service ».
+
+Avantages (`home.advantages`) : section « À votre service » en cartes photo. Une entrée `atout` (`pret`, `nettoyage`, `assurance`) reprend le
+texte de l'atout commun et n'ajoute que sa photo.
+`icon` = symbole de `src/components/Icons.astro`, `image` = photo de `src/assets/illustration/`, `quote` = extrait **mot pour mot** d'un avis
+de `reviews.json` (il n'est affiché que s'il y figure exactement).
+
+Étapes (« Simple, étape par étape », page Assurances, fiches) : `title`, `text` et `icon` facultatif (symbole de `Icons.astro`, ex. `edit`, `chat`,
+`doc`, `key`, `shield`, `phone`, `check`). Les étapes de l'accueil mécanique sont dans `src/pages/mecanique/index.astro`.
+
 ## Photos
 
+- **Les deux images principales** (portail et en-tête de chaque espace) : déposer `carrosserie.jpg` et `mecanique.jpg` (ou `.png`, `.webp`) dans
+  `src/assets/hero/`. Format conseillé : paysage, 2400 × 1600 px ou plus, sujet au centre (voir le README de ce dossier).
 - Dossier `src/assets/illustration/`. **Pour remplacer une photo, enregistrer la nouvelle sous le même nom** (JPEG, 1600 px de large ou plus, moins de 1 Mo si
   possible). Le site fabrique lui-même les versions légères.
 - Pour changer la photo d'une prestation, modifier son champ `image` (nom du fichier).
@@ -63,11 +86,13 @@ Assurances. Aucun prix en carrosserie.
 
 - Assureurs : `src/data/partners.json` (nom, fichier, `featured` = défile sur le portail) et fichiers de `src/assets/partners/`. Remplacer par les
   fichiers officiels en gardant le nom.
-- Marques de véhicules : `src/data/brands.json` est généré par `npm run brands` (icônes simple-icons, licence CC0).
+- Marques de véhicules : `src/data/brands.json` est généré par `npm run brands` (icônes simple-icons, licence CC0), avec la couleur officielle de
+  chaque marque (`color`) ; `dark: true` = couleur claire posée sur une pastille sombre (Renault, Opel).
 
 ## Avis Google
 
-`src/data/reviews.json` : un avis par entrée (`author` « Prénom N. », `date`, `rating`, `text` reproduit à l'identique). Jamais d'avis inventé.
+`src/data/reviews.json` : un avis par entrée (`author` « Prénom N. », `date`, `rating`, `highlight`, `text` reproduit à l'identique). Jamais d'avis
+inventé. `highlight` = passage surligné dans la carte : il doit être recopié **exactement** depuis `text` (sinon rien n'est surligné).
 Mettre à jour `capturedAt` ; les mentions « il y a X mois » vieillissent : préférer une date (« septembre 2026 »).
 
 ## Mentions légales et confidentialité

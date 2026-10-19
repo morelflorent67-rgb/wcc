@@ -1,0 +1,146 @@
+---
+/**
+ * Les trois atouts, proposés en carrosserie comme en mécanique (véhicule de prêt, véhicule rendu nettoyé, agréé assurances).
+ * variant="float" : carte posée à cheval sur l'en-tête de l'espace carrosserie ;
+ * variant="band"  : panneau « Le service en plus » — space="portal" (portail : liens vers les deux espaces)
+ *                   ou space="mecanique" (accueil mécanique, en bleu).
+ * Textes : src/data/site.json → atouts.
+ */
+import { atouts } from '../lib/carrosserie';
+
+interface Props { variant?: 'float' | 'band'; space?: 'portal' | 'mecanique'; href?: string; }
+const { variant = 'float', space = 'portal', href = '#a-votre-service' } = Astro.props;
+---
+{variant === 'band' ? (
+  <section class:list={['atouts', 'band', space]} aria-labelledby={`atouts-t-${space}`}>
+    <div class="panel reveal">
+      <div class="intro">
+        <p class="label">{space === 'mecanique' ? 'En mécanique aussi' : 'Carrosserie et mécanique'}</p>
+        <h2 id={`atouts-t-${space}`}>Le service<br />en plus.</h2>
+        {space === 'mecanique' ? (
+          <a class="more" href="/mecanique/contact/">Demander un devis <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+        ) : (
+          <div class="links">
+            <a class="more o" href="/carrosserie/#a-votre-service">Découvrir la carrosserie <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+            <a class="more b" href="/mecanique/">Découvrir la mécanique <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+          </div>
+        )}
+      </div>
+      <ul class="list">
+        {atouts.map((a, i) => (
+          <li style={`--d:${0.15 + i * 0.12}s`}>
+            <span class="ico" aria-hidden="true"><svg class="ic"><use href={`#i-${a.icon}`} /></svg></span>
+            <span class="t"><b>{a.title}</b><small>{a.short}</small></span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+) : (
+  <div class="atouts float">
+    <ul class="list reveal" aria-label="Nos atouts">
+      {atouts.map((a, i) => (
+        <li style={`--d:${0.15 + i * 0.12}s`}>
+          <a href={href}>
+            <span class="ico" aria-hidden="true"><svg class="ic"><use href={`#i-${a.icon}`} /></svg></span>
+            <span class="t"><b>{a.title}</b><small>{a.short}</small></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
+
+<style>
+  .atouts { position: relative; z-index: 2; }
+  .list { display: grid; margin: 0; padding: 0; list-style: none; grid-template-columns: 1fr; }
+  .list li { min-width: 0; }
+  .list li > a, .band .list li { display: flex; align-items: center; gap: 16px; padding: 18px 22px; text-decoration: none; color: inherit; }
+  .ico {
+    position: relative; flex: none; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+    background: #fff3ec; color: var(--orange-deep); transition: background 0.35s, color 0.35s, transform 0.5s var(--ease);
+  }
+  .ico .ic { width: 26px; height: 26px; stroke-width: 1.9; }
+  .ico::after {
+    content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 1.5px dashed rgba(255, 91, 15, 0.45);
+    opacity: 0; transition: opacity 0.35s;
+  }
+  .t { display: grid; gap: 3px; min-width: 0; }
+  .t b { font: 800 1.4rem/1 var(--f-display); text-transform: uppercase; letter-spacing: 0.01em; }
+  .t small { font-size: 0.95rem; color: var(--mute); }
+
+  /* Carte flottante (espace carrosserie) */
+  .float { margin-top: -54px; padding-inline: var(--pad); }
+  .float .list {
+    max-width: var(--max); margin: 0 auto; background: #fff; border: 1px solid var(--line); border-radius: 22px;
+    box-shadow: 0 30px 60px -34px rgba(17, 19, 23, 0.5); overflow: hidden;
+  }
+  .float .list li + li { border-top: 1px solid var(--line); }
+  .float a { transition: background 0.3s; }
+  .float a:hover { background: var(--paper); }
+  .float a:hover .ico, .band li:hover .ico { background: var(--orange); color: #111; transform: rotate(-8deg) scale(1.06); }
+  .float a:hover .ico::after, .band li:hover .ico::after { opacity: 1; }
+  @media (min-width: 860px) {
+    .float .list { grid-template-columns: repeat(3, 1fr); }
+    .float .list li + li { border-top: 0; border-left: 1px solid var(--line); }
+    .list li > a { padding: 24px 28px; }
+  }
+
+  /* Panneau du portail */
+  .band { padding: clamp(50px, 7vw, 90px) var(--pad) 0; }
+  .panel {
+    position: relative; max-width: var(--max); margin: 0 auto; display: grid; gap: 26px; align-items: center; overflow: hidden;
+    padding: clamp(26px, 4vw, 48px); border-radius: 28px; color: #fff; isolation: isolate;
+    background: radial-gradient(70% 120% at 0% 0%, rgba(255, 91, 15, 0.35), transparent 60%), linear-gradient(120deg, #1a0d08, #131418 55%, #10131f);
+  }
+  .panel::before {
+    content: ''; position: absolute; inset: 0; z-index: -1; border-radius: inherit; padding: 1.5px;
+    background: var(--grad); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0); opacity: 0.8;
+  }
+  @media (min-width: 1000px) { .panel { grid-template-columns: minmax(260px, 0.75fr) 2fr; } }
+  .band .label { margin: 0; color: #ffb48a; }
+  .band h2 { margin: 12px 0 18px; font: 800 clamp(2.4rem, 4.6vw, 3.8rem) / 0.88 var(--f-display); text-transform: uppercase; }
+  .more { display: inline-flex; align-items: center; gap: 10px; font: 700 1rem var(--f-body); color: #fff; text-decoration: none; border-bottom: 2px solid var(--orange); padding-bottom: 3px; }
+  .links { display: flex; flex-wrap: wrap; gap: 12px 26px; }
+  .more.b { border-bottom-color: #4d6bff; }
+
+  /* Portail : les deux espaces (orange et bleu) */
+  .band.portal .panel {
+    background:
+      radial-gradient(60% 120% at 0% 0%, rgba(255, 91, 15, 0.32), transparent 60%),
+      radial-gradient(60% 120% at 100% 100%, rgba(18, 56, 245, 0.34), transparent 60%),
+      linear-gradient(120deg, #1a0d08, #131418 50%, #0b1024);
+  }
+  .band.portal .label { color: #c9cdd4; }
+  .band.portal .ico { background: linear-gradient(135deg, rgba(255, 91, 15, 0.28), rgba(18, 56, 245, 0.32)); color: #fff; }
+  .band.portal li:hover .ico { background: linear-gradient(135deg, var(--orange), var(--blue)); color: #fff; }
+
+  /* Accueil mécanique : bleu */
+  .band.mecanique { padding-bottom: clamp(50px, 7vw, 90px); }
+  .band.mecanique .panel { background: radial-gradient(70% 120% at 0% 0%, rgba(18, 56, 245, 0.42), transparent 60%), linear-gradient(120deg, #0a0f24, #131418 55%, #10131f); }
+  .band.mecanique .label { color: #a9b8ff; }
+  .band.mecanique .more { border-bottom-color: #4d6bff; }
+  .band.mecanique .ico { background: rgba(18, 56, 245, 0.25); color: #9fb0ff; }
+  .band.mecanique li:hover .ico { background: var(--blue); color: #fff; }
+  .more:hover .ic { transform: translate(2px, -2px); }
+  .band .list { gap: 12px; }
+  @media (min-width: 700px) { .band .list { grid-template-columns: repeat(3, 1fr); } }
+  .band .list li {
+    flex-direction: column; align-items: flex-start; gap: 18px; padding: 22px; border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.1); transition: background 0.3s, transform 0.4s var(--ease);
+  }
+  .band .list li:hover { background: rgba(255, 255, 255, 0.1); transform: translateY(-4px); }
+  .band .ico { background: rgba(255, 91, 15, 0.16); color: #ff8a4a; }
+  .band .t small { color: #c9cdd4; }
+
+  /* Icônes qui se dessinent à l'apparition */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .atouts .ico .ic { stroke-dasharray: 90; }
+    :global(.js) .atouts .reveal:not(.is-in) .ico { opacity: 0; }
+    :global(.js) .atouts .is-in .ico { animation: atout-pop 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) var(--d) backwards; }
+    :global(.js) .atouts .is-in .ico .ic { animation: atout-draw 1.4s var(--ease) calc(var(--d) + 0.2s) backwards; }
+    @keyframes atout-pop { from { opacity: 0; transform: scale(0.6); } }
+    @keyframes atout-draw { from { stroke-dashoffset: 90; } to { stroke-dashoffset: 0; } }
+  }
+</style>

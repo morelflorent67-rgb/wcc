@@ -1,42 +1,189 @@
 ---
+/**
+ * Bloc « Accès & horaires » (bas des pages) : appel, adresse, horaires de la semaine avec le jour en cours et
+ * l'état ouvert / fermé (calculé dans le navigateur, heure de Paris, jours fériés d'Alsace exclus), carte animée.
+ */
 import site from '../data/site.json';
+import AccessMap from './AccessMap.astro';
 
 interface Props { quote?: 'both' | 'mecanique' | 'carrosserie'; id?: string; }
 const { quote = 'both', id } = Astro.props;
+
+const DAYS = [
+  ['Monday', 'Lundi'], ['Tuesday', 'Mardi'], ['Wednesday', 'Mercredi'], ['Thursday', 'Jeudi'],
+  ['Friday', 'Vendredi'], ['Saturday', 'Samedi'], ['Sunday', 'Dimanche'],
+] as const;
+const fmt = (t: string) => {
+  const [h, m] = t.split(':').map(Number);
+  return m ? `${h} h ${String(m).padStart(2, '0')}` : `${h} h`;
+};
+const week = DAYS.map(([en, fr]) => {
+  const slots = site.hours.schema.filter((s) => s.days.includes(en)).sort((a, b) => a.opens.localeCompare(b.opens));
+  return { en, fr, text: slots.length ? slots.map((s) => `${fmt(s.opens)} – ${fmt(s.closes)}`).join(' · ') : 'Fermé', open: slots.length > 0 };
+});
 ---
 <section class="access" id={id} aria-labelledby="acces-t">
-  <p class="label reveal">Accès &amp; horaires</p>
-  <h2 id="acces-t" class="sr-only">Nous trouver à {site.address.city}</h2>
-  <div class="agrid">
-    <a class="big-tel reveal" href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
-    <div class="reveal">
-      <h3>Adresse</h3>
-      <address>{site.name}<br />{site.address.street}<br />{site.address.postalCode} {site.address.city}</address>
+  <div class="a-grid">
+    <div class="a-head reveal">
+      <p class="label">Accès &amp; horaires</p>
+      <h2 id="acces-t">Nous trouver <span>à {site.address.city}.</span></h2>
+      <p class="lead">Carrosserie et mécanique, au même endroit.</p>
     </div>
-    <div class="reveal" style="--d:.08s">
-      <h3>Horaires</h3>
-      <p>{site.hours.label}<br />{site.hours.slots.join(' et ')}</p>
+
+    <a class="call reveal" style="--d:.06s" href={`tel:${site.phone.tel}`}>
+      <span class="call-ic" aria-hidden="true"><svg class="ic"><use href="#i-phone" /></svg></span>
+      <span class="call-t"><small>Appeler l’atelier</small><b>{site.phone.display}</b></span>
+      <span class="call-go" aria-hidden="true"><svg class="ic"><use href="#i-arrow" /></svg></span>
+    </a>
+
+    <div class="a-info">
+      <div class="blk reveal" style="--d:.1s">
+        <h3><svg class="ic" aria-hidden="true"><use href="#i-pin" /></svg>Adresse</h3>
+        <address>{site.name}<br />{site.address.street}<br />{site.address.postalCode} {site.address.city}</address>
+        <button type="button" class="copy" data-copy={`${site.name}, ${site.address.street}, ${site.address.postalCode} ${site.address.city}`} hidden>
+          <svg class="ic" aria-hidden="true"><use href="#i-copy" data-copy-icon /></svg><span data-copy-label>Copier l’adresse</span>
+        </button>
+      </div>
+
+      <div class="blk hours reveal" style="--d:.14s" data-hours={JSON.stringify(site.hours.schema)}>
+        <h3><svg class="ic" aria-hidden="true"><use href="#i-clock" /></svg>Horaires</h3>
+        <p class="status" data-status hidden><i aria-hidden="true"></i><span data-status-text></span></p>
+        <ul class="week">
+          {week.map((d) => (
+            <li data-day={d.en} class:list={{ closed: !d.open }}>
+              <span class="d">{d.fr}</span><span class="h">{d.text}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-  </div>
-  <div class="acts">
-    {quote !== 'mecanique' && <a class="o" href="/carrosserie/contact/">Demander un devis carrosserie <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>}
-    {quote !== 'carrosserie' && <a class="b" href="/mecanique/contact/">Demander un devis mécanique <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>}
-    <a href={site.directionsUrl} rel="noopener">Itinéraire <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>
+
+    <div class="acts reveal" style="--d:.18s">
+      {quote !== 'mecanique' && <a class="o" href="/carrosserie/contact/">Devis carrosserie <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>}
+      {quote !== 'carrosserie' && <a class="b" href="/mecanique/contact/">Devis mécanique <svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></a>}
+    </div>
+
+    <div class="a-map"><AccessMap /></div>
   </div>
 </section>
 
 <style>
-  .access { background: var(--night); color: #fff; padding: clamp(54px, 8vw, 110px) var(--pad); }
-  .label { color: #9aa0ab; margin: 0; }
-  .agrid { max-width: var(--max); margin: 26px auto 0; display: grid; gap: 36px 56px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-  h3 { margin: 0 0 10px; font: 700 0.86rem var(--f-display); letter-spacing: 0.2em; text-transform: uppercase; color: #9aa0ab; }
-  .agrid p, address { margin: 0; font: 500 1.3rem/1.4 var(--f-body); font-style: normal; color: #e9ebef; }
-  .big-tel {
-    grid-column: 1 / -1; display: inline-block; justify-self: start;
-    font: 800 clamp(2.9rem, 7.6vw, 6.6rem) / 0.9 var(--f-display); letter-spacing: 0.005em; text-decoration: none;
-    background: var(--grad-on-dark); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
+  .access {
+    position: relative; overflow: hidden; isolation: isolate; color: #fff; padding: clamp(60px, 9vw, 120px) var(--pad);
+    background:
+      radial-gradient(60% 50% at 0% 0%, rgba(255, 91, 15, 0.13), transparent 70%),
+      radial-gradient(50% 60% at 100% 100%, rgba(18, 56, 245, 0.16), transparent 70%),
+      var(--night);
   }
-  .acts { max-width: var(--max); margin: 40px auto 0; display: flex; flex-wrap: wrap; gap: 12px; }
+  .a-grid {
+    max-width: var(--max); margin: 0 auto; display: grid; gap: 26px; align-items: start;
+    grid-template-columns: minmax(0, 1fr); grid-template-areas: 'head' 'call' 'map' 'info' 'acts';
+  }
+  @media (min-width: 1040px) {
+    .a-grid {
+      gap: 30px clamp(40px, 5vw, 80px); align-items: center;
+      grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+      grid-template-areas: 'head map' 'call map' 'info map' 'acts map';
+      grid-template-rows: auto auto auto 1fr;
+    }
+    .acts { align-self: start; }
+  }
+  .a-head { grid-area: head; }
+  .call { grid-area: call; }
+  .a-info { grid-area: info; }
+  .acts { grid-area: acts; }
+  .a-map { grid-area: map; min-width: 0; }
+
+  .label { color: #9aa0ab; margin: 0; }
+  h2 {
+    margin: 14px 0 12px; font: 800 clamp(2.8rem, 6vw, 5.2rem) / 0.86 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em;
+  }
+  h2 span { display: block; color: transparent; -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.85); }
+  .lead { margin: 0; font-size: 1.12rem; color: #c9cdd4; }
+
+  /* Appel : carte nette, numéro en blanc, pastille au dégradé du logo */
+  .call {
+    position: relative; display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 18px;
+    padding: 16px 18px 16px 16px; border-radius: 22px; text-decoration: none; color: #fff;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: background 0.35s, border-color 0.35s, transform 0.35s var(--ease);
+  }
+  .call-ic {
+    position: relative; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%;
+    background: linear-gradient(135deg, #ff8a10, #ff4d0f 35%, #6a1aaa 70%, #0441fd);
+  }
+  .call-ic .ic { width: 24px; height: 24px; stroke-width: 2; }
+  .call-ic::before, .call-ic::after { content: ''; position: absolute; inset: 0; border-radius: 50%; border: 2px solid rgba(255, 122, 42, 0.6); opacity: 0; }
+  .call-t { display: grid; gap: 4px; min-width: 0; }
+  .call-t small { font: 700 0.76rem/1 var(--f-display); letter-spacing: 0.2em; text-transform: uppercase; color: #9aa0ab; transition: color 0.35s; }
+  .call-t b { font: 700 clamp(1.8rem, 3.2vw, 2.45rem) / 1 var(--f-display); letter-spacing: 0.04em; white-space: nowrap; }
+  .call-go {
+    display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; border: 1.5px solid rgba(255, 255, 255, 0.35);
+    transition: background 0.35s, color 0.35s, border-color 0.35s, transform 0.35s;
+  }
+  .call:hover, .call:focus-visible { background: #fff; color: var(--ink); border-color: #fff; transform: translateY(-2px); }
+  .call:hover .call-t small, .call:focus-visible .call-t small { color: var(--mute); }
+  .call:hover .call-go, .call:focus-visible .call-go { background: var(--ink); color: #fff; border-color: var(--ink); transform: rotate(45deg); }
+  @media (prefers-reduced-motion: no-preference) {
+    .call-ic::before { animation: acc-ping 2.6s cubic-bezier(0.2, 0.6, 0.3, 1) infinite; }
+    .call-ic::after { animation: acc-ping 2.6s cubic-bezier(0.2, 0.6, 0.3, 1) 1.3s infinite; }
+    .call:hover .call-ic .ic { animation: acc-ring 0.9s ease-in-out; }
+    @keyframes acc-ping { 0% { transform: scale(1); opacity: 0.8; } 100% { transform: scale(1.7); opacity: 0; } }
+    @keyframes acc-ring { 0%, 100% { transform: rotate(0); } 15%, 45%, 75% { transform: rotate(-14deg); } 30%, 60%, 90% { transform: rotate(14deg); } }
+  }
+  @media (max-width: 420px) {
+    .call { gap: 12px; padding: 12px; }
+    .call-ic { width: 48px; height: 48px; }
+    .call-go { display: none; }
+    .call { grid-template-columns: auto 1fr; }
+  }
+
+  /* Adresse et horaires */
+  .a-info { display: grid; gap: 26px; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 560px) { .a-info { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); } }
+  .blk { min-width: 0; }
+  h3 {
+    display: flex; align-items: center; gap: 10px; margin: 0 0 12px;
+    font: 700 0.84rem var(--f-display); letter-spacing: 0.2em; text-transform: uppercase; color: #9aa0ab;
+  }
+  h3 .ic { width: 18px; height: 18px; color: var(--orange); }
+  address { font: 500 1.15rem/1.45 var(--f-body); font-style: normal; color: #e9ebef; }
+  .copy {
+    display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 8px 14px; border-radius: 999px; cursor: pointer;
+    background: transparent; color: #e9ebef; border: 1px solid rgba(255, 255, 255, 0.22); font: 600 0.88rem var(--f-body);
+    transition: background 0.25s, color 0.25s, border-color 0.25s;
+  }
+  .copy[hidden] { display: none; }
+  .copy:hover { background: #fff; color: var(--ink); border-color: #fff; }
+  .copy.done { border-color: #3ddc84; color: #3ddc84; background: transparent; }
+  .status {
+    display: inline-flex; align-items: center; gap: 9px; margin: 0 0 12px; padding: 7px 14px 7px 12px; border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07); font: 600 0.92rem var(--f-body); color: #fff;
+  }
+  .status[hidden] { display: none; }
+  .status i { position: relative; width: 9px; height: 9px; border-radius: 50%; background: #9aa0ab; }
+  .status.open i { background: #3ddc84; }
+  .status.closed i { background: #ff6a3a; }
+  @media (prefers-reduced-motion: no-preference) {
+    .status.open i::after { content: ''; position: absolute; inset: 0; border-radius: 50%; background: #3ddc84; animation: acc-ping 1.8s ease-out infinite; }
+  }
+  .week { margin: 0; padding: 0; list-style: none; display: grid; }
+  .week li {
+    display: flex; justify-content: space-between; gap: 14px; padding: 7px 10px; border-radius: 10px;
+    font-size: 0.95rem; color: #c9cdd4; border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+  }
+  .week li:last-child { border-bottom: 0; }
+  .week .d { font-weight: 600; color: #e9ebef; }
+  .week .h { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .week .closed .h { color: #7d838e; }
+  .week li.today { background: rgba(255, 255, 255, 0.08); border-bottom-color: transparent; box-shadow: inset 3px 0 0 var(--orange); color: #fff; }
+  .week li.today .d::after {
+    content: 'Aujourd’hui'; margin-left: 8px; padding: 2px 7px; border-radius: 999px; vertical-align: 1px;
+    font: 700 0.62rem/1 var(--f-display); letter-spacing: 0.12em; text-transform: uppercase; background: var(--orange); color: #111;
+  }
+
+  /* Demandes de devis */
+  .acts { display: flex; flex-wrap: wrap; gap: 12px; }
   .acts a {
     display: inline-flex; align-items: center; gap: 12px; padding: 14px 24px; border-radius: 999px;
     font: 700 0.98rem var(--f-body); text-decoration: none; border: 1.5px solid #3a3e47; color: #fff;
@@ -45,5 +192,90 @@ const { quote = 'both', id } = Astro.props;
   .acts a:hover { background: #fff; color: var(--ink); border-color: #fff; }
   .acts a.o { background: var(--orange); color: #111; border-color: var(--orange); }
   .acts a.b { background: var(--blue); border-color: var(--blue); }
+  .acts a.o:hover, .acts a.b:hover { background: #fff; color: var(--ink); border-color: #fff; }
   .acts a:hover .ic { transform: translate(2px, -2px); }
 </style>
+
+<script>
+  // Horaires : jour en cours et état ouvert / fermé, à l'heure de Paris. Un jour férié (calendrier d'Alsace-Moselle)
+  // n'affiche pas d'état : l'ouverture n'est pas connue.
+  type Slot = { days: string[]; opens: string; closes: string };
+  const DAY_EN = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const DAY_FR = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  const hm = (t: string) => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+  const fmt = (t: string) => { const [h, m] = t.split(':').map(Number); return m ? `${h} h ${String(m).padStart(2, '0')}` : `${h} h`; };
+
+  function easter(y: number) {
+    const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25);
+    const g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4;
+    const l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451);
+    const month = Math.floor((h + l - 7 * m + 114) / 31), day = ((h + l - 7 * m + 114) % 31) + 1;
+    return Date.UTC(y, month - 1, day);
+  }
+  function isHoliday(y: number, mo: number, d: number) {
+    const fixed = ['1-1', '5-1', '5-8', '7-14', '8-15', '11-1', '11-11', '12-25', '12-26'];
+    if (fixed.includes(`${mo}-${d}`)) return true;
+    const e = easter(y), t = Date.UTC(y, mo - 1, d), day = 86400000;
+    return [-2, 1, 39, 50].some((off) => e + off * day === t); // Vendredi saint (Alsace), lundi de Pâques, Ascension, Pentecôte
+  }
+  function parisNow() {
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/Paris', year: 'numeric', month: 'numeric', day: 'numeric', hour: 'numeric', minute: 'numeric', hourCycle: 'h23',
+    }).formatToParts(new Date()).map((x) => [x.type, x.value]));
+    const y = +p.year, mo = +p.month, d = +p.day;
+    return { y, mo, d, dow: new Date(Date.UTC(y, mo - 1, d)).getUTCDay(), min: +p.hour * 60 + +p.minute };
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-hours]').forEach((box) => {
+    const schema = JSON.parse(box.dataset.hours ?? '[]') as Slot[];
+    const slotsOf = (dow: number) => schema.filter((s) => s.days.includes(DAY_EN[dow])).sort((a, b) => hm(a.opens) - hm(b.opens));
+    const now = parisNow();
+    box.querySelector(`[data-day="${DAY_EN[now.dow]}"]`)?.classList.add('today');
+
+    const status = box.querySelector<HTMLElement>('[data-status]')!;
+    const text = status.querySelector<HTMLElement>('[data-status-text]')!;
+    if (isHoliday(now.y, now.mo, now.d)) {
+      text.textContent = 'Jour férié : ouverture à confirmer par téléphone';
+      status.hidden = false;
+      return;
+    }
+    const today = slotsOf(now.dow);
+    const cur = today.find((s) => now.min >= hm(s.opens) && now.min < hm(s.closes));
+    if (cur) {
+      status.classList.add('open');
+      text.textContent = `Ouvert · jusqu’à ${fmt(cur.closes)}`;
+    } else {
+      status.classList.add('closed');
+      const later = today.find((s) => hm(s.opens) > now.min);
+      if (later) text.textContent = `Fermé · ouvre à ${fmt(later.opens)}`;
+      else {
+        for (let i = 1; i <= 7; i++) {
+          const dow = (now.dow + i) % 7;
+          const date = new Date(Date.UTC(now.y, now.mo - 1, now.d + i));
+          const next = slotsOf(dow)[0];
+          if (!next || isHoliday(date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate())) continue;
+          text.textContent = `Fermé · ouvre ${i === 1 ? 'demain' : DAY_FR[dow]} à ${fmt(next.opens)}`;
+          break;
+        }
+      }
+    }
+    if (text.textContent) status.hidden = false;
+  });
+
+  // Copier l'adresse
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    if (!navigator.clipboard) return;
+    btn.hidden = false;
+    const label = btn.querySelector<HTMLElement>('[data-copy-label]')!;
+    const icon = btn.querySelector('[data-copy-icon]');
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy ?? '');
+        btn.classList.add('done');
+        label.textContent = 'Adresse copiée';
+        icon?.setAttribute('href', '#i-check');
+        window.setTimeout(() => { btn.classList.remove('done'); label.textContent = 'Copier l’adresse'; icon?.setAttribute('href', '#i-copy'); }, 2200);
+      } catch { /* copie refusée par le navigateur : rien à faire */ }
+    });
+  });
+</script>

@@ -1,5 +1,5 @@
 {
-  "_note": "BROUILLON À FAIRE VALIDER PAR WCC. Textes rédigés pour le site (aucun prix, aucun délai, aucune garantie, aucun prêt gratuit annoncé). « intervention » = valeur du formulaire (api/submit.php). « image » = fichier de src/assets/illustration/.",
+  "_note": "BROUILLON À FAIRE VALIDER PAR WCC. Textes rédigés pour le site (aucun prix, aucun délai, aucune garantie, aucun prêt gratuit annoncé ; véhicule de prêt systématique pendant la réparation, confirmé le 19 octobre 2026). « intervention » = valeur du formulaire (api/submit.php). « image » = fichier de src/assets/illustration/.",
   "services": [
     {
       "slug": "reparation-accident",
@@ -51,7 +51,7 @@
       "faq": [
         { "q": "Dois-je passer par mon assurance ?", "a": "Pas obligatoirement. Si vous souhaitez que l’assurance prenne en charge la réparation, vous devez déclarer le sinistre selon les conditions de votre contrat. Vous pouvez aussi demander un devis pour une réparation à votre charge." },
         { "q": "Puis-je choisir mon garage ?", "a": "Oui. Le choix du réparateur vous appartient, même si votre assureur vous propose un garage." },
-        { "q": "Un véhicule de prêt est-il possible ?", "a": "Selon les disponibilités et votre situation, un véhicule de prêt peut être possible. Précisez votre besoin dans la demande : nous vous indiquerons ce qui peut être proposé." },
+        { "q": "Aurai-je un véhicule pendant la réparation ?", "a": "Oui. Nous vous prêtons un véhicule pendant la réparation du vôtre. Indiquez-le dans votre demande : nous organisons la mise à disposition avec vous." },
         { "q": "Quels documents préparer ?", "a": "La carte grise, votre attestation d’assurance, le constat amiable s’il y en a un et, le cas échéant, la référence du sinistre." },
         { "q": "Combien coûte la réparation ?", "a": "Cela dépend de l’étendue des dégâts, des pièces et de la peinture. Nous n’affichons pas de prix d’appel en carrosserie : chaque dommage est différent. Le devis est établi à partir de votre demande." },
         { "q": "Mon véhicule ne peut plus rouler. Que faire ?", "a": "Indiquez-le dans votre demande ou appelez-nous : nous verrons ensemble comment organiser la suite." }
@@ -219,7 +219,7 @@
         { "q": "Tous les impacts de grêle peuvent-ils être réparés ?", "a": "Cela dépend de leur profondeur, de leur emplacement et de l’état de la peinture. Certains éléments peuvent nécessiter une remise en peinture ou un remplacement. Le devis précise ce qui est prévu." },
         { "q": "Combien de temps dure la réparation ?", "a": "La durée dépend du nombre d’impacts et des éléments à traiter. Nous vous la précisons après examen de votre demande." },
         { "q": "Mon pare-brise est touché : intervenez-vous aussi sur le vitrage ?", "a": "Oui, nous intervenons sur le vitrage : indiquez-le dans votre demande, en précisant les vitrages concernés." },
-        { "q": "Un véhicule de prêt est-il possible ?", "a": "Selon les disponibilités et votre situation, cela peut être possible. Précisez votre besoin dans la demande." }
+        { "q": "Aurai-je un véhicule pendant la réparation ?", "a": "Oui. Nous vous prêtons un véhicule pendant la réparation du vôtre. Indiquez-le dans votre demande : nous organisons la mise à disposition avec vous." }
       ],
       "related": ["debosselage", "vitrage-pare-brise", "peinture-rayures"]
     },
@@ -334,21 +334,23 @@
 
   "home": {
     "steps": [
-      { "title": "Vous décrivez le dommage", "text": "Type d’intervention, zones touchées, photos si vous le pouvez : le formulaire se remplit en quelques minutes." },
-      { "title": "L’atelier vous répond", "text": "Nous échangeons avec vous pour comprendre la situation et préciser l’intervention." },
-      { "title": "Vous recevez un devis adapté", "text": "Il détaille la réparation et sert de base à votre dossier si l’assurance est concernée." },
-      { "title": "Nous organisons la prise en charge", "text": "Une fois l’intervention précisée, nous convenons ensemble de la suite." }
+      { "icon": "edit", "title": "Vous décrivez le dommage", "text": "Type d’intervention, zones touchées, photos si vous le pouvez : le formulaire se remplit en quelques minutes." },
+      { "icon": "chat", "title": "L’atelier vous répond", "text": "Nous échangeons avec vous pour comprendre la situation et préciser l’intervention." },
+      { "icon": "doc", "title": "Vous recevez un devis adapté", "text": "Il détaille la réparation et sert de base à votre dossier si l’assurance est concernée." },
+      { "icon": "key", "title": "Nous organisons la prise en charge", "text": "Une fois l’intervention précisée, nous convenons ensemble de la suite." }
     ],
+    "_advantages": "Section « À votre service ». « atout » = renvoi vers un atout commun aux deux espaces (src/data/site.json → atouts : titre, accroche, texte, icône) ; ici on n'ajoute que la photo. icon = symbole de src/components/Icons.astro ; image = fichier de src/assets/illustration/ ; quote = extrait mot pour mot d'un avis de src/data/reviews.json.",
     "advantages": [
-      { "title": "Accompagnement assurance", "text": "Nous vous aidons dans vos démarches avec votre assureur." },
-      { "title": "Véhicule de prêt possible", "text": "Selon les disponibilités et votre situation : précisez votre besoin dans votre demande." },
-      { "title": "Toutes marques", "text": "Nous intervenons sur les véhicules de toutes marques, avec un devis adapté au vôtre." },
-      { "title": "Une équipe à l’écoute", "text": "Une prise en charge réactive, par une équipe qui prend le temps d’expliquer." }
+      { "atout": "pret", "image": "carrosserie-pret-cles.jpg", "imageAlt": "Remise des clés d’un véhicule" },
+      { "atout": "nettoyage", "image": "carrosserie-lavage-mousse.jpg", "imageAlt": "Lavage d’un véhicule à la mousse" },
+      { "atout": "assurance", "image": "carrosserie-conseil-client.jpg", "imageAlt": "Un professionnel explique la réparation à une cliente" },
+      { "title": "Toutes marques", "text": "Nous intervenons sur les véhicules de toutes marques, avec un devis adapté au vôtre.", "image": "atelier-vehicules.jpg", "imageAlt": "Véhicules dans un atelier" },
+      { "title": "Une équipe à l’écoute", "text": "Une prise en charge réactive, par une équipe qui prend le temps d’expliquer.", "quote": { "text": "Ils ont pris les choses en main très professionnellement, avec une grande empathie.", "author": "Coline P." } }
     ],
     "faq": [
       { "q": "Dois-je passer par mon assurance ?", "a": "Pas obligatoirement. Si vous souhaitez que l’assurance prenne en charge la réparation, vous devez déclarer le sinistre selon les conditions de votre contrat. Vous pouvez aussi demander un devis pour une réparation à votre charge." },
       { "q": "Puis-je choisir mon garage ?", "a": "Oui. Le choix du réparateur vous appartient, même si votre assureur vous propose un garage." },
-      { "q": "Un véhicule de prêt est-il possible ?", "a": "Selon les disponibilités et votre situation, cela peut être possible. Précisez votre besoin dans votre demande : nous vous indiquerons ce qui peut être proposé." },
+      { "q": "Aurai-je un véhicule pendant la réparation ?", "a": "Oui. Nous vous prêtons un véhicule pendant la réparation du vôtre. Indiquez-le dans votre demande : nous organisons la mise à disposition avec vous." },
       { "q": "Combien coûte une réparation de carrosserie ?", "a": "Cela dépend du dommage : étendue, pièces, peinture. Nous n’affichons pas de prix d’appel en carrosserie, car chaque dommage est différent. Le devis est établi à partir de votre demande." },
       { "q": "Dois-je joindre des photos à ma demande ?", "a": "Ce n’est pas obligatoire, mais elles permettent de mieux comprendre le dommage et de vous répondre plus précisément." },
       { "q": "Mon véhicule ne peut plus rouler. Que faire ?", "a": "Indiquez-le dans votre demande ou appelez-nous : nous verrons ensemble comment organiser la suite." }
@@ -358,11 +360,11 @@
   "assurances": {
     "lead": "Un sinistre est déjà assez compliqué. Nous vous accompagnons dans vos démarches avec votre assureur, de la description du dommage au suivi de votre dossier.",
     "steps": [
-      { "title": "Vous déclarez le sinistre", "text": "Auprès de votre assureur, dans les délais prévus par votre contrat. Conservez vos photos, le constat amiable et les références de votre dossier." },
-      { "title": "Vous nous contactez", "text": "Avec le formulaire en ligne ou par téléphone : type de dommage, zones touchées, photos, nom de votre assureur." },
-      { "title": "Nous établissons le devis", "text": "Il détaille les réparations et sert de base aux échanges avec votre assureur. Si une expertise est demandée, elle suit le déroulement prévu par votre contrat." },
-      { "title": "Les réparations sont validées", "text": "Une fois l’accord obtenu lorsqu’il est nécessaire, nous convenons ensemble de l’organisation de l’intervention." },
-      { "title": "Nous réparons et restituons le véhicule", "text": "Le véhicule vous est restitué une fois l’intervention terminée. Selon votre contrat, une franchise peut rester à votre charge." }
+      { "icon": "shield", "title": "Vous déclarez le sinistre", "text": "Auprès de votre assureur, dans les délais prévus par votre contrat. Conservez vos photos, le constat amiable et les références de votre dossier." },
+      { "icon": "phone", "title": "Vous nous contactez", "text": "Avec le formulaire en ligne ou par téléphone : type de dommage, zones touchées, photos, nom de votre assureur." },
+      { "icon": "doc", "title": "Nous établissons le devis", "text": "Il détaille les réparations et sert de base aux échanges avec votre assureur. Si une expertise est demandée, elle suit le déroulement prévu par votre contrat." },
+      { "icon": "check", "title": "Les réparations sont validées", "text": "Une fois l’accord obtenu lorsqu’il est nécessaire, nous convenons ensemble de l’organisation de l’intervention." },
+      { "icon": "key", "title": "Nous réparons et restituons le véhicule", "text": "Le véhicule vous est restitué une fois l’intervention terminée. Selon votre contrat, une franchise peut rester à votre charge." }
     ],
     "toPrepare": [
       "Votre attestation d’assurance et la carte grise du véhicule.",
@@ -374,7 +376,7 @@
       { "q": "Puis-je choisir mon garage ?", "a": "Oui. Le choix du réparateur vous appartient, même si votre assureur vous propose un garage." },
       { "q": "Que couvre mon assurance ?", "a": "Cela dépend de votre contrat (garanties, franchise, conditions). Votre assureur est le seul à pouvoir vous le confirmer ; nous pouvons vous aider à préparer votre dossier." },
       { "q": "Mon assureur ne figure pas dans la liste.", "a": "Contactez-nous pour en parler : indiquez son nom dans votre demande de devis." },
-      { "q": "Un véhicule de prêt est-il possible ?", "a": "Selon les disponibilités et votre situation, cela peut être possible. Précisez votre besoin dans votre demande." },
+      { "q": "Aurai-je un véhicule pendant la réparation ?", "a": "Oui. Nous vous prêtons un véhicule pendant la réparation du vôtre. Indiquez-le dans votre demande : nous organisons la mise à disposition avec vous." },
       { "q": "Dois-je avancer des frais ?", "a": "Les conditions de règlement dépendent de votre contrat et de votre dossier : n’hésitez pas à nous poser la question avec votre demande." }
     ]
   }

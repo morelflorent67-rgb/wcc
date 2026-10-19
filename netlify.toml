@@ -1,0 +1,30 @@
+# Configuration Netlify (aperçu du site relié au dépôt GitHub).
+#
+# - Netlify n'exécute pas le PHP : les formulaires de devis (api/submit.php) ne fonctionnent pas ici. Le visiteur
+#   voit le message d'échec qui l'invite à appeler. Pour l'hébergement définitif avec formulaires, voir docs/DEPLOIEMENT.md (OVH).
+# - C'est pourquoi le build lance seulement « astro build » : le dossier api/ n'est pas copié (sinon les fichiers PHP
+#   seraient servis en clair).
+# - Le site reste en « noindex » (et robots.txt bloque les moteurs) tant que la variable PUBLIC_INDEXABLE n'est pas
+#   définie à « true » dans Netlify (Site configuration > Environment variables). SITE_URL y règle l'adresse publique.
+
+[build]
+  command = "npx astro build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "24"
+
+# En-têtes de sécurité (équivalent de public/.htaccess, ignoré par Netlify)
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Fichiers à nom haché produits par le build : cache d'un an
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -1,245 +1,262 @@
 ---
 /**
- * Avis clients : défilement latéral automatique (pause, précédent, suivant, balayage tactile).
- * Données : src/data/reviews.json. Tant que le fichier est vide, des cartes « à intégrer » s'affichent
- * (aucun avis n'est inventé). Chaque avis : { author, date, rating?, text }.
+ * Avis clients (portail) : pile de cartes que l'on fait défiler avec les flèches placées de chaque côté,
+ * en glissant la carte (doigt ou souris) ou avec les flèches du clavier. Pas de défilement automatique.
+ * Le passage clé de chaque avis est surligné : il doit figurer mot pour mot dans le texte
+ * (champ « highlight » de src/data/reviews.json, sinon rien n'est surligné).
+ * Sans JavaScript : les avis s'affichent en rangée défilante. Aucun avis, note ou témoignage n'est inventé.
  */
 import data from '../data/reviews.json';
 
-interface Review { author: string; date?: string; rating?: number; text: string; }
+interface Review { author: string; date?: string; rating?: number; highlight?: string; text: string; }
 const list = (data.items ?? []) as Review[];
+const n = list.length;
 const captured = new Date(data.capturedAt).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-const placeholders = Array.from({ length: 10 }, (_, i) => i);
-const empty = list.length === 0;
-const initial = (s: string) => s.trim().charAt(0).toUpperCase();
+const parts = (r: Review) => {
+  const i = r.highlight ? r.text.indexOf(r.highlight) : -1;
+  return i < 0 ? { a: r.text, m: '', b: '' } : { a: r.text.slice(0, i), m: r.highlight!, b: r.text.slice(i + r.highlight!.length) };
+};
+const size = (t: string) => (t.length < 170 ? 's' : t.length < 300 ? 'm' : 'l');
+const words = ['Ils', 'en', 'parlent', 'mieux', 'que', 'nous.'];
 ---
 <section class="reviews" data-reviews aria-labelledby="avis-t">
-  <p class="label reveal">Avis clients</p>
-  <h2 id="avis-t" class="reveal">Votre confiance nous fait avancer.</h2>
-
-  <div class="stage reveal" style="--d:.1s">
-    <div class="rail" data-rail tabindex="0" role="region" aria-label="Avis clients — faites défiler horizontalement">
-      <ul class="track" data-track>
-        {empty
-          ? placeholders.map((i) => (
-              <li class="rcard ph">
-                <span class="tag">Avis Google</span>
-                <div class="sk" style={`width:${[92, 78, 88, 70, 84][i % 5]}%`}></div>
-                <div class="sk" style={`width:${[64, 90, 72, 86, 60][i % 5]}%`}></div>
-                <div class="sk" style={`width:${[80, 58, 76, 66, 90][i % 5]}%`}></div>
-                <div class="who"><span class="sk-c"></span><span class="sk-who"><i></i><i></i></span></div>
-              </li>
-            ))
-          : list.map((r) => (
-              <li class="rcard">
-                <header class="who">
-                  <span class="avatar" aria-hidden="true">{initial(r.author)}</span>
-                  <span class="who-t"><b>{r.author}</b>{r.date && <small>{r.date}</small>}</span>
-                </header>
-                {r.rating && (
-                  <div class="stars" role="img" aria-label={`${r.rating} sur 5`}>
-                    {Array.from({ length: 5 }, (_, n) => (
-                      <svg class:list={['ic', { off: n >= (r.rating ?? 0) }]} aria-hidden="true"><use href="#i-star" /></svg>
-                    ))}
-                  </div>
-                )}
-                <blockquote><p class="rtext">{r.text}</p></blockquote>
-                <button type="button" class="more" hidden aria-expanded="false">Lire la suite</button>
-                <p class="src">Avis Google</p>
-              </li>
-            ))}
-      </ul>
+  <div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="r-grid">
+    <div class="r-intro">
+      <p class="label reveal">Avis clients</p>
+      <h2 id="avis-t" class="r-title reveal">
+        {words.map((w, i) => <><span class:list={['w', { hl: w === 'mieux' }]}><i style={`--wd:${0.08 * i}s`}>{w}</i></span>{' '}</>)}
+      </h2>
+      <p class="r-sub reveal" style="--d:.15s">Une sélection d’avis publiés sur Google par nos clients, en carrosserie comme en mécanique.</p>
+      <p class="rnote reveal" style="--d:.25s">{n ? `Avis relevés sur Google le ${captured}, reproduits tels quels.` : 'Sélection d’avis Google à intégrer.'}</p>
     </div>
 
-    <div class="ctrls" aria-label="Commandes du défilement des avis">
-      <button type="button" data-prev aria-label="Avis précédents"><svg class="ic" aria-hidden="true"><use href="#i-left" /></svg></button>
-      <button type="button" data-toggle aria-label="Mettre le défilement en pause"><svg class="ic" aria-hidden="true"><use href="#i-pause" data-toggle-icon /></svg></button>
-      <button type="button" data-next aria-label="Avis suivants"><svg class="ic" aria-hidden="true"><use href="#i-right" /></svg></button>
+    <div class="deck reveal" style="--d:.1s" data-deck>
+      {n > 1 && (
+        <button type="button" class="arrow prev" data-prev aria-label="Avis précédent" hidden>
+          <svg class="ic" aria-hidden="true"><use href="#i-left" /></svg>
+        </button>
+      )}
+      <ul class="cards" data-cards aria-live="polite">
+        {list.map((r, i) => {
+          const p = parts(r);
+          return (
+            <li class="rc" data-i={i} data-len={size(r.text)} role="group" aria-roledescription="avis" aria-label={`Avis ${i + 1} sur ${n}`}>
+              <div class="rc-top">
+                {r.rating && (
+                  <span class="stars" role="img" aria-label={`${r.rating} sur 5`}>
+                    {Array.from({ length: 5 }, (_, k) => (
+                      <svg class:list={['ic', { off: k >= (r.rating ?? 0) }]} style={`--k:${k}`} aria-hidden="true"><use href="#i-star" /></svg>
+                    ))}
+                  </span>
+                )}
+                <span class="src">Avis Google</span>
+              </div>
+              <span class="qm" aria-hidden="true">“</span>
+              <blockquote><p>{p.a}{p.m && <mark>{p.m}</mark>}{p.b}</p></blockquote>
+              <footer class="who">
+                <span class="dash" aria-hidden="true"></span>
+                <span class="who-t"><b>{r.author}</b>{r.date && <small>{r.date}</small>}</span>
+              </footer>
+            </li>
+          );
+        })}
+      </ul>
+      {n > 1 && (
+        <button type="button" class="arrow next" data-next aria-label="Avis suivant" hidden>
+          <svg class="ic" aria-hidden="true"><use href="#i-right" /></svg>
+        </button>
+      )}
+      {n > 1 && <p class="count" aria-hidden="true" hidden><b data-cur>01</b> / {String(n).padStart(2, '0')}</p>}
     </div>
   </div>
-
-  {empty
-    ? <p class="rnote reveal">Sélection d’avis Google à intégrer. Aucun avis, note ou témoignage n’est inventé.</p>
-    : <p class="rnote reveal">Sélection d’avis publiés sur Google, relevés le {captured}.</p>}
 </section>
 
 <style>
-  .reviews { padding: clamp(60px, 9vw, 120px) 0; text-align: center; overflow: hidden; }
+  .reviews { position: relative; overflow: hidden; isolation: isolate; padding: clamp(70px, 10vw, 140px) var(--pad); }
+  .blobs { position: absolute; inset: 0; z-index: -1; pointer-events: none; }
+  .blobs i { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.32; }
+  .blobs i:nth-child(1) { width: 420px; height: 420px; left: 48%; top: 6%; background: #ff7a2a; }
+  .blobs i:nth-child(2) { width: 380px; height: 380px; left: 70%; top: 40%; background: #6a1aaa; opacity: 0.2; }
+  .blobs i:nth-child(3) { width: 360px; height: 360px; left: 56%; top: 62%; background: #1238f5; opacity: 0.18; }
+  @media (prefers-reduced-motion: no-preference) {
+    .blobs i { animation: rv-drift 18s ease-in-out infinite alternate; }
+    .blobs i:nth-child(2) { animation-duration: 22s; animation-delay: -6s; }
+    .blobs i:nth-child(3) { animation-duration: 26s; animation-delay: -12s; }
+    @keyframes rv-drift { 50% { transform: translate(-60px, 40px) scale(1.12); } 100% { transform: translate(40px, -30px) scale(0.92); } }
+  }
+
+  .r-grid { max-width: var(--max); margin: 0 auto; display: grid; gap: 40px; align-items: center; grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 1000px) { .r-grid { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 60px; } }
+
   .label { color: var(--mute); margin: 0; }
-  h2 {
-    margin: 14px auto 40px; padding-inline: var(--pad); max-width: 15ch;
-    font: 800 clamp(2.8rem, 7.4vw, 6.4rem) / 0.88 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em;
+  .r-title { margin: 16px 0 20px; font: 800 clamp(3rem, 7.2vw, 6.6rem) / 0.86 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; }
+  .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.06em; margin-bottom: -0.06em; }
+  .w > i { display: inline-block; font-style: normal; }
+  .w.hl > i {
+    background: linear-gradient(100deg, #e5480b, #c72b47 30%, #6a1aaa 60%, #1238f5 80%, #e5480b); background-size: 250% 100%;
+    -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
   }
-  .rail {
-    overflow-x: auto; scrollbar-width: none; padding: 6px var(--pad) 14px; text-align: left;
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-  }
-  .rail::-webkit-scrollbar { display: none; }
-  .track { display: flex; gap: 16px; width: max-content; margin: 0; padding: 0; list-style: none; }
-  .rcard {
-    flex: none; width: min(340px, 78vw); min-height: 250px; display: flex; flex-direction: column; gap: 12px;
-    background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 24px 24px 22px;
-    box-shadow: 0 18px 40px -30px rgba(17, 19, 23, 0.4);
-  }
-  .tag { font: 700 0.74rem/1 var(--f-display); letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); margin-bottom: 6px; display: flex; align-items: center; gap: 8px; }
-  .tag::before { content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--grad); }
-  .sk { height: 11px; border-radius: 6px; background: linear-gradient(90deg, #eeeae3, #f8f5f0, #eeeae3); background-size: 200% 100%; }
-  .who { display: flex; align-items: center; gap: 12px; margin-top: auto; padding-top: 10px; }
-  .sk-c { width: 40px; height: 40px; border-radius: 50%; background: #eeeae3; flex: none; }
-  .sk-who { display: grid; gap: 7px; flex: 1; }
-  .sk-who i { display: block; height: 9px; border-radius: 5px; background: #eeeae3; }
-  .sk-who i:first-child { width: 55%; }
-  .sk-who i:last-child { width: 35%; }
-  @media (prefers-reduced-motion: no-preference) { .sk { animation: shimmer 2.4s linear infinite; } }
-  @keyframes shimmer { to { background-position: -200% 0; } }
+  .r-sub { margin: 0; font-size: 1.15rem; color: var(--ink-soft); max-width: 40ch; }
+  .rnote { margin: 18px 0 0; font-size: 0.9rem; color: var(--mute); }
 
-  /* Avis réels */
-  .rcard:not(.ph) { gap: 14px; }
-  .rcard:not(.ph) .who { margin: 0; padding: 0; }
-  .avatar { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; flex: none; background: var(--ink); color: #fff; font: 700 1.1rem var(--f-display); }
-  .who-t { display: grid; line-height: 1.2; text-align: left; }
-  .who-t b { font-weight: 600; }
-  .who-t small { color: var(--mute); font-size: 0.82rem; }
-  .stars { display: flex; gap: 2px; color: #f5a300; }
-  .stars .ic { fill: currentColor; stroke: none; width: 18px; height: 18px; }
+  @media (prefers-reduced-motion: no-preference) {
+    /* Le titre se dévoile mot à mot (le bloc lui-même ne glisse pas) */
+    :global(.js) .r-title.reveal { opacity: 1; transform: none; }
+    :global(.js) .r-title .w > i { transform: translateY(105%); transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) var(--wd); }
+    :global(.js) .r-title.is-in .w > i { transform: none; }
+    .w.hl > i { animation: rv-sheen 6s linear infinite; }
+    @keyframes rv-sheen { to { background-position: -250% 0; } }
+  }
+
+  /* Cartes : rangée défilante sans JavaScript */
+  .deck { position: relative; min-width: 0; }
+  .cards { display: flex; gap: 16px; margin: 0; padding: 4px 0 14px; list-style: none; overflow-x: auto; }
+  .rc {
+    position: relative; flex: none; width: min(560px, 86vw); display: flex; flex-direction: column; gap: 18px;
+    padding: clamp(26px, 3.4vw, 44px); border-radius: 28px; background: #fff; color: var(--ink);
+    box-shadow: 0 40px 70px -40px rgba(17, 19, 23, 0.45), 0 0 0 1px rgba(17, 19, 23, 0.06);
+  }
+  .rc-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .stars { display: inline-flex; gap: 3px; color: #f5a300; }
+  .stars .ic { width: 22px; height: 22px; fill: currentColor; stroke: none; }
   .stars .off { color: #ddd6c8; }
-  blockquote { margin: 0; }
-  blockquote p { margin: 0; font-size: 1.04rem; line-height: 1.5; color: var(--ink-soft); }
-  .rtext { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 8; line-clamp: 8; overflow: hidden; }
-  .rcard.open .rtext { display: block; -webkit-line-clamp: unset; line-clamp: unset; }
-  .more { align-self: flex-start; padding: 4px 0; background: none; border: 0; cursor: pointer; font: 700 0.9rem var(--f-body); color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
-  .more[hidden] { display: none; }
-  .more:hover { color: var(--blue); }
-  .src { margin: auto 0 0; font: 700 0.74rem/1 var(--f-display); letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); }
-
-  .ctrls { display: none; justify-content: center; gap: 10px; margin-top: 18px; }
-  :global(.js) .ctrls { display: flex; }
-  .ctrls button {
-    display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; cursor: pointer;
-    background: #fff; color: var(--ink); border: 1.5px solid var(--ink); transition: background 0.25s, color 0.25s;
+  .src { font: 700 0.74rem/1 var(--f-display); letter-spacing: 0.18em; text-transform: uppercase; color: var(--mute); }
+  .qm {
+    display: block; height: 0.5em; margin: 4px 0 -4px; font: 800 7rem/1 Georgia, serif;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent;
   }
-  .ctrls button:hover { background: var(--ink); color: #fff; }
-  .rnote { margin: 18px auto 0; padding-inline: var(--pad); font-size: 0.92rem; color: var(--mute); }
+  blockquote { margin: 0; }
+  blockquote p { margin: 0; font: 500 1.2rem/1.5 var(--f-body); color: var(--ink-soft); }
+  .rc[data-len='s'] blockquote p { font: 600 clamp(1.4rem, 2.2vw, 1.8rem) / 1.32 var(--f-body); color: var(--ink); letter-spacing: -0.01em; }
+  .rc[data-len='m'] blockquote p { font-size: clamp(1.15rem, 1.6vw, 1.35rem); }
+  mark {
+    color: var(--ink); font-weight: 700; padding: 0 0.1em; border-radius: 4px;
+    background: linear-gradient(transparent 58%, rgba(255, 122, 42, 0.38) 58%) no-repeat; background-size: 100% 100%;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .who { display: flex; align-items: center; gap: 14px; margin-top: auto; padding-top: 6px; }
+  .dash { flex: none; width: 34px; height: 4px; border-radius: 4px; background: var(--grad); }
+  .who-t { display: grid; line-height: 1.25; }
+  .who-t b { font-weight: 700; font-size: 1.08rem; }
+  .who-t small { color: var(--mute); font-size: 0.86rem; }
+
+  /* Flèches de part et d'autre de la pile (avec JavaScript) */
+  .arrow[hidden], .count[hidden] { display: none; }
+  .arrow {
+    position: absolute; z-index: 8; top: calc(50% + 17px); display: grid; place-items: center; width: 58px; height: 58px; padding: 0;
+    border-radius: 50%; cursor: pointer; border: 0; background: var(--ink); color: #fff;
+    box-shadow: 0 16px 30px -12px rgba(17, 19, 23, 0.6), 0 0 0 4px rgba(246, 244, 240, 0.9);
+    transform: translateY(-50%); transition: background 0.25s, color 0.25s, transform 0.35s var(--ease);
+  }
+  .arrow .ic { width: 24px; height: 24px; stroke-width: 2.6; }
+  .arrow.prev { left: 0; }
+  .arrow.next { right: 0; }
+  .arrow:hover { background: var(--orange); color: #111; }
+  .arrow.prev:hover { transform: translate(-3px, -50%); }
+  .arrow.next:hover { transform: translate(3px, -50%); }
+  .count { margin: 26px 0 0; text-align: center; font: 700 1rem var(--f-display); letter-spacing: 0.14em; color: var(--mute); }
+  .count b { color: var(--ink); font-size: 1.35rem; }
+
+  /* Pile de cartes (avec JavaScript) */
+  :global(.js) .cards { display: grid; overflow: visible; padding: 34px 66px 0 29px; }
+  :global(.js) .rc {
+    grid-area: 1 / 1; width: auto; touch-action: pan-y; user-select: none;
+    transition: transform 0.75s cubic-bezier(0.2, 0.75, 0.2, 1), opacity 0.6s, background 0.5s;
+  }
+  :global(.js) .rc > * { transition: opacity 0.35s; }
+  :global(.js) .rc:not([data-pos='0']) > * { opacity: 0; }
+  :global(.js) .rc[data-pos='0'] { z-index: 5; cursor: grab; }
+  :global(.js) .rc[data-pos='0'].drag { transition: none; cursor: grabbing; }
+  :global(.js) .rc[data-pos='1'] { z-index: 4; transform: translate(20px, -18px) rotate(2.5deg) scale(0.96); background: #ff6a2a; }
+  :global(.js) .rc[data-pos='2'] { z-index: 3; transform: translate(38px, -34px) rotate(5deg) scale(0.92); background: #2f4bff; }
+  :global(.js) .rc[data-pos='rest'] { z-index: 1; transform: translate(38px, -34px) rotate(5deg) scale(0.9); opacity: 0; }
+  :global(.js) .rc[data-pos='out'] { z-index: 6; transform: translate(-115%, 40px) rotate(-16deg); opacity: 0; pointer-events: none; }
+  /* La flèche droite chevauche le bord de la carte, la gauche aussi */
+  .arrow.next { right: 37px; }
+  .arrow.prev { left: 0; }
+  @media (max-width: 600px) {
+    :global(.js) .cards { padding: 24px 40px 0 22px; }
+    :global(.js) .rc { padding-inline: 32px; }
+    :global(.js) .rc[data-pos='1'] { transform: translate(11px, -11px) rotate(2deg) scale(0.97); }
+    :global(.js) .rc[data-pos='2'] { transform: translate(21px, -21px) rotate(4deg) scale(0.94); }
+    .arrow { width: 46px; height: 46px; top: calc(50% + 12px); }
+    .arrow .ic { width: 20px; height: 20px; }
+    .arrow.next { right: 17px; }
+  }
+
+  /* Carte qui arrive au premier plan : étoiles et surlignage */
+  @media (prefers-reduced-motion: no-preference) {
+    :global(.js) .rc.lit .stars .ic { animation: rv-star 0.5s cubic-bezier(0.3, 1.6, 0.5, 1) calc(0.25s + var(--k) * 0.08s) backwards; }
+    :global(.js) .rc mark { background-size: 0% 100%; transition: background-size 0.9s cubic-bezier(0.6, 0, 0.2, 1) 0.55s; }
+    :global(.js) .rc.lit mark { background-size: 100% 100%; }
+    @keyframes rv-star { from { transform: scale(0) rotate(-40deg); opacity: 0; } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .rc { transition: opacity 0.2s; }
+    :global(.js) .rc[data-pos='out'] { transform: translate(38px, -34px) rotate(5deg) scale(0.9); }
+  }
 </style>
 
 <script>
-  // Défilement latéral automatique des avis (boucle infinie, pause, commandes manuelles).
-  function init(root: HTMLElement) {
-    const rail = root.querySelector<HTMLElement>('[data-rail]')!;
-    const track = root.querySelector<HTMLElement>('[data-track]')!;
-    const toggle = root.querySelector<HTMLButtonElement>('[data-toggle]')!;
-    const toggleIcon = root.querySelector<SVGUseElement>('[data-toggle-icon]')!;
-    const originals = [...track.children] as HTMLElement[];
-    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Pile d'avis : position de chaque carte par rapport à l'avis affiché ; flèches, glisser, flèches du clavier.
+  document.querySelectorAll<HTMLElement>('[data-reviews]').forEach((root) => {
+    const cards = [...root.querySelectorAll<HTMLElement>('.rc')];
+    const n = cards.length;
+    if (n < 2) { cards.forEach((c) => { c.dataset.pos = '0'; c.classList.add('lit'); }); return; }
+    const list = root.querySelector<HTMLElement>('[data-cards]')!;
+    const curEl = root.querySelector<HTMLElement>('[data-cur]');
+    root.querySelectorAll<HTMLElement>('.arrow, .count').forEach((el) => { el.hidden = false; });
 
-    // Boucle : on duplique les cartes (copies masquées aux lecteurs d'écran)
-    const loop = originals.length >= 3;
-    if (loop) {
-      originals.forEach((li) => {
-        const c = li.cloneNode(true) as HTMLElement;
-        c.setAttribute('aria-hidden', 'true');
-        c.setAttribute('inert', '');
-        track.appendChild(c);
+    let cur = 0;
+    const render = () => {
+      cards.forEach((c, i) => {
+        const off = (i - cur + n) % n;
+        c.dataset.pos = off === 0 ? '0' : off === 1 ? '1' : off === 2 ? '2' : off === n - 1 ? 'out' : 'rest';
+        const front = off === 0;
+        c.toggleAttribute('inert', !front);
+        if (front) c.removeAttribute('aria-hidden'); else c.setAttribute('aria-hidden', 'true');
+        c.classList.remove('lit');
       });
-    }
-    const half = () => track.scrollWidth / 2;
-
-    let paused = reduce;
-    let hold = false;
-    let holdTimer: number | undefined;
-    let pos = rail.scrollLeft;
-    let last = performance.now();
-    const SPEED = 42; // pixels par seconde
-
-    const setPaused = (p: boolean) => {
-      paused = p;
-      toggle.setAttribute('aria-label', p ? 'Reprendre le défilement automatique' : 'Mettre le défilement en pause');
-      toggleIcon.setAttribute('href', p ? '#i-play' : '#i-pause');
+      // Relance des effets de la carte au premier plan (étoiles, surlignage)
+      void cards[cur].offsetWidth;
+      cards[cur].classList.add('lit');
+      if (curEl) curEl.textContent = String(cur + 1).padStart(2, '0');
     };
-    setPaused(paused);
+    const go = (i: number) => { cur = ((i % n) + n) % n; render(); };
 
-    const release = () => { hold = false; pos = rail.scrollLeft; };
-    const holdFor = (ms: number) => {
-      hold = true;
-      window.clearTimeout(holdTimer);
-      holdTimer = window.setTimeout(release, ms);
+    root.querySelector('[data-prev]')!.addEventListener('click', () => go(cur - 1));
+    root.querySelector('[data-next]')!.addEventListener('click', () => go(cur + 1));
+    root.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(cur + 1); }
+    });
+
+    // Glisser la carte du dessus
+    let startX = 0, dx = 0, dragging = false, pid = -1;
+    list.addEventListener('pointerdown', (e) => {
+      const card = (e.target as HTMLElement).closest<HTMLElement>('.rc');
+      if (!card || card.dataset.pos !== '0' || e.button !== 0) return;
+      dragging = true; startX = e.clientX; dx = 0; pid = e.pointerId;
+      card.setPointerCapture(pid);
+      card.classList.add('drag');
+    });
+    list.addEventListener('pointermove', (e) => {
+      if (!dragging || e.pointerId !== pid) return;
+      dx = e.clientX - startX;
+      cards[cur].style.transform = `translateX(${dx}px) rotate(${dx / 22}deg)`;
+    });
+    const end = () => {
+      if (!dragging) return;
+      dragging = false;
+      const card = cards[cur];
+      card.classList.remove('drag');
+      card.style.transform = '';
+      if (Math.abs(dx) > 80) go(dx < 0 ? cur + 1 : cur - 1);
     };
+    list.addEventListener('pointerup', end);
+    list.addEventListener('pointercancel', end);
 
-    function frame(now: number) {
-      const dt = Math.min((now - last) / 1000, 0.1);
-      last = now;
-      if (loop && !paused && !hold && !document.hidden) {
-        pos += SPEED * dt;
-        const h = half();
-        if (pos >= h) pos -= h;
-        rail.scrollLeft = pos;
-      }
-      requestAnimationFrame(frame);
-    }
-
-    rail.addEventListener('scroll', () => {
-      if (!loop) return;
-      const h = half();
-      // Boucle invisible aussi pour le défilement manuel
-      if (rail.scrollLeft >= h) rail.scrollLeft -= h;
-      else if (rail.scrollLeft <= 1) rail.scrollLeft += h;
-      if (Math.abs(rail.scrollLeft - pos) > 3) pos = rail.scrollLeft;
-    }, { passive: true });
-
-    rail.addEventListener('pointerenter', () => { hold = true; window.clearTimeout(holdTimer); });
-    rail.addEventListener('pointerleave', release);
-    rail.addEventListener('focusin', () => { hold = true; window.clearTimeout(holdTimer); });
-    rail.addEventListener('focusout', release);
-    rail.addEventListener('touchstart', () => { hold = true; window.clearTimeout(holdTimer); }, { passive: true });
-    rail.addEventListener('touchend', () => holdFor(2500), { passive: true });
-
-    const step = () => (originals[0]?.offsetWidth ?? 340) + 16;
-    root.querySelector('[data-prev]')?.addEventListener('click', () => {
-      holdFor(4000);
-      rail.scrollBy({ left: -step(), behavior: reduce ? 'auto' : 'smooth' });
-    });
-    root.querySelector('[data-next]')?.addEventListener('click', () => {
-      holdFor(4000);
-      rail.scrollBy({ left: step(), behavior: reduce ? 'auto' : 'smooth' });
-    });
-    toggle.addEventListener('click', () => setPaused(!paused));
-
-    // Avis longs : bouton « Lire la suite » affiché seulement si le texte est tronqué
-    const cards = () => [...track.children] as HTMLElement[];
-    const measure = () => {
-      if (!rail.clientWidth) return; // bloc non affiché (onglet masqué) : mesure impossible
-      for (const c of cards()) {
-        const t = c.querySelector<HTMLElement>('.rtext');
-        const b = c.querySelector<HTMLButtonElement>('.more');
-        if (!t || !b) continue;
-        b.hidden = !c.classList.contains('open') && t.scrollHeight <= t.clientHeight + 1;
-      }
-    };
-    track.addEventListener('click', (e) => {
-      const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('.more');
-      if (!btn) return;
-      const all = cards();
-      const i = all.indexOf(btn.closest('.rcard') as HTMLElement) % originals.length;
-      const open = !all[i].classList.contains('open');
-      for (const c of [all[i], all[i + originals.length]].filter(Boolean)) {
-        c.classList.toggle('open', open);
-        const b = c.querySelector<HTMLButtonElement>('.more');
-        if (b) { b.textContent = open ? 'Réduire' : 'Lire la suite'; b.setAttribute('aria-expanded', String(open)); }
-      }
-      holdFor(open ? 20000 : 2000);
-    });
-    // La mesure dépend de la police : on la refait à chaque étape du chargement
-    measure();
-    document.fonts?.ready.then(measure);
-    document.fonts?.addEventListener('loadingdone', measure);
-    document.addEventListener('visibilitychange', () => { if (!document.hidden) measure(); });
-    window.addEventListener('load', () => { measure(); window.setTimeout(measure, 600); });
-    let rt: number | undefined;
-    window.addEventListener('resize', () => { window.clearTimeout(rt); rt = window.setTimeout(measure, 150); });
-
-    if (loop) rail.scrollLeft = 1;
-    requestAnimationFrame((t) => { last = t; requestAnimationFrame(frame); });
-  }
-  document.querySelectorAll<HTMLElement>('[data-reviews]').forEach(init);
+    render();
+  });
 </script>

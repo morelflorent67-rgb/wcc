@@ -6,7 +6,9 @@ import PromoSticker from '../../components/PromoSticker.astro';
 import LogoMarquee from '../../components/LogoMarquee.astro';
 import type { LogoItem } from '../../components/LogoMarquee.astro';
 import AccessBlock from '../../components/AccessBlock.astro';
-import hero from '../../assets/illustration/mecanique-moteur-capot.jpg';
+import StepsList from '../../components/StepsList.astro';
+import Atouts from '../../components/Atouts.astro';
+import { heroMecanique as hero } from '../../lib/hero';
 import brands from '../../data/brands.json';
 import { families, byFamily, formatPrice, priceNote, promoNote, serviceHref, pricingOf } from '../../lib/mecanique';
 import { mecaItems, mecaTabs } from '../../lib/cards';
@@ -18,13 +20,13 @@ const famRows = families.map((f, i) => {
   return { ...f, n: String(i + 1).padStart(2, '0'), count: list.length, from: prices.length ? Math.min(...prices) : null };
 });
 
-const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path } }));
+const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path, color: b.color, dark: b.dark } }));
 
 const steps = [
-  { t: 'Vous décrivez votre besoin', d: 'Choisissez une prestation ou décrivez votre problème, avec les informations sur votre véhicule.' },
-  { t: 'L’atelier vous répond', d: 'Nous échangeons avec vous pour comprendre la situation et préciser l’intervention.' },
-  { t: 'Vous recevez un devis adapté', d: 'Le prix d’appel affiché est un point de départ : le devis tient compte de votre véhicule.' },
-  { t: 'Nous organisons la prise en charge', d: 'Une fois l’intervention précisée, nous convenons ensemble de la suite.' },
+  { icon: 'edit', title: 'Vous décrivez votre besoin', text: 'Choisissez une prestation ou décrivez votre problème, avec les informations sur votre véhicule.' },
+  { icon: 'chat', title: 'L’atelier vous répond', text: 'Nous échangeons avec vous pour comprendre la situation et préciser l’intervention.' },
+  { icon: 'doc', title: 'Vous recevez un devis adapté', text: 'Le prix d’appel affiché est un point de départ : le devis tient compte de votre véhicule.' },
+  { icon: 'key', title: 'Nous organisons la prise en charge', text: 'Une fois l’intervention précisée, nous convenons ensemble de la suite.' },
 ];
 ---
 <SpaceLayout
@@ -75,6 +77,8 @@ const steps = [
     </div>
   </section>
 
+  <Atouts variant="band" space="mecanique" />
+
   <section class="section alt" aria-labelledby="catalogue">
     <div class="wrap">
       <p class="label muted reveal">Catalogue</p>
@@ -108,19 +112,13 @@ const steps = [
 
   <section class="section" aria-labelledby="deroule">
     <div class="wrap">
-      <p class="label muted reveal">Déroulement</p>
-      <h2 id="deroule" class="big reveal">Simple,<br />étape par étape.</h2>
-      <ol class="steps">
-        {steps.map((st, i) => (
-          <li class="reveal" style={`--d:${i * 0.08}s`}>
-            <span class="n">{String(i + 1).padStart(2, '0')}</span>
-            <h3>{st.t}</h3>
-            <p>{st.d}</p>
-          </li>
-        ))}
-      </ol>
-      <div class="cta-row reveal">
-        <a class="pill" href="/mecanique/contact/">Demander un devis <i><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></i></a>
+      <div class="reveal">
+        <StepsList steps={steps} accent="blue" cta={{ href: '/mecanique/contact/', label: 'Demander un devis' }}>
+          <Fragment slot="head">
+            <p class="label">Déroulement</p>
+            <h2 id="deroule" class="big">Simple,<br />étape par étape.</h2>
+          </Fragment>
+        </StepsList>
       </div>
     </div>
   </section>
@@ -207,13 +205,4 @@ const steps = [
   .ticker { background: #fff; border-block: 1px solid var(--line); }
   .ticker :global(.trow) { border-top: 0; }
 
-  .steps { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); counter-reset: s; }
-  .steps li { padding: 24px 0 0; border-top: 3px solid var(--blue); }
-  .n { display: block; font: 800 3.2rem/1 var(--f-display); color: var(--blue); margin-bottom: 8px; }
-  .steps h3 { margin: 0 0 8px; font: 800 1.45rem/1.05 var(--f-display); text-transform: uppercase; }
-  .steps p { margin: 0; color: var(--mute); }
-  .cta-row { margin-top: 44px; }
-  .cta-row .pill { background: var(--blue); color: #fff; }
-  .cta-row .pill i { background: #fff; color: var(--ink); }
-  .cta-row .pill:hover { background: var(--ink); }
 </style>

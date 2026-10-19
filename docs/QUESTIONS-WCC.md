@@ -1,6 +1,6 @@
 # Questions restantes pour finaliser le site
 
-État au 7 octobre 2026. Le site est construit ; il reste des informations que seuls WCC (partie 2) et vous (partie 1) peuvent fournir.
+État au 19 octobre 2026 (retours du client intégrés : logo, accès, marques en couleur, atouts carrosserie, étapes, avis). Le site est construit ; il reste des informations que seuls WCC (partie 2) et vous (partie 1) peuvent fournir.
 Tant qu'une réponse manque, le site ne dit rien d'inventé : le champ concerné reste « à compléter », ou le contenu reste un brouillon.
 
 **Priorité** : 🔴 bloque la mise en ligne · 🟠 à régler avant ou juste après · 🟢 amélioration.
@@ -64,9 +64,10 @@ Pour chacune, dire ce que WCC fait réellement et corriger le texte si besoin. P
 
 ### E. Carrosserie 🟠
 28. **Choix du réparateur** : confirmer que WCC peut dire que « le choix du réparateur appartient à l'assuré » et réaliser les réparations quel que soit l'assureur.
-29. **Assureurs** : la liste des **31** assureurs/loueurs affichée comme « partenaires » vient de la fiche Acoat Selected. Est-elle exacte ? Quels sont les **accords ou agréments réels** (agréé, réseau, convention) ? Le site doit-il employer « partenaires », « dossiers pris en charge » ou autre chose ?
+29. **Assureurs** : la liste des **31** assureurs/loueurs affichée comme « partenaires » vient de la fiche Acoat Selected. Est-elle exacte ? Quels sont les **accords ou agréments réels** (agréé, réseau, convention) ? Le site doit-il employer « partenaires », « dossiers pris en charge » ou autre chose ? **Depuis le 19 octobre, le site affiche « Agréé assurances »** (demande du client) : par quels assureurs WCC est-il agréé ? (Utile pour la liste des logos et pour la phrase des mentions légales « aucune affiliation ».)
 30. **Acoat Selected** (ou autre réseau/label) : WCC en est-il membre et a-t-il le droit de l'afficher ? Si oui, fournir logo et conditions d'usage. (Aujourd'hui aucune affiliation n'est annoncée.)
-31. **Véhicule de prêt** : WCC en propose-t-il, dans quels cas, à quelles conditions ? (Le site dit « possible, selon disponibilités », sans promesse.) Un avis client évoque un véhicule apporté à domicile : est-ce un service proposé ?
+31. **Véhicule de prêt** — *réglé le 19 octobre 2026* : le site annonce un véhicule de prêt **pendant la réparation**, en carrosserie et en mécanique, sans réserve (confirmé). Reste à préciser : est-il **gratuit** (le site ne le dit pas) ? Conditions (permis, caution, carburant, franchise en cas de sinistre) ? Un avis client évoque un véhicule apporté à domicile : est-ce un service proposé ?
+31 bis. **Véhicule rendu nettoyé** (affiché depuis le 19 octobre, carrosserie et mécanique) : intérieur, extérieur ou les deux ?
 32. **Franchise** : le site dit « selon votre contrat, une franchise peut rester à votre charge ». Confirmer qu'aucune franchise n'est offerte.
 33. **Bris de glace** : confirmer la mention d'une « garantie dédiée » du contrat d'assurance, et si WCC pose lui-même les pare-brise ou passe par un partenaire.
 34. **Débosselage et grêle** : méthodes (débosselage sans peinture, avec peinture selon l'état) à valider.
@@ -75,13 +76,14 @@ Pour chacune, dire ce que WCC fait réellement et corriger le texte si besoin. P
 37. **Marques prises en charge** : les 16 marques affichées sont-elles correctes ? Des marques à ajouter ou à exclure ?
 
 ### F. Horaires et accès 🟠
-38. Horaires actuels (lun–ven 9 h–12 h / 14 h–18 h) **exacts** ? Samedi, jours fériés, fermetures annuelles à signaler ?
+38. Horaires actuels (lun–ven 9 h–12 h / 14 h–18 h) **exacts** ? Samedi, jours fériés, fermetures annuelles à signaler ? (Le site affiche désormais en direct « Ouvert / Fermé » d'après ces horaires ; les jours fériés, il renvoie au téléphone.)
 39. Peut-on se rendre à l'atelier sans rendez-vous pour une première estimation, ou faut-il appeler ? (Le site ne promet pas de rendez-vous.)
 40. **Accès** : stationnement, transports, repères utiles pour trouver l'atelier ?
 41. Un numéro mobile ou WhatsApp, une adresse e-mail publique à afficher ? (Aujourd'hui : un téléphone fixe.)
 42. Le formulaire annonce « nous revenons vers vous » sans délai : WCC veut-il s'engager sur un **délai de réponse** (sinon rien n'est affiché) ?
 
 ### G. Photos, logos et réputation 🟠
+42 bis. **Les deux images principales** (portail et en-tête des espaces) : vous les générez ; à déposer dans `src/assets/hero/` (`carrosserie.jpg`, `mecanique.jpg`, voir le README du dossier).
 43. **Vraies photos** de l'atelier : extérieur, intérieur, équipe, cabine de peinture, véhicules en cours de travail (accord des clients si visibles ou plaques). Formats : JPEG, 1600 px de large ou plus. Elles remplaceront les illustrations Unsplash (liste dans `src/assets/illustration/CREDITS.md`).
 44. Photos **avant/après** de réparations : à utiliser avec l'accord des clients ?
 45. **Logo officiel** de WCC en haute définition (fichier vectoriel si possible).

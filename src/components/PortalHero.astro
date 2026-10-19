@@ -2,8 +2,7 @@
 import { Image } from 'astro:assets';
 import site from '../data/site.json';
 import logoMark from '../assets/brand/logo-wcc-mark.webp';
-import carroPhoto from '../assets/illustration/carrosserie-polissage-orange.jpg';
-import mecaPhoto from '../assets/illustration/mecanique-moteur-capot.jpg';
+import { heroCarrosserie as carroPhoto, heroMecanique as mecaPhoto } from '../lib/hero';
 ---
 <section class="hero" aria-label="Choisir un espace">
   <div class="top">

@@ -6,6 +6,7 @@ import LogoMarquee from '../components/LogoMarquee.astro';
 import type { LogoItem } from '../components/LogoMarquee.astro';
 import ReviewsCarousel from '../components/ReviewsCarousel.astro';
 import AccessBlock from '../components/AccessBlock.astro';
+import Atouts from '../components/Atouts.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import site from '../data/site.json';
 import partners from '../data/partners.json';
@@ -21,7 +22,7 @@ const insurers: LogoItem[] = partners
   });
 
 // Marques de véhicules prises en charge (src/data/brands.json)
-const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path } }));
+const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path, color: b.color, dark: b.dark } }));
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -36,6 +37,7 @@ const jsonLd = {
     addressLocality: site.address.city,
     addressCountry: site.address.country,
   },
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lon },
   openingHoursSpecification: site.hours.schema.map((h) => ({
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: h.days,
@@ -73,6 +75,7 @@ const jsonLd = {
       />
     </section>
 
+    <Atouts variant="band" />
     <ReviewsCarousel />
     <AccessBlock />
   </main>

@@ -9,7 +9,9 @@ import CtaBand from '../../components/CtaBand.astro';
 import LogoMarquee from '../../components/LogoMarquee.astro';
 import type { LogoItem } from '../../components/LogoMarquee.astro';
 import AccessBlock from '../../components/AccessBlock.astro';
-import hero from '../../assets/illustration/carrosserie-polissage-orange.jpg';
+import Atouts from '../../components/Atouts.astro';
+import ServiceBento from '../../components/ServiceBento.astro';
+import { heroCarrosserie as hero } from '../../lib/hero';
 import partners from '../../data/partners.json';
 import brands from '../../data/brands.json';
 import { carroHome } from '../../lib/carrosserie';
@@ -22,7 +24,7 @@ const insurers: LogoItem[] = partners
     const img = partnerFiles[`../../assets/partners/${p.file}`].default;
     return { name: p.name, src: img.src, width: img.width, height: img.height };
   });
-const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path } }));
+const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.viewBox, path: b.path, color: b.color, dark: b.dark } }));
 ---
 <SpaceLayout
   space="carrosserie"
@@ -41,6 +43,7 @@ const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.v
       </div>
     </div>
   </section>
+  <Atouts />
 
   <section class="section" id="situation" aria-labelledby="situation-t">
     <div class="wrap">
@@ -69,27 +72,27 @@ const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.v
 
   <section class="section" aria-labelledby="deroule">
     <div class="wrap">
-      <p class="label muted reveal">Déroulement</p>
-      <h2 id="deroule" class="big reveal">Simple,<br />étape par étape.</h2>
-      <StepsList steps={carroHome.steps} accent="orange" />
-      <div class="cta-row reveal">
-        <a class="pill dark" href="/carrosserie/contact/">Demander un devis <i><svg class="ic" aria-hidden="true"><use href="#i-arrow" /></svg></i></a>
+      <div class="reveal">
+        <StepsList steps={carroHome.steps} accent="orange" cta={{ href: '/carrosserie/contact/', label: 'Demander un devis' }}>
+          <Fragment slot="head">
+            <p class="label">Déroulement</p>
+            <h2 id="deroule" class="big">Simple,<br />étape par étape.</h2>
+          </Fragment>
+        </StepsList>
       </div>
     </div>
   </section>
 
-  <section class="section alt" aria-labelledby="avantages">
+  <section class="section alt" id="a-votre-service" aria-labelledby="avantages">
     <div class="wrap">
-      <p class="label muted reveal">Ce que nous vous proposons</p>
-      <h2 id="avantages" class="big reveal">À votre<br />service.</h2>
-      <ul class="adv">
-        {carroHome.advantages.map((a, i) => (
-          <li class="reveal" style={`--d:${i * 0.07}s`}>
-            <h3>{a.title}</h3>
-            <p>{a.text}</p>
-          </li>
-        ))}
-      </ul>
+      <div class="adv-head">
+        <div>
+          <p class="label muted reveal">Ce que nous vous proposons</p>
+          <h2 id="avantages" class="big reveal">À votre<br />service.</h2>
+        </div>
+        <p class="adv-lead reveal" style="--d:.1s">Un accompagnement du premier contact à la restitution : vous restez mobile pendant la réparation et vous retrouvez un véhicule propre.</p>
+      </div>
+      <ServiceBento />
     </div>
   </section>
 
@@ -125,7 +128,7 @@ const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.v
   .hero { position: relative; display: flex; align-items: flex-end; min-height: min(78svh, 760px); color: #fff; overflow: hidden; isolation: isolate; background: #000; }
   .hero :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 28% 30%; z-index: -3; }
   .hero::before { content: ''; position: absolute; inset: 0; z-index: -2; background: linear-gradient(to top, rgba(160, 40, 0, 0.94) 0%, rgba(196, 52, 0, 0.55) 38%, rgba(0, 0, 0, 0.12) 75%), linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent 30%); }
-  .hero-in { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 120px var(--pad) clamp(70px, 9vw, 110px); }
+  .hero-in { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 120px var(--pad) clamp(96px, 11vw, 150px); }
   .hero .label { opacity: 0.95; }
   .hero h1 { margin: 14px 0 18px; font: 800 clamp(3.2rem, 8vw, 8.4rem) / 0.84 var(--f-display); text-transform: uppercase; letter-spacing: -0.005em; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.25); }
   .sub { margin: 0 0 30px; font: 500 clamp(1.1rem, 1.8vw, 1.45rem) / 1.35 var(--f-body); max-width: 34ch; }
@@ -145,7 +148,6 @@ const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.v
   .section { padding: clamp(60px, 9vw, 120px) 0; scroll-margin-top: 80px; }
   .section.alt { background: #fff; border-block: 1px solid var(--line); }
   .note { margin: 26px 0 0; color: var(--mute); font-size: 0.95rem; }
-  .cta-row { margin-top: 44px; }
 
   .ins { padding-top: clamp(60px, 9vw, 120px); background: #fff; border-block: 1px solid var(--line); scroll-margin-top: 80px; }
   .ins-in, .multi-in { display: grid; gap: 20px 60px; align-items: end; grid-template-columns: 1fr; }
@@ -160,10 +162,10 @@ const makes: LogoItem[] = brands.map((b) => ({ name: b.name, svg: { viewBox: b.v
   .multi { padding-top: clamp(60px, 9vw, 120px); }
   .multi .ticker { border-block: 1px solid var(--line); }
 
-  .adv { display: grid; gap: 22px; margin: 0; padding: 0; list-style: none; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); }
-  .adv li { padding: 22px 0 0; border-top: 3px solid var(--orange); }
-  .adv h3 { margin: 0 0 8px; font: 800 1.5rem/1.05 var(--f-display); text-transform: uppercase; }
-  .adv p { margin: 0; color: var(--mute); }
+  .section.alt[id] { scroll-margin-top: 80px; }
+  .adv-head { display: grid; gap: 0 60px; align-items: end; grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .adv-head { grid-template-columns: 1.3fr 1fr; } }
+  .adv-lead { margin: 0 0 40px; font-size: 1.15rem; color: var(--ink-soft); max-width: 44ch; }
 
   .two { display: grid; gap: 22px 60px; grid-template-columns: 1fr; }
   @media (min-width: 900px) { .two { grid-template-columns: 340px 1fr; } }

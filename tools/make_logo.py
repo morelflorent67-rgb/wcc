@@ -27,6 +27,20 @@ border_labels = set(np.unique(np.concatenate([labels[0], labels[-1], labels[:, 0
 border_labels.discard(0)
 bg = np.isin(labels, list(border_labels))
 
+# Contre-formes fermées (intérieur du C du milieu) : zones blanches entourées uniquement par le
+# contour noir, sans toucher les lettres colorées. Demande du client (19 octobre 2026) : elles
+# deviennent transparentes comme le fond. Le liseré blanc, lui, touche les lettres : il reste opaque.
+saturated = (a.max(axis=2) - a.min(axis=2)) > 60
+for lab in range(1, labels.max() + 1):
+    if lab in border_labels:
+        continue
+    zone = labels == lab
+    if zone.sum() < 200:
+        continue
+    halo = ndi.binary_dilation(zone, iterations=12) & ~zone
+    if not saturated[halo].any():
+        bg |= zone
+
 # Anti-aliasing : la frange autour du fond est du noir sur blanc -> noir + alpha
 ring = ndi.binary_dilation(bg, iterations=3) & ~bg
 alpha = np.full(lum.shape, 255, dtype=np.float32)

@@ -12,7 +12,7 @@ const triQuestions = [
   { name: 'roulant', label: 'Le véhicule roule-t-il ?' },
   { name: 'assurance', label: 'L’assurance est-elle concernée ?' },
   { name: 'sinistre', label: 'Le sinistre est-il déjà déclaré ?' },
-  { name: 'pret', label: 'Souhaitez-vous un véhicule de prêt ?' },
+  { name: 'pret', label: 'Aurez-vous besoin du véhicule de prêt ?' },
 ];
 const tri = [{ v: 'oui', l: 'Oui' }, { v: 'non', l: 'Non' }, { v: 'nsp', l: 'Ne sait pas' }];
 
@@ -123,7 +123,7 @@ const rules = [
                     <label class="chip"><input type="radio" name={q.name} value={t.v} data-label={t.l} /><span>{t.l}</span></label>
                   ))}
                 </div>
-                {q.name === 'pret' && <p class="hint tight">Selon les disponibilités : l’indiquer ne garantit pas le prêt.</p>}
+                {q.name === 'pret' && <p class="hint tight">Un véhicule vous est prêté pendant la réparation.</p>}
               </div>
             ))}
           </div>

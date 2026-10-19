@@ -88,8 +88,11 @@ const jsonLd = {
 
   <section class="block" aria-labelledby="steps">
     <div class="wrap">
-      <h2 id="steps" class="sec-t reveal">Comment se déroule l’intervention</h2>
-      <StepsList steps={service.steps} accent="orange" />
+      <div class="reveal">
+        <StepsList steps={service.steps} accent="orange">
+          <h2 slot="head" id="steps" class="sec-t">Comment se déroule l’intervention</h2>
+        </StepsList>
+      </div>
     </div>
   </section>
 

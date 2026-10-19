@@ -15,3 +15,6 @@ api/storage/*
 .DS_Store
 Thumbs.db
 __pycache__/
+
+# Extraits OpenStreetMap bruts (carte) : régénérables avec python tools/build_map.py --download
+design/map/osm-*.json

@@ -1,6 +1,7 @@
 ---
 import InfoLayout from '../../layouts/InfoLayout.astro';
 import site from '../../data/site.json';
+import AccessMap from '../../components/AccessMap.astro';
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -15,6 +16,7 @@ const jsonLd = {
     addressLocality: site.address.city,
     addressCountry: site.address.country,
   },
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lon },
   openingHoursSpecification: site.hours.schema.map((h) => ({
     '@type': 'OpeningHoursSpecification',
     dayOfWeek: h.days,
@@ -53,6 +55,11 @@ const jsonLd = {
     </section>
   </div>
 
+  <section class="map-wrap" aria-labelledby="carte">
+    <h2 id="carte">Plan d’accès</h2>
+    <AccessMap compact />
+  </section>
+
   <h2>Demander un devis</h2>
   <p>
     Pas besoin de vous déplacer pour une première estimation : décrivez votre besoin avec le formulaire de l’espace
@@ -74,6 +81,7 @@ const jsonLd = {
   .tel { font: 800 clamp(2rem, 4vw, 2.6rem) / 1 var(--f-display); text-decoration: none; color: var(--ink); }
   .hours { font-size: 1.25rem; line-height: 1.45; color: var(--ink); }
   .small { font-size: 0.92rem; color: var(--mute); }
+  .map-wrap { margin-bottom: clamp(36px, 5vw, 56px); }
   .btn, .acts a {
     display: inline-flex; align-items: center; gap: 12px; padding: 13px 22px; border-radius: 999px; border: 1.5px solid var(--ink);
     font: 700 0.98rem var(--f-body); text-decoration: none; transition: background 0.25s, color 0.25s;
