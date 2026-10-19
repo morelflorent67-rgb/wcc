@@ -1,7 +1,7 @@
 # WCC — notes de reprise
 
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
-Dernière mise à jour : 19 octobre 2026 (rien de poussé ; retours visuels du client intégrés, voir « Retours client du 19 octobre » ; reste les informations à obtenir, les deux images principales à déposer et la mise en ligne).
+Dernière mise à jour : 19 octobre 2026 (retours visuels du client intégrés, voir « Retours client du 19 octobre » ; **poussé sur GitHub le 19 octobre**, aperçu sur Netlify ; reste les informations à obtenir et l'hébergement définitif avec PHP).
 
 ## Le projet en bref
 
@@ -29,9 +29,12 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 - **Astro 7 statique** (HTML pur), CSS natif, JS minimal, polices auto-hébergées (@fontsource), pas d'espace d'administration.
 - **Contenus centralisés** (un prix, un texte, un logo saisi une seule fois) : voir « Où est quoi ».
 - **Formulaires en PHP** (`api/submit.php`), compatible mutualisé OVH, PHP 8.1+.
-- **Pousser sur GitHub une seule fois, à la fin.** Dépôt `morelflorent67-rgb/wcc` actuellement **public** : le passer
-  en **privé avant** de pousser (il contient l'adresse Gmail du garage dans `docs/` et des logos tiers).
-  Des commits locaux existent déjà ; ne pas pousser sans accord explicite.
+- **GitHub** : premier push fait le 19 octobre 2026 sur `morelflorent67-rgb/wcc`, laissé **public** par choix explicite de l'utilisateur
+  (il contient l'adresse Gmail du garage dans `docs/` et des logos tiers ; lui rappeler qu'il peut le passer en privé). Ne pas pousser
+  sans accord explicite.
+- **Netlify** : l'utilisateur publie un aperçu sur Netlify, relié au dépôt GitHub (déploiement à chaque push sur `main`). `netlify.toml` :
+  build `npx astro build` (sans copier `api/`), Node 24, en-têtes de sécurité. **Netlify n'exécute pas le PHP** : les formulaires
+  n'y fonctionnent pas (message d'échec qui invite à appeler) ; le site y reste en `noindex` tant que `PUBLIC_INDEXABLE` n'est pas défini.
 
 ## Règles de contenu (ne pas enfreindre)
 
