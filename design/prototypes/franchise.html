@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WCC — Pastille « Franchise offerte » : 3 propositions</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --paper:#f6f4f0;--ink:#111317;--mute:#5b606a;--line:#e0dbd2;--night:#0f1114;
+  --orange:#ff5b0f;--orange-deep:#c43400;
+  --grad-orange:linear-gradient(135deg,#ffa63d 0%,#ff5b0f 45%,#c43400 100%);
+  --f-display:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;--f-body:'Barlow',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.06rem/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.page{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
+.label{font:700 .8rem/1 var(--f-display);letter-spacing:.2em;text-transform:uppercase}
+h1{font:800 clamp(2.4rem,5vw,3.6rem)/.9 var(--f-display);text-transform:uppercase;margin:12px 0 14px}
+.intro{max-width:62ch;color:var(--mute);margin:0 0 40px}
+.variant{border-top:1px solid var(--line);padding:36px 0 44px}
+.variant h2{font:800 2rem/1 var(--f-display);text-transform:uppercase;margin:8px 0 6px}
+.variant p.what{margin:0 0 22px;color:var(--mute);max-width:70ch}
+.frames{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.cap{font:600 .85rem var(--f-body);color:var(--mute);margin:0 0 8px}
+
+/* ───── Maquette de la moitié « Carrosserie » du portail ───── */
+.half{container-type:inline-size;position:relative;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;isolation:isolate;background:#000;border-radius:6px}
+.half.desk{width:560px;height:700px}
+.half.mob{width:375px;min-height:560px;padding-top:120px}
+.half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:6% 30%;z-index:-3}
+.half::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(to bottom,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 30%),linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,0) 62%)}
+.half::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(196,52,0,.88) 0%,rgba(196,52,0,.42) 26%,rgba(196,52,0,0) 56%)}
+.hc{padding:0 28px 34px}
+.mob .hc{padding:0 18px 30px}
+.hc .num{display:flex;align-items:center;gap:14px;font:700 .8rem/1 var(--f-display);letter-spacing:.2em}
+.hc .num::after{content:'';width:48px;height:2px;background:#fff;opacity:.7}
+.hc h3{margin:.12em 0 .1em;font:800 15cqi/.8 var(--f-display);text-transform:uppercase}
+.hc p{margin:0 0 20px;font:500 1.05rem/1.35 var(--f-body);max-width:30ch}
+.pill{display:inline-flex;align-items:center;gap:14px;background:#fff;color:var(--ink);border-radius:999px;padding:8px 8px 8px 22px;font:600 .95rem var(--f-body)}
+.pill i{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--orange);font-style:normal}
+/* Ordinateur : pastille en haut à droite de la moitié. Mobile : dans le flux, juste au-dessus du numéro (ne peut plus chevaucher le titre). */
+.desk .fr{position:absolute;top:120px;right:28px}
+.mob .fr{margin:0 0 18px}
+.mob .fr.right{margin-left:auto}
+
+/* ───── 1 · Médaille ───── */
+.medal{width:170px;position:relative;transform:rotate(-8deg);filter:drop-shadow(0 14px 28px rgba(0,0,0,.5))}
+.mob .medal{width:128px}
+.medal svg{display:block;width:100%;height:auto;overflow:visible}
+.medal .shine{position:absolute;inset:6%;border-radius:50%;overflow:hidden;pointer-events:none}
+.medal .shine::before{content:'';position:absolute;top:-20%;bottom:-20%;width:38%;left:-60%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.28),transparent);animation:md-shine 4.5s ease-in-out infinite}
+@keyframes md-shine{0%,55%{left:-60%}100%{left:130%}}
+
+/* ───── 2 · Étiquette (langage des cartes « Affiche » : biais, coin coupé) ───── */
+.tag{display:inline-flex;transform:rotate(-4deg);filter:drop-shadow(0 14px 26px rgba(0,0,0,.45))}
+.tag .in{display:grid;grid-template-columns:auto 1fr;background:#fff;color:var(--ink);clip-path:polygon(0 0,calc(100% - 22px) 0,100% 22px,100% 100%,0 100%)}
+.tag .ico{display:grid;place-items:center;width:62px;background:var(--grad-orange);color:#fff}
+.tag .ico svg{width:30px;height:30px}
+.tag .txt{padding:12px 30px 13px 16px}
+.tag .k{display:block;font:700 .72rem/1 var(--f-display);letter-spacing:.24em;text-transform:uppercase;color:var(--orange-deep)}
+.tag .t{display:block;margin:6px 0 4px;font:800 2.35rem/.82 var(--f-display);text-transform:uppercase}
+.tag .t b{display:block;color:var(--orange)}
+.tag .s{display:block;font:500 .8rem/1.2 var(--f-body);color:var(--mute)}
+.mob .tag{transform:rotate(-3deg)}
+.mob .tag .t{font-size:2rem}
+.mob .tag .ico{width:52px}
+
+/* ───── 3 · Vignette verre ───── */
+.glass{display:flex;align-items:center;gap:14px;max-width:330px;padding:14px 22px 14px 14px;border-radius:22px;color:#fff;
+  background:linear-gradient(135deg,rgba(255,255,255,.22),rgba(255,255,255,.08));border:1px solid rgba(255,255,255,.4);
+  -webkit-backdrop-filter:blur(16px) saturate(1.5);backdrop-filter:blur(16px) saturate(1.5);box-shadow:0 18px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.35)}
+.glass .ico{flex:none;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:var(--grad-orange);box-shadow:0 0 0 5px rgba(255,91,15,.25)}
+.glass .ico svg{width:28px;height:28px}
+.glass .t{display:block;font:800 1.9rem/.85 var(--f-display);text-transform:uppercase}
+.glass .t b{color:#ffb07a}
+.glass .s{display:block;margin-top:6px;font:500 .84rem/1.25 var(--f-body);opacity:.92}
+.desk .glass{top:120px}
+@media (prefers-reduced-motion:reduce){.medal .shine::before{animation:none}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb347"/><stop offset=".35" stop-color="#ff5b0f"/><stop offset=".7" stop-color="#c43400"/><stop offset="1" stop-color="#ff8a10"/>
+    </linearGradient>
+    <linearGradient id="g-text" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffb347"/><stop offset="1" stop-color="#ff5b0f"/>
+    </linearGradient>
+    <path id="arc" d="M100,100 m-73,0 a73,73 0 1,1 146,0 a73,73 0 1,1 -146,0"/>
+    <symbol id="shield" viewBox="0 0 24 24"><path d="M12 2.5 20 5.6v5.7c0 5-3.4 9-8 10.2-4.6-1.2-8-5.2-8-10.2V5.6z" fill="currentColor"/><path d="m8.3 12.2 2.6 2.6 4.9-5.3" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="shield-w" viewBox="0 0 24 24"><path d="M12 2.5 20 5.6v5.7c0 5-3.4 9-8 10.2-4.6-1.2-8-5.2-8-10.2V5.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="m8.3 12.2 2.6 2.6 4.9-5.3" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </defs>
+</svg>
+
+<template id="medal">
+  <div class="fr medal" role="img" aria-label="Franchise offerte">
+    <svg viewBox="0 0 200 200" aria-hidden="true">
+      <circle cx="100" cy="100" r="97" fill="url(#g-ring)"/>
+      <circle cx="100" cy="100" r="88" fill="#121417"/>
+      <text fill="rgba(255,255,255,.62)" font-family="Barlow Condensed" font-weight="700" font-size="11.5" letter-spacing="3.1"><textPath href="#arc" startOffset="0">WORLD CAR CARROSSERIE · BISCHHEIM · OFFERTE PAR WCC ·</textPath></text>
+      <circle cx="100" cy="100" r="62" fill="none" stroke="url(#g-ring)" stroke-width="1.6"/>
+      <use href="#shield" x="86" y="52" width="28" height="28" style="color:#ff5b0f"/>
+      <text x="100" y="108" text-anchor="middle" fill="#fff" font-family="Barlow Condensed" font-weight="800" font-size="25" letter-spacing="1.2">FRANCHISE</text>
+      <text x="100" y="137" text-anchor="middle" fill="url(#g-text)" font-family="Barlow Condensed" font-weight="800" font-size="30" letter-spacing="1.4">OFFERTE</text>
+    </svg>
+    <span class="shine"></span>
+  </div>
+</template>
+<template id="tag">
+  <div class="fr tag" role="img" aria-label="Franchise offerte, prise en charge par WCC">
+    <div class="in">
+      <span class="ico"><svg aria-hidden="true"><use href="#shield-w"/></svg></span>
+      <span class="txt"><span class="k">Offre carrosserie</span><span class="t">Franchise <b>offerte</b></span><span class="s">Prise en charge par WCC</span></span>
+    </div>
+  </div>
+</template>
+<template id="glass">
+  <div class="fr glass" role="img" aria-label="Franchise offerte : votre franchise d’assurance est prise en charge par WCC">
+    <span class="ico"><svg aria-hidden="true" style="color:#fff"><use href="#shield-w"/></svg></span>
+    <span><span class="t">Franchise <b>offerte</b></span><span class="s">Votre franchise d’assurance est prise en charge par WCC.</span></span>
+  </div>
+</template>
+
+<div class="page">
+  <p class="label">World Car Carrosserie · proposition</p>
+  <h1>Pastille « Franchise offerte »</h1>
+  <p class="intro">Trois propositions, montrées sur la moitié « Carrosserie » de l’accueil, sur ordinateur et sur téléphone. Sur téléphone, la pastille se place désormais juste au-dessus du titre « Carrosserie » au lieu de flotter sur l’image : elle ne peut plus chevaucher le texte. La pastille choisie sera aussi reprise en haut de la page d’accueil Carrosserie. (Photo provisoire : elle sera remplacée par l’image retenue.)</p>
+
+  <section class="variant" data-v="medal" data-mob="right">
+    <p class="label" style="color:var(--orange-deep)">Proposition 1</p>
+    <h2>Médaille</h2>
+    <p class="what">Médaille sombre cerclée d’un anneau orange dégradé, nom du garage gravé sur le pourtour, écusson coché au centre. Un reflet lumineux la traverse de temps en temps. Effet « label de qualité », haut de gamme.</p>
+    <div class="frames"></div>
+  </section>
+
+  <section class="variant" data-v="tag" data-mob="left">
+    <p class="label" style="color:var(--orange-deep)">Proposition 2</p>
+    <h2>Étiquette</h2>
+    <p class="what">Étiquette blanche posée en biais, coin coupé : le même langage que les cartes de prestations du site. Très lisible, avec une petite ligne d’explication « Prise en charge par WCC ».</p>
+    <div class="frames"></div>
+  </section>
+
+  <section class="variant" data-v="glass" data-mob="left">
+    <p class="label" style="color:var(--orange-deep)">Proposition 3</p>
+    <h2>Vignette verre</h2>
+    <p class="what">Vignette en verre dépoli (l’image reste visible à travers), écusson orange lumineux, et une phrase qui explique l’offre en clair. Plus discrète et moderne, la plus informative des trois.</p>
+    <div class="frames"></div>
+  </section>
+</div>
+
+<script>
+  const half = (kind, v, mobSide) => `
+    <div>
+      <p class="cap">${kind === 'desk' ? 'Ordinateur' : 'Téléphone (375 px)'}</p>
+      <div class="half ${kind}">
+        <img src="../../src/assets/hero/carrosserie.webp" alt="">
+        ${kind === 'desk' ? document.getElementById(v).innerHTML : ''}
+        <div class="hc">
+          ${kind === 'mob' ? document.getElementById(v).innerHTML.replace('class="fr ', `class="fr ${mobSide} `) : ''}
+          <span class="num">01</span>
+          <h3>Carrosserie</h3>
+          <p>Réparation, peinture et accompagnement dans vos démarches d’assurance.</p>
+          <span class="pill">Découvrir la carrosserie <i>↗</i></span>
+        </div>
+      </div>
+    </div>`;
+  document.querySelectorAll('.variant').forEach((s) => {
+    s.querySelector('.frames').innerHTML = half('desk', s.dataset.v) + half('mob', s.dataset.v, s.dataset.mob);
+  });
+</script>
+</body>
+</html>

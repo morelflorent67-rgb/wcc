@@ -178,12 +178,15 @@ automatique). Troisième passe : voiture plus rapide (trajet complet pendant que
 espaces, panneau du portail « Carrosserie et mécanique » (liens vers les deux), panneau bleu sur l'accueil mécanique. Piège rencontré : les noms d'animation CSS (`@keyframes`) sont **globaux** même dans les styles Astro « scoped » : préfixer
 par composant (`map-`, `acc-`, `atout-`, `rv-`, `st-`), sinon une animation en écrase une autre (le slogan du portail avait été déplacé).
 
-**Ajustements du 21 octobre 2026** : pastille « Franchise offerte » (`FranchiseBadge`, même contour que le macaron mécanique, en blanc)
-sur la moitié carrosserie du portail et dans l'en-tête de `/carrosserie/` ; phrases « franchise » des pages Accident, Grêle et Assurances
-alignées. Nouvelle image principale carrosserie générée par l'utilisateur (une cliente
-près de sa voiture, pour la distinguer de l'homme de la mécanique) : `src/assets/hero/carrosserie.webp`, cadrage `object-position` 6 % 30 %
-(portail) et 12 % 0 % (accueil carrosserie). Après remplacement d'une image du même nom, vider `node_modules/.astro/assets` et relancer
-`npm run dev` (sinon l'ancienne reste en cache). Rien de poussé : push à la fin, une fois validé.
+**Ajustements du 21 octobre 2026 (faits et poussés)** : « Franchise offerte » = **vignette en verre dépoli** choisie par le client
+(`FranchiseBadge` : écusson orange, « Franchise offerte » + phrase `site.json` → `franchise.text` ; prototypes écartés Médaille et
+Étiquette dans `design/prototypes/franchise.html`). Placée **dans le flux**, au-dessus du numéro « 01 » (moitié carrosserie du portail)
+et du libellé (en-tête de `/carrosserie/`) : elle ne chevauche jamais le texte, sur aucune largeur. Phrases « franchise » des pages
+Accident, Grêle et Assurances alignées. Image principale carrosserie choisie par le client : une peintre en combinaison blanche devant
+un capot rouge en cabine (générée par ChatGPT), `src/assets/hero/carrosserie.webp`. Cadrage : portail `object-position: 6% 30%` ;
+accueil carrosserie **image retournée** (`transform: scaleX(-1)`, personnage à droite, texte à gauche), `object-position: 24% 0%`
+(se lit sur l'image d'origine) et titre un peu plus petit qu'en mécanique (`6.6vw`) pour ne pas toucher le visage. Après remplacement
+d'une image du même nom : vider `node_modules/.astro/assets`, relancer `npm run dev` et recharger sans cache (Ctrl + F5).
 
 **Liste complète et numérotée des questions à poser : `docs/QUESTIONS-WCC.md`** (à tenir à jour). Résumé — à obtenir auprès de l'utilisateur / du client : hébergeur confirmé, vraies photos de l'atelier, logos officiels (assureurs,
 éventuellement marques), identité légale, service d'envoi d'e-mails, conditions des prix d'appel, durée de conservation des
