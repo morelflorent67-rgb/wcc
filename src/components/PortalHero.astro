@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import site from '../data/site.json';
 import logoMark from '../assets/brand/logo-wcc-mark.webp';
 import { heroCarrosserie as carroPhoto, heroMecanique as mecaPhoto } from '../lib/hero';
+import FranchiseBadge from './FranchiseBadge.astro';
 ---
 <section class="hero" aria-label="Choisir un espace">
   <div class="top">
@@ -21,6 +22,7 @@ import { heroCarrosserie as carroPhoto, heroMecanique as mecaPhoto } from '../li
 
   <a class="half c" href="/carrosserie/">
     <Image src={carroPhoto} alt="" widths={[480, 800, 1200, 1600]} sizes="(max-width: 860px) 100vw, 50vw" format="webp" quality={72} loading="eager" fetchpriority="high" />
+    <FranchiseBadge class="fr" />
     <div class="hc">
       <span class="label">01</span>
       <h2>Carrosserie</h2>
@@ -52,7 +54,7 @@ import { heroCarrosserie as carroPhoto, heroMecanique as mecaPhoto } from '../li
     position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -3;
     transition: transform 1.8s var(--ease), filter 0.8s;
   }
-  .half.c :global(img) { object-position: 28% 30%; }
+  .half.c :global(img) { object-position: 6% 30%; }
   .half.m :global(img) { object-position: 34% 50%; }
   .half::before {
     content: ''; position: absolute; inset: 0; z-index: -2;
@@ -68,6 +70,9 @@ import { heroCarrosserie as carroPhoto, heroMecanique as mecaPhoto } from '../li
     .hero .half:hover { flex-grow: 1.45; }
     .hero:hover .half:not(:hover) :global(img) { filter: brightness(0.72) saturate(0.8); }
   }
+
+  /* Pastille « Franchise offerte » (moitié carrosserie), sous l'accroche */
+  .half :global(.fr) { position: absolute; z-index: 2; top: clamp(180px, 26vh, 260px); right: clamp(20px, 3.4vw, 48px); width: clamp(112px, 11vw, 168px); }
 
   .hc { width: 100%; padding: 0 var(--pad) clamp(34px, 7vh, 76px); }
   .hc .label { display: flex; align-items: center; gap: 14px; opacity: 0.95; }
@@ -112,6 +117,7 @@ import { heroCarrosserie as carroPhoto, heroMecanique as mecaPhoto } from '../li
     .half { flex: none; min-height: max(400px, 52svh); }
     .half + .half { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.6); }
     .half:first-of-type { min-height: max(450px, 60svh); padding-top: 150px; }
+    .half :global(.fr) { top: 146px; right: 16px; width: 104px; }
     .lead { top: 92px; }
     .lead h1 { letter-spacing: 0.16em; font-size: 1rem; }
     .tel { padding: 9px 15px; font-size: 0.88rem; }

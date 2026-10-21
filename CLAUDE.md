@@ -1,7 +1,7 @@
 # WCC — notes de reprise
 
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
-Dernière mise à jour : 19 octobre 2026 (retours visuels du client intégrés, voir « Retours client du 19 octobre » ; **poussé sur GitHub le 19 octobre**, aperçu sur Netlify ; reste les informations à obtenir et l'hébergement définitif avec PHP).
+Dernière mise à jour : 21 octobre 2026 (pastille « Franchise offerte », nouvelle image carrosserie ; retours du 19 octobre intégrés ; **poussé sur GitHub le 19 octobre**, aperçu sur Netlify ; reste les informations à obtenir et l'hébergement définitif avec PHP).
 
 ## Le projet en bref
 
@@ -40,11 +40,12 @@ et dans `src/data/site.json`. En cas de doute, le plan fait foi.
 ## Règles de contenu (ne pas enfreindre)
 
 - Français correct, accents compris. Textes écrits pour WCC, jamais copiés d'AD ni d'Acoat.
-- **Rien d'inventé ni de non confirmé** : pas de délai chiffré, pas de prêt gratuit systématique, pas de franchise offerte,
+- **Rien d'inventé ni de non confirmé** : pas de délai chiffré, pas de prêt gratuit systématique,
   pas de garantie, pas de note globale ni d'étoiles non confirmées, pas de statistiques Acoat (effectif, surface…).
   **Atouts confirmés par le client (19 octobre 2026)**, en carrosserie **et** en mécanique : véhicule de prêt **systématique pendant la
   réparation** (jamais « gratuit » : non confirmé), véhicule rendu nettoyé, « Agréé assurances » (sans nommer d'assureur). Aucune affiliation AD ni
-  constructeur ; marques = « marques prises en charge ».
+  constructeur ; marques = « marques prises en charge ». **Franchise offerte** (carrosserie) : confirmée par le client le 21 octobre 2026,
+  **dans tous les cas, sans plafond** (`site.json` → `franchise`, composant `FranchiseBadge`) ; ne pas ajouter « jusqu'à… ».
 - Prix : « À partir de X € » = **prix d'appel** (tarif de base WCC, remise éventuelle en plus), jamais un devis ; TTC / pièces / main-d'œuvre non précisés (à clarifier avec WCC).
 - Les formulaires ne promettent ni rendez-vous ni délai de réponse.
 - Les 26 descriptions courtes et les 26 fiches mécanique sont des **brouillons à faire valider** par WCC.
@@ -141,7 +142,7 @@ Pas encore fait (ordre conseillé) :
    surtout les contenus de prestation que WCC réalise réellement (méthodes de décalaminage et de nettoyage EGR, rénovation d'optiques, pièces
    d'échange pour alternateur/injecteurs, contenu du diagnostic sécurité et de l'écodiagnostic).
 2. ~~Espace carrosserie~~ **fait** (voir ci-dessus). Reste à valider avec WCC : tous les textes (brouillons), en particulier « le choix du
-   réparateur vous appartient », « selon votre contrat une franchise peut rester à votre charge », « véhicule de prêt possible selon
+   réparateur vous appartient », « véhicule de prêt possible selon
    disponibilités », « bris de glace : garantie dédiée », méthodes de débosselage/grêle (sans repeinture selon l'état de la peinture),
    et la liste des 31 assureurs présentés comme « partenaires » (liste issue de la fiche Acoat : à confirmer qu'elle correspond à WCC).
    Photos provisoires réutilisées (grêle = cabine de peinture, débosselage = polissage) : à remplacer par de vraies photos.
@@ -176,6 +177,13 @@ principales générées par l'utilisateur déposées (`src/assets/hero/carrosser
 automatique). Troisième passe : voiture plus rapide (trajet complet pendant que le panneau est à l'écran) ; atouts déclarés pour les deux
 espaces, panneau du portail « Carrosserie et mécanique » (liens vers les deux), panneau bleu sur l'accueil mécanique. Piège rencontré : les noms d'animation CSS (`@keyframes`) sont **globaux** même dans les styles Astro « scoped » : préfixer
 par composant (`map-`, `acc-`, `atout-`, `rv-`, `st-`), sinon une animation en écrase une autre (le slogan du portail avait été déplacé).
+
+**Ajustements du 21 octobre 2026** : pastille « Franchise offerte » (`FranchiseBadge`, même contour que le macaron mécanique, en blanc)
+sur la moitié carrosserie du portail et dans l'en-tête de `/carrosserie/` ; phrases « franchise » des pages Accident, Grêle et Assurances
+alignées. Nouvelle image principale carrosserie générée par l'utilisateur (une cliente
+près de sa voiture, pour la distinguer de l'homme de la mécanique) : `src/assets/hero/carrosserie.webp`, cadrage `object-position` 6 % 30 %
+(portail) et 12 % 0 % (accueil carrosserie). Après remplacement d'une image du même nom, vider `node_modules/.astro/assets` et relancer
+`npm run dev` (sinon l'ancienne reste en cache). Rien de poussé : push à la fin, une fois validé.
 
 **Liste complète et numérotée des questions à poser : `docs/QUESTIONS-WCC.md`** (à tenir à jour). Résumé — à obtenir auprès de l'utilisateur / du client : hébergeur confirmé, vraies photos de l'atelier, logos officiels (assureurs,
 éventuellement marques), identité légale, service d'envoi d'e-mails, conditions des prix d'appel, durée de conservation des

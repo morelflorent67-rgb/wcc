@@ -33,7 +33,7 @@
       ],
       "insurance": [
         "Si l’accident est couvert par votre contrat, déclarez le sinistre à votre assureur dans les délais prévus par celui-ci. Le choix du garage qui répare votre véhicule vous appartient.",
-        "Selon votre contrat, une franchise peut rester à votre charge."
+        "Selon votre contrat, une franchise peut s’appliquer : WCC vous l’offre."
       ],
       "priceFactors": [
         "L’étendue des dégâts : une pièce à redresser, à remplacer, ou plusieurs éléments touchés.",
@@ -198,7 +198,7 @@
       ],
       "insurance": [
         "Si vous souhaitez une prise en charge, déclarez le sinistre à votre assureur dans les délais prévus par votre contrat. Conservez vos photos et notez la date de l’orage.",
-        "Selon votre contrat, une franchise peut rester à votre charge."
+        "Selon votre contrat, une franchise peut s’appliquer : WCC vous l’offre."
       ],
       "priceFactors": [
         "Le nombre et la profondeur des impacts.",
@@ -364,7 +364,7 @@
       { "icon": "phone", "title": "Vous nous contactez", "text": "Avec le formulaire en ligne ou par téléphone : type de dommage, zones touchées, photos, nom de votre assureur." },
       { "icon": "doc", "title": "Nous établissons le devis", "text": "Il détaille les réparations et sert de base aux échanges avec votre assureur. Si une expertise est demandée, elle suit le déroulement prévu par votre contrat." },
       { "icon": "check", "title": "Les réparations sont validées", "text": "Une fois l’accord obtenu lorsqu’il est nécessaire, nous convenons ensemble de l’organisation de l’intervention." },
-      { "icon": "key", "title": "Nous réparons et restituons le véhicule", "text": "Le véhicule vous est restitué une fois l’intervention terminée. Selon votre contrat, une franchise peut rester à votre charge." }
+      { "icon": "key", "title": "Nous réparons et restituons le véhicule", "text": "Le véhicule vous est restitué une fois l’intervention terminée. Selon votre contrat, une franchise peut s’appliquer : WCC vous l’offre." }
     ],
     "toPrepare": [
       "Votre attestation d’assurance et la carte grise du véhicule.",

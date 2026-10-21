@@ -53,6 +53,12 @@
       { "id": "assurance", "icon": "shield", "title": "Agréé assurances", "short": "Démarches facilitées", "text": "Nous vous accompagnons dans vos démarches avec votre assureur, de la déclaration au suivi du dossier." }
     ]
   },
+  "franchise": {
+    "_note": "Pastille « Franchise offerte » voulue par le client (21 octobre 2026) : portail (moitié carrosserie) et accueil carrosserie (composant FranchiseBadge). enabled=false la retire ; penser alors à revoir les phrases « WCC vous l’offre » de services-carrosserie.json (accident, grêle, déroulement d'un dossier d'assurance). Confirmé par le client : franchise offerte dans tous les cas, sans plafond.",
+    "enabled": true,
+    "line1": "Franchise",
+    "line2": "offerte"
+  },
   "promo": {
     "_note": "Offre de l'espace mécanique voulue par le client (7 octobre 2026) : remise sur le tarif de base + 90 points de contrôle offerts. enabled=false retire tout (remise, bande, macaron) et les prix reviennent au tarif de base. discountPercent = remise appliquée au tarif de base (le tarif barré est le tarif de base réellement pratiqué). endDate = date de fin « AAAA-MM-JJ » (facultative, affichée si renseignée). Conditions exactes des 90 points à obtenir de WCC.",
     "enabled": true,
