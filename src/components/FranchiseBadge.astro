@@ -1,8 +1,9 @@
 ---
 /**
- * Vignette « Franchise offerte » en verre dépoli (choix du client, 21 octobre 2026 ; prototype : design/prototypes/franchise.html).
- * Portail (moitié carrosserie) et accueil carrosserie, placée dans le flux au-dessus du titre : elle ne chevauche jamais le texte.
- * Texte : site.json → franchise ; masquée si franchise.enabled = false.
+ * Fanion « Franchise offerte » (choix du client, 23 octobre 2026 : version compacte, proposition B ; prototype : design/prototypes/franchise-compact.html).
+ * Bandeau orange qui sort du bord gauche, coin coupé. Portail (moitié carrosserie) et accueil carrosserie, dans le flux au-dessus du titre :
+ * il ne chevauche jamais le texte. La phrase explicative (site.json → franchise.text) n'est plus affichée ici : elle sert de nom accessible.
+ * Masqué si franchise.enabled = false. L'appelant peut surcharger --bleed (retrait à gauche) pour atteindre le bord de l'écran.
  */
 import site from '../data/site.json';
 const franchise = site.franchise;
@@ -11,38 +12,21 @@ interface Props { class?: string }
 const { class: cls } = Astro.props;
 ---
 {franchise?.enabled && (
-  <span class:list={['fr-glass', cls]}>
-    <span class="ico" aria-hidden="true"><svg class="ic"><use href="#i-shield" /></svg></span>
-    <span class="txt">
-      <span class="t">{franchise.line1} <b>{franchise.line2}</b></span>
-      <span class="s">{franchise.text}</span>
+  <span class:list={['fr-wrap', cls]} role="img" aria-label={`${franchise.line1} ${franchise.line2} : ${franchise.text}`}>
+    <span class="fr-flag" aria-hidden="true">
+      <svg class="ic"><use href="#i-shield" /></svg>
+      <span class="t">{franchise.line1} {franchise.line2}</span>
     </span>
   </span>
 )}
 
 <style>
-  .fr-glass {
-    display: flex; align-items: center; gap: 14px; width: fit-content; max-width: 340px; padding: 13px 22px 13px 13px;
-    border-radius: 22px; color: #fff; text-align: left;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.08));
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    -webkit-backdrop-filter: blur(16px) saturate(1.5); backdrop-filter: blur(16px) saturate(1.5);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
-  }
-  .ico {
-    flex: none; display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%;
+  .fr-wrap { display: block; width: fit-content; margin-left: calc(-1 * var(--bleed, var(--pad))); filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35)); }
+  .fr-flag {
+    display: inline-flex; align-items: center; gap: 9px; height: 36px; padding: 0 26px 0 var(--bleed, var(--pad)); color: #fff;
     background: linear-gradient(135deg, #ffa63d 0%, var(--orange) 45%, var(--orange-deep) 100%);
-    box-shadow: 0 0 0 5px rgba(255, 91, 15, 0.25);
+    clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
   }
-  .ico .ic { width: 26px; height: 26px; color: #fff; }
-  .t { display: block; font: 800 1.85rem / 0.85 var(--f-display); text-transform: uppercase; letter-spacing: 0.005em; }
-  .t b { color: #ffb07a; font-weight: inherit; }
-  .s { display: block; margin-top: 6px; font: 500 0.86rem / 1.25 var(--f-body); opacity: 0.94; }
-  @media (max-width: 420px) {
-    .fr-glass { gap: 12px; padding: 11px 16px 11px 11px; border-radius: 18px; }
-    .ico { width: 46px; height: 46px; }
-    .ico .ic { width: 22px; height: 22px; }
-    .t { font-size: 1.6rem; }
-    .s { font-size: 0.8rem; }
-  }
+  .fr-flag .ic { width: 18px; height: 18px; flex: none; }
+  .t { font: 800 1.2rem / 1 var(--f-display); letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; }
 </style>

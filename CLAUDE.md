@@ -178,7 +178,9 @@ automatique). Troisième passe : voiture plus rapide (trajet complet pendant que
 espaces, panneau du portail « Carrosserie et mécanique » (liens vers les deux), panneau bleu sur l'accueil mécanique. Piège rencontré : les noms d'animation CSS (`@keyframes`) sont **globaux** même dans les styles Astro « scoped » : préfixer
 par composant (`map-`, `acc-`, `atout-`, `rv-`, `st-`), sinon une animation en écrase une autre (le slogan du portail avait été déplacé).
 
-**Ajustements du 21 octobre 2026 (faits et poussés)** : « Franchise offerte » = **vignette en verre dépoli** choisie par le client
+**23 octobre 2026 (fait, non commité)** : le client trouvait la vignette « Franchise offerte » trop grande ; il a choisi le **fanion orange** (`FranchiseBadge` : bandeau de 36 px qui sort du bord gauche, coin coupé, une seule ligne, phrase explicative seulement en nom accessible ; prototypes A capsule et C sceau dans `design/prototypes/franchise-compact.html`). Le retrait à gauche se règle par `--bleed` (jusqu'au bord de l'écran sur l'accueil carrosserie).
+
+**Ajustements du 21 octobre 2026 (faits et poussés ; la vignette en verre ci-dessous est remplacée par le fanion)** : « Franchise offerte » = **vignette en verre dépoli** choisie par le client
 (`FranchiseBadge` : écusson orange, « Franchise offerte » + phrase `site.json` → `franchise.text` ; prototypes écartés Médaille et
 Étiquette dans `design/prototypes/franchise.html`). Placée **dans le flux**, au-dessus du numéro « 01 » (moitié carrosserie du portail)
 et du libellé (en-tête de `/carrosserie/`) : elle ne chevauche jamais le texte, sur aucune largeur. Phrases « franchise » des pages

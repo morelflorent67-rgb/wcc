@@ -133,7 +133,7 @@ const insurers: LogoItem[] = partners
   .hero-in { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 120px var(--pad) clamp(96px, 11vw, 150px); }
   .hero .label { opacity: 0.95; }
   /* Vignette « Franchise offerte » : dans le flux, au-dessus du libellé (ne chevauche jamais le titre) */
-  .hero-in :global(.hero-promo) { margin-bottom: 22px; }
+  .hero-in :global(.hero-promo) { margin-bottom: 20px; --bleed: calc(var(--pad) + max(0px, (100vw - var(--wrap)) / 2)); }
   .hero h1 { margin: 14px 0 18px; font: 800 clamp(3.2rem, 6.6vw, 7.2rem) / 0.84 var(--f-display); /* un peu plus petit qu’en mécanique : laisse le visage libre à droite */ text-transform: uppercase; letter-spacing: -0.005em; text-shadow: 0 2px 30px rgba(0, 0, 0, 0.25); }
   .sub { margin: 0 0 30px; font: 500 clamp(1.1rem, 1.8vw, 1.45rem) / 1.35 var(--f-body); max-width: 34ch; }
   .actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }

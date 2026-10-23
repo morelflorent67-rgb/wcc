@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WCC — Pastille « Franchise offerte » : 3 propositions</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --paper:#f6f4f0;--ink:#111317;--mute:#5b606a;--line:#e0dbd2;--night:#0f1114;
+  --orange:#ff5b0f;--orange-deep:#c43400;
+  --grad-orange:linear-gradient(135deg,#ffa63d 0%,#ff5b0f 45%,#c43400 100%);
+  --f-display:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;--f-body:'Barlow',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.06rem/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.page{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
+.label{font:700 .8rem/1 var(--f-display);letter-spacing:.2em;text-transform:uppercase}
+h1{font:800 clamp(2.4rem,5vw,3.6rem)/.9 var(--f-display);text-transform:uppercase;margin:12px 0 14px}
+.intro{max-width:62ch;color:var(--mute);margin:0 0 40px}
+.variant{border-top:1px solid var(--line);padding:36px 0 44px}
+.variant h2{font:800 2rem/1 var(--f-display);text-transform:uppercase;margin:8px 0 6px}
+.variant p.what{margin:0 0 22px;color:var(--mute);max-width:70ch}
+.frames{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.cap{font:600 .85rem var(--f-body);color:var(--mute);margin:0 0 8px}
+
+/* ───── Maquette de la moitié « Carrosserie » du portail ───── */
+.half{container-type:inline-size;position:relative;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;isolation:isolate;background:#000;border-radius:6px}
+.half.desk{width:560px;height:700px}
+.half.mob{width:375px;min-height:560px;padding-top:120px}
+.half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:6% 30%;z-index:-3}
+.half::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(to bottom,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 30%),linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,0) 62%)}
+.half::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(196,52,0,.88) 0%,rgba(196,52,0,.42) 26%,rgba(196,52,0,0) 56%)}
+.hc{padding:0 28px 34px}
+.mob .hc{padding:0 18px 30px}
+.hc .num{display:flex;align-items:center;gap:14px;font:700 .8rem/1 var(--f-display);letter-spacing:.2em}
+.hc .num::after{content:'';width:48px;height:2px;background:#fff;opacity:.7}
+.hc h3{margin:.12em 0 .1em;font:800 15cqi/.8 var(--f-display);text-transform:uppercase}
+.hc p{margin:0 0 20px;font:500 1.05rem/1.35 var(--f-body);max-width:30ch}
+.pill{display:inline-flex;align-items:center;gap:14px;background:#fff;color:var(--ink);border-radius:999px;padding:8px 8px 8px 22px;font:600 .95rem var(--f-body)}
+.pill i{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--orange);font-style:normal}
+/* Ordinateur : pastille en haut à droite de la moitié. Mobile : dans le flux, juste au-dessus du numéro (ne peut plus chevaucher le titre). */
+
+
+/* Placement commun : dans le flux, au-dessus du « 01 » */
+.fr{margin:0 0 14px}
+.shield{width:100%;height:100%}
+
+/* ───── A · Capsule ───── */
+.cap-a{display:inline-flex;align-items:center;gap:9px;padding:4px 16px 4px 4px;border-radius:999px;color:#fff;
+  background:linear-gradient(135deg,rgba(24,18,16,.62),rgba(24,18,16,.42));border:1px solid rgba(255,255,255,.4);
+  -webkit-backdrop-filter:blur(14px) saturate(1.5);backdrop-filter:blur(14px) saturate(1.5);box-shadow:0 8px 22px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.35)}
+.cap-a .ico{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--grad-orange)}
+.cap-a .ico svg{width:16px;height:16px}
+.cap-a .t{font:800 1.2rem/1 var(--f-display);letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+.cap-a .t b{color:#ffb07a;font-weight:inherit}
+
+/* ───── B · Fanion (sort du bord gauche, coin coupé : langage des cartes « Affiche ») ───── */
+.flag{display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 24px 0 0;color:#fff;background:var(--grad-orange);
+  clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%);filter:none;box-shadow:none}
+.hc .flag{margin-left:-28px;padding-left:28px}
+.mob .hc .flag{margin-left:-18px;padding-left:18px}
+.flag svg{width:18px;height:18px;flex:none}
+.flag .t{font:800 1.2rem/1 var(--f-display);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.flagwrap{filter:drop-shadow(0 6px 14px rgba(0,0,0,.35));display:block;width:fit-content}
+
+/* ───── C · Sceau (rond, en haut à droite, hors du texte) ───── */
+.seal{position:absolute;display:grid;place-items:center;text-align:center;width:88px;height:88px;border-radius:50%;color:#fff;
+  background:radial-gradient(circle at 30% 25%,#ffa63d 0%,var(--orange) 50%,var(--orange-deep) 100%);
+  box-shadow:0 0 0 3px rgba(255,255,255,.55),0 12px 26px rgba(0,0,0,.4);transform:rotate(-8deg);margin:0}
+.seal svg{width:18px;height:18px;margin-bottom:2px}
+.seal .t{display:block;font:800 1.02rem/.9 var(--f-display);letter-spacing:.04em;text-transform:uppercase}
+.desk .seal{top:190px;left:28px}
+.mob .seal{top:150px;left:16px;width:80px;height:80px}
+.mob .seal .t{font-size:.94rem}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="shield-w" viewBox="0 0 24 24"><path d="M12 2.5 20 5.6v5.7c0 5-3.4 9-8 10.2-4.6-1.2-8-5.2-8-10.2V5.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="m8.3 12.2 2.6 2.6 4.9-5.3" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+<template id="a"><span class="fr cap-a" role="img" aria-label="Franchise offerte"><span class="ico"><svg aria-hidden="true"><use href="#shield-w"/></svg></span><span class="t">Franchise <b>offerte</b></span></span></template>
+<template id="b"><span class="fr flagwrap" role="img" aria-label="Franchise offerte"><span class="flag"><svg aria-hidden="true"><use href="#shield-w"/></svg><span class="t">Franchise offerte</span></span></span></template>
+<template id="c"><span class="fr seal" role="img" aria-label="Franchise offerte"><span><svg aria-hidden="true"><use href="#shield-w"/></svg><span class="t">Franchise<br>offerte</span></span></span></template>
+
+<div class="page">
+  <p class="label">World Car Carrosserie · proposition</p>
+  <h1>Pastille « Franchise offerte » · version compacte</h1>
+  <p class="intro">Trois pastilles nettement plus petites (environ 36 px de haut au lieu de 80 px pour les capsules et le fanion, 88 px de diamètre pour le sceau). La phrase explicative disparaît de la pastille : elle reste dans les pages Accident, Grêle et Assurances. Montrées sur la moitié « Carrosserie » du portail, sur ordinateur et téléphone ; le même composant servira en haut de l’accueil Carrosserie.</p>
+
+  <section class="variant" data-v="a">
+    <p class="label" style="color:var(--orange-deep)">Proposition A</p><h2>Capsule verre</h2>
+    <p class="what">La version actuelle en verre dépoli, réduite à une seule ligne. Placée dans le flux, juste au-dessus du « 01 », alignée sur le texte : jamais sur le titre, sur aucune largeur.</p>
+    <div class="frames"></div>
+  </section>
+  <section class="variant" data-v="b">
+    <p class="label" style="color:var(--orange-deep)">Proposition B</p><h2>Fanion orange</h2>
+    <p class="what">Bandeau orange qui sort du bord gauche de l’image, coin coupé comme les cartes de prestations. Très lisible (texte blanc sur orange plein), et il structure la colonne de texte comme une marque-page.</p>
+    <div class="frames"></div>
+  </section>
+  <section class="variant" data-v="c">
+    <p class="label" style="color:var(--orange-deep)">Proposition C</p><h2>Sceau rond</h2>
+    <p class="what">Petit sceau orange légèrement incliné, posé en haut à gauche de l’image, loin du bloc de texte : le texte garde toute sa place. Il se remarque par sa couleur, sans prendre de place dans la colonne.</p>
+    <div class="frames"></div>
+  </section>
+</div>
+
+<script>
+  const half = (kind, v) => {
+    const b = document.getElementById(v).innerHTML;
+    const abs = v === 'c';
+    return `<div><p class="cap">${kind === 'desk' ? 'Ordinateur' : 'Téléphone (375 px)'}</p>
+      <div class="half ${kind}"><img src="../../src/assets/hero/carrosserie.webp" alt="">
+      ${abs ? b : ''}
+      <div class="hc">${abs ? '' : b}
+        <span class="num">01</span><h3>Carrosserie</h3>
+        <p>Réparation, peinture et accompagnement dans vos démarches d’assurance.</p>
+        <span class="pill">Découvrir la carrosserie <i>↗</i></span></div></div></div>`;
+  };
+  document.querySelectorAll('.variant').forEach((s) => { s.querySelector('.frames').innerHTML = half('desk', s.dataset.v) + half('mob', s.dataset.v); });
+</script>
+</body></html>
