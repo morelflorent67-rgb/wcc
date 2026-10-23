@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WCC — Pastille « Franchise offerte » : 3 propositions</title>
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  --paper:#f6f4f0;--ink:#111317;--mute:#5b606a;--line:#e0dbd2;--night:#0f1114;
+  --orange:#ff5b0f;--orange-deep:#c43400;
+  --grad-orange:linear-gradient(135deg,#ffa63d 0%,#ff5b0f 45%,#c43400 100%);
+  --f-display:'Barlow Condensed','Arial Narrow',system-ui,sans-serif;--f-body:'Barlow',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.06rem/1.55 var(--f-body);-webkit-font-smoothing:antialiased}
+.page{max-width:1080px;margin:0 auto;padding:48px 24px 80px}
+.label{font:700 .8rem/1 var(--f-display);letter-spacing:.2em;text-transform:uppercase}
+h1{font:800 clamp(2.4rem,5vw,3.6rem)/.9 var(--f-display);text-transform:uppercase;margin:12px 0 14px}
+.intro{max-width:62ch;color:var(--mute);margin:0 0 40px}
+.variant{border-top:1px solid var(--line);padding:36px 0 44px}
+.variant h2{font:800 2rem/1 var(--f-display);text-transform:uppercase;margin:8px 0 6px}
+.variant p.what{margin:0 0 22px;color:var(--mute);max-width:70ch}
+.frames{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
+.cap{font:600 .85rem var(--f-body);color:var(--mute);margin:0 0 8px}
+
+/* ───── Maquette de la moitié « Carrosserie » du portail ───── */
+.half{container-type:inline-size;position:relative;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;overflow:hidden;isolation:isolate;background:#000;border-radius:6px}
+.half.desk{width:560px;height:700px}
+.half.mob{width:375px;min-height:560px;padding-top:120px}
+.half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:6% 30%;z-index:-3}
+.half::before{content:'';position:absolute;inset:0;z-index:-2;background:linear-gradient(to bottom,rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 30%),linear-gradient(to top,rgba(0,0,0,.72) 0%,rgba(0,0,0,0) 62%)}
+.half::after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(196,52,0,.88) 0%,rgba(196,52,0,.42) 26%,rgba(196,52,0,0) 56%)}
+.hc{padding:0 28px 34px}
+.mob .hc{padding:0 18px 30px}
+.hc .num{display:flex;align-items:center;gap:14px;font:700 .8rem/1 var(--f-display);letter-spacing:.2em}
+.hc .num::after{content:'';width:48px;height:2px;background:#fff;opacity:.7}
+.hc h3{margin:.12em 0 .1em;font:800 15cqi/.8 var(--f-display);text-transform:uppercase}
+.hc p{margin:0 0 20px;font:500 1.05rem/1.35 var(--f-body);max-width:30ch}
+.pill{display:inline-flex;align-items:center;gap:14px;background:#fff;color:var(--ink);border-radius:999px;padding:8px 8px 8px 22px;font:600 .95rem var(--f-body)}
+.pill i{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--orange);font-style:normal}
+/* Ordinateur : pastille en haut à droite de la moitié. Mobile : dans le flux, juste au-dessus du numéro (ne peut plus chevaucher le titre). */
+
+
+
+.shield,span>svg{width:100%;height:100%}.page{max-width:1700px}
+.frames{gap:36px}
+.half.mob{position:relative}
+.hc{position:relative}
+/* M1 · Ruban de pied : bandeau orange pleine largeur au bas de la section */
+.ribbon{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;gap:9px;height:38px;color:#fff;background:linear-gradient(135deg,#ffa63d 0%,#ff5b0f 45%,#c43400 100%);box-shadow:0 -6px 16px rgba(0,0,0,.25)}
+.ribbon svg{width:18px;height:18px}
+.ribbon .t{font:800 1.15rem/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase}
+.m1 .hc{padding-bottom:62px}
+/* M2 · Sceau à côté du bouton */
+.seal{position:absolute;right:18px;bottom:30px;display:grid;place-items:center;text-align:center;width:76px;height:76px;border-radius:50%;color:#fff;
+  background:radial-gradient(circle at 30% 25%,#ffa63d 0%,var(--orange) 50%,var(--orange-deep) 100%);box-shadow:0 0 0 3px rgba(255,255,255,.55),0 10px 22px rgba(0,0,0,.4);transform:rotate(-8deg)}
+.seal svg{width:16px;height:16px;margin-bottom:2px}
+.seal .t{display:block;font:800 .95rem/.9 var(--f-display);letter-spacing:.04em;text-transform:uppercase}
+/* M3 · Puce sur la ligne du « 01 » */
+.numrow{display:flex;align-items:center;gap:12px;margin-bottom:2px}
+.numrow .num{flex:none}
+.numrow .num::after{width:26px}
+.chip{display:inline-flex;align-items:center;gap:7px;height:28px;padding:0 14px 0 10px;border-radius:999px;color:#fff;background:linear-gradient(135deg,#ffa63d 0%,#ff5b0f 45%,#c43400 100%);box-shadow:0 4px 12px rgba(0,0,0,.3)}
+.chip svg{width:15px;height:15px}
+.chip .t{font:800 1rem/1 var(--f-display);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="shield-w" viewBox="0 0 24 24"><path d="M12 2.5 20 5.6v5.7c0 5-3.4 9-8 10.2-4.6-1.2-8-5.2-8-10.2V5.6z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="m8.3 12.2 2.6 2.6 4.9-5.3" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</defs></svg>
+<div class="page">
+  <p class="label">World Car Carrosserie · proposition mobile</p>
+  <h1>Fanion « Franchise offerte » · téléphone</h1>
+  <p class="intro">Le fanion actuel (à gauche) reste sur ordinateur. Trois solutions pour le téléphone (375 px), montrées sur la moitié « Carrosserie » du portail ; la même s'appliquerait en haut de l'accueil Carrosserie.</p>
+  <div class="frames" id="f"></div>
+  <div class="frames" style="margin-top:24px">
+    <p class="what" style="max-width:340px"><b>M1 · Ruban de pied</b> : bandeau orange pleine largeur collé au bas de la section, sous le bouton. Il ne touche ni la photo ni le texte.</p>
+    <p class="what" style="max-width:340px"><b>M2 · Sceau à côté du bouton</b> : petit sceau rond dans le coin bas droit, sur la ligne du bouton, là où il y a de la place libre.</p>
+    <p class="what" style="max-width:340px"><b>M3 · Puce sur la ligne du « 01 »</b> : petite puce orange à droite du numéro : aucune ligne de plus, la hauteur du bloc ne change pas.</p>
+  </div>
+</div>
+<script>
+const ic='<svg aria-hidden="true"><use href="#shield-w"/></svg>';
+const body=(num)=>`<h3>Carrosserie</h3><p>Réparation, peinture et accompagnement dans vos démarches d’assurance.</p><span class="pill">Découvrir la carrosserie <i>↗</i></span>`;
+const frame=(cap,cls,inner)=>`<div><p class="cap">${cap}</p><div class="half mob ${cls}"><img src="../../src/assets/hero/carrosserie.webp" alt="">${inner}</div></div>`;
+const cur=frame('Actuel (fanion)','m0',`<div class="hc"><span style="display:block;width:fit-content;margin:0 0 14px -18px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))"><span style="display:inline-flex;align-items:center;gap:9px;height:36px;padding:0 26px 0 18px;color:#fff;background:linear-gradient(135deg,#ffa63d,#ff5b0f 45%,#c43400);clip-path:polygon(0 0,100% 0,calc(100% - 12px) 100%,0 100%)"><span style="width:18px;height:18px;display:block">${ic}</span><span style="font:800 1.2rem/1 var(--f-display);letter-spacing:.05em;text-transform:uppercase">Franchise offerte</span></span></span><span class="num">01</span>${body()}</div>`);
+const m1=frame('M1 · Ruban de pied','m1',`<div class="hc"><span class="num">01</span>${body()}</div><div class="ribbon" role="img" aria-label="Franchise offerte"><span style="width:18px;height:18px;display:block">${ic}</span><span class="t">Franchise offerte</span></div>`);
+const m2=frame('M2 · Sceau','m2',`<div class="hc"><span class="num">01</span>${body()}</div><span class="seal" role="img" aria-label="Franchise offerte"><span>${ic}<span class="t">Franchise<br>offerte</span></span></span>`);
+const m3=frame('M3 · Puce','m3',`<div class="hc"><div class="numrow"><span class="num">01</span><span class="chip" role="img" aria-label="Franchise offerte">${ic}<span class="t">Franchise offerte</span></span></div>${body()}</div>`);
+document.getElementById('f').innerHTML=cur+m1+m2+m3;
+</script>
+</body></html>

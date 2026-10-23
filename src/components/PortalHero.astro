@@ -121,6 +121,10 @@ import FranchiseBadge from './FranchiseBadge.astro';
     .lead h1 { letter-spacing: 0.16em; font-size: 1rem; }
     .tel { padding: 9px 15px; font-size: 0.88rem; }
     .top :global(img) { height: 42px; }
+    /* Téléphone : le fanion quitte la zone dense (logo, accroche, titre) et devient un ruban pleine largeur au pied de la section */
+    .hero .half.c :global(.fr) { position: absolute; left: 0; right: 0; bottom: 0; width: auto; margin: 0; filter: none; }
+    .hero .half.c :global(.fr .fr-flag) { display: flex; justify-content: center; width: 100%; height: 38px; padding: 0; clip-path: none; }
+    .half.c .hc { padding-bottom: 68px; }
   }
 
   @media (prefers-reduced-motion: no-preference) {
