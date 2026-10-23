@@ -116,9 +116,13 @@ import FranchiseBadge from './FranchiseBadge.astro';
     .hero { flex-direction: column; max-height: none; min-height: 0; }
     .half { flex: none; min-height: max(400px, 52svh); }
     .half + .half { border-left: 0; border-top: 1px solid rgba(255, 255, 255, 0.6); }
-    .half:first-of-type { min-height: max(450px, 60svh); padding-top: 150px; }
-    .lead { top: 92px; }
+    .half:first-of-type { min-height: max(450px, 60svh); padding-top: 110px; }
+    /* Téléphone : l'accroche passe entre les deux espaces, juste sous le ruban « Franchise offerte » */
+    .half.c { order: 1; }
+    .lead { order: 2; position: static; transform: none; width: auto; padding: 22px var(--pad) 20px; background: #0f1114; animation: none; }
+    .half.m { order: 3; }
     .lead h1 { letter-spacing: 0.16em; font-size: 1rem; }
+    .lead::after { margin-top: 12px; }
     .tel { padding: 9px 15px; font-size: 0.88rem; }
     .top :global(img) { height: 42px; }
     /* Téléphone : le fanion quitte la zone dense (logo, accroche, titre) et devient un ruban pleine largeur au pied de la section */
