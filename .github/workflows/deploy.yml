@@ -11,7 +11,7 @@ name: Déployer le site
 
 on:
   # Déploiement automatique à chaque push sur main, UNIQUEMENT si la variable SITE_URL est définie
-  # (Settings > Secrets and variables > Actions > Variables : SITE_URL, PUBLIC_INDEXABLE, FTP_DIR).
+  # (Settings > Secrets and variables > Actions > Variables : SITE_URL, PUBLIC_INDEXABLE).
   push:
     branches: [main]
   workflow_dispatch:
@@ -28,8 +28,8 @@ on:
         type: boolean
         default: true
       server_dir:
-        description: "Dossier distant (OVH : www/)"
-        default: "www/"
+        description: "Dossier distant (laisser ./ avec l'utilisateur FTP dédié ; www/ avec le compte principal OVH)"
+        default: "./"
 
 permissions:
   contents: read
@@ -59,7 +59,9 @@ jobs:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-          REMOTE_DIR: ${{ inputs.server_dir || vars.FTP_DIR || 'www/' }}
+          # L'utilisateur FTP dédié (OVH) démarre déjà dans le dossier racine du site : on envoie dans « ./ ».
+          # (La variable FTP_DIR n'est plus utilisée ; pour un compte principal, passer server_dir = www/ en lancement manuel.)
+          REMOTE_DIR: ${{ inputs.server_dir || './' }}
           DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
         run: |
           sudo apt-get install -y lftp >/dev/null
