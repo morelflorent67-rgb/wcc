@@ -9,6 +9,9 @@ Options -Indexes
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  # Une seule adresse canonique (celle de SITE_URL) : le domaine nu est redirigé en 301 vers www, en HTTPS, en une seule étape
+  RewriteCond %{HTTP_HOST} ^world-car-carrosserie\.fr$ [NC]
+  RewriteRule ^ https://www.world-car-carrosserie.fr%{REQUEST_URI} [L,R=301]
   # Passage en HTTPS (suppose qu'un certificat est actif sur le domaine : à vérifier avant d'activer)
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
