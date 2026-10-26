@@ -51,20 +51,23 @@ jobs:
         env:
           SITE_URL: ${{ inputs.site_url || vars.SITE_URL }}
           PUBLIC_INDEXABLE: ${{ (github.event_name == 'workflow_dispatch' && inputs.indexable) && 'true' || (github.event_name == 'push' && vars.PUBLIC_INDEXABLE) || 'false' }}
-      - name: Envoyer par FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: ./dist/
-          server-dir: ${{ inputs.server_dir || vars.FTP_DIR || 'www/' }}
-          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
-          # config.php et storage/ ne sont jamais dans dist/ ; on les protège aussi côté serveur
-          exclude: |
-            **/.git*
-            **/.git*/**
-            api/config.php
-            api/storage/**
-            !api/storage/.htaccess
+      # OVH mutualisé refuse le FTPS de l'action FTP-Deploy (« 500 This security scheme is not implemented ») :
+      # envoi par SFTP (port 22) avec lftp. Sans --delete : rien n'est jamais supprimé sur le serveur
+      # (config.php et le stockage privé restent intacts ; config.php et storage/ ne sont de toute façon pas dans dist/).
+      - name: Envoyer par SFTP
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          REMOTE_DIR: ${{ inputs.server_dir || vars.FTP_DIR || 'www/' }}
+          DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+        run: |
+          sudo apt-get install -y lftp >/dev/null
+          OPTS="--reverse --only-newer --parallel=4 --verbose"
+          if [ "$DRY_RUN" = "true" ]; then OPTS="$OPTS --dry-run"; fi
+          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "sftp://$FTP_SERVER" <<EOF
+          set sftp:auto-confirm yes
+          set net:max-retries 2
+          mirror $OPTS --exclude-glob api/config.php ./dist/ "$REMOTE_DIR"
+          bye
+          EOF
