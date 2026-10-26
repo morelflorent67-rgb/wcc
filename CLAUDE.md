@@ -17,6 +17,10 @@ d'après societe.com (`legal.json`) ; durées de conservation choisies : demande
 vérifier), dossier en trop `7wwri8pjw0/7wwri8pjw0/` sur le serveur, changement du mot de passe FTP (apparu en conversation), passage de
 `PUBLIC_INDEXABLE` à `true` puis référencement et Search Console (nouvelle conversation dédiée).
 
+## Référencement (26 octobre 2026)
+
+**Indexation ouverte** : `PUBLIC_INDEXABLE=true` (GitHub), robots.txt autorise l'exploration, seules les pages « merci » et la 404 restent en noindex. Adresse canonique **www** ; domaine nu et http redirigés en 301 (`public/.htaccess`). Search Console : propriété Domaine validée (TXT dans la zone OVH, à ne pas supprimer), sitemap envoyé, indexation demandée pour 6 pages. Fiche Google existante « WORLD CAR / WCC / CARROSSERIE STRASBOURG » gérée par un autre compte, site web encore `acoat-selected.fr` : à corriger par WCC. Détails, NAP, annuaires et plan de suivi (1 semaine / 1 mois / 3 mois) : `docs/SEO-REFERENCEMENT.md`. **Reste** : médiateur, mesure PageSpeed, fiche Google, annuaires (accord de l'utilisateur), mot de passe FTP.
+
 ## Le projet en bref
 
 Site vitrine de **World Car Carrosserie (WCC)**, garage de Bischheim (carrosserie et mécanique multimarque, de même
