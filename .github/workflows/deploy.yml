@@ -51,6 +51,13 @@ jobs:
         env:
           SITE_URL: ${{ inputs.site_url || vars.SITE_URL }}
           PUBLIC_INDEXABLE: ${{ (github.event_name == 'workflow_dispatch' && inputs.indexable) && 'true' || (github.event_name == 'push' && vars.PUBLIC_INDEXABLE) || 'false' }}
+      # config.php de production : contenu du secret API_CONFIG_PHP (jamais dans le dépôt), écrit dans dist/ juste avant l'envoi.
+      # Sans ce secret, le fichier déjà présent sur le serveur n'est pas touché.
+      - name: Ajouter api/config.php
+        env:
+          API_CONFIG_PHP: ${{ secrets.API_CONFIG_PHP }}
+        run: |
+          if [ -n "$API_CONFIG_PHP" ]; then printf '%s\n' "$API_CONFIG_PHP" > dist/api/config.php; echo "config.php ajouté"; else echo "pas de secret API_CONFIG_PHP : config.php du serveur conservé"; fi
       # OVH mutualisé refuse le FTPS de l'action FTP-Deploy (« 500 This security scheme is not implemented ») :
       # envoi par SFTP (port 22) avec lftp. Sans --delete : rien n'est jamais supprimé sur le serveur
       # (config.php et le stockage privé restent intacts ; config.php et storage/ ne sont de toute façon pas dans dist/).
@@ -70,6 +77,6 @@ jobs:
           lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "sftp://$FTP_SERVER" <<EOF
           set sftp:auto-confirm yes
           set net:max-retries 2
-          mirror $OPTS --exclude-glob api/config.php ./dist/ "$REMOTE_DIR"
+          mirror $OPTS ./dist/ "$REMOTE_DIR"
           bye
           EOF
