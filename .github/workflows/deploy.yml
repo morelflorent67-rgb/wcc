@@ -10,6 +10,10 @@
 name: Déployer le site
 
 on:
+  # Déploiement automatique à chaque push sur main, UNIQUEMENT si la variable SITE_URL est définie
+  # (Settings > Secrets and variables > Actions > Variables : SITE_URL, PUBLIC_INDEXABLE, FTP_DIR).
+  push:
+    branches: [main]
   workflow_dispatch:
     inputs:
       site_url:
@@ -32,6 +36,7 @@ permissions:
 
 jobs:
   deploy:
+    if: github.event_name == 'workflow_dispatch' || vars.SITE_URL != ''
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -44,8 +49,8 @@ jobs:
       - name: Construire le site
         run: npm run build
         env:
-          SITE_URL: ${{ inputs.site_url }}
-          PUBLIC_INDEXABLE: ${{ inputs.indexable && 'true' || 'false' }}
+          SITE_URL: ${{ inputs.site_url || vars.SITE_URL }}
+          PUBLIC_INDEXABLE: ${{ (github.event_name == 'workflow_dispatch' && inputs.indexable) && 'true' || (github.event_name == 'push' && vars.PUBLIC_INDEXABLE) || 'false' }}
       - name: Envoyer par FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -54,8 +59,8 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
           local-dir: ./dist/
-          server-dir: ${{ inputs.server_dir }}
-          dry-run: ${{ inputs.dry_run }}
+          server-dir: ${{ inputs.server_dir || vars.FTP_DIR || 'www/' }}
+          dry-run: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
           # config.php et storage/ ne sont jamais dans dist/ ; on les protège aussi côté serveur
           exclude: |
             **/.git*
