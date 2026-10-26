@@ -9,7 +9,7 @@ Mis à jour le 26 octobre 2026.
 - Toutes les pages (sauf les deux pages « merci » et la 404) : `index, follow`, canonical, titre et description uniques (46 pages, contrôlées sur le build). Pages « merci » et 404 : `noindex`.
 - JSON-LD `AutoBodyShop` + `AutoRepair` (nom, téléphone, adresse, coordonnées, horaires) sur l'accueil et `/acces-horaires/`. Aucune note ni `aggregateRating` (voulu).
 - `og:image` 1200 × 630, sitemap-index → `sitemap-0.xml`.
-- Non mesuré : vitesse mobile (l'API PageSpeed a refusé la requête : quota). À mesurer à la main sur https://pagespeed.web.dev/.
+- PageSpeed Insights, accueil, mobile (26 octobre 2026) : Performances 99, Accessibilité 96, Bonnes pratiques 100, SEO 100 ; FCP 1,5 s, LCP 2,0 s, TBT 0 ms, CLS 0. Points relevés en accessibilité : listes contenant autre chose que des `<li>`, arborescence d'accessibilité mal formée (à corriger, mineur). Autres pages non mesurées.
 
 ## 2. Google Search Console
 
