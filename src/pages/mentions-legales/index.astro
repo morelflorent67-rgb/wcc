@@ -7,8 +7,9 @@ const { publisher: p, host: h, mediator: m } = legal;
 const missing = [
   ...Object.entries(p).filter(([, v]) => !v).map(([k]) => `publisher.${k}`),
   ...Object.entries(h).filter(([, v]) => !v).map(([k]) => `host.${k}`),
-  ...Object.entries(m).filter(([, v]) => !v).map(([k]) => `mediator.${k}`),
 ];
+const hasMediator = Boolean(m.name);
+if (!hasMediator) console.warn('[mentions légales] médiateur de la consommation non renseigné : section masquée (obligation légale, à obtenir de WCC)');
 if (missing.length) {
   console.warn(`[mentions légales] ${missing.length} champ(s) à compléter dans src/data/legal.json : ${missing.join(', ')}`);
 }
@@ -42,16 +43,20 @@ if (missing.length) {
     <dt>Téléphone</dt><dd>{h.phone ?? <span class="todo">à compléter</span>}</dd>
   </dl>
 
-  <h2>Médiation de la consommation</h2>
-  <p>
-    Conformément au code de la consommation, tout consommateur peut recourir gratuitement à un médiateur en vue de la
-    résolution amiable d’un litige qui l’oppose à un professionnel.
-  </p>
-  <dl class="id">
-    <dt>Médiateur</dt><dd>{m.name ?? <span class="todo">à compléter</span>}</dd>
-    <dt>Adresse</dt><dd>{m.address ?? <span class="todo">à compléter</span>}</dd>
-    <dt>Site internet</dt><dd>{m.website ?? <span class="todo">à compléter</span>}</dd>
-  </dl>
+  {hasMediator && (
+    <>
+      <h2>Médiation de la consommation</h2>
+      <p>
+        Conformément au code de la consommation, tout consommateur peut recourir gratuitement à un médiateur en vue de la
+        résolution amiable d’un litige qui l’oppose à un professionnel.
+      </p>
+      <dl class="id">
+        <dt>Médiateur</dt><dd>{m.name}</dd>
+        {m.address && <><dt>Adresse</dt><dd>{m.address}</dd></>}
+        {m.website && <><dt>Site internet</dt><dd><a href={m.website} rel="noopener">{m.website}</a></dd></>}
+      </dl>
+    </>
+  )}
 
   <h2>Informations sur les prestations et les prix</h2>
   <p>

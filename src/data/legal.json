@@ -1,29 +1,29 @@
 {
-  "_note": "Identité juridique de l'éditeur : à compléter avec les informations RÉELLES de WCC (jamais d'invention). Tant qu'un champ vaut null, la page affiche « à compléter » et le build le signale. Renseigner aussi 'retention' une fois la durée décidée avec WCC. 'mediator' = médiateur de la consommation auquel le professionnel adhère (obligation légale pour les ventes aux consommateurs).",
+  "_note": "Identité juridique de l'éditeur : informations RÉELLES de WCC (source : fiche societe.com du 26 octobre 2026, validée par l'utilisateur). Jamais d'invention. 'mediator' = médiateur de la consommation auquel WCC adhère : tant qu'il vaut null, la section « Médiation » n'est pas affichée (à obtenir de WCC : obligation légale pour les ventes aux consommateurs).",
   "publisher": {
-    "legalName": null,
-    "legalForm": null,
-    "shareCapital": null,
-    "siret": null,
-    "rcs": null,
-    "vatNumber": null,
-    "publicationDirector": null,
-    "email": null
+    "legalName": "WORLD CAR CARROSSERIE",
+    "legalForm": "Société par actions simplifiée (SAS)",
+    "shareCapital": "500 €",
+    "siret": "901 148 759 00011",
+    "rcs": "RCS Strasbourg 901 148 759",
+    "vatNumber": "FR29901148759",
+    "publicationDirector": "Grant Martirossian, président",
+    "email": "worldcarcarrosserie@gmail.com"
   },
   "host": {
-    "name": null,
-    "address": null,
-    "phone": null
+    "name": "OVHcloud (OVH SAS)",
+    "address": "2 rue Kellermann, 59100 Roubaix, France",
+    "phone": "+33 9 72 10 10 07"
   },
   "privacy": {
     "retention": {
-      "requests": null,
-      "photos": null
+      "requests": "12 mois à compter de la dernier échange avec vous, puis suppression",
+      "photos": "6 mois à compter de la réception, puis suppression"
     },
     "controllerContact": null
   },
   "design": "Site réalisé pour World Car Carrosserie.",
-  "updatedAt": "2026-10-07",
+  "updatedAt": "2026-10-26",
   "mediator": {
     "name": null,
     "address": null,

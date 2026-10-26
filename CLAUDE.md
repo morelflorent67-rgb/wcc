@@ -3,6 +3,20 @@
 Fichier de reprise pour toute nouvelle session ou après compactage du contexte. À tenir à jour.
 Dernière mise à jour : 21 octobre 2026 (pastille « Franchise offerte », nouvelle image carrosserie ; retours du 19 octobre intégrés ; **poussé sur GitHub le 19 octobre**, aperçu sur Netlify ; reste les informations à obtenir et l'hébergement définitif avec PHP).
 
+## État au 26 octobre 2026 — EN LIGNE sur OVH
+
+Le site est publié sur **https://world-car-carrosserie.fr** (domaine du client, délégué à l'utilisateur ; hébergement Pro de l'utilisateur,
+site « WCC », dossier `7wwri8pjw0`). **Déploiement automatique** : chaque push sur `main` lance `.github/workflows/deploy.yml`
+(build, puis envoi **SFTP** avec `lftp`, sans suppression distante ; l'action FTPS est refusée par OVH). Réglages GitHub : variables `SITE_URL`
+(`https://www.world-car-carrosserie.fr`), `PUBLIC_INDEXABLE` (`false` tant que l'indexation n'est pas ouverte) ; secrets `FTP_SERVER`,
+`FTP_USERNAME` (utilisateur dédié `frservn-wcc`, démarre dans le dossier du site : on envoie dans `./`), `FTP_PASSWORD`, `API_CONFIG_PHP`
+(contenu du `config.php` de production, écrit dans `dist/api/` au déploiement). La variable `FTP_DIR` n'est plus utilisée. Netlify peut être arrêté.
+Formulaires testés en réel (réception OK). Contenus, textes, assureurs et photos **validés par l'utilisateur** ; identité légale remplie
+d'après societe.com (`legal.json`) ; durées de conservation choisies : demandes 12 mois, photos 6 mois. **Reste** : médiateur de la consommation
+(section masquée tant que `legal.json` → `mediator.name` est vide, obligation légale à obtenir de WCC), `www` (rattaché dans OVH, certificat à
+vérifier), dossier en trop `7wwri8pjw0/7wwri8pjw0/` sur le serveur, changement du mot de passe FTP (apparu en conversation), passage de
+`PUBLIC_INDEXABLE` à `true` puis référencement et Search Console (nouvelle conversation dédiée).
+
 ## Le projet en bref
 
 Site vitrine de **World Car Carrosserie (WCC)**, garage de Bischheim (carrosserie et mécanique multimarque, de même
